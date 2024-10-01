@@ -1,0 +1,16 @@
+{% extends 'base_menu.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Welcome to Worth A Watch</h1>
+    <div>
+        <ul>
+            <li><a href="{% url 'race_weekend_list' %}">F1</a></li>
+            <!-- Add more sports links as you integrate them -->
+        </ul>
+        <p>More  sports coming soon(ish) ... </p>
+    </div>
+</div>   
+
+{% endblock%}
