@@ -207,3 +207,5 @@ if (len(sys.argv) >= 2 and sys.argv[1] == 'runserver'):
         }
     }
 '''
+
+SITE_ID = 1
