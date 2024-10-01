@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',  # Home app
-    'f1',    # F1 app
+    'home.apps.HomeConfig',
+    'f1.apps.F1Config',
+    'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
