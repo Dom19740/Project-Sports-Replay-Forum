@@ -19,14 +19,14 @@
           <a href="#">Hi {{ user.username }}</a>
         </li>
         <li>
-          <a href="{% url 'logout_view' %}">Logout</a>
+          <a href="{% url 'core:logout' %}">Logout</a>
         </li>
       {% else %}
         <li>
-          <a href="{% url 'login_view' %}">Login</a>
+          <a href="{% url 'core:login' %}">Login</a>
         </li>
         <li>
-          <a href="{% url 'register_view' %}">Register</a>
+          <a href="{% url 'core:register' %}">Register</a>
         </li>
       {% endif %}
     </ul>
