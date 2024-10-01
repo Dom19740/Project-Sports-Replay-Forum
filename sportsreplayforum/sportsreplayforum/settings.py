@@ -49,8 +49,6 @@ INSTALLED_APPS = [
     'crispy_forms',  
     'crispy_bootstrap5',  
     'rest_framework', 
-    'social_django',  
-    'taggit',
 ]
 
 # When we get to tagging
@@ -58,8 +56,6 @@ INSTALLED_APPS = [
 # When we get to crispy forms :)
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-
-TAGGIT_CASE_INSENSITIVE = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
