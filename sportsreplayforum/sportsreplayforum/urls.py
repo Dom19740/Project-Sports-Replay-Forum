@@ -11,10 +11,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('core/', include('core.urls')),
     path('f1/', include('f1.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),  # Keep
-    re_path(r'^oauth/', include('social_django.urls', namespace='social')),  # Keep
-    path('accounts/', include('allauth.urls')),
-
 ]
 
 # Serve the static HTML
@@ -35,14 +31,3 @@ urlpatterns += [
         }
     ),
 ]
-
-# Switch to social login if it is configured - Keep for later
-try:
-    from . import github_settings
-    social_login = 'registration/login_social.html'
-    urlpatterns.insert(0,
-                       path('accounts/login/', auth_views.LoginView.as_view(template_name=social_login))
-                       )
-    print('Using', social_login, 'as the login template')
-except:
-    print('Using registration/login.html as the login template')
