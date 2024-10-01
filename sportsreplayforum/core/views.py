@@ -26,9 +26,15 @@ def sign_in(request):
                 messages.success(request,f'Hi {username.title()}, welcome back!')
                 return redirect('home')
         
-        # form is not valid or user is not authenticated
+        # If the form is not valid, log the error
         messages.error(request,f'Invalid username or password')
         return render(request,'core/login.html',{'form': form})
+    
+
+def sign_out(request):
+    logout(request)
+    messages.success(request,f'You have been logged out.')
+    return redirect('home')
     
 
 def sign_up(request):
@@ -45,9 +51,3 @@ def sign_up(request):
     else:
         form = RegisterForm()
     return render(request, 'core/register.html', {'form': form})
-
-
-def sign_out(request):
-    logout(request)
-    messages.success(request,f'You have been logged out.')
-    return redirect('home')
