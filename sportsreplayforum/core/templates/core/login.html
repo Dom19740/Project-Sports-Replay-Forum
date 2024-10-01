@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1>Login</h1>
-  <form method="post">
+  <form method="post" action="{% url 'login_view' %}"></form>
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Login</button>

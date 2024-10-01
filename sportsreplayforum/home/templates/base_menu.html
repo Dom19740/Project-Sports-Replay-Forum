@@ -13,6 +13,23 @@
           <a href="{% url 'race_weekend_list' %}">F1</a>
       </li>
     </ul>
+    <ul class="nav navbar-nav navbar-right">
+      {% if user.is_authenticated %}
+        <li>
+          <a href="#">Hi {{ user.username }}</a>
+        </li>
+        <li>
+          <a href="{% url 'logout_view' %}">Logout</a>
+        </li>
+      {% else %}
+        <li>
+          <a href="{% url 'login_view' %}">Login</a>
+        </li>
+        <li>
+          <a href="{% url 'register_view' %}">Register</a>
+        </li>
+      {% endif %}
+    </ul>
   </div>
 </nav>
 {% endblock %}

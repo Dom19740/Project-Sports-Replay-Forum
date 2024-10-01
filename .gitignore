@@ -1,3 +1,5 @@
 venv/
 __pycache__/
 
+sportsreplayforum/sportsreplayforum/__pycache__/settings.cpython-310.pyc
+sportsreplayforum/sportsreplayforum/__pycache__/urls.cpython-310.pyc
