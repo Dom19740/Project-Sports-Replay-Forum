@@ -3,13 +3,23 @@
 {% block content %}
 
 <div class="container">
+    
     <h1>Welcome to Worth A Watch</h1>
+    <p>
+        A web application for sports fans to rate and discuss sports events, with a view to inform other users as to whether to watch the full replay or just highlights.
+    </p>
+
+    <nav>
+        <a href="{% url 'login' %}" class="btn btn-primary text-white">Login</a>
+        <a href="{% url 'register' %}" class="btn btn-primary text-white">Register</a>
+    </nav>
+
     <div>
+        <h3>Sports</h3>
         <ul>
             <li><a href="{% url 'race_weekend_list' %}">F1</a></li>
-            <!-- Add more sports links as you integrate them -->
+            <li><p>More  sports coming soon(ish) ... </p></li>
         </ul>
-        <p>More  sports coming soon(ish) ... </p>
     </div>
 </div>   
 
