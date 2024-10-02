@@ -8,10 +8,10 @@
         <p>{{ race.date|date:"Y" }} {{ race.name }}</h2>
         <ul>
             {% for event in events %}
-                <li>{{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}</li>
+            <li><a href="{% url 'event' event.id %}">{{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}</a></li>
             {% endfor %}    
         </ul>
         <p><a href="{% url 'race_list' %}">Back to Race List</a></p>
-    </div>
+</div>
 
 {% endblock %}

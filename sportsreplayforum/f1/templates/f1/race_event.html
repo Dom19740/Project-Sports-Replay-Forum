@@ -1,0 +1,31 @@
+{% extends 'base_menu.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div>
+        <h1>Race Weekend</h1>
+        <p>{{ race.date|date:"Y" }} {{ race.name }}</h2>
+        <ul>
+            {% for event in events %}
+            <li><a href="{% url 'event' event.id %}">{{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}</a></li>
+            {% endfor %}    
+        </ul>
+        <p><a href="{% url 'race_weekend' event.race_weekend.id %}">Back to {{ event.race_weekend.name }}</a></p>
+    </div>
+
+<h2>{{ event.race_weekend.name }} {{ event.event_type|title }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="radio" name="stars" value="1"> 3 stars - Amazing! Definitely Worth the Watch<br>
+    <input type="radio" name="stars" value="2"> 2 stars - Pretty Good! Catch the highlights<br>
+    <input type="radio" name="stars" value="3"> 1 stars - Rubbish! Check the results<br>
+    <br>
+    <input type="submit" value="Vote">
+</form>
+
+<h3>Results</h3>
+<p>Coming soon...</p>
+
+{% endblock %}

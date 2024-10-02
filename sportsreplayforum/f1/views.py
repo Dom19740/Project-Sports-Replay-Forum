@@ -24,3 +24,6 @@ def race_weekend(request, race_id):
     return render(request, 'f1/race_weekend.html', {'events': events, 'race': race})
 
 
+def event(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    return render(request, 'f1/race_event.html', {'event': event})
