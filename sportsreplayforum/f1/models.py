@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 class Race(models.Model):
     name = models.CharField(max_length=255)
     date = models.DateField()
+    round = models.IntegerField()
 
     def __str__(self):
         return f"{self.name} - {self.date}"
