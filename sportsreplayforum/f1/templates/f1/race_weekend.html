@@ -5,7 +5,7 @@
 <div class="container">
     <div>
         <h1>Race Weekend</h1>
-        <h3>{{ race.date|date:"Y" }} {{ race.name }}</h3>
+        <p>{{ race.date|date:"Y" }} {{ race.name }}</h2>
         <ul>
             {% for event in events %}
                 <li>{{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}</li>

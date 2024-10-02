@@ -6,10 +6,13 @@
     <div>
         <h1>F1 Season 2024</h1>
         <p>2024 FIA FORMULA ONE WORLD CHAMPIONSHIP RACE CALENDAR</p>    
-
+        <ul>
             {% for race in races %}
                 <li><a href="{% url 'race_weekend' race.id %}">Round {{ race.round }} - {{ race.start_date|date:"d" }}-{{ race.end_date|date:"d" }} {{ race.start_date|date:"M" }} - {{ race.name }}</a></li>
             {% endfor %}
+        </ul>
+    </div>
+    
     </div>   
 
 {% endblock %}

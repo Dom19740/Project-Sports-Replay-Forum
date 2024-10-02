@@ -3,6 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.race_list, name='race_list'), # F1 events list
-    path('events/', views.event_list, name='event_list'),
     path('races/<int:race_id>/events/', views.race_weekend, name='race_weekend'),
 ]
