@@ -5,8 +5,13 @@
 <div class="container">
     <div>
         <h1>F1 2024 Season</h1>
-        <p>Welcome to the F1 events page! More details coming soon.</p>
-        <!-- You can later add a list of races here -->
+        <p>Welcome to the F1 race weekend page</p>
+       
+        
+        {% for race in races %}
+        <li>{{ race.name }} - {{ race.date }}</li>
+        {% endfor %}
+        
 
     </div>   
 
