@@ -7,4 +7,5 @@ urlpatterns = [
     path('races/<int:race_id>/events/', views.race_events, name='race_events'),
     path('events/<int:event_id>/rate/', views.rate_event, name='rate_event'),
     path('events/<int:event_id>/results/', views.event_results, name='event_results'),
+    
 ]
