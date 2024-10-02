@@ -16,14 +16,23 @@
 
 <h2>{{ event.race_weekend.name }} {{ event.event_type|title }}</h2>
 
-<form method="post" action="{% url 'vote' event.id %}">
-    {% csrf_token %}
-    <input type="radio" name="stars" value="3"> 3 stars - Amazing! Definitely Worth the Watch<br>
-    <input type="radio" name="stars" value="2"> 2 stars - Pretty Good! Catch the highlights<br>
-    <input type="radio" name="stars" value="1"> 1 stars - Rubbish! Check the results<br>
-    <br>
-    <input type="submit" value="Vote">
-</form>
+<h3>Vote</h3>
+    {% if request.user.is_authenticated %}
+        <form method="post" action="{% url 'vote' event.id %}">
+            {% csrf_token %}
+            <input type="radio" name="stars" value="3"> 3 stars - Amazing! Definitely Worth the Watch<br>
+            <input type="radio" name="stars" value="2"> 2 stars - Pretty Good! Catch the highlights<br>
+            <input type="radio" name="stars" value="1"> 1 stars - Rubbish! Check the results<br>
+            <br>
+            <input type="submit" value="Vote">
+        </form>
+    {% else %}
+        <p>Register or Login to Vote</p>
+        <nav>
+            <a href="{% url 'core:login' %}" class="btn btn-primary text-white">Login</a>
+            <a href="{% url 'core:register' %}" class="btn btn-primary text-white">Register</a>
+        </nav>
+    {% endif %}
 
 <h3>Results</h3>
 <p>Our users say this event is:</p>
