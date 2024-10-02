@@ -14,4 +14,4 @@ class EventAdmin(admin.ModelAdmin):
 # Register the Rating model (optional, just for viewing in admin)
 @admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ('user', 'event', 'score')
+    list_display = ('event', 'three_stars', 'two_stars', 'one_star')

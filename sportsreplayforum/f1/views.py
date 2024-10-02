@@ -27,3 +27,20 @@ def race_weekend(request, race_id):
 def event(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     return render(request, 'f1/race_event.html', {'event': event})
+
+
+def vote(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    rating, created = Rating.objects.get_or_create(event=event)
+
+    if request.method == 'POST':
+        rating_type = request.POST.get('stars')
+        if rating_type == '3':
+            rating.three_stars += 1
+        elif rating_type == '2':
+            rating.two_stars += 1
+        elif rating_type == '1':
+            rating.one_star += 1
+        rating.save()
+
+    return redirect('event', event_id=event_id)

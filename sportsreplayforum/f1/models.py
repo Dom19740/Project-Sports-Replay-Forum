@@ -25,18 +25,10 @@ class Event(models.Model):
         return f"{self.event_type.capitalize()} - {self.race_weekend.name}"
 
 class Rating(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    score = models.PositiveIntegerField()  # Rating score between 1 and 3
+    event = models.OneToOneField(Event, on_delete=models.CASCADE, related_name='rating')
+    three_stars = models.IntegerField(default=0)
+    two_stars = models.IntegerField(default=0)
+    one_star = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"{self.user.username} rated {self.event.event_type} - {self.score} stars"
-
-    class Meta:
-        unique_together = ('event', 'user')  # Ensure a user can only rate an event once
-
-    # Validation to ensure the rating score is between 1 and 3
-    def clean(self):
-        
-        if self.score < 1 or self.score > 3:
-            raise ValidationError('Score must be between 1 and 3.')
+        return f"{self.event.event_type} - {self.event.race_weekend.name}"
