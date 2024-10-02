@@ -26,6 +26,16 @@
 </form>
 
 <h3>Results</h3>
-<p>Coming soon...</p>
+<p>Our users say this event is:</p>
+{% if event.rating.three_stars >= event.rating.two_stars and event.rating.three_stars >= event.rating.one_star %}
+    <h1>Amazing! Definitely Worth the Watch</h1>
+    <p>with {{ event.rating.three_stars }} 3 star votes</p>
+{% elif event.rating.two_stars >= event.rating.three_stars and event.rating.two_stars >= event.rating.one_star %}
+    <h1>Pretty Good! Catch the highlights</h1>
+    <p> with {{ event.rating.two_stars }} 2 star votes</p>
+{% else %}
+    <h1>Rubbish! Check the results</h1>
+    <p>with {{ event.rating.one_star }} 1 star votes</p>
+{% endif %}
 
 {% endblock %}
