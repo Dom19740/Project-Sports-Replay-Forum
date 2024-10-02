@@ -1,0 +1,11 @@
+<h1>Results for {{ event.event_type }} - {{ event.race_weekend.name }}</h1>
+
+<p>Average Rating: {{ avg_rating }} / 3</p>
+
+<ul>
+    {% for rating in ratings %}
+        <li>{{ rating.user.username }}: {{ rating.score }} stars</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'rate_event' event.id %}">Rate Again</a>

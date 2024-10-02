@@ -1,0 +1,16 @@
+{% extends 'base_menu.html' %}
+
+{% block content %}
+
+<h1>F1 Events</h1>
+<ul>
+    {% for event in events %}
+        <li>{{ event.event_type }} - {{ event.race_weekend.name }} on {{ event.date_time }}
+            <a href="{% url 'rate_event' event.id %}">Rate Event</a> |
+            <a href="{% url 'event_results' event.id %}">View Results</a>
+        </li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}
