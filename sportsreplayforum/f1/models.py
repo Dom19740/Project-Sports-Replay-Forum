@@ -11,9 +11,9 @@ class Race(models.Model):
 
 class Event(models.Model):
     EVENT_TYPES = [
-        ('practice', 'Practice Session'),
         ('qualifying', 'Qualifying'),
         ('race', 'Race'),
+        ('shootout', 'Sprint Shootout'),
         ('sprint', 'Sprint Race'),
     ]
     
