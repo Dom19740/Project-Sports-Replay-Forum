@@ -16,8 +16,7 @@ def race_list(request):
     return render(request, 'f1/race_list.html', {'races': races})
 
 
-
-def race_events(request, race_id):
+def race_weekend(request, race_id):
     race = get_object_or_404(Race, id=race_id)
     events = Event.objects.filter(race_weekend=race).order_by('-date_time')
     print(events)  # Add this line to print out the events
