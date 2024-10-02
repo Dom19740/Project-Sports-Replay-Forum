@@ -13,7 +13,7 @@ def race_list(request):
 def race_events(request, race_id):
     race = get_object_or_404(Race, id=race_id)
     events = Event.objects.filter(race_weekend=race)
-    return render(request, 'f1/race_event.html', {'events': events, 'race': race})
+    return render(request, 'f1/race_weekend.html', {'events': events, 'race': race})
 
 
 def event_list(request):
