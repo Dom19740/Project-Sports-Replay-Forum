@@ -10,6 +10,12 @@ def race_list(request):
     return render(request, 'f1/race_list.html', {'races': races})
 
 
+def race_events(request, race_id):
+    race = get_object_or_404(Race, id=race_id)
+    events = Event.objects.filter(race_weekend=race)
+    return render(request, 'f1/race_event.html', {'events': events, 'race': race})
+
+
 def event_list(request):
     events = Event.objects.all().order_by('date_time')
     return render(request, 'f1/event_list.html', {'events': events})
