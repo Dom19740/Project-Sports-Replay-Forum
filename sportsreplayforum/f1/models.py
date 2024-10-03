@@ -26,6 +26,8 @@ class Event(models.Model):
 
 class Rating(models.Model):
     event = models.OneToOneField(Event, on_delete=models.CASCADE, related_name='rating')
+    five_stars = models.IntegerField(default=0)
+    four_stars = models.IntegerField(default=0)
     three_stars = models.IntegerField(default=0)
     two_stars = models.IntegerField(default=0)
     one_star = models.IntegerField(default=0)

@@ -20,9 +20,11 @@
     {% if request.user.is_authenticated %}
         <form method="post" action="{% url 'vote' event.id %}">
             {% csrf_token %}
-            <input type="radio" name="stars" value="3"> 3 stars - Amazing! Definitely Worth the Watch<br>
-            <input type="radio" name="stars" value="2"> 2 stars - Pretty Good! Catch the highlights<br>
-            <input type="radio" name="stars" value="1"> 1 stars - Rubbish! Check the results<br>
+            <input type="radio" name="stars" value="5"> 5 stars - Amazing! Definitely Worth Watching the Full Replay<br>
+            <input type="radio" name="stars" value="4"> 4 stars<br>
+            <input type="radio" name="stars" value="3"> 3 stars - Pretty Good! Worth Watching the highlights<br>
+            <input type="radio" name="stars" value="2"> 2 stars<br>
+            <input type="radio" name="stars" value="1"> 1 stars - Rubbish! Just check the results<br>
             <br>
             <input type="submit" value="Vote">
         </form>
@@ -36,15 +38,15 @@
 
 <h3>Results</h3>
 <p>Our users say this event is:</p>
-{% if event.rating.three_stars >= event.rating.two_stars and event.rating.three_stars >= event.rating.one_star %}
-    <h1>Amazing! Definitely Worth the Watch</h1>
-    <p>with {{ event.rating.three_stars }} 3 star votes</p>
-{% elif event.rating.two_stars >= event.rating.three_stars and event.rating.two_stars >= event.rating.one_star %}
-    <h1>Pretty Good! Catch the highlights</h1>
-    <p> with {{ event.rating.two_stars }} 2 star votes</p>
-{% else %}
-    <h1>Rubbish! Check the results</h1>
-    <p>with {{ event.rating.one_star }} 1 star votes</p>
-{% endif %}
+    {% if event.rating.three_stars >= event.rating.two_stars and event.rating.three_stars >= event.rating.one_star %}
+        <h1>Amazing! Definitely Worth the Watch</h1>
+        <p>with {{ event.rating.three_stars }} 3 star votes</p>
+    {% elif event.rating.two_stars >= event.rating.three_stars and event.rating.two_stars >= event.rating.one_star %}
+        <h1>Pretty Good! Catch the highlights</h1>
+        <p> with {{ event.rating.two_stars }} 2 star votes</p>
+    {% else %}
+        <h1>Rubbish! Check the results</h1>
+        <p>with {{ event.rating.one_star }} 1 star votes</p>
+    {% endif %}
 
 {% endblock %}

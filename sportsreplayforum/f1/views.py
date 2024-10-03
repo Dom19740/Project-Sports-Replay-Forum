@@ -34,7 +34,11 @@ def vote(request, event_id):
 
     if request.method == 'POST':
         rating_type = request.POST.get('stars')
-        if rating_type == '3':
+        if rating_type == '5':
+            rating.five_stars += 1
+        elif rating_type == '4':
+            rating.four_stars += 1
+        elif rating_type == '3':
             rating.three_stars += 1
         elif rating_type == '2':
             rating.two_stars += 1
