@@ -14,39 +14,91 @@
         <p><a href="{% url 'race_weekend' event.race_weekend.id %}">Back to {{ event.race_weekend.name }}</a></p>
     </div>
 
-<h2>{{ event.race_weekend.name }} {{ event.event_type|title }}</h2>
+    <h2>{{ event.race_weekend.name }} {{ event.event_type|title }}</h2>
 
-<h3>Vote</h3>
-    {% if request.user.is_authenticated %}
-        <form method="post" action="{% url 'vote' event.id %}">
-            {% csrf_token %}
-            <input type="radio" name="stars" value="5"> 5 stars - Amazing! Definitely Worth Watching the Full Replay<br>
-            <input type="radio" name="stars" value="4"> 4 stars<br>
-            <input type="radio" name="stars" value="3"> 3 stars - Pretty Good! Worth Watching the highlights<br>
-            <input type="radio" name="stars" value="2"> 2 stars<br>
-            <input type="radio" name="stars" value="1"> 1 stars - Rubbish! Just check the results<br>
-            <br>
-            <input type="submit" value="Vote">
-        </form>
-    {% else %}
-        <p>Register or Login to Vote</p>
-        <nav>
-            <a href="{% url 'core:login' %}" class="btn btn-primary text-white">Login</a>
-            <a href="{% url 'core:register' %}" class="btn btn-primary text-white">Register</a>
-        </nav>
-    {% endif %}
+    <h3>Vote</h3>
+        {% if request.user.is_authenticated %}
+            <form method="post" action="{% url 'vote' event.id %}">
+                {% csrf_token %}
+                <input type="radio" name="stars" value="5"> 5 stars - Amazing! Definitely Worth Watching the Full Replay<br>
+                <input type="radio" name="stars" value="4"> 4 stars<br>
+                <input type="radio" name="stars" value="3"> 3 stars - Pretty Good! Worth Watching the highlights<br>
+                <input type="radio" name="stars" value="2"> 2 stars<br>
+                <input type="radio" name="stars" value="1"> 1 stars - Rubbish! Just check the results<br>
+                <br>
+                <input type="submit" value="Vote">
+            </form>
+        {% else %}
+            <p>Register or Login to Vote</p>
+            <nav>
+                <a href="{% url 'core:login' %}" class="btn btn-primary text-white">Login</a>
+                <a href="{% url 'core:register' %}" class="btn btn-primary text-white">Register</a>
+            </nav>
+        {% endif %}
 
-<h3>Results</h3>
-<p>Our users say this event is:</p>
-    {% if event.rating.three_stars >= event.rating.two_stars and event.rating.three_stars >= event.rating.one_star %}
-        <h1>Amazing! Definitely Worth the Watch</h1>
-        <p>with {{ event.rating.three_stars }} 3 star votes</p>
-    {% elif event.rating.two_stars >= event.rating.three_stars and event.rating.two_stars >= event.rating.one_star %}
-        <h1>Pretty Good! Catch the highlights</h1>
-        <p> with {{ event.rating.two_stars }} 2 star votes</p>
-    {% else %}
-        <h1>Rubbish! Check the results</h1>
-        <p>with {{ event.rating.one_star }} 1 star votes</p>
-    {% endif %}
+        <h3>Results</h3>
+        <p>Our users say this event is:</p>
+        
+        {% if event.rating.percentage >= 66 %}
+            <h1>Amazing! Definitely Worth the Watch</h1>
+            <p>Overall rating: {{ event.rating.percentage|floatformat:1 }}%</p>
+        {% elif event.rating.percentage >= 33 %}
+            <h1>Pretty Good! Catch the Highlights</h1>
+            <p>Overall rating: {{ event.rating.percentage|floatformat:1 }}%</p>
+        {% else %}
+            <h1>Rubbish! Check the Results</h1>
+            <p>Overall rating: {{ event.rating.percentage|floatformat:1 }}%</p>
+        {% endif %}
+        
+        <p>Breakdown of votes:</p>
+        <ul>
+            <li>{{ event.rating.five_stars }} votes of 5 stars</li>
+            <li>{{ event.rating.four_stars }} votes of 4 stars</li>
+            <li>{{ event.rating.three_stars }} votes of 3 stars</li>
+            <li>{{ event.rating.two_stars }} votes of 2 stars</li>
+            <li>{{ event.rating.one_star }} votes of 1 star</li>
+        </ul>
 
+        <h4>Rating Visualization</h3>
+            <div style="width: 300px;"> <!-- Adjust the width as needed -->
+                <canvas id="ratingChart" width="300" height="300"></canvas> <!-- Set width and height -->
+            </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx = document.getElementById('ratingChart').getContext('2d');
+            const fiveStars = {{ event.rating.five_stars }};
+            const fourStars = {{ event.rating.four_stars }};
+            const threeStars = {{ event.rating.three_stars }};
+            const twoStars = {{ event.rating.two_stars }};
+            const oneStar = {{ event.rating.one_star }};
+            const totalVotes = fiveStars + fourStars + threeStars + twoStars + oneStar;
+            const chart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['5 stars', '4 stars', '3 stars', '2 stars', '1 star'],
+                    datasets: [{
+                        data: [fiveStars, fourStars, threeStars, twoStars, oneStar],
+                        backgroundColor: [
+                            'rgba(255, 0, 0, 0.8)',
+                            'rgba(255, 130, 130, 0.8)',
+                            'rgba(255, 255, 255, 0.8)',
+                            'rgba(130, 200, 255, 0.8)',
+                            'rgba(0, 160, 255, 0.8)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 0, 0, 0.8)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Rating Distribution'
+                    }
+                }
+            });
+        </script>
+        </script>
+</div> 
 {% endblock %}

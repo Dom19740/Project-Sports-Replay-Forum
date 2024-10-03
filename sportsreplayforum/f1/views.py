@@ -44,6 +44,35 @@ def vote(request, event_id):
             rating.two_stars += 1
         elif rating_type == '1':
             rating.one_star += 1
+
+        # Calculate the total votes
+        total_votes = (
+            rating.five_stars + 
+            rating.four_stars + 
+            rating.three_stars + 
+            rating.two_stars + 
+            rating.one_star
+        )
+
+        # Calculate the total score based on percentage values
+        weighted_average = (
+            (rating.five_stars * 90) + 
+            (rating.four_stars * 70) + 
+            (rating.three_stars * 50) + 
+            (rating.two_stars * 30) + 
+            (rating.one_star * 10)
+        ) / total_votes
+
+        # Scale the weighted average to a range of 1 to 100
+        if total_votes > 0:
+            rating.percentage = weighted_average
+        else:
+            rating.percentage = 0.0  # Handle no votes
+
+        # Debugging outputs
+        print(f"Total Votes: {total_votes}")
+        print(f"Final Percentage: {rating.percentage}")
+
         rating.save()
 
     return redirect('event', event_id=event_id)

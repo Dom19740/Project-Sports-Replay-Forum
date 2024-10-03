@@ -31,6 +31,7 @@ class Rating(models.Model):
     three_stars = models.IntegerField(default=0)
     two_stars = models.IntegerField(default=0)
     one_star = models.IntegerField(default=0)
+    percentage = models.FloatField(default=0.0)  
 
     def __str__(self):
         return f"{self.event.event_type} - {self.event.race_weekend.name}"
