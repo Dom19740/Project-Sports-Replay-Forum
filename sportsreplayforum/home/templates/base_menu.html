@@ -7,7 +7,7 @@
     <!-- https://stackoverflow.com/questions/22047251/django-dynamically-get-view-url-and-check-if-its-the-current-page -->
     <ul class="nav navbar-nav">
       <li {% if request.get_full_path == '/' %}class="active"{% endif %}>
-        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'home' %}">REPLAY HOT WATCH</a>
       </li>
       <li {% if request.get_full_path == f1 %}class="active"{% endif %}>
           <a href="{% url 'race_list' %}">F1</a>
@@ -32,4 +32,5 @@
     </ul>
   </div>
 </nav>
+
 {% endblock %}
