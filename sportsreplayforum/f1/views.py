@@ -26,11 +26,11 @@ def race_weekend(request, race_id):
 def event(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     rating_text = {
-        5: "Amazing! Definitely Worth Watching the Full Replay",
+        5: "Hot! Definitely Worth Watching the Full Replay",
         4: "",
-        3: "Pretty Good! Worth Watching the Highlights",
+        3: "Mid temp! Worth Watching the Highlights",
         2: "",
-        1: "Not great! Just Check the Results"
+        1: "Cold! Just Check the Results"
     }
     return render(request, 'f1/race_event.html', {'event': event, 'rating_text': rating_text})
 

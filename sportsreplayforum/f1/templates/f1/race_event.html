@@ -15,7 +15,9 @@
     </div>
 
     <h2>{{ event.race_weekend.name }} {{ event.event_type|title }}</h2>
-
+    <br>
+    <br>
+    
     <h3>Vote</h3>
         {% if request.user.is_authenticated %}
             <form method="post" action="{% url 'vote' event.id %}">
@@ -24,7 +26,7 @@
                 <input type="radio" name="stars" value="4"> 4 stars {{ rating_text.4 }}<br>
                 <input type="radio" name="stars" value="3"> 3 stars - {{ rating_text.3 }}<br>
                 <input type="radio" name="stars" value="2"> 2 stars {{ rating_text.2 }}<br>
-                <input type="radio" name="stars" value="1"> 1 stars -{{ rating_text.1 }}<br>
+                <input type="radio" name="stars" value="1"> 1 stars - {{ rating_text.1 }}<br>
                 <br>
                 <input type="submit" value="Vote">
             </form>
@@ -35,21 +37,24 @@
                 <a href="{% url 'core:register' %}" class="btn btn-primary text-white">Register</a>
             </nav>
         {% endif %}
+        <br>
+        <br>
 
         <h3>Results</h3>
-        <p>Our users say this event is:</p>
         
         {% if event.rating.percentage >= 66 %}
+            <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}%</p>
             <h1>{{ rating_text.5 }}</h1>
-            <p>Overall rating: {{ event.rating.percentage|floatformat:0 }}%</p>
+
         {% elif event.rating.percentage >= 33 %}
+            <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}%</p>
             <h1>{{ rating_text.3 }}</h1>
-            <p>Overall rating: {{ event.rating.percentage|floatformat:0 }}%</p>
         {% else %}
+            <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}%</p>
             <h1>{{ rating_text.1 }}</h1>
-            <p>Overall rating: {{ event.rating.percentage|floatformat:0 }}%</p>
         {% endif %}
-        
+        <br>
+        <br>
         <p>Breakdown of votes:</p>
         <ul>
             <li>{{ event.rating.five_stars }} votes of 5 stars</li>
@@ -80,9 +85,9 @@
                         data: [fiveStars, fourStars, threeStars, twoStars, oneStar],
                         backgroundColor: [
                             'rgba(255, 0, 0, 0.8)',
-                            'rgba(255, 130, 130, 0.8)',
+                            'rgba(255, 122, 0, 0.8)',
                             'rgba(255, 255, 255, 0.8)',
-                            'rgba(130, 200, 255, 0.8)',
+                            'rgba(180, 255, 255, 0.8)',
                             'rgba(0, 160, 255, 0.8)',
                         ],
                         borderColor: [
