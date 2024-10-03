@@ -4,16 +4,10 @@
 
 <div class="container">
     <div>
-        <h1>Race Weekend</h1>
-        <p>{{ race.date|date:"Y" }} {{ race.name }}</h2>
-        <ul>
-            {% for event in events %}
-            <li><a href="{% url 'event' event.id %}">{{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}</a></li>
-            {% endfor %}    
-        </ul>
-        <p><a href="{% url 'race_weekend' event.race_weekend.id %}">Back to {{ event.race_weekend.name }}</a></p>
+        <h1>{{ event.race_weekend.date|date:"Y" }} {{ event.race_weekend.name }}</h1>
+        <p><a href="{% url 'race_weekend' event.race_weekend.id %}">BACK TO RACE WEEKEND</a></p>
 
-        <h2>{{ event.race_weekend.name }} {{ event.event_type|title }}</h2>
+        <h2>{{ event.date_time|date:"j M" }} - {{ event.event_type|title }}</h2>
     </div>
 
     <div id="vote-container" {% if not request.user.is_superuser and request.user in event.rating.voters.all %}style="display: none;"{% endif %}>
