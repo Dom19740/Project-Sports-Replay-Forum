@@ -55,17 +55,8 @@
             <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}%</p>
             <h1>{{ rating_text.1 }}</h1>
         {% endif %}
-
-        <p>Breakdown of votes:</p>
-        <ul>
-            <li>{{ event.rating.five_stars }} votes of 5 stars</li>
-            <li>{{ event.rating.four_stars }} votes of 4 stars</li>
-            <li>{{ event.rating.three_stars }} votes of 3 stars</li>
-            <li>{{ event.rating.two_stars }} votes of 2 stars</li>
-            <li>{{ event.rating.one_star }} votes of 1 star</li>
-        </ul>
         
-        <p>Rating Visualization</p>
+        <p>Rating Breakdown</p>
             <div style="width: 300px;"> <!-- Adjust the width as needed -->
                 <canvas id="ratingChart" width="300" height="300"></canvas> <!-- Set width and height -->
             </div>
@@ -85,11 +76,11 @@
                         datasets: [{
                             data: [fiveStars, fourStars, threeStars, twoStars, oneStar],
                             backgroundColor: [
-                                'rgba(255, 0, 0, 0.8)',
-                                'rgba(255, 122, 0, 0.8)',
-                                'rgba(255, 255, 255, 0.8)',
-                                'rgba(180, 255, 255, 0.8)',
-                                'rgba(0, 160, 255, 0.8)',
+                                'rgba(255, 58, 0, 0.8)',
+                                'rgba(255, 196, 0, 0.8)',
+                                'rgba(255, 242, 197, 0.8)',
+                                'rgba(198, 237, 255, 0.8)',
+                                'rgba(110, 210, 255, 0.8)',
                             ],
                             borderColor: [
                                 'rgba(255, 0, 0, 0.8)',
