@@ -25,7 +25,14 @@ def race_weekend(request, race_id):
 
 def event(request, event_id):
     event = get_object_or_404(Event, id=event_id)
-    return render(request, 'f1/race_event.html', {'event': event})
+    rating_text = {
+        5: "Amazing! Definitely Worth Watching the Full Replay",
+        4: "",
+        3: "Pretty Good! Worth Watching the Highlights",
+        2: "",
+        1: "Not great! Just Check the Results"
+    }
+    return render(request, 'f1/race_event.html', {'event': event, 'rating_text': rating_text})
 
 
 def vote(request, event_id):

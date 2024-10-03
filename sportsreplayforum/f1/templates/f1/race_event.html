@@ -20,11 +20,11 @@
         {% if request.user.is_authenticated %}
             <form method="post" action="{% url 'vote' event.id %}">
                 {% csrf_token %}
-                <input type="radio" name="stars" value="5"> 5 stars - Amazing! Definitely Worth Watching the Full Replay<br>
-                <input type="radio" name="stars" value="4"> 4 stars<br>
-                <input type="radio" name="stars" value="3"> 3 stars - Pretty Good! Worth Watching the highlights<br>
-                <input type="radio" name="stars" value="2"> 2 stars<br>
-                <input type="radio" name="stars" value="1"> 1 stars - Rubbish! Just check the results<br>
+                <input type="radio" name="stars" value="5"> 5 stars - {{ rating_text.5 }}<br>
+                <input type="radio" name="stars" value="4"> 4 stars {{ rating_text.4 }}<br>
+                <input type="radio" name="stars" value="3"> 3 stars - {{ rating_text.3 }}<br>
+                <input type="radio" name="stars" value="2"> 2 stars {{ rating_text.2 }}<br>
+                <input type="radio" name="stars" value="1"> 1 stars -{{ rating_text.1 }}<br>
                 <br>
                 <input type="submit" value="Vote">
             </form>
@@ -40,14 +40,14 @@
         <p>Our users say this event is:</p>
         
         {% if event.rating.percentage >= 66 %}
-            <h1>Amazing! Definitely Worth the Watch</h1>
-            <p>Overall rating: {{ event.rating.percentage|floatformat:1 }}%</p>
+            <h1>{{ rating_text.5 }}</h1>
+            <p>Overall rating: {{ event.rating.percentage|floatformat:0 }}%</p>
         {% elif event.rating.percentage >= 33 %}
-            <h1>Pretty Good! Catch the Highlights</h1>
-            <p>Overall rating: {{ event.rating.percentage|floatformat:1 }}%</p>
+            <h1>{{ rating_text.3 }}</h1>
+            <p>Overall rating: {{ event.rating.percentage|floatformat:0 }}%</p>
         {% else %}
-            <h1>Rubbish! Check the Results</h1>
-            <p>Overall rating: {{ event.rating.percentage|floatformat:1 }}%</p>
+            <h1>{{ rating_text.1 }}</h1>
+            <p>Overall rating: {{ event.rating.percentage|floatformat:0 }}%</p>
         {% endif %}
         
         <p>Breakdown of votes:</p>
@@ -59,7 +59,7 @@
             <li>{{ event.rating.one_star }} votes of 1 star</li>
         </ul>
 
-        <h4>Rating Visualization</h3>
+        <p>Rating Visualization</p>
             <div style="width: 300px;"> <!-- Adjust the width as needed -->
                 <canvas id="ratingChart" width="300" height="300"></canvas> <!-- Set width and height -->
             </div>
