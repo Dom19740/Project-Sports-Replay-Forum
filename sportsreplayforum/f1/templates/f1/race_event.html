@@ -18,7 +18,7 @@
 
     <br>
 
-    <div id="vote-container" {% if request.user in event.rating.voters.all %}style="display: none;"{% endif %}>
+    <div id="vote-container" {% if not request.user.is_superuser and request.user in event.rating.voters.all %}style="display: none;"{% endif %}>
         <h3>Vote</h3>
         {% if request.user.is_authenticated %}
             <form method="post" action="{% url 'vote' event.id %}">
@@ -38,6 +38,9 @@
                 <a href="{% url 'core:register' %}" class="btn btn-primary text-white">Register</a>
             </nav>
         {% endif %}
+    </div>
+    <div id="voted-container" {% if request.user in event.rating.voters.all %}style="display: show;"{% endif %}>
+        <p>Thanks for voting</p>
     </div>
     <div>
         <h3>Results</h3>
