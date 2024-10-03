@@ -39,7 +39,8 @@
             </nav>
         {% endif %}
     </div>
-    <div id="voted-container" {% if request.user in event.rating.voters.all %}style="display: show;"{% endif %}>
+    <div id="voted-container" {% if request.user in event.rating.voters.all %}style="display: block;"{% else %}style="display: none;"{% endif %}>
+        <h3>Vote</h3>
         <p>Thanks for voting</p>
     </div>
     <div>
