@@ -76,10 +76,7 @@ def vote(request, event_id):
         else:
             rating.percentage = 0.0  # Handle no votes
 
-        # Debugging outputs
-        print(f"Total Votes: {total_votes}")
-        print(f"Final Percentage: {rating.percentage}")
-
         rating.save()
+        rating.voters.add(request.user)
 
     return redirect('event', event_id=event_id)
