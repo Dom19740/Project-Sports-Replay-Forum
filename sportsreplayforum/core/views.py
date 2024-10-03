@@ -46,6 +46,7 @@ def sign_out(request):
     
 
 def sign_up(request):
+    next_url = request.GET.get('next')
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
