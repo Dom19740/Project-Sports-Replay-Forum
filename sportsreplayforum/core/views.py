@@ -11,8 +11,9 @@ def sign_in(request):
         if request.user.is_authenticated:
             return redirect('home')
 
+        next_url = request.GET.get('next')
         form = LoginForm()
-        return render(request,'core/login.html', {'form': form})
+        return render(request,'core/login.html', {'form': form, 'next': next_url})
     
     elif request.method == 'POST':
         form = LoginForm(request.POST)
@@ -24,7 +25,11 @@ def sign_in(request):
             if user:
                 login(request, user)
                 messages.success(request,f'Hi {username.title()}, welcome back!')
-                return redirect('home')
+                next_url = request.GET.get('next')
+                if next_url:
+                    return redirect(next_url)
+                else:
+                    return redirect('home')
         
         # If the form is not valid, log the error
         messages.error(request,f'Invalid username or password')
@@ -33,8 +38,11 @@ def sign_in(request):
 
 def sign_out(request):
     logout(request)
-    messages.success(request,f'You have been logged out.')
-    return redirect('home')
+    next_url = request.GET.get('next')
+    if next_url:
+        return redirect(next_url)
+    else:
+        return redirect('home')
     
 
 def sign_up(request):
@@ -47,7 +55,12 @@ def sign_up(request):
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             messages.success(request, 'You have signed up successfully.')
             login(request, user)
-            return redirect('home')
+            next_url = request.GET.get('next')
+            if next_url:
+                return redirect(next_url)
+            else:
+                return redirect('home')
     else:
+        next_url = request.GET.get('next')
         form = RegisterForm()
-    return render(request, 'core/register.html', {'form': form})
+    return render(request, 'core/register.html', {'form': form, 'next': next_url})

@@ -19,14 +19,14 @@
           <a href="#">Hi {{ user.username }}</a>
         </li>
         <li>
-          <a href="{% url 'core:logout' %}">Logout</a>
+          <a href="{% url 'core:logout' %}?next={{ request.path }}">Logout</a>
         </li>
       {% else %}
         <li>
-          <a href="{% url 'core:login' %}">Login</a>
+          <a href="{% url 'core:login' %}?next={{ request.path }}">Login</a>
         </li>
         <li>
-          <a href="{% url 'core:register' %}">Register</a>
+          <a href="{% url 'core:register' %}?next={{ request.path }}">Register</a>
         </li>
       {% endif %}
     </ul>

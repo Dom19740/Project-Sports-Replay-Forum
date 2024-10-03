@@ -16,8 +16,6 @@
         <h2>{{ event.race_weekend.name }} {{ event.event_type|title }}</h2>
     </div>
 
-    <br>
-
     <div id="vote-container" {% if not request.user.is_superuser and request.user in event.rating.voters.all %}style="display: none;"{% endif %}>
         <h3>Vote</h3>
         {% if request.user.is_authenticated %}
@@ -34,8 +32,8 @@
         {% else %}
             <p>Register or Login to Vote</p>
             <nav>
-                <a href="{% url 'core:login' %}" class="btn btn-primary text-white">Login</a>
-                <a href="{% url 'core:register' %}" class="btn btn-primary text-white">Register</a>
+                <a href="{% url 'core:login' %}?next={{ request.path }}" class="btn btn-primary text-white">Login</a>
+                <a href="{% url 'core:register' %}?next={{ request.path }}" class="btn btn-primary text-white">Register</a>
             </nav>
         {% endif %}
     </div>
