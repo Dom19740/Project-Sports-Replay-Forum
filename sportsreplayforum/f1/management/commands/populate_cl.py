@@ -3,25 +3,24 @@ from f1.models import Competition, Event
 from datetime import datetime
 
 class Command(BaseCommand):
-    help = 'Populate the database with sample races and events'
+    help = 'Populate the database with sample competition'
 
     def handle(self, *args, **kwargs):
-        # Add a sample race
+        # Add a sample competition
         competition, created = Competition.objects.get_or_create(
-            name="German Grand Prix",
-            date="2024-09-01",
-            round="16"
+            name="League Game",
+            date="2024-10-02",
         )
         
-        # Add events for the race             
+        # Add events for the competition             
         Event.objects.get_or_create(
             event_list=competition,
-            event_type="qualifying",
-            date_time=datetime(2024, 8, 30, 14, 0)
+            event_type="match",
+            date_time=datetime(2024, 10, 2, 14, 0)
         )
         Event.objects.get_or_create(
             event_list=competition,
-            event_type="race",
+            event_type="match",
             date_time=datetime(2024, 9, 1, 15, 0)
         )
 

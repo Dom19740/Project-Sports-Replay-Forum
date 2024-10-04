@@ -1,5 +1,5 @@
 
-from .models import Race, Event,Event, Rating
+from .models import Competition, Event,Event, Rating
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -7,20 +7,20 @@ from django.db.models import Avg
 
 
 
-def race_list(request):
-    races = Race.objects.all()
-    for race in races:
-        events = Event.objects.filter(race_weekend=race)
-        race.start_date = events.order_by('date_time').first().date_time
-        race.end_date = events.order_by('-date_time').first().date_time
-    return render(request, 'f1/race_list.html', {'races': races})
+def competition_schedule(request):
+    competitions = Competition.objects.all()
+    for competition in competitions:
+        events = Event.objects.filter(event_list=competition)
+        competition.start_date = events.order_by('date_time').first().date_time
+        competition.end_date = events.order_by('-date_time').first().date_time
+    return render(request, 'f1/competition_schedule.html', {'competitions': competitions})
 
 
-def race_weekend(request, race_id):
-    race = get_object_or_404(Race, id=race_id)
-    events = Event.objects.filter(race_weekend=race).order_by('-date_time')
+def event_list(request, competition_id):
+    competition = get_object_or_404(Competition, id=competition_id)
+    events = Event.objects.filter(event_list=competition).order_by('-date_time')
 
-    return render(request, 'f1/race_weekend.html', {'events': events, 'race': race})
+    return render(request, 'f1/event_list.html', {'events': events, 'competition': competition})
 
 
 def event(request, event_id):
@@ -32,7 +32,7 @@ def event(request, event_id):
         2: "",
         1: "Cold! Just Check the Results"
     }
-    return render(request, 'f1/race_event.html', {'event': event, 'rating_text': rating_text})
+    return render(request, 'f1/event.html', {'event': event, 'rating_text': rating_text})
 
 
 def vote(request, event_id):

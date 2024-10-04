@@ -4,8 +4,8 @@
 
 <div class="container">
     <div>
-        <h1>{{ event.race_weekend.date|date:"Y" }} {{ event.race_weekend.name }}</h1>
-        <p><a href="{% url 'race_weekend' event.race_weekend.id %}">BACK TO RACE WEEKEND</a></p>
+        <h1>{{ event.event_list.date|date:"Y" }} {{ event.event_list.name }}</h1>
+        <p><a href="{% url 'event_list' event.event_list.id %}">BACK TO RACE WEEKEND</a></p>
 
         <h2>{{ event.date_time|date:"j M" }} - {{ event.event_type|title }}</h2>
     </div>

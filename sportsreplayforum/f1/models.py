@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Race(models.Model):
+class Competition(models.Model):
     name = models.CharField(max_length=255)
     date = models.DateField()
     round = models.IntegerField()
@@ -15,14 +15,15 @@ class Event(models.Model):
         ('race', 'Race'),
         ('shootout', 'Sprint Shootout'),
         ('sprint', 'Sprint Race'),
+        ('match', 'Match'),
     ]
     
-    race_weekend = models.ForeignKey(Race, on_delete=models.CASCADE, related_name='events')
+    event_list = models.ForeignKey(Competition, on_delete=models.CASCADE, related_name='events')
     event_type = models.CharField(max_length=10, choices=EVENT_TYPES)
     date_time = models.DateTimeField()
 
     def __str__(self):
-        return f"{self.event_type.capitalize()} - {self.race_weekend.name}"
+        return f"{self.event_type.capitalize()} - {self.event_list.name}"
 
 class Rating(models.Model):
     event = models.OneToOneField(Event, on_delete=models.CASCADE, related_name='rating')
@@ -35,4 +36,4 @@ class Rating(models.Model):
     voters = models.ManyToManyField(User, related_name='rated_events')
 
     def __str__(self):
-        return f"{self.event.event_type} - {self.event.race_weekend.name}"
+        return f"{self.event.event_type} - {self.event.event_list.name}"

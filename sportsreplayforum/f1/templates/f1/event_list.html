@@ -4,14 +4,14 @@
 
 <div class="container">
     <div>
-        <h1>{{ race.date|date:"Y" }} {{ race.name }}</h1>
+        <h1>{{ competition.date|date:"Y" }} {{ competition.name }}</h1>
         <p>RACE WEEKEND</h2>
         <ul>
             {% for event in events %}
             <li><a href="{% url 'event' event.id %}">{{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}</a></li>
             {% endfor %}    
         </ul>
-        <p><a href="{% url 'race_list' %}">Back to Race Calendar</a></p>
+        <p><a href="{% url 'competition_schedule' %}">Back to Race Calendar</a></p>
 </div>
 
 {% endblock %}
