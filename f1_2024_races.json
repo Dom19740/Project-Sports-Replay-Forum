@@ -1150,6 +1150,7 @@
             "strPostponed": "no",
             "strLocked": "unlocked"
         },
+        {
             "idEvent": "1963758",
             "idAPIfootball": null,
             "strEvent": "Chinese Grand Prix Practice 1",
@@ -1202,7 +1203,7 @@
         {
             "idEvent": "1963759",
             "idAPIfootball": null,
-            "strEvent": "Chinese Grand Prix Sprint rout",
+            "strEvent": "Chinese Grand Prix Sprint Shootout",
             "strEventAlternate": null,
             "strFilename": "Formula 1 2024-04-19 Chinese Grand Prix Sprint Shootout",
             "strSport": "Motorsport",

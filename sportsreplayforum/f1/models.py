@@ -7,23 +7,15 @@ class Competition(models.Model):
     round = models.IntegerField()
 
     def __str__(self):
-        return f"{self.name} - {self.date}"
+        return self.name
 
 class Event(models.Model):
-    EVENT_TYPES = [
-        ('qualifying', 'Qualifying'),
-        ('race', 'Race'),
-        ('shootout', 'Sprint Shootout'),
-        ('sprint', 'Sprint Race'),
-        ('match', 'Match'),
-    ]
-    
     event_list = models.ForeignKey(Competition, on_delete=models.CASCADE, related_name='events')
-    event_type = models.CharField(max_length=10, choices=EVENT_TYPES)
+    event_type = models.CharField(max_length=50)  # e.g., 'race', 'qualifying', 'sprint', 'sprint shootout'.
     date_time = models.DateTimeField()
 
     def __str__(self):
-        return f"{self.event_type.capitalize()} - {self.event_list.name}"
+        return f"{self.event_type} for {self.event_list.name} on {self.date_time}"
 
 class Rating(models.Model):
     event = models.OneToOneField(Event, on_delete=models.CASCADE, related_name='rating')
