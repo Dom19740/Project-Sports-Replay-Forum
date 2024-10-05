@@ -8,7 +8,7 @@
         <p>RACE CALENDAR</p>    
         <ul>
             {% for competition in competitions %}
-                <li><a href="{% url 'event_list' competition.id %}">Round {{ competition.round }} - {{ competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.start_date|date:"M" }} - {{ competition.name }}</a></li>
+                <li><a href="{% url 'event_list' competition.id %}">{{ competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.start_date|date:"M" }} - {{ competition.name }}</a></li>
             {% endfor %}
         </ul>
     </div>
