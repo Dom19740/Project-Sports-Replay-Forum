@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 class Competition(models.Model):
     name = models.CharField(max_length=255)
     date = models.DateField()
-    idEvent = models.CharField(max_length=255, default="")
 
     def __str__(self):
         return self.name
@@ -13,6 +12,7 @@ class Event(models.Model):
     event_list = models.ForeignKey(Competition, on_delete=models.CASCADE, related_name='events')
     event_type = models.CharField(max_length=50)  # e.g., 'race', 'qualifying', 'sprint', 'sprint shootout'.
     date_time = models.DateTimeField()
+    idEvent = models.CharField(max_length=255, default="")
 
     def __str__(self):
         return f"{self.event_type} for {self.event_list.name} on {self.date_time}"

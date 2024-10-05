@@ -4,12 +4,12 @@ from .models import Competition, Event, Rating
 # Register the Competition model
 @admin.register(Competition)
 class CompetitionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'date', 'idEvent')
+    list_display = ('name', 'date')
 
 # Register the Event model
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('event_type', 'event_list', 'date_time')
+    list_display = ('event_type', 'event_list', 'date_time', 'idEvent')
 
 # Register the Rating model (optional, just for viewing in admin)
 @admin.register(Rating)

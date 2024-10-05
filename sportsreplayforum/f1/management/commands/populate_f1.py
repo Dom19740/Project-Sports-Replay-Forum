@@ -1,7 +1,9 @@
 from django.core.management.base import BaseCommand
 from f1.models import Competition, Event
 from datetime import datetime
+from dateutil import parser
 from django.utils import timezone
+from datetime import datetime
 
 import requests
 import json
@@ -28,46 +30,53 @@ class Command(BaseCommand):
             for event in events:
                 # Extract the text in 'strEvent'
                 event_text = event['strEvent']
-                
+                idEvent = event['idEvent']
+                event_datetime = event['strTimestamp']
+                dt = datetime.strptime(event_datetime, "%Y-%m-%dT%H:%M:%S")
+                date = dt.date()
+                time = dt.time()
+
                 # Check if the event text contains "Grand Prix"
-                if "Grand Prix" in event_text:
-                    # Split the text at the word 'Prix' and take the first part
-                    competition_name = event_text.split('Prix')[0] + 'Prix'
+                if event_text.endswith(" Prix"):
+
+                    competition_name = event_text
                     
                     # Check if the competition name already exists in the list
                     if competition_name not in competition_names:
                         competition_names.append(competition_name)
 
-                    # Add a sample race
-                    competition, created = Competition.objects.get_or_create(
-                        name = competition_name,
-                        date = "1974-06-10",
-                        idEvent = "1234567"
-                    )
+                        # Add a race weekend
+                        competition, created = Competition.objects.get_or_create(
+                            name = competition_name,
+                            date = date,  
+                        )
+
+                        # Add race event
+                        Event.objects.get_or_create(
+                            event_list=competition,
+                            event_type="race",
+                            date_time=timezone.make_aware(dt)
+                        )
                     
-                    # Add events for the race             
-                    Event.objects.get_or_create(
-                        event_list=competition,
-                        event_type="qualifying",
-                        date_time=timezone.make_aware(datetime(2024, 8, 30, 14, 0)),
-                    )
-                    Event.objects.get_or_create(
-                        event_list=competition,
-                        event_type="race",
-                        date_time=timezone.make_aware(datetime(2024, 9, 1, 15, 0))
-                    )
-                    if "Sprint" in event_text:
-                        Event.objects.get_or_create(
-                            event_list=competition,
-                            event_type="sprint",
-                            date_time=timezone.make_aware(datetime(2024, 9, 1, 15, 0))
-                        )
-                    if "Shootout" in event_text:
-                        Event.objects.get_or_create(
-                            event_list=competition,
-                            event_type="sprint shootout",
-                            date_time=timezone.make_aware(datetime(2024, 9, 1, 15, 0))
-                        )
-
-
+                        """  # Add additional events             
+                            if "Shootout" in event_text:
+                                Event.objects.get_or_create(
+                                    event_list=competition,
+                                    event_type="sprint shootout",
+                                    date_time=timezone.make_aware(datetime(2024, 9, 1, 15, 0))
+                                    idEvent = idEvent
+                                )
+                            if "Sprint" in event_text:
+                                Event.objects.get_or_create(
+                                    event_list=competition,
+                                    event_type="sprint",
+                                    date_time=timezone.make_aware(datetime(2024, 9, 1, 15, 0))
+                                )
+                            if "Qualifying" in event_text:
+                                Event.objects.get_or_create(
+                                    event_list=competition,
+                                    event_type="qualifying",
+                                    date_time=timezone.make_aware(datetime(2024, 9, 1, 15, 0))
+                                ) """
+                
         self.stdout.write(self.style.SUCCESS("Competitions and events populated successfully"))
