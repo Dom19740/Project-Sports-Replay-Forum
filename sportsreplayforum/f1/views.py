@@ -8,7 +8,7 @@ from django.db.models import Avg
 
 
 def competition_schedule(request):
-    competitions = Competition.objects.all()
+    competitions = Competition.objects.order_by('-date')
     for competition in competitions:
         events = Event.objects.filter(event_list=competition)
         competition.start_date = events.order_by('date_time').first().date_time
