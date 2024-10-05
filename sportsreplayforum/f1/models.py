@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Competition(models.Model):
     name = models.CharField(max_length=255)
     date = models.DateField()
-    round = models.IntegerField()
+    idEvent = models.CharField(max_length=255, default="")
 
     def __str__(self):
         return self.name
