@@ -9,7 +9,7 @@ USA results =eventresults.php?id=1963830
 LEAGUE_ID = '4370'
 SEASON = '2024'
 
-response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3//eventresults.php?id=1963830")
+response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3//eventresults.php?id=1963817")
 
 if response.status_code == 200:
     # Convert the response to JSON format

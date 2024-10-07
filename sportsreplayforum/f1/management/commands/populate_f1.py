@@ -37,10 +37,11 @@ class Command(BaseCommand):
 
                     # Create a race event for the competition
                     race_event = Event(
-                        event_list=competition,
-                        event_type='Race',
-                        date_time=parser.isoparse(item['strTimestamp']),
-                        idEvent=item['idEvent']
+                        event_list = competition,
+                        event_type = 'Race',
+                        date_time = parser.isoparse(item['strTimestamp']),
+                        idEvent = item['idEvent'],
+                        video = item['strVideo'],
                     )
                     race_event.save()
 
@@ -60,10 +61,11 @@ class Command(BaseCommand):
                             continue  # Skip if not qualifying, sprint, or sprint shootout
 
                         event = Event(
-                            event_list=competition,
-                            event_type=event_type,
-                            date_time=parser.isoparse(item['strTimestamp']),
-                            idEvent=item['idEvent']
+                            event_list = competition,
+                            event_type = event_type,
+                            date_time = parser.isoparse(item['strTimestamp']),
+                            idEvent = item['idEvent'],
+                            video = item['strVideo'],
                         )
                         event.save()
 
