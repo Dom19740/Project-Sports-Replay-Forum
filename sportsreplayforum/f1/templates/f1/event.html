@@ -15,7 +15,7 @@
         {% if request.user.is_authenticated %}
             <form method="post" action="{% url 'vote' event.id %}">
                 {% csrf_token %}
-                <input type="radio" name="stars" value="5"> 5 stars - {{ rating_text.5 }}<br>
+                <input type="radio" name="stars" value="5" required> 5 stars - {{ rating_text.5 }}<br>
                 <input type="radio" name="stars" value="4"> 4 stars {{ rating_text.4 }}<br>
                 <input type="radio" name="stars" value="3"> 3 stars - {{ rating_text.3 }}<br>
                 <input type="radio" name="stars" value="2"> 2 stars {{ rating_text.2 }}<br>
@@ -98,5 +98,7 @@
                 </script>
             {% endif %}
     </div>
+    <div>
+        <h3>Spoiler Zone</h3>
 </div> 
 {% endblock %}
