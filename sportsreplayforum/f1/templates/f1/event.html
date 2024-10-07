@@ -21,13 +21,14 @@
                 <input type="radio" name="stars" value="2"> 2 stars {{ rating_text.2 }}<br>
                 <input type="radio" name="stars" value="1"> 1 stars - {{ rating_text.1 }}<br>
                 <br>
-                <input type="submit" value="Vote">
+                <input type="submit" class="btn btn-primary text-white" value="Vote">
             </form>
         {% else %}
             <p>Register or Login to Vote</p>
             <nav>
                 <a href="{% url 'core:login' %}?next={{ request.path }}" class="btn btn-primary text-white">Login</a>
-                <a href="{% url 'core:register' %}?next={{ request.path }}" class="btn btn-primary text-white">Register</a>
+                <a href="{% url 'core:register' %}?next={{ request.path }}"             <a href="{% url 'core:login' %}" class="btn btn-primary text-white">Login</a>
+            </a>
             </nav>
         {% endif %}
     </div>
@@ -35,7 +36,7 @@
         <h3>Vote</h3>
         <p>Thanks for voting</p>
     </div>
-    <div>
+    <div id>
         <h3>Results</h3>
         
         {% if event.rating.percentage >= 66 %}
