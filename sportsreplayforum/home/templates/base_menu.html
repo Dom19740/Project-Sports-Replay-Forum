@@ -1,36 +1,39 @@
 {% extends "base_bootstrap.html" %}
 
 {% block navbar %}
-
-<nav class="navbar navbar-default navbar-inverse">
-  <div class="container-fluid">
-    <!-- https://stackoverflow.com/questions/22047251/django-dynamically-get-view-url-and-check-if-its-the-current-page -->
-    <ul class="nav navbar-nav">
-      <li {% if request.get_full_path == '/' %}class="active"{% endif %}>
-        <a href="{% url 'home' %}">REPLAY HOT WATCH</a>
-      </li>
-      <li {% if request.get_full_path == f1 %}class="active"{% endif %}>
-          <a href="{% url 'competition_schedule' %}">F1</a>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      {% if user.is_authenticated %}
-        <li>
-          <a href="#">Hi {{ user.username }}</a>
-        </li>
-        <li>
-          <a href="{% url 'core:logout' %}?next={{ request.path }}">Logout</a>
-        </li>
-      {% else %}
-        <li>
-          <a href="{% url 'core:login' %}?next={{ request.path }}">Login</a>
-        </li>
-        <li>
-          <a href="{% url 'core:register' %}?next={{ request.path }}">Register</a>
-        </li>
-      {% endif %}
-    </ul>
-  </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">REPLAY HOT WATCH</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item {% if request.get_full_path == '/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item {% if request.get_full_path == f1 %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'competition_schedule' %}">F1</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto"> <!-- 'ms-auto' to align to the right -->
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Hi {{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'core:logout' %}?next={{ request.path }}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'core:login' %}?next={{ request.path }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'core:register' %}?next={{ request.path }}">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 </nav>
-
 {% endblock %}
