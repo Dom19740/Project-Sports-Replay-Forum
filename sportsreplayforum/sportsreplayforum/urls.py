@@ -11,7 +11,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('core/', include('core.urls')),
     path('f1/', include('f1.urls')),
-    path('news/', include('news.urls')),
 ]
 
 # Serve the static HTML
