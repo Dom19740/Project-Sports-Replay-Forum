@@ -12,7 +12,7 @@
 
     <div id="vote-container" {% if not request.user.is_superuser and request.user in event.rating.voters.all %}style="display: none;"{% endif %}>
         <h3>Vote</h3>
-        {% if event.video %}
+        {% if event.video_id %}
             {% if request.user.is_authenticated %}
                 <form method="post" action="{% url 'vote' event.id %}">
                 {% csrf_token %}
@@ -104,7 +104,7 @@
     </div>
     <div>
         <h3>Spoiler Zone</h3>
-        {% if event.video %}
+        {% if event.video_id %}
             <!-- First Switch -->
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
@@ -113,7 +113,7 @@
             
             <div class="video-container" style="display: none;">
                 <center>
-                    <a href="{{ event.video }}" title="Singapore Grand Prix" target="_blank" rel="noopener">
+                    <a href="{{ event.video_id }}" title="Singapore Grand Prix" target="_blank" rel="noopener">
                         <img src="https://img.youtube.com/vi/slCskHrI_Vg/hqdefault.jpg" style="width: 80%;" />
                     </a>
                 </center>

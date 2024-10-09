@@ -41,7 +41,7 @@ class Command(BaseCommand):
                         event_type = 'Race',
                         date_time = parser.isoparse(item['strTimestamp']),
                         idEvent = item['idEvent'],
-                        video = item['strVideo'],
+                        video_id = item['strVideo'],
                     )
                     race_event.save()
 
@@ -65,7 +65,7 @@ class Command(BaseCommand):
                             event_type = event_type,
                             date_time = parser.isoparse(item['strTimestamp']),
                             idEvent = item['idEvent'],
-                            video = item['strVideo'],
+                            video_id = item['strVideo'],
                         )
                         event.save()
 
