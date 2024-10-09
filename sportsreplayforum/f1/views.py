@@ -20,14 +20,6 @@ def event_list(request, competition_id):
     competition = get_object_or_404(Competition, id=competition_id)
     events = Event.objects.filter(event_list=competition).order_by('-date_time')
 
-    youtube_url = "https://www.youtube.com/watch?v=slCskHrI_Vg"
-    
-    # Extract the video ID (everything after the '=')
-    video_id = youtube_url.split('=')[1]
-
-    # You can now pass the video ID to the template or add it to a list to be returned
-    return render(request, 'f1/event_list.html', {'events': events, 'competition': competition, 'video_id': video_id})
-
     return render(request, 'f1/event_list.html', {'events': events, 'competition': competition})
 
 
@@ -40,7 +32,12 @@ def event(request, event_id):
         2: "",
         1: "Cold! Just Check the Results"
     }
-    return render(request, 'f1/event.html', {'event': event, 'rating_text': rating_text})
+
+    # Extract the video ID (everything after the '=')
+    video_id = event.video_id.split('=')[1]
+    print(event.video_id)
+
+    return render(request, 'f1/event.html', {'event': event, 'rating_text': rating_text, 'video_id': video_id})
 
 
 def vote(request, event_id):
