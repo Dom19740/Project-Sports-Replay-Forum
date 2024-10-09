@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
+from django.urls import reverse
 from .forms import LoginForm, RegisterForm
 from .models import Competition, Event,Event, Rating
 
@@ -158,4 +159,4 @@ def vote(request, event_id):
         rating.save()
         rating.voters.add(request.user)
 
-    return redirect('event', event_id=event_id)
+    return redirect(reverse(f'{request.resolver_match.namespace}:event', args=[event_id]))
