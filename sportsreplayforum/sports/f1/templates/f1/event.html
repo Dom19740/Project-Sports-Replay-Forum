@@ -6,7 +6,7 @@
     <div>
         <br>
         <h1>{{ event.event_list.date|date:"Y" }} {{ event.event_list.name }}</h1>
-        <p><a href="{% url 'event_list' event.event_list.id %}">BACK TO RACE WEEKEND</a></p>
+        <p><a href="{% url 'f1:event_list' event.event_list.id %}">BACK TO RACE WEEKEND</a></p>
 
         <h2>{{ event.date_time|date:"j M" }} - {{ event.event_type|title }}</h2>
     </div>
@@ -15,7 +15,7 @@
         <h3>Vote</h3>
         {% if event.video_id %}
             {% if request.user.is_authenticated %}
-                <form method="post" action="{% url 'vote' event.id %}">
+                <form method="post" action="{% url 'f1:vote' event.id %}">
                 {% csrf_token %}
                 <input type="radio" name="stars" value="5" required> 5 stars - {{ rating_text.5 }}<br>
                 <input type="radio" name="stars" value="4"> 4 stars {{ rating_text.4 }}<br>
