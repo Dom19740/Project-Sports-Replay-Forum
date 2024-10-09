@@ -6,12 +6,27 @@
     <div>
         <h1>{{ competition.date|date:"Y" }} {{ competition.name }}</h1>
         <p><a href="{% url 'competition_schedule' %}">BACK TO RACE CALENDAR</a></p>
-        <ul>
-            {% for event in events %}
-            <li><a href="{% url 'event' event.id %}">{{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}</a></li>
-            {% endfor %}    
-        </ul>
-        
+        <div class="events-container">
+            <p>Upcoming</p>
+            <ul>
+                {% for event in events %}
+                    {% if event.date_time|date:"Y-m-d" > now|date:"Y-m-d" %}
+                    <li><a href="{% url 'event' event.id %}">{{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}</a></li>
+                    {% endif %}
+                {% endfor %}    
+            </ul>
+        </div>
+        <div class="events-container">
+            <p>Past</p>
+            <ul>
+                {% for event in events %}
+                    {% if event.date_time|date:"Y-m-d" < now|date:"Y-m-d" %}
+                    <li><a href="{% url 'event' event.id %}">{{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}</a></li>
+                    {% endif %}
+                {% endfor %}    
+            </ul>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

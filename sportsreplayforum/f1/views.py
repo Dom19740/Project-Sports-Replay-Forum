@@ -1,19 +1,31 @@
 
 from .models import Competition, Event,Event, Rating
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.db.models import Avg
-
+from django.utils import timezone
 
 
 def competition_schedule(request):
+    today = timezone.now()
     competitions = Competition.objects.order_by('-date')
+
+    upcoming_competitions = []
+    past_competitions = []
+
     for competition in competitions:
         events = Event.objects.filter(event_list=competition)
-        competition.start_date = events.order_by('date_time').first().date_time
-        competition.end_date = events.order_by('-date_time').first().date_time
-    return render(request, 'f1/competition_schedule.html', {'competitions': competitions})
+        if events.exists():
+            competition.start_date = events.order_by('date_time').first().date_time
+            competition.end_date = events.order_by('-date_time').first().date_time
+
+            if competition.start_date >= today:
+                upcoming_competitions.append(competition)
+            else:
+                past_competitions.append(competition)
+
+    return render(request, 'f1/competition_schedule.html', {
+        'upcoming_competitions': upcoming_competitions,
+        'past_competitions': past_competitions,
+    })
 
 
 def event_list(request, competition_id):
