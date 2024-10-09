@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'f1.apps.F1Config',
     'core.apps.CoreConfig',
+    'news.apps.NewsConfig',
 
     # Extensions - installed with requirements.txt
     'django_extensions', 

@@ -33,9 +33,7 @@ def event(request, event_id):
         1: "Cold! Just Check the Results"
     }
 
-    # Extract the video ID (everything after the '=')
-    video_id = event.video_id.split('=')[1]
-    print(event.video_id)
+    video_id = event.video_id.split('=')[-1] if event.video_id else None
 
     return render(request, 'f1/event.html', {'event': event, 'rating_text': rating_text, 'video_id': video_id})
 
