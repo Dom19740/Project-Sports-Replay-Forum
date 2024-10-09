@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from core import views
 
 urlpatterns = [
     path('', views.competition_schedule, name='competition_schedule'), # F1 events list
