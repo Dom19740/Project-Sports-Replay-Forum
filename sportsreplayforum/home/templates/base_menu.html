@@ -12,6 +12,9 @@
                 <li class="nav-item {% if request.get_full_path == f1 %}active{% endif %}">
                     <a class="nav-link" href="{% url 'competition_schedule' %}">F1</a>
                 </li>
+                <li class="nav-item {% if request.get_full_path == nations %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'competition_schedule' %}">Nations League</a>
+                </li>
             </ul>
             <ul class="navbar-nav ms-auto"> <!-- 'ms-auto' to align to the right -->
                 {% if user.is_authenticated %}

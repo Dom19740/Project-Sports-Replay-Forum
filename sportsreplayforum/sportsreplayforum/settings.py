@@ -41,9 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'home.apps.HomeConfig',
-    'sports.f1.apps.F1Config',
     'core.apps.CoreConfig',
     'news.apps.NewsConfig',
+    'sports.f1.apps.F1Config',
+    'sports.nations.apps.NationsConfig',
 
     # Extensions - installed with requirements.txt
     'django_extensions', 
