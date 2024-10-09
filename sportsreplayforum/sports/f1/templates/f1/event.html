@@ -3,43 +3,16 @@
 {% block content %}
 
 <div class="container">
-    <div>
-        <br>
-        <h1>{{ event.event_list.date|date:"Y" }} {{ event.event_list.name }}</h1>
-        <p><a href="{% url 'f1:event_list' event.event_list.id %}">BACK TO RACE WEEKEND</a></p>
+        <div>
+            <br>
+            <h1>{{ event.event_list.date|date:"Y" }} {{ event.event_list.name }}</h1>
+            <p><a href="{% url 'f1:event_list' event.event_list.id %}">BACK TO RACE WEEKEND</a></p>
 
-        <h2>{{ event.date_time|date:"j M" }} - {{ event.event_type|title }}</h2>
-    </div>
+            <h2>{{ event.date_time|date:"j M" }} - {{ event.event_type|title }}</h2>
+        </div>
 
-    <div id="vote-container" {% if not request.user.is_superuser and request.user in event.rating.voters.all %}style="display: none;"{% endif %}>
-        <h3>Vote</h3>
-        {% if event.video_id %}
-            {% if request.user.is_authenticated %}
-                <form method="post" action="{% url 'f1:vote' event.id %}">
-                {% csrf_token %}
-                <input type="radio" name="stars" value="5" required> 5 stars - {{ rating_text.5 }}<br>
-                <input type="radio" name="stars" value="4"> 4 stars {{ rating_text.4 }}<br>
-                    <input type="radio" name="stars" value="3"> 3 stars - {{ rating_text.3 }}<br>
-                    <input type="radio" name="stars" value="2"> 2 stars {{ rating_text.2 }}<br>
-                    <input type="radio" name="stars" value="1"> 1 stars - {{ rating_text.1 }}<br>
-                    <br>
-                    <input type="submit" class="btn btn-primary text-white" value="Vote">
-                </form>
-            {% else %}
-                <p>Register or Login to Vote</p>
-                <nav>
-                    <a href="{% url 'core:login' %}?next={{ request.path }}" class="btn btn-primary text-white">Login</a>
-                    <a href="{% url 'core:register' %}?next={{ request.path }}" class="btn btn-primary text-white">Register</a>
-                </nav>
-            {% endif %}
-        {% else %}
-            <p>Voting and Results shown when event is completed</p>
-        {% endif %}
-    </div>
-    <div id="voted-container" {% if request.user in event.rating.voters.all %}style="display: block;"{% else %}style="display: none;"{% endif %}>
-        <p>Thanks for voting</p>
-        
-    </div>
+        {% include 'core/vote.html' %}
+
     <br>
     <div>
         <h3>Results</h3>
