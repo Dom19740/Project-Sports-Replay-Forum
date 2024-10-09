@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from f1.models import Competition, Event
+from core.models import Competition, Event
 from datetime import datetime
 from dateutil import parser
 import requests
