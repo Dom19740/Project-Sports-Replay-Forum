@@ -18,7 +18,8 @@ if response.status_code == 200:
 
 
     # Save the JSON data to a file
-    with open("api_testing01.json", "w") as json_file:
+    with open("TEST_api.py.json", "w") as json_file:
+        
         json.dump(data, json_file, indent=4)  # 'indent=4' formats the JSON for readability
     
     print("JSON data saved successfully!")
