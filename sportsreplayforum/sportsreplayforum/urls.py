@@ -10,7 +10,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('admin/', admin.site.urls),
     path('core/', include('core.urls')),
-    path('f1/', include('f1.urls')),
+    path('sports.f1/', include('sports.f1.urls')),
 ]
 
 # Serve the static HTML
