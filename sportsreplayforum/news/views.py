@@ -1,3 +1,8 @@
-from django.shortcuts import render
+# news/views.py
 
-# Create your views here.
+from django.shortcuts import render
+from .services import fetch_news
+
+def news_sidebar(request):
+    news_articles = fetch_news()
+    return render(request, 'news/sidebar.html', {'news_articles': news_articles})
