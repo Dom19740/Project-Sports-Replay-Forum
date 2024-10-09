@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'home.apps.HomeConfig',
-    'f1.apps.F1Config',
+    'sports.f1.apps.F1Config',
     'core.apps.CoreConfig',
     'news.apps.NewsConfig',
 
