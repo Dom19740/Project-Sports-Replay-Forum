@@ -4,6 +4,7 @@
 
 <div class="container">
     <div>
+        <br>
         <h1>{{ event.event_list.date|date:"Y" }} {{ event.event_list.name }}</h1>
         <p><a href="{% url 'event_list' event.event_list.id %}">BACK TO RACE WEEKEND</a></p>
 
@@ -101,11 +102,13 @@
                 </script>
                 </script>
             {% endif %}
+            <br>
+            <br>
     </div>
     <div>
         <h3>Spoiler Zone</h3>
         {% if video_id %}
-            <!-- First Switch -->
+        <br>
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Show Highlights</label>
