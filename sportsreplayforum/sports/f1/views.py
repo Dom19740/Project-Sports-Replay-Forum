@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
 from django.urls import reverse
-from .forms import LoginForm, RegisterForm
+from core.forms import LoginForm, RegisterForm
 from .models import Competition, Event,Event, Rating
 
 
