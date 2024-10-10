@@ -87,8 +87,7 @@ def competition_schedule(request):
             else:
                 past_competitions.append(competition)
 
-    app_name = request.resolver_match.namespace
-    return render(request, f'{app_name}/competition_schedule.html', {
+    return render(request, 'core/competition_schedule.html', {
         'upcoming_competitions': upcoming_competitions,
         'past_competitions': past_competitions,
     })
@@ -98,8 +97,8 @@ def event_list(request, competition_id):
     competition = get_object_or_404(Competition, id=competition_id)
     events = Event.objects.filter(event_list=competition).order_by('-date_time')
 
-    app_name = request.resolver_match.namespace
-    return render(request, f'{app_name}/event_list.html', {'events': events, 'competition': competition})
+
+    return render(request, 'core/event_list.html', {'events': events, 'competition': competition})
 
 
 def event(request, event_id):
@@ -114,8 +113,7 @@ def event(request, event_id):
 
     video_id = event.video_id.split('=')[-1] if event.video_id else None
 
-    app_name = request.resolver_match.namespace
-    return render(request, f'{app_name}/event.html', {'event': event, 'rating_text': rating_text, 'video_id': video_id})
+    return render(request, 'core/event.html', {'event': event, 'rating_text': rating_text, 'video_id': video_id})
 
 
 def vote(request, event_id):
