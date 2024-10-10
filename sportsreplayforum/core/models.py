@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Competition(models.Model):
+    league = models.CharField(max_length=255, default="")
     name = models.CharField(max_length=255)
     date = models.DateField()
 

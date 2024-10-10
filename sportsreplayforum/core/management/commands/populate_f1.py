@@ -29,8 +29,9 @@ class Command(BaseCommand):
                 # Check if competition already exists
                 if competition_name not in competitions:
                     competition = Competition(
-                        name=competition_name,
-                        date=datetime.strptime(competition_date, '%Y-%m-%d').date()
+                        league = item['strLeague'],
+                        name = competition_name,
+                        date = datetime.strptime(competition_date, '%Y-%m-%d').date()
                     )
                     competition.save()
                     competitions[competition_name] = competition
