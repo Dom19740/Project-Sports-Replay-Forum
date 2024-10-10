@@ -4,7 +4,7 @@ from .models import Competition, Event, Rating
 # Register the Competition model
 @admin.register(Competition)
 class CompetitionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'date')
+    list_display = ('league', 'name', 'date')
 
 # Register the Event model
 @admin.register(Event)
