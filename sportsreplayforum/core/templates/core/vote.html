@@ -2,7 +2,7 @@
     <h3>Vote</h3>
     {% if event.video_id %}
         {% if request.user.is_authenticated %}
-            <form method="post" action="{% url 'f1:vote' event.id %}">
+            <form method="post" action="{{ vote_url }}">
             {% csrf_token %}
             <input type="radio" name="stars" value="5" required> 5 stars - {{ rating_text.5 }}<br>
             <input type="radio" name="stars" value="4"> 4 stars {{ rating_text.4 }}<br>

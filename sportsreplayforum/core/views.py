@@ -162,4 +162,8 @@ def vote(request, event_id):
         rating.save()
         rating.voters.add(request.user)
 
-    return redirect(reverse(f'{request.resolver_match.namespace}:event', args=[event_id]))
+    return render(request, 'vote.html', {
+        'event': event,
+        'rating': rating,
+        'vote_url': reverse(f'{request.resolver_match.namespace}:vote', args=[event_id]),
+    })
