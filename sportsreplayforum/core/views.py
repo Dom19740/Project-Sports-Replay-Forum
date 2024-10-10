@@ -119,6 +119,7 @@ def event(request, event_id):
 
 
 def vote(request, event_id):
+    print("Vote function called")
     event = get_object_or_404(Event, id=event_id)
     rating, created = Rating.objects.get_or_create(event=event)
 
@@ -162,8 +163,4 @@ def vote(request, event_id):
         rating.save()
         rating.voters.add(request.user)
 
-    return render(request, 'vote.html', {
-        'event': event,
-        'rating': rating,
-        'vote_url': reverse(f'{request.resolver_match.namespace}:vote', args=[event_id]),
-    })
+    return redirect('core:event', event_id=event_id)

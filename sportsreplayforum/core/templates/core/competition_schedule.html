@@ -1,0 +1,39 @@
+{% extends 'base_menu.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div>
+        <br>
+        <h1>2024 FIA F1 WORLD CHAMPIONSHIP</h1>
+        <p>RACE CALENDAR</p>    
+
+        <p>Upcoming</p>
+        <ul>
+            {% for competition in upcoming_competitions %}
+                <li>
+                    <a href="{% url 'f1:event_list' competition.id %}">
+                        {{ competition.start_date|date:"d" }} - {{ competition.end_date|date:"d" }} {{ competition.start_date|date:"M" }} - {{ competition.name }}
+                    </a>
+                </li>
+            {% empty %}
+                <li>No upcoming competitions.</li>
+            {% endfor %}
+        </ul>
+
+        <p>Past</p>
+        <ul>
+            {% for competition in past_competitions %}
+                <li>
+                    <a href="{% url 'f1:event_list' competition.id %}">
+                        {{ competition.start_date|date:"d" }} - {{ competition.end_date|date:"d" }} {{ competition.start_date|date:"M" }} - {{ competition.name }}
+                    </a>
+                </li>
+            {% empty %}
+                <li>No past competitions.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
