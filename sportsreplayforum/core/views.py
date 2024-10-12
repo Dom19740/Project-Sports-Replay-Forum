@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
 from django.urls import reverse
 from .forms import LoginForm, RegisterForm
-from .models import Competition, Event,Event, Rating
+from .models import Competition, Event, Rating
 
 
 def sign_in(request):
@@ -70,13 +70,24 @@ def sign_up(request):
 
 
 def competition_schedule(request):
+
     today = timezone.now()
-    competitions = Competition.objects.order_by('-date')
+    league = request.GET.get('league')
+
+    titles = {
+        'Formula 1': '2024 FIA F1 WORLD CHAMPIONSHIP',
+        'UEFA': '24/25 UEFA NATIONS LEAGUE'
+    }
+
+    title = titles.get(league, 'Unknown League')
+
+    competitions = Competition.objects.order_by('-date').filter(league=league)
 
     upcoming_competitions = []
     past_competitions = []
-
+    
     for competition in competitions:
+        print("Competition league:", competition.league)
         events = Event.objects.filter(event_list=competition)
         if events.exists():
             competition.start_date = events.order_by('date_time').first().date_time
@@ -88,6 +99,7 @@ def competition_schedule(request):
                 past_competitions.append(competition)
 
     return render(request, 'core/competition_schedule.html', {
+        'title': title,
         'upcoming_competitions': upcoming_competitions,
         'past_competitions': past_competitions,
     })
