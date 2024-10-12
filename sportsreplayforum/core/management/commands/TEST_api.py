@@ -8,10 +8,8 @@ USA results = eventresults.php?id=1963830
 Nations League = eventsseason.php?id=4490
  """
 
-LEAGUE_ID = '4370'
-SEASON = '2024'
+response = requests.get("https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id=4490&s=2024-2025")
 
-response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id=4490")
 
 if response.status_code == 200:
     # Convert the response to JSON format

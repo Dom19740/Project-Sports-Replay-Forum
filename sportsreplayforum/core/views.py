@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
-from django.urls import reverse
 from .forms import LoginForm, RegisterForm
 from .models import Competition, Event, Rating
+from datetime import datetime
 
 
 def sign_in(request):
@@ -107,10 +107,10 @@ def competition_schedule(request):
 
 def event_list(request, competition_id):
     competition = get_object_or_404(Competition, id=competition_id)
-    events = Event.objects.filter(event_list=competition).order_by('-date_time')
+    upcoming_events = Event.objects.filter(event_list=competition, date_time__gt=datetime.now()).order_by('-date_time')
+    past_events = Event.objects.filter(event_list=competition, date_time__lt=datetime.now()).order_by('-date_time')
 
-
-    return render(request, 'core/event_list.html', {'events': events, 'competition': competition})
+    return render(request, 'core/event_list.html', {'upcoming_events': upcoming_events, 'past_events': past_events, 'competition': competition})
 
 
 def event(request, event_id):
