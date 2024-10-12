@@ -12,6 +12,7 @@ urlpatterns = [
     path('core/', include('core.urls')),
     path('sports.f1/', include('sports.f1.urls')),
     path('sports.nations/', include('sports.nations.urls')),
+    path('', include('api.urls')),
 ]
 
 # Serve the static HTML

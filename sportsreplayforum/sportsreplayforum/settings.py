@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'core.apps.CoreConfig',
     'news.apps.NewsConfig',
+    'api.apps.ApiConfig',
     'sports.f1.apps.F1Config',
     'sports.nations.apps.NationsConfig',
 
@@ -143,8 +144,12 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     )
 }
+
 
 
 LOGOUT_REDIRECT_URL = '/'
