@@ -15,6 +15,7 @@ class Event(models.Model):
     date_time = models.DateTimeField()
     idEvent = models.CharField(max_length=255, default="")
     video_id = models.CharField(max_length=255, default="")
+    finished = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.event_type} for {self.event_list.name} on {self.date_time}"
