@@ -13,7 +13,7 @@
             {% for competition in past_competitions %}
                 <li>
                     <a href="{% url 'core:event_list' competition.id %}">
-                        {{ competition.start_date|date:"d" }} - {{ competition.end_date|date:"d" }} {{ competition.start_date|date:"M" }} - {{ competition.name }}
+                        {{ competition.start_date|date:"d" }} {{ competition.start_date|date:"M" }} - {{ competition.name }}
                     </a>
                 </li>
             {% empty %}
@@ -25,7 +25,7 @@
             {% for competition in upcoming_competitions %}
                 <li>
                     <a href="{% url 'core:event_list' competition.id %}">
-                        {{ competition.start_date|date:"d" }} - {{ competition.end_date|date:"d" }} {{ competition.start_date|date:"M" }} - {{ competition.name }}
+                        {{ competition.start_date|date:"d" }} {{ competition.start_date|date:"M" }} - {{ competition.name }}
                     </a>
                 </li>
             {% empty %}
