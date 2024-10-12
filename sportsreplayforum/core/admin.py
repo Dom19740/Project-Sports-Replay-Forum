@@ -9,7 +9,7 @@ class CompetitionAdmin(admin.ModelAdmin):
 # Register the Event model
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('event_type', 'event_list', 'date_time', 'idEvent', 'video_id')
+    list_display = ('event_type', 'event_list', 'date_time', 'idEvent', 'video_id', 'finished')
 
 # Register the Rating model (optional, just for viewing in admin)
 @admin.register(Rating)
