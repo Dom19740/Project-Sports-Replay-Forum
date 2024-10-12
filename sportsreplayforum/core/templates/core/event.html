@@ -6,7 +6,7 @@
         <div>
             <br>
             <h1>{{ event.event_list.date|date:"Y" }} {{ event.event_list.name }}</h1>
-            <p><a href="{% url 'core:event_list' event.event_list.id %}">BACK TO RACE WEEKEND</a></p>
+            <p><a href="{% url 'core:event_list' event.event_list.id %}">BACK TO EVENTS</a></p>
 
             <h2>{{ event.date_time|date:"j M" }} - {{ event.event_type|title }}</h2>
         </div>
