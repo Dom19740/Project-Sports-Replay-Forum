@@ -76,7 +76,7 @@ def competition_schedule(request):
 
     titles = {
         'Formula 1': '2024 FIA F1 WORLD CHAMPIONSHIP',
-        'UEFA': '24/25 UEFA NATIONS LEAGUE'
+        'UEFA Nations League': '24/25 UEFA NATIONS LEAGUE'
     }
 
     title = titles.get(league, 'Unknown League')
@@ -87,7 +87,6 @@ def competition_schedule(request):
     past_competitions = []
     
     for competition in competitions:
-        print("Competition league:", competition.league)
         events = Event.objects.filter(event_list=competition)
         if events.exists():
             competition.start_date = events.order_by('date_time').first().date_time
@@ -129,7 +128,6 @@ def event(request, event_id):
 
 
 def vote(request, event_id):
-    print("Vote function called")
     event = get_object_or_404(Event, id=event_id)
     rating, created = Rating.objects.get_or_create(event=event)
 
