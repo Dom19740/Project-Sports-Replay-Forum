@@ -6,13 +6,13 @@
     <div>
         <br>
         <h1>{{ competition.date|date:"Y" }} {{ competition.name }}</h1>
-        <p><a href="{% url 'f1:competition_schedule' %}">BACK TO RACE CALENDAR</a></p>
+        <p><a href="{% url 'core:competition_schedule' %}">BACK TO RACE CALENDAR</a></p>
         <div class="events-container">
             <p>Upcoming</p>
             <ul>
                 {% for event in events %}
                     {% if event.date_time|date:"Y-m-d" > now|date:"Y-m-d" %}
-                    <li><a href="{% url 'f1:event' event.id %}">{{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}</a></li>
+                    <li><a href="{% url 'core:event' event.id %}">{{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}</a></li>
                     {% endif %}
                 {% endfor %}    
             </ul>
@@ -22,7 +22,7 @@
             <ul>
                 {% for event in events %}
                     {% if event.date_time|date:"Y-m-d" < now|date:"Y-m-d" %}
-                    <li><a href="{% url 'f1:event' event.id %}">{{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}</a></li>
+                    <li><a href="{% url 'core:event' event.id %}">{{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}</a></li>
                     {% endif %}
                 {% endfor %}    
             </ul>
