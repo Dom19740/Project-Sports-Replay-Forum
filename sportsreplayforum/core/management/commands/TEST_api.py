@@ -8,7 +8,7 @@ USA results = eventresults.php?id=1963830
 Nations League = eventsseason.php?id=4490
  """
 
-response = requests.get("https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id=4490&")
+response = requests.get("https://www.thesportsdb.com/api/v1/json/3/eventresults.php?id=1963827")
 
 
 if response.status_code == 200:
