@@ -76,7 +76,8 @@ def competition_schedule(request):
 
     titles = {
         'Formula 1': '2024 FIA F1 WORLD CHAMPIONSHIP',
-        'UEFA Nations League': '24/25 UEFA NATIONS LEAGUE'
+        'UEFA Nations League': '24/25 UEFA NATIONS LEAGUE',
+        'English Womens Super League': '24/25 Womens Super League'
     }
 
     title = titles.get(league, 'Unknown League')

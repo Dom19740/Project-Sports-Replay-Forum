@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'sports.f1.apps.F1Config',
     'sports.nations.apps.NationsConfig',
+    'sports.wsl.apps.WslConfig',
 
     # Extensions - installed with requirements.txt
     'django_extensions', 
