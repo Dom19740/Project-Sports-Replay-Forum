@@ -97,6 +97,8 @@ def competition_schedule(request):
             else:
                 past_competitions.append(competition)
 
+    upcoming_competitions.sort(key=lambda x: x.start_date) 
+
     return render(request, 'core/competition_schedule.html', {
         'title': title,
         'upcoming_competitions': upcoming_competitions,

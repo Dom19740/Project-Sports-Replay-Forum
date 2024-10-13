@@ -22,27 +22,29 @@ class Command(BaseCommand):
 
         # Step 1: Create Competitions for events ending in "Prix"
         for item in data:
-            competition_name = item['strEvent']
             competition_date = item['dateEvent']
 
-            # Check if competition already exists
-            if competition_name not in competitions:
-                competition = Competition(
-                    league = item['strLeague'],
-                    name = competition_name,
-                    date = datetime.strptime(competition_date, '%Y-%m-%d').date()
-                )
-                competition.save()
-                competitions[competition_name] = competition
+            # parse the strTimestamp field into a datetime object
+            dt = datetime.strptime(competition_date, "%Y-%m-%d")
 
-                # Create a race event for the competition
-                race_event = Event(
-                    event_list = competition,
-                    event_type = 'Match',
-                    date_time = parser.isoparse(item['strTimestamp']),
-                    idEvent = item['idEvent'],
-                    video_id = item['strVideo'],
-                )
-                race_event.save()
+            # Check if competition already exists
+            if competition_date not in competitions:
+                    competition = Competition(
+                        league = item['strLeague'],
+                        name = dt.strftime("%A %d %B"),
+                        date = datetime.strptime(competition_date, '%Y-%m-%d').date()
+                    )
+                    competition.save()
+                    competitions[competition_date] = competition
+
+            # Create a race event for the competition
+            race_event = Event(
+                event_list = competition,
+                event_type = item['strEvent'],
+                date_time = parser.isoparse(item['strTimestamp']),
+                idEvent = item['idEvent'],
+                video_id = item['strVideo'],
+            )
+            race_event.save()
 
         self.stdout.write(self.style.SUCCESS("Competitions and events populated successfully"))
