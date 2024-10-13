@@ -14,7 +14,7 @@ class Event(models.Model):
     event_type = models.CharField(max_length=50)  # e.g., 'race', 'qualifying', 'sprint', 'sprint shootout', 'match'.
     date_time = models.DateTimeField()
     idEvent = models.CharField(max_length=255, default="")
-    video_id = models.CharField(max_length=255, default="")
+    video_id = models.CharField(max_length=255, null=True, default="")
     finished = models.BooleanField(default=False)
 
     def __str__(self):
