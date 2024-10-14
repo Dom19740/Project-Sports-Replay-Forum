@@ -23,8 +23,9 @@ class Command(BaseCommand):
 
         # Parse the JSON data
         data = response.json().get('events', [])
+        competitions = {}
 
-        # Step 1: Create Competitions for events ending in "Prix"
+        # Step 1: Create Competitions for events by matchday
         for item in data:
             competition_date = item['dateEvent']
 
@@ -33,7 +34,7 @@ class Command(BaseCommand):
 
             # Check if competition already exists
             try:
-                Competition.objects.get(date=competition_date)
+                competition = Competition.objects.get(date=competition_date)
             except Competition.DoesNotExist:
                 competition = Competition(
                     league=item['strLeague'],
@@ -42,25 +43,23 @@ class Command(BaseCommand):
                 )
                 competition.save()
 
-                date_time = parser.isoparse(item['strTimestamp']).astimezone(pytz.utc)
-                is_finished = (
-                    'Finished' in item['strEvent'] or
-                    item.get('intHomeScore') is not None or
-                    item.get('strVideo') != ""
-                )
+            is_finished = (
+                'Finished' in item['strEvent'] or
+                item.get('intHomeScore') is not None or
+                item.get('strVideo') != ""
+            )
 
-                # Create a race event for the competition
-                try:
-                    match_event = Event.objects.get_or_create(event_list=competition, date_time=date_time)
-                except Event.DoesNotExist:
-                    match_event = Event(
-                        event_list = competition,
-                        event_type = item['strEvent'],
-                        date_time = parser.isoparse(item['strTimestamp']),
-                        idEvent = item['idEvent'],
-                        video_id = item['strVideo'],
-                        is_finished=is_finished,
-                    )
-                    match_event.save()
+            date_time = parser.isoparse(item['strTimestamp']).astimezone(pytz.utc)
+
+            # Create a race event for the competition
+            match_event, created = Event.objects.get_or_create(
+                event_list = competition,
+                event_type = item['strEvent'],
+                date_time = date_time,
+                idEvent = item['idEvent'],
+                video_id = item['strVideo'],
+                is_finished=is_finished,
+            )
+            match_event.save()
 
         self.stdout.write(self.style.SUCCESS("Competitions and events populated successfully"))
