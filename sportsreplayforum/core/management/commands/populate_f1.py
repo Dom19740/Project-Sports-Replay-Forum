@@ -3,7 +3,7 @@ from django.utils import timezone
 from core.models import Competition, Event
 from datetime import datetime
 from dateutil import parser
-import requests
+import requests, pytz
 
 class Command(BaseCommand):
     help = 'Populate the database with Formula 1 competitions and events'
@@ -32,20 +32,18 @@ class Command(BaseCommand):
                     Competition.objects.get(name=competition_name, date=competition_date)
                 except Competition.DoesNotExist:
                     competition = Competition(
-                        league = item['strLeague'],
-                        name = competition_name,
-                        date = datetime.strptime(competition_date, '%Y-%m-%d').date()
+                        league=item['strLeague'],
+                        name=competition_name,
+                        date=datetime.strptime(competition_date, '%Y-%m-%d').date()
                     )
                     competition.save()
 
                     competitions[competition_name] = competition
 
-                    date_time = parser.isoparse(item['strTimestamp'])
-                    date_time = timezone.make_aware(date_time, timezone.utc)  # Make the datetime object timezone-aware
-
+                    date_time = parser.isoparse(item['strTimestamp']).astimezone(pytz.utc)
                     # Create a race event for the competition
                     try:
-                        race_event = Event.objects.get(event_list=competition, event_type='Race', date_time=parser.isoparse(item['strTimestamp']))
+                        race_event = Event.objects.get(event_list=competition, event_type='Race', date_time=date_time)
                     except Event.DoesNotExist:
                         race_event = Event(
                             event_list=competition,
@@ -53,16 +51,16 @@ class Command(BaseCommand):
                             date_time=date_time,
                             idEvent=item['idEvent'],
                             video_id=item['strVideo'],
+                            
                         )
-                    race_event.save()
-
+                        race_event.save()
 
         # Step 2: Create Events associated with each Competition
         for item in data:
             if item.get('strEvent'):
-                for competition_name, competition in competitions.items():
+                for competition in Competition.objects.all():
                     # Check for qualifying, sprint, or sprint shootout events
-                    if competition_name in item['strEvent']:
+                    if competition.name in item['strEvent']:
                         if 'Qualifying' in item['strEvent']:
                             event_type = 'Qualifying'
                         elif 'Sprint Shootout' in item['strEvent']:
@@ -72,13 +70,15 @@ class Command(BaseCommand):
                         else:
                             continue  # Skip if not qualifying, sprint, or sprint shootout
 
+                        date_time = parser.isoparse(item['strTimestamp']).astimezone(pytz.utc)
+
                         try:
-                            event = Event.objects.get(event_list=competition, event_type=event_type, date_time=parser.isoparse(item['strTimestamp']))
+                            event = Event.objects.get(event_list=competition, event_type=event_type, date_time=date_time)
                         except Event.DoesNotExist:
                             event = Event(
                                 event_list=competition,
                                 event_type=event_type,
-                                date_time=parser.isoparse(item['strTimestamp']),
+                                date_time=date_time,
                                 idEvent=item['idEvent'],
                                 video_id=item['strVideo'],
                             )
