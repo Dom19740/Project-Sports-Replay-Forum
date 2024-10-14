@@ -23,7 +23,7 @@ class Command(BaseCommand):
         for item in data:
             if item.get('strEvent') and item['strEvent'].endswith("Prix"):
                 competition_name = item['strEvent']
-                competition_date = item['dateEvent']
+                competition_date = parser.isoparse(item['strTimestamp']).date()
 
                 # Check if competition already exists
                 try:
@@ -32,11 +32,11 @@ class Command(BaseCommand):
                     competition = Competition(
                         league=item['strLeague'],
                         name=competition_name,
-                        date=datetime.strptime(competition_date, '%Y-%m-%d').date()
+                        date=competition_date
                     )
                     competition.save()
 
-                    date_time = parser.isoparse(item['strTimestamp']).astimezone(pytz.utc)
+                    date_time = item['strTimestamp']
                     is_finished = (
                         'Finished' in item['strEvent'] or
                         item.get('intHomeScore') is not None or
@@ -44,18 +44,15 @@ class Command(BaseCommand):
                     )
 
                     # Create a race event for the competition
-                    try:
-                        race_event = Event.objects.get(event_list=competition, event_type='Race', date_time=date_time)
-                    except Event.DoesNotExist:
-                        race_event = Event(
-                            event_list=competition,
-                            event_type='Race',
-                            date_time=date_time,
-                            idEvent=item['idEvent'],
-                            video_id=item['strVideo'],
-                            is_finished=is_finished,
-                        )
-                        race_event.save()
+                    race_event, created = Event.objects.get_or_create(
+                        event_list=competition,
+                        event_type='Race',
+                        date_time=date_time,
+                        idEvent=item['idEvent'],
+                        video_id=item['strVideo'],
+                        is_finished=is_finished,
+                    )
+                    race_event.save()
 
         # Step 2: Create Events associated with each Competition
         for item in data:
@@ -72,24 +69,21 @@ class Command(BaseCommand):
                         else:
                             continue  # Skip if not qualifying, sprint, or sprint shootout
 
-                        date_time = parser.isoparse(item['strTimestamp']).astimezone(pytz.utc)
+                        date_time = item['strTimestamp']
                         is_finished = (
                             'Finished' in item['strEvent'] or
                             item.get('intHomeScore') is not None or
                             item.get('strVideo') != ""
                         )
 
-                        try:
-                            event = Event.objects.get(event_list=competition, event_type=event_type, date_time=date_time)
-                        except Event.DoesNotExist:
-                            event = Event(
-                                event_list=competition,
-                                event_type=event_type,
-                                date_time=date_time,
-                                idEvent=item['idEvent'],
-                                video_id=item['strVideo'],
-                                is_finished=is_finished
-                            )
-                            event.save()
+                        event, created = Event.objects.get_or_create(
+                            event_list=competition,
+                            event_type=event_type,
+                            date_time=date_time,
+                            idEvent=item['idEvent'],
+                            video_id=item['strVideo'],
+                            is_finished=is_finished
+                        )
+                        event.save()
 
         self.stdout.write(self.style.SUCCESS("Competitions and events populated successfully"))
