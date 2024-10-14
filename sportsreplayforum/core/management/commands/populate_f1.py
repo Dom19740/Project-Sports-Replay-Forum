@@ -1,5 +1,4 @@
 from django.core.management.base import BaseCommand
-from django.utils import timezone
 from core.models import Competition, Event
 from datetime import datetime
 from dateutil import parser
@@ -19,7 +18,6 @@ class Command(BaseCommand):
 
         # Parse the JSON data
         data = response.json().get('events', [])
-        competitions = {}
 
         # Step 1: Create Competitions for events ending in "Prix"
         for item in data:
@@ -38,7 +36,6 @@ class Command(BaseCommand):
                     )
                     competition.save()
 
-                    competitions[competition_name] = competition
                     date_time = parser.isoparse(item['strTimestamp']).astimezone(pytz.utc)
                     is_finished = (
                         'Finished' in item['strEvent'] or
