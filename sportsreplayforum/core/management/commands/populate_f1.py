@@ -39,11 +39,11 @@ class Command(BaseCommand):
                 )
 
                 if created:
-                    competitions.append(competition)
+                    competitions.save()
 
                 date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
                 is_finished = (
-                    'Finished' in item['strEvent'] or
+                    'Finished' in item['strStatus'] or
                     item.get('intHomeScore') is not None or
                     item.get('strVideo') != ""
                 )
@@ -54,12 +54,21 @@ class Command(BaseCommand):
                     event_type='Race',
                     date_time=date_time,
                     idEvent=item['idEvent'],
-                    video_id=item['strVideo'],
-                    is_finished=is_finished,
+                    defaults={
+                        'video_id': item['strVideo'],
+                        'is_finished': is_finished,
+                    }
                 )
 
+                if not created:
+                    # Update the fields if the event already exists
+                    Event.objects.filter(pk=race_event.pk).update(
+                        video_id=item['strVideo'],
+                        is_finished=is_finished,
+                    )
+
                 if created:
-                    events.append(race_event)
+                    race_event.save()
 
         # Step 2: Create Events associated with each Competition
         for item in data:
@@ -78,7 +87,7 @@ class Command(BaseCommand):
 
                         date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
                         is_finished = (
-                            'Finished' in item['strEvent'] or
+                            'Finished' in item['strStatus'] or
                             item.get('intHomeScore') is not None or
                             item.get('strVideo') != ""
                         )
@@ -88,14 +97,23 @@ class Command(BaseCommand):
                             event_type=event_type,
                             date_time=date_time,
                             idEvent=item['idEvent'],
-                            video_id=item['strVideo'],
-                            is_finished=is_finished
+                            defaults={
+                                'video_id': item['strVideo'],
+                                'is_finished': is_finished,
+                            }
                         )
 
-                if created:
-                    events.append(event)
+                        if not created:
+                            # Update the fields if the event already exists
+                            Event.objects.filter(pk=race_event.pk).update(
+                                video_id=item['strVideo'],
+                                is_finished=is_finished,
+                            )
+
+                        if created:
+                            event.save()
 
         Competition.objects.bulk_create(competitions)
         Event.objects.bulk_create(events)
-        
+
         self.stdout.write(self.style.SUCCESS("Competitions and events populated successfully"))
