@@ -28,22 +28,20 @@ class Command(BaseCommand):
 
         # Parse the JSON data
         data = response.json().get('events', [])
-        competitions = {}
 
         # Step 1: Create Competitions for events by matchday
         for item in data:
             competition_date = item['dateEvent']
-
-            # parse the strTimestamp field into a datetime object
-            dt = datetime.strptime(competition_date, "%Y-%m-%d")
+            date_obj = datetime.strptime(item['dateEvent'], "%Y-%m-%d")
+            competition_name = f"Matchday - {date_obj.strftime('%A %d %B')}"
 
             # Check if competition already exists
             try:
-                competition = Competition.objects.get(date=competition_date)
+                competition = Competition.objects.get(name=competition_name, date=competition_date)
             except Competition.DoesNotExist:
                 competition = Competition(
                     league=item['strLeague'],
-                    name=dt.strftime("%A %d %B"),
+                    name=competition_name,
                     date=datetime.strptime(competition_date, '%Y-%m-%d').date()
                 )
                 competition.save()
