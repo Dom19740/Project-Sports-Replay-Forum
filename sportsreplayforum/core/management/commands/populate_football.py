@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 from core.models import Competition, Event
 from datetime import datetime
 from dateutil import parser
-import requests
+import requests, pytz
 
 class Command(BaseCommand):
     help = 'Populate the database with Nations League competitions and events'
