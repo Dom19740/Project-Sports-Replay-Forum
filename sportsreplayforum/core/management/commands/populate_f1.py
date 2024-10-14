@@ -39,8 +39,13 @@ class Command(BaseCommand):
                     competition.save()
 
                     competitions[competition_name] = competition
-
                     date_time = parser.isoparse(item['strTimestamp']).astimezone(pytz.utc)
+                    is_finished = (
+                        'Finished' in item['strEvent'] or
+                        item.get('intHomeScore') is not None or
+                        item.get('strVideo') != ""
+                    )
+
                     # Create a race event for the competition
                     try:
                         race_event = Event.objects.get(event_list=competition, event_type='Race', date_time=date_time)
@@ -51,7 +56,7 @@ class Command(BaseCommand):
                             date_time=date_time,
                             idEvent=item['idEvent'],
                             video_id=item['strVideo'],
-                            
+                            is_finished=is_finished
                         )
                         race_event.save()
 
@@ -71,6 +76,11 @@ class Command(BaseCommand):
                             continue  # Skip if not qualifying, sprint, or sprint shootout
 
                         date_time = parser.isoparse(item['strTimestamp']).astimezone(pytz.utc)
+                        is_finished = (
+                            'Finished' in item['strEvent'] or
+                            item.get('intHomeScore') is not None or
+                            item.get('strVideo') != ""
+                        )
 
                         try:
                             event = Event.objects.get(event_list=competition, event_type=event_type, date_time=date_time)
@@ -81,6 +91,7 @@ class Command(BaseCommand):
                                 date_time=date_time,
                                 idEvent=item['idEvent'],
                                 video_id=item['strVideo'],
+                                is_finished=is_finished
                             )
                             event.save()
 
