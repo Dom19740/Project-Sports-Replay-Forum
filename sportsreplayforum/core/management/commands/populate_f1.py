@@ -20,7 +20,7 @@ class Command(BaseCommand):
 
         # Step 1: Create Competitions for events ending in "Prix"
         for item in data:
-            
+
             if item.get('strEvent') and item['strEvent'].endswith("Prix"):
                 competition_name = item['strEvent']
                 competition_date = parser.isoparse(item['strTimestamp']).date()
@@ -40,7 +40,6 @@ class Command(BaseCommand):
                 date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
                 is_finished = (
                     'Finished' in item['strStatus'] or
-                    item.get('intHomeScore') is not None or
                     item.get('strVideo') != ""
                 )
 
@@ -84,7 +83,6 @@ class Command(BaseCommand):
                         date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
                         is_finished = (
                             'Finished' in item['strStatus'] or
-                            item.get('intHomeScore') is not None or
                             item.get('strVideo') != ""
                         )
 

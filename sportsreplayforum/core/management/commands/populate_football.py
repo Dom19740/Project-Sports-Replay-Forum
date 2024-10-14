@@ -45,11 +45,10 @@ class Command(BaseCommand):
 
             date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
             is_finished = (
-                'Finished' in item['strEvent'] or
-                item.get('intHomeScore') is not None or
+                'Finished' in item['strStatus'] or
                 item.get('strVideo') != ""
             )
-
+            
             # Create a match event for the competition
             match_event, created = Event.objects.get_or_create(
                 event_list = competition,
