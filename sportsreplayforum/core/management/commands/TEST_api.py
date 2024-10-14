@@ -8,11 +8,13 @@ eventresults.php?id=1963830 = USA results
 eventsseason.php?id=
  """
 
-nl = '4490'  """Nations League"""
-wsl = '4849' """WSL"""
-pl = '4328'  """Premier League"""
+'4490' """Nations League"""
+'4849' """WSL"""
+'4328' """Premier League"""
+'4380' """MotoGP"""
+'4407' """Moto GP"""
 
-response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={pl}")
+response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4407}")
 
 
 if response.status_code == 200:
