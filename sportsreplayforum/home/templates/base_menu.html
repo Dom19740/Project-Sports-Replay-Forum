@@ -13,13 +13,13 @@
                     <a class="nav-link" href="{% url 'core:competition_schedule' %}?league=Formula 1">F1</a>
                 </li>
                 <li class="nav-item {% if request.get_full_path == nations %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'core:competition_schedule' %}?league=English Premier League">Premier League</a>
+                </li>
+                <li class="nav-item {% if request.get_full_path == nations %}active{% endif %}">
                     <a class="nav-link" href="{% url 'core:competition_schedule' %}?league=UEFA Nations League">Nations League</a>
                 </li>
                 <li class="nav-item {% if request.get_full_path == nations %}active{% endif %}">
                     <a class="nav-link" href="{% url 'core:competition_schedule' %}?league=English Womens Super League">WSL</a>
-                </li>
-                <li class="nav-item {% if request.get_full_path == nations %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'core:competition_schedule' %}?league=English Premier League">Premier League</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto"> <!-- 'ms-auto' to align to the right -->
