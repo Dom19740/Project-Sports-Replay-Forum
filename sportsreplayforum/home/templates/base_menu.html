@@ -18,6 +18,9 @@
                 <li class="nav-item {% if request.get_full_path == nations %}active{% endif %}">
                     <a class="nav-link" href="{% url 'core:competition_schedule' %}?league=English Womens Super League">WSL</a>
                 </li>
+                <li class="nav-item {% if request.get_full_path == nations %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'core:competition_schedule' %}?league=English Premier League">Premier League</a>
+                </li>
             </ul>
             <ul class="navbar-nav ms-auto"> <!-- 'ms-auto' to align to the right -->
                 {% if user.is_authenticated %}
