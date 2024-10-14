@@ -131,7 +131,7 @@ TIME_ZONE = 'Europe/Lisbon'
 
 USE_I18N = True
 
-USE_TZ = False
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
