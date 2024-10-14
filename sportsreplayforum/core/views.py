@@ -75,10 +75,10 @@ def competition_schedule(request):
     league = request.GET.get('league')
 
     titles = {
-        'Formula 1': '2024 FIA F1 WORLD CHAMPIONSHIP',
-        'UEFA Nations League': '24/25 UEFA NATIONS LEAGUE',
-        'English Womens Super League': '24/25 Womens Super League',
-        'English Premier League': '24/25 Premier League'
+        'Formula 1': 'FIA F1 WORLD CHAMPIONSHIP',
+        'UEFA Nations League': 'UEFA NATIONS LEAGUE',
+        'English Womens Super League': 'Womens Super League',
+        'English Premier League': 'Premier League'
     }
 
     title = titles.get(league, 'Unknown League')
@@ -113,7 +113,21 @@ def event_list(request, competition_id):
     upcoming_events = Event.objects.filter(event_list=competition, date_time__gt=datetime.now()).order_by('-date_time')
     past_events = Event.objects.filter(event_list=competition, date_time__lt=datetime.now()).order_by('-date_time')
 
-    return render(request, 'core/event_list.html', {'upcoming_events': upcoming_events, 'past_events': past_events, 'competition': competition})
+    titles = {
+        'Formula 1': 'FIA F1 WORLD CHAMPIONSHIP',
+        'UEFA Nations League': 'UEFA NATIONS LEAGUE',
+        'English Womens Super League': 'Womens Super League',
+        'English Premier League': 'Premier League'
+    }
+    
+    title = titles.get(competition.league, 'Unknown League')
+
+    return render(request, 'core/event_list.html', {
+        'upcoming_events': upcoming_events, 
+        'past_events': past_events,
+        'competition': competition,
+        'title': title
+    })
 
 
 def event(request, event_id):

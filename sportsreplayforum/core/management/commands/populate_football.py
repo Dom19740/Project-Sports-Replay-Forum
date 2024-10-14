@@ -33,7 +33,7 @@ class Command(BaseCommand):
         for item in data:
             competition_date = item['dateEvent']
             date_obj = datetime.strptime(item['dateEvent'], "%Y-%m-%d")
-            competition_name = f"Matchday - {date_obj.strftime('%A %d %B')}"
+            competition_name = f"Matchday - {date_obj.strftime('%A %d %b')}"
 
             # Check if competition already exists
             try:
