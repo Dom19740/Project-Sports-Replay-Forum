@@ -136,7 +136,14 @@ def event(request, event_id):
 
     video_id = event.video_id.split('=')[-1] if event.video_id else None
 
-    return render(request, 'core/event.html', {'event': event, 'rating_text': rating_text, 'video_id': video_id})
+    title = TITLES.get(event.event_list.league, 'Unknown League')
+
+    return render(request, 'core/event.html', {
+        'event': event,
+        'rating_text': rating_text,
+        'video_id': video_id,
+        'title': title,
+    })
 
 
 def vote(request, event_id):
