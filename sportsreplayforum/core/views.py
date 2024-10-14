@@ -11,7 +11,8 @@ TITLES = {
     'Formula 1': 'FIA F1 WORLD CHAMPIONSHIP',
     'UEFA Nations League': 'UEFA NATIONS LEAGUE',
     'English Womens Super League': 'Womens Super League',
-    'English Premier League': 'Premier League'
+    'English Premier League': 'Premier League',
+    'MotoGP': 'MotoGP',
 }
 
 
