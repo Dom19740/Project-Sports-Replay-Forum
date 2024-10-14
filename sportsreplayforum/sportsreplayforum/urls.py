@@ -10,7 +10,6 @@ urlpatterns = [
     path('', include('home.urls')),
     path('admin/', admin.site.urls),
     path('core/', include('core.urls')),
-    path('', include('api.urls')),
 ]
 
 # Serve the static HTML
