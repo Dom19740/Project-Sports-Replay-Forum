@@ -14,7 +14,7 @@ eventsseason.php?id=
 '4380' """MotoGP"""
 '4407' """Moto GP"""
 
-response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4328}")
+response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4490}")
 
 
 if response.status_code == 200:
