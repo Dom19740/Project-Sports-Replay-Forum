@@ -113,13 +113,21 @@ def competition_schedule(request):
 
 def event_list(request, competition_id):
     competition = get_object_or_404(Competition, id=competition_id)
-    upcoming_events = Event.objects.filter(event_list=competition, date_time__gt=datetime.now()).order_by('-date_time')
-    past_events = Event.objects.filter(event_list=competition, date_time__lt=datetime.now()).order_by('-date_time')
-    
+    events = Event.objects.filter(event_list=competition).order_by('-date_time')
+
+    upcoming_events = []
+    past_events = []
+
+    for event in events:
+        if event.is_finished:
+            past_events.append(event)
+        else:
+            upcoming_events.append(event)
+
     title = TITLES.get(competition.league, 'Unknown League')
 
     return render(request, 'core/event_list.html', {
-        'upcoming_events': upcoming_events, 
+        'upcoming_events': upcoming_events,
         'past_events': past_events,
         'competition': competition,
         'title': title
