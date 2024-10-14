@@ -1,8 +1,6 @@
-
 from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from core.models import Competition, Event
-from datetime import datetime
 from dateutil import parser
 import requests
 
@@ -20,11 +18,9 @@ class Command(BaseCommand):
         # Parse the JSON data
         data = response.json().get('events', [])
 
-        competitions = []
-        events = []
-
         # Step 1: Create Competitions for events ending in "Prix"
         for item in data:
+            
             if item.get('strEvent') and item['strEvent'].endswith("Prix"):
                 competition_name = item['strEvent']
                 competition_date = parser.isoparse(item['strTimestamp']).date()
@@ -39,7 +35,7 @@ class Command(BaseCommand):
                 )
 
                 if created:
-                    competitions.save()
+                    competition.save()
 
                 date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
                 is_finished = (
@@ -112,8 +108,5 @@ class Command(BaseCommand):
 
                         if created:
                             event.save()
-
-        Competition.objects.bulk_create(competitions)
-        Event.objects.bulk_create(events)
 
         self.stdout.write(self.style.SUCCESS("Competitions and events populated successfully"))
