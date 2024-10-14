@@ -9,7 +9,7 @@ Nations League = eventsseason.php?id=4490
 WSL = eventsseason.php?id=4849
  """
 
-response = requests.get("https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id=4849")
+response = requests.get("https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id=4490")
 
 
 if response.status_code == 200:

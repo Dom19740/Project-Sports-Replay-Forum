@@ -1,6 +1,6 @@
 <div id="vote-container" {% if not request.user.is_superuser and request.user in event.rating.voters.all %}style="display: none;"{% endif %}>
     <h3>Vote</h3>
-    {% if event.video_id %}
+    {% if event.is_finished %}
         {% if request.user.is_authenticated %}
             <form method="post" action="{% url 'core:vote' event.id %}">
             {% csrf_token %}
@@ -24,5 +24,6 @@
     {% endif %}
 </div>
 <div id="voted-container" {% if request.user in event.rating.voters.all %}style="display: block;"{% else %}style="display: none;"{% endif %}>
+    <br>
     <p>Thanks for voting</p>    
 </div>
