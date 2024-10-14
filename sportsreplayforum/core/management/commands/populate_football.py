@@ -16,7 +16,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
 
         # Fetch the data from the API
-        response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4490}")
+        response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4849}")
 
         # Check if the request was successful
         if response.status_code != 200:
@@ -34,7 +34,7 @@ class Command(BaseCommand):
 
             # Check if competition already exists
             try:
-                competition = Competition.objects.get(name=competition_name, date=competition_date)
+                competition = Competition.objects.get(league=item['strLeague'], name=competition_name)
             except Competition.DoesNotExist:
                 competition = Competition(
                     league=item['strLeague'],
