@@ -44,11 +44,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'news.apps.NewsConfig',
     'api.apps.ApiConfig',
-    'sports.f1.apps.F1Config',
-    'sports.nations.apps.NationsConfig',
-    'sports.wsl.apps.WslConfig',
-    'sports.premier.apps.PremierConfig',
-    'sports.motogp.apps.MotogpConfig',
+
 
     # Extensions - installed with requirements.txt
     'django_extensions', 
