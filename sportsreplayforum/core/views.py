@@ -7,6 +7,14 @@ from .models import Competition, Event, Rating
 from datetime import datetime
 
 
+TITLES = {
+    'Formula 1': 'FIA F1 WORLD CHAMPIONSHIP',
+    'UEFA Nations League': 'UEFA NATIONS LEAGUE',
+    'English Womens Super League': 'Womens Super League',
+    'English Premier League': 'Premier League'
+}
+
+
 def sign_in(request):
 
     if request.method == 'GET':
@@ -74,14 +82,7 @@ def competition_schedule(request):
     today = timezone.now()
     league = request.GET.get('league')
 
-    titles = {
-        'Formula 1': 'FIA F1 WORLD CHAMPIONSHIP',
-        'UEFA Nations League': 'UEFA NATIONS LEAGUE',
-        'English Womens Super League': 'Womens Super League',
-        'English Premier League': 'Premier League'
-    }
-
-    title = titles.get(league, 'Unknown League')
+    title = TITLES.get(league, 'Unknown League')
 
     competitions = Competition.objects.order_by('-date').filter(league=league)
 
@@ -112,15 +113,8 @@ def event_list(request, competition_id):
     competition = get_object_or_404(Competition, id=competition_id)
     upcoming_events = Event.objects.filter(event_list=competition, date_time__gt=datetime.now()).order_by('-date_time')
     past_events = Event.objects.filter(event_list=competition, date_time__lt=datetime.now()).order_by('-date_time')
-
-    titles = {
-        'Formula 1': 'FIA F1 WORLD CHAMPIONSHIP',
-        'UEFA Nations League': 'UEFA NATIONS LEAGUE',
-        'English Womens Super League': 'Womens Super League',
-        'English Premier League': 'Premier League'
-    }
     
-    title = titles.get(competition.league, 'Unknown League')
+    title = TITLES.get(competition.league, 'Unknown League')
 
     return render(request, 'core/event_list.html', {
         'upcoming_events': upcoming_events, 
