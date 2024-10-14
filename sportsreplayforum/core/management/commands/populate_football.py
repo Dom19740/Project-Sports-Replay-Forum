@@ -16,7 +16,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
 
         # Fetch the data from the API
-        response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4849}")
+        response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4328}")
 
         # Check if the request was successful
         if response.status_code != 200:
