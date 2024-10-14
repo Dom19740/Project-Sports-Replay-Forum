@@ -3,41 +3,39 @@
 {% block content %}
 
 <div class="container">
-    <div>
-        <br>
-        <h1>{{ title }} - {{ competition.name }}</h1>
+    <br>
+    <h1>{{ title }} - {{ competition.name }}</h1>
 
-        <p>EVENTS</p>
-        <div class="events-container">
-            <p>Results</p>
-            <ul>
-                {% for event in past_events %}
-                    <li><a href="{% url 'core:event' event.id %}">
-                        {% if title == "FIA F1 WORLD CHAMPIONSHIP" %}
-                            {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}
-                        {% else %}
-                            {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}
-                        {% endif %}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="events-container">
-            <p>Upcoming</p>
-            <ul>
-                {% for event in upcoming_events %}
-                    <li><a href="{% url 'core:event' event.id %}">
-                        {% if title == "FIA F1 WORLD CHAMPIONSHIP" %}
-                            {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}
-                        {% else %}
-                            {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}
-                        {% endif %}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+    <p>EVENTS</p>
+    <div class="events-container">
+        <p>Results</p>
+        <ul>
+            {% for event in past_events %}
+                <li><a href="{% url 'core:event' event.id %}">
+                    {% if title == "FIA F1 WORLD CHAMPIONSHIP" %}
+                        {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}
+                    {% else %}
+                        {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}
+                    {% endif %}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="events-container">
+        <p>Upcoming</p>
+        <ul>
+            {% for event in upcoming_events %}
+                <li><a href="{% url 'core:event' event.id %}">
+                    {% if title == "FIA F1 WORLD CHAMPIONSHIP" %}
+                        {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}
+                    {% else %}
+                        {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}
+                    {% endif %}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 </div>
 
