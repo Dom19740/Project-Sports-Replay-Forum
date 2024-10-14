@@ -53,7 +53,7 @@ class Command(BaseCommand):
                             date_time=date_time,
                             idEvent=item['idEvent'],
                             video_id=item['strVideo'],
-                            is_finished=is_finished
+                            is_finished=is_finished,
                         )
                         race_event.save()
 
