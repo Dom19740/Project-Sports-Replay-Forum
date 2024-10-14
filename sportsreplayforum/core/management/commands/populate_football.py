@@ -10,16 +10,13 @@ class Command(BaseCommand):
     """
     4490 = UEFA Nations League
     4849 = WSL
+    4328 = Premier League
     """
 
     def handle(self, *args, **kwargs):
 
         # Fetch the data from the API
-        nl = '4490'  """Nations League"""
-        wsl = '4849' """WSL"""
-        pl = '4328'  """Premier League"""
-
-        response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4328}")
+        response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4490}")
 
         # Check if the request was successful
         if response.status_code != 200:
