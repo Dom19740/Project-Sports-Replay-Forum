@@ -5,7 +5,8 @@
 <div class="container">
     <div>
         <br>
-        <h1>{{ title }} - {{ competition.name }}</h1>
+        <h1>{% if title == "FIA F1 WORLD CHAMPIONSHIP" %}{{ title }} - {{ competition.name }} {% else %}{{ title }}{% endif %}</h1>
+
         <p>EVENTS</p>
         <div class="events-container">
             <p>Results</p>
