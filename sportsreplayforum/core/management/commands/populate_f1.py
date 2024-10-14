@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+from django.utils import timezone
 from core.models import Competition, Event
 from datetime import datetime
 from dateutil import parser
@@ -27,24 +28,34 @@ class Command(BaseCommand):
                 competition_date = item['dateEvent']
 
                 # Check if competition already exists
-                if competition_name not in competitions:
+                try:
+                    Competition.objects.get(name=competition_name, date=competition_date)
+                except Competition.DoesNotExist:
                     competition = Competition(
                         league = item['strLeague'],
                         name = competition_name,
                         date = datetime.strptime(competition_date, '%Y-%m-%d').date()
                     )
                     competition.save()
+
                     competitions[competition_name] = competition
 
+                    date_time = parser.isoparse(item['strTimestamp'])
+                    date_time = timezone.make_aware(date_time, timezone.utc)  # Make the datetime object timezone-aware
+
                     # Create a race event for the competition
-                    race_event = Event(
-                        event_list = competition,
-                        event_type = 'Race',
-                        date_time = parser.isoparse(item['strTimestamp']),
-                        idEvent = item['idEvent'],
-                        video_id = item['strVideo'],
-                    )
+                    try:
+                        race_event = Event.objects.get(event_list=competition, event_type='Race', date_time=parser.isoparse(item['strTimestamp']))
+                    except Event.DoesNotExist:
+                        race_event = Event(
+                            event_list=competition,
+                            event_type='Race',
+                            date_time=date_time,
+                            idEvent=item['idEvent'],
+                            video_id=item['strVideo'],
+                        )
                     race_event.save()
+
 
         # Step 2: Create Events associated with each Competition
         for item in data:
@@ -61,13 +72,16 @@ class Command(BaseCommand):
                         else:
                             continue  # Skip if not qualifying, sprint, or sprint shootout
 
-                        event = Event(
-                            event_list = competition,
-                            event_type = event_type,
-                            date_time = parser.isoparse(item['strTimestamp']),
-                            idEvent = item['idEvent'],
-                            video_id = item['strVideo'],
-                        )
-                        event.save()
+                        try:
+                            event = Event.objects.get(event_list=competition, event_type=event_type, date_time=parser.isoparse(item['strTimestamp']))
+                        except Event.DoesNotExist:
+                            event = Event(
+                                event_list=competition,
+                                event_type=event_type,
+                                date_time=parser.isoparse(item['strTimestamp']),
+                                idEvent=item['idEvent'],
+                                video_id=item['strVideo'],
+                            )
+                            event.save()
 
         self.stdout.write(self.style.SUCCESS("Competitions and events populated successfully"))
