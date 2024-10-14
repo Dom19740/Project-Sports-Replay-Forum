@@ -8,13 +8,13 @@ class Command(BaseCommand):
     help = 'Populate the database with Nations League competitions and events'
 
     """
-    Nations League = eventsseason.php?id=4490
-    WSL = eventsseason.php?id=4849
+    4490 = UEFA Nations League
+    4849 = WSL
     """
 
     def handle(self, *args, **kwargs):
         # Fetch the data from the API
-        response = requests.get("https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id=4849")
+        response = requests.get("https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id=4490")
 
         # Check if the request was successful
         if response.status_code != 200:
@@ -23,7 +23,6 @@ class Command(BaseCommand):
 
         # Parse the JSON data
         data = response.json().get('events', [])
-        competitions = {}
 
         # Step 1: Create Competitions for events ending in "Prix"
         for item in data:
@@ -33,23 +32,35 @@ class Command(BaseCommand):
             dt = datetime.strptime(competition_date, "%Y-%m-%d")
 
             # Check if competition already exists
-            if competition_date not in competitions:
-                    competition = Competition(
-                        league = item['strLeague'],
-                        name = dt.strftime("%A %d %B"),
-                        date = datetime.strptime(competition_date, '%Y-%m-%d').date()
-                    )
-                    competition.save()
-                    competitions[competition_date] = competition
+            try:
+                Competition.objects.get(date=competition_date)
+            except Competition.DoesNotExist:
+                competition = Competition(
+                    league=item['strLeague'],
+                    name=dt.strftime("%A %d %B"),
+                    date=datetime.strptime(competition_date, '%Y-%m-%d').date()
+                )
+                competition.save()
 
-            # Create a race event for the competition
-            match_event = Event(
-                event_list = competition,
-                event_type = item['strEvent'],
-                date_time = parser.isoparse(item['strTimestamp']),
-                idEvent = item['idEvent'],
-                video_id = item['strVideo'],
-            )
-            match_event.save()
+                date_time = parser.isoparse(item['strTimestamp']).astimezone(pytz.utc)
+                is_finished = (
+                    'Finished' in item['strEvent'] or
+                    item.get('intHomeScore') is not None or
+                    item.get('strVideo') != ""
+                )
+
+                # Create a race event for the competition
+                try:
+                    match_event = Event.objects.get_or_create(event_list=competition, date_time=date_time)
+                except Event.DoesNotExist:
+                    match_event = Event(
+                        event_list = competition,
+                        event_type = item['strEvent'],
+                        date_time = parser.isoparse(item['strTimestamp']),
+                        idEvent = item['idEvent'],
+                        video_id = item['strVideo'],
+                        is_finished=is_finished,
+                    )
+                    match_event.save()
 
         self.stdout.write(self.style.SUCCESS("Competitions and events populated successfully"))
