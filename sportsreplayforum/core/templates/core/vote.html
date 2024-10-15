@@ -1,7 +1,7 @@
 {% load event_tags %}
 
 <div id="vote-container" {% if not request.user.is_superuser and request.user in event.rating.voters.all %}style="display: none;"{% endif %}>
-    <h3>Vote</h3>
+    <h4>Vote</h4>
     {% if event|is_past %}
         {% if request.user.is_authenticated %}
             <form method="post" action="{% url 'core:vote' event.id %}">
