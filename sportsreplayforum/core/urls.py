@@ -11,4 +11,5 @@ urlpatterns = [
     path('events/<int:event_id>/', views.event, name='event'),
     path('events/<int:event_id>/vote/', views.vote, name='vote'),
     path('replay_platforms/', views.replay_platforms, name='replay_platforms'),
+    path('search/', views.search, name='search'),
 ]

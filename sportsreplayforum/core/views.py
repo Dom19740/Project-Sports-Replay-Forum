@@ -7,8 +7,8 @@ from .models import Competition, Event, Rating
 from datetime import timedelta
 
 TITLES = {
-    'Formula 1': 'FIA F1 WORLD CHAMPIONSHIP',
-    'UEFA Nations League': 'UEFA NATIONS LEAGUE',
+    'Formula 1': 'FIA F1 World Championship',
+    'UEFA Nations League': 'UEFA Nations League',
     'English Womens Super League': 'Womens Super League',
     'English Premier League': 'Premier League',
     'MotoGP': 'MotoGP',
@@ -213,3 +213,19 @@ def sign_up(request):
         next_url = request.GET.get('next')
         form = RegisterForm()
     return render(request, 'core/register.html', {'form': form, 'next': next_url})
+
+
+def search(request):
+    q = request.GET.get('q')
+    if q:
+        competitions = Competition.objects.filter(name__icontains=q)
+        events = Event.objects.filter(event_type__icontains=q)
+    else:
+        competitions = Competition.objects.none()
+        events = Event.objects.none()
+
+    return render(request, 'core/search_results.html', {
+        'competitions': competitions,
+        'events': events,
+        'query': q,
+    })
