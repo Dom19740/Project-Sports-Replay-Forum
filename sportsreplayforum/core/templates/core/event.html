@@ -13,7 +13,7 @@
             {% if title == "FIA F1 WORLD CHAMPIONSHIP" %}
                 {{ event.date_time|date:"j M" }} - {{ event.event_type|title }}
             {% else %}
-                {{ event.event_type|title }} - {{ event.date_time|time:"H:i" }}
+                {{ event.event_type|title }}
             {% endif %}
         </h2>
     </div>
