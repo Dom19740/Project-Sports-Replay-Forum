@@ -148,6 +148,9 @@ def vote(request, event_id):
 
     return redirect('core:event', event_id=event_id)
 
+def replay_platforms(request):
+    return render(request, 'core/replay_platforms.html')
+
 
 def sign_in(request):
 
