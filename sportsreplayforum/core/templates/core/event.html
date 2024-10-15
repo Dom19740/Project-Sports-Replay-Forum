@@ -5,17 +5,17 @@
 <div class="container">
     <div>
         <br>
-        <h1>{{ title }} - {{ event.event_list.name }}</h1>
+        <h2>{{ title }} - {{ event.event_list.name }}</h2>
 
         <p><a href="{% url 'core:event_list' event.event_list.id %}">BACK TO EVENTS</a></p>
 
-        <h2>
+        <h3>
             {% if title == "FIA F1 World Championship" %}
                 {{ event.date_time|date:"j M" }} - {{ event.event_type|title }}
             {% else %}
                 {{ event.event_type|title }}
             {% endif %}
-        </h2>
+        </h3>
     </div>
 
     {% include 'core/vote.html' %}

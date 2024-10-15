@@ -1,5 +1,5 @@
 <div class="results-container">
-    <h3>Results</h3>
+    <h4>Results</h4>
     {% if event.rating.voters.all|length == 0 %}
         <p>No one has voted yet</p>
         
@@ -7,14 +7,14 @@
     
         {% if event.rating.percentage >= 66 %}
             <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}%</p>
-            <h1>{{ rating_text.5 }}</h1>
+            <h2>{{ rating_text.5 }}</h2>
 
         {% elif event.rating.percentage >= 33 %}
             <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}%</p>
-            <h1>{{ rating_text.3 }}</h1>
+            <h2>{{ rating_text.3 }}</h2>
         {% else %}
             <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}%</p>
-            <h1>{{ rating_text.1 }}</h1>
+            <h2>{{ rating_text.1 }}</h2>
         {% endif %}
         
         <p>Rating Breakdown</p>
