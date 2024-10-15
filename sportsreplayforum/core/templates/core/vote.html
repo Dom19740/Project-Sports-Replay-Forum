@@ -1,6 +1,8 @@
+{% load event_tags %}
+
 <div id="vote-container" {% if not request.user.is_superuser and request.user in event.rating.voters.all %}style="display: none;"{% endif %}>
     <h3>Vote</h3>
-    {% if event.is_finished %}
+    {% if event|is_past %}
         {% if request.user.is_authenticated %}
             <form method="post" action="{% url 'core:vote' event.id %}">
             {% csrf_token %}
@@ -20,7 +22,7 @@
             </nav>
         {% endif %}
     {% else %}
-        <p>Voting and Results shown when event is completed</p>
+        <p>Voting is available 45 minutes after the events starts</p>
     {% endif %}
 </div>
 <div id="voted-container" {% if request.user in event.rating.voters.all %}style="display: block;"{% else %}style="display: none;"{% endif %}>
