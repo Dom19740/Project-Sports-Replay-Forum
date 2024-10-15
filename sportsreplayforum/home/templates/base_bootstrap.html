@@ -17,6 +17,8 @@
     <meta name="dj4e-version" content="2022-11-01">
 
     {% block head %} {% endblock %}
+
+    
 </head>
 <body>
 
@@ -36,10 +38,12 @@
 
 
     {% block search %}
+
     <br>
-    <form method="get" action="{% url 'core:search' %}">
-        <input type="text" name="q" placeholder="Search for competitions and events...">
-        <button type="submit">Search</button>
+    <form method="get" action="{% url 'core:search' %}" class="d-inline-flex">
+        <input type="text" name="q" placeholder="Search for competitions and events..." class="form-control" style="width: 500px;">
+        &nbsp;&nbsp;
+        <button type="submit" class="btn btn-primary ml-2">Search</button>
     </form>
     
     {% endblock %}
