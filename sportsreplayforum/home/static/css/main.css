@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-	--dark-purple: #1e1c45 ;
+	--dark-purple: #343079 ;
 	--light-purple: #ac3fd0;
 	--five-star-pink: #ee35b9;
 	--four-star-burnt: #f37484;
@@ -12,11 +12,20 @@
     --light-grey: #b6b6b6;
 }
 
+
+/* 1. Buttons */
 .btn-primary {
     background-color: var(--light-purple);
     border-color: var(--light-purple);
 }
 
+.btn-primary:hover {
+    background-color: var(--dark-purple);
+    border-color: var(--dark-purple);
+  }
+
+
+/* 2. Navbar */
 .navbar-dark {
     background-color: var(--dark-purple) !important;
 }
@@ -28,3 +37,15 @@
 .nav-link:hover {
     color: var(--light-grey) !important;
   }
+
+
+/* 2. Search */
+.search-input {
+width: 500px;
+}
+
+/* 3. Register */
+.form-field {
+    width: 300px;
+    margin-top: 10px;
+}

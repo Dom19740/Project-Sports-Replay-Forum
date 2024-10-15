@@ -1,6 +1,7 @@
 {% extends 'base_menu.html' %}
 
 {% block content %}
+<div class="container">
     <br>
     <h2>Search Results</h2>
     <p>You searched for: {{ query }}</p>
@@ -22,4 +23,5 @@
             <li>No events found.</li>
         {% endfor %}
     </ul>
+</div>
 {% endblock %}
