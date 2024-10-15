@@ -5,11 +5,15 @@ from .models import Competition, Event, Rating
 @admin.register(Competition)
 class CompetitionAdmin(admin.ModelAdmin):
     list_display = ('league', 'name', 'date')
+    list_filter = ('league', 'name', 'date')
+
 
 # Register the Event model
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     list_display = ('event_type', 'event_list', 'date_time', 'idEvent', 'video_id', 'is_finished')
+    list_filter = ('event_type', 'event_list', 'date_time', 'is_finished')
+
 
 # Register the Rating model (optional, just for viewing in admin)
 @admin.register(Rating)
