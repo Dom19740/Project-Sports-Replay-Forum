@@ -17,7 +17,7 @@ eventsseason.php?id=
 
 """
 
-response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4429}")
+response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4328}")
 
 
 if response.status_code == 200:

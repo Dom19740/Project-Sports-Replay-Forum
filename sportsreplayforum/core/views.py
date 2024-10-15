@@ -4,8 +4,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
 from .forms import LoginForm, RegisterForm
 from .models import Competition, Event, Rating
-from datetime import datetime
-
 
 TITLES = {
     'Formula 1': 'FIA F1 WORLD CHAMPIONSHIP',
@@ -103,7 +101,7 @@ def competition_schedule(request):
             else:
                 past_competitions.append(competition)
 
-    upcoming_competitions.sort(key=lambda x: x.start_date) 
+    upcoming_competitions.reverse()
 
     return render(request, 'core/competition_schedule.html', {
         'title': title,
