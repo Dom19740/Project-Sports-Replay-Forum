@@ -12,7 +12,7 @@
             {% for competition in past_competitions %}
                 <li>
                     <a href="{% url 'core:event_list' competition.id %}">
-                        {% if title == "FIA F1 WORLD CHAMPIONSHIP" %}
+                        {% if title == "FIA F1 World Championship" %}
                             {{ competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - 
                         {% elif title == "MotoGP" %}
                             {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} -
@@ -31,7 +31,7 @@
             {% for competition in upcoming_competitions %}
                 <li>
                     <a href="{% url 'core:event_list' competition.id %}">
-                        {% if title == "FIA F1 WORLD CHAMPIONSHIP" %}
+                        {% if title == "FIA F1 World Championship" %}
                             {{ competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - 
                         {% elif title == "MotoGP" %}
                             {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} -

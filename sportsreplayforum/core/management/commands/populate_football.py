@@ -19,7 +19,7 @@ class Command(BaseCommand):
 
         # Fetch the data from the API
         try:
-            response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4490}")
+            response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4328}")
             response.raise_for_status()
         except requests.exceptions.RequestException as e:
             raise CommandError(f'Failed to fetch data from the API: {e}')
@@ -31,7 +31,7 @@ class Command(BaseCommand):
         for item in data:
 
             date_obj = datetime.strptime(item['dateEvent'], "%Y-%m-%d")
-            competition_name = f"Matchday - {date_obj.strftime('%A %d %b')}"
+            competition_name = date_obj.strftime('%A %d %b')
             competition_date = parser.isoparse(item['strTimestamp']).date()
 
             # Check if competition already exists
@@ -70,4 +70,5 @@ class Command(BaseCommand):
             if created:
                 match_event.save()
 
-        self.stdout.write(self.style.SUCCESS("Competitions and events populated successfully"))
+        self.stdout.write(self.style.SUCCESS(f"{item['strLeague']} populated successfully"))
+ 

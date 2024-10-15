@@ -15,7 +15,7 @@
                 {% for event in event_group.events %}
                     <li>
                         <a href="{% url 'core:event' event.id %}">
-                            {% if title == "FIA F1 WORLD CHAMPIONSHIP" %}
+                            {% if title == "FIA F1 World Championship" %}
                                 {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'j M H:i:s' }} UTC"></span>
                             {% else %}
                                 {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'j M H:i:s' }} UTC"></span>

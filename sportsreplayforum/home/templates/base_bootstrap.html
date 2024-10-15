@@ -29,10 +29,28 @@
                 <div class="alert alert-info">{{ message }}</div>
             {% endfor %}
         {% endif %}
+
+
+
+    {% endblock %}
+
+
+    {% block search %}
+    <br>
+    <form method="get" action="{% url 'core:search' %}">
+        <input type="text" name="q" placeholder="Search for competitions and events...">
+        <button type="submit">Search</button>
+    </form>
+    
     {% endblock %}
     {% block content %}
+
+
     {% endblock %}
 </div>
+
+
+
 {% block footer %} {% endblock %}
 
 <!-- jQuery -->
