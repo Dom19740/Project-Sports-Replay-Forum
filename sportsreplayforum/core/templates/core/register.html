@@ -1,24 +1,31 @@
 {% extends 'base_menu.html' %}
 
 {% block content %}
-
-<form method="POST" novalidate>
-	{% csrf_token %}
-	<h3>Sign Up</h3>
-		
-	{% for field in form %}
-	<p>
-		{% if field.errors %}
-		<ul class="errorlist">
-			{% for error in field.errors %}
-			<li>{{ error }}</li>
-			{% endfor %}
-		</ul>
-		{% endif %}
-	 	{{ field.label_tag }} {{ field }}
-	</p>
-	{% endfor %}
-	<input type="submit" value="Register" />
-</form>
-
-{% endblock content%}
+<div class="container">
+	<br>
+    <h2>WELCOME TO REPLAY HOT WATCH</h2>
+    <p>
+        A web application for sports fans to rate and discuss sports events, with a view to inform other users as to whether to watch the full replay or just highlights.
+    </p>
+  <form method="POST" novalidate>
+    {% csrf_token %}
+    <br>
+    <h2>Register for an account</h2>
+	<br>
+    {% for field in form %}
+    <div class="form-group">
+      <input type="text" name="{{ field.name }}" class="form-control form-field" placeholder="{{ field.label }}">
+      {% if field.errors %}
+      <ul class="errorlist">
+        {% for error in field.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endfor %}
+    <br>
+    <button type="submit" class="btn btn-primary ml-2">Register</button>
+  </form>
+</div>
+{% endblock content %}
