@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'sports.wsl.apps.WslConfig',
     'sports.premier.apps.PremierConfig',
     'sports.motogp.apps.MotogpConfig',
+    'sports.worldcup.apps.WorldcupConfig',
 
     # Extensions - installed with requirements.txt
     'django_extensions', 
@@ -129,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Dubai'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

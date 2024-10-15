@@ -13,6 +13,7 @@ TITLES = {
     'English Womens Super League': 'Womens Super League',
     'English Premier League': 'Premier League',
     'MotoGP': 'MotoGP',
+    'FIFA World Cup': 'FIFA World Cup'
 }
 
 
