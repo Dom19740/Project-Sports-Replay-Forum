@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
 from .forms import LoginForm, RegisterForm
 from .models import Competition, Event, Rating
+from datetime import timedelta
 
 TITLES = {
     'Formula 1': 'FIA F1 WORLD CHAMPIONSHIP',
@@ -117,8 +118,11 @@ def event_list(request, competition_id):
     upcoming_events = []
     past_events = []
 
+    current_time = timezone.now()
+    threshold = timedelta(minutes=45)
+
     for event in events:
-        if event.is_finished:
+        if event.date_time + threshold <= current_time:
             past_events.append(event)
         else:
             upcoming_events.append(event)
