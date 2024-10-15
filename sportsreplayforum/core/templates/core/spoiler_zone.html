@@ -18,7 +18,7 @@
         <br>
         {% if video_id %}
             <a href="https://www.youtube.com/watch?v={{ video_id }}" title="Highlights" target="_blank" rel="noopener">
-                <img src="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg" style="width: 40%;" />
+                <img src="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg" style="width: 60%;" />
             </a>
         {% else %}
             <a href="https://www.youtube.com/results?search_query={{ event.event_type|title }} {{ event.date_time|date:'Y-m-d' }} highlights" title="Search YouTube" target="_blank" rel="noopener">
