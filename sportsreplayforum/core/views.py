@@ -125,6 +125,8 @@ def event_list(request, competition_id):
         else:
             upcoming_events.append(event)
 
+    upcoming_events.reverse()
+
     title = TITLES.get(competition.league, 'Unknown League')
 
     return render(request, 'core/event_list.html', {
