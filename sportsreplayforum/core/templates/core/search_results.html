@@ -5,7 +5,7 @@
     <h1>Search Results</h1>
     <p>You searched for: {{ query }}</p>
 
-    <h2>Competitions</h2>
+    <h3>Competitions</h3>
     <ul>
         {% for competition in competitions %}
             <li><a href="{% url 'core:event_list' competition.id %}?league={{ competition.league }}">{{ competition.league }} - {{ competition.name }}</a></li>
@@ -14,7 +14,7 @@
         {% endfor %}
     </ul>
 
-    <h2>Events</h2>
+    <h3>Events</h3>
     <ul>
         {% for event in events %}
             <li><a href="{% url 'core:event' event.id %}">{{ event.event_list.league }} - {{ event.event_list.name }} - {{ event.event_type }}</a></li>
