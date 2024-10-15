@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+	--dark-purple: #1e1c45 ;
+	--light-purple: #ac3fd0;
+	--five-star-pink: #ee35b9;
+	--four-star-burnt: #f37484;
+	--three-star-orange: #f6933f;
+    --two-star-ocean: #95d0bb;
+    --one-star-ice: #24e4e7;
+    --bright-white: #ffffff;
+    --light-grey: #b6b6b6;
+}
+
+.btn-primary {
+    background-color: var(--light-purple);
+    border-color: var(--light-purple);
+}
+
+.navbar-dark {
+    background-color: var(--dark-purple) !important;
+}
+
+.navbar-dark .nav-link {
+    color: var(--bright-white);
+}
+
+.nav-link:hover {
+    color: var(--light-grey) !important;
+  }
