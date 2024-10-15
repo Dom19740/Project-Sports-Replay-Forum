@@ -1,6 +1,8 @@
 
+{% load event_tags %}
+
 <h3>Spoiler Zone</h3>
-{% if event.is_finished %}
+{% if event|is_past %}
     <br>
     <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
