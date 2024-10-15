@@ -2,19 +2,22 @@ import requests
 import json
 
 """
+
 eventresults.php?id=1963827 = Singapore result
 eventresults.php?id=1963830 = USA results
 
 eventsseason.php?id=
- """
 
-'4490' """Nations League"""
-'4849' """WSL"""
-'4328' """Premier League"""
-'4380' """MotoGP"""
-'4407' """Moto GP"""
+4490 Nations League
+4849 WSL
+4328 Premier League
+4380 MotoGP
+4407 Moto GP
+4429 World Cup
 
-response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4490}")
+"""
+
+response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4429}")
 
 
 if response.status_code == 200:
