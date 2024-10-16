@@ -12,7 +12,7 @@ class CompetitionAdmin(admin.ModelAdmin):
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     list_display = ('event_list', 'date_time', 'get_league', 'event_type', 'idEvent', 'video_id', 'is_finished')
-    list_filter = ('event_list__league', 'event_type', 'date_time', 'is_finished')
+    list_filter = ('event_list__league', 'date_time', 'is_finished', 'event_type')
 
     def get_league(self, obj):
         return obj.event_list.league
