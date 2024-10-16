@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
     """
     4490 = UEFA Nations League
-    4849 = WSL
+    4849 = UEFA Champions League
     4328 = Premier League
     4429 = World Cup
     """

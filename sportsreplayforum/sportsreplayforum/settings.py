@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'sports.f1.apps.F1Config',
     'sports.nations.apps.NationsConfig',
-    'sports.wsl.apps.WslConfig',
+    'sports.champions.apps.ChampionsConfig',
     'sports.premier.apps.PremierConfig',
     'sports.motogp.apps.MotogpConfig',
     'sports.worldcup.apps.WorldcupConfig',
@@ -143,7 +143,7 @@ USE_TZ = True
 
 STATIC_URL = 'home/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'home/static'),
 ]
 
 # Add the settings below

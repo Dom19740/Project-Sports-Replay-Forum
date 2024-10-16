@@ -6,6 +6,15 @@
     <h2>Search Results</h2>
     <p>You searched for: {{ query }}</p>
 
+    <h4>Leagues</h4>
+    <ul>
+        {% for league, url in league_urls.items %}
+            <li><a href="{{ url }}">{{ league }}</a></li>
+        {% empty %}
+            <li>No leagues found.</li>
+        {% endfor %}
+    </ul>
+
     <h4>Competitions</h4>
     <ul>
         {% for competition in competitions %}

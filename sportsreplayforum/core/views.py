@@ -2,14 +2,16 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
+from django.urls import reverse
 from .forms import LoginForm, RegisterForm
 from .models import Competition, Event, Rating
 from datetime import timedelta
+import urllib
 
 TITLES = {
     'Formula 1': 'FIA F1 World Championship',
     'UEFA Nations League': 'UEFA Nations League',
-    'English Womens Super League': 'Womens Super League',
+    'English UEFA Champions League': 'UEFA Champions League',
     'English Premier League': 'Premier League',
     'MotoGP': 'MotoGP',
     'FIFA World Cup': 'FIFA World Cup'
@@ -215,17 +217,60 @@ def sign_up(request):
     return render(request, 'core/register.html', {'form': form, 'next': next_url})
 
 
+# Define your search terms globally or in the view
+search_terms = {
+    'f1': ['formula 1'],
+    'football': ['premier', 'nations', 'champions'],
+    'motorsport': ['motogp', 'formula 1'],
+}
+
+search_terms['motor'] = search_terms['motorsport']
+
+
 def search(request):
     q = request.GET.get('q')
     if q:
-        competitions = Competition.objects.filter(name__icontains=q)
-        events = Event.objects.filter(event_type__icontains=q)
+        # Check if the query matches any of the predefined search terms
+        if q.lower() in search_terms:
+            # Use the corresponding terms for querying
+            search_keywords = search_terms[q.lower()]
+        else:
+            # If no predefined term is found, use the query directly
+            search_keywords = [q]
+
+        # Query the database for each search keyword
+        competitions = Competition.objects.filter(
+            name__icontains=search_keywords[0]
+        )
+        for term in search_keywords[1:]:
+            competitions |= Competition.objects.filter(name__icontains=term)
+
+        events = Event.objects.filter(
+            event_type__icontains=search_keywords[0]
+        )
+        for term in search_keywords[1:]:
+            events |= Event.objects.filter(event_type__icontains=term)
+
+        leagues = Competition.objects.filter(
+            league__icontains=search_keywords[0]
+        ).values('league').distinct()
+        for term in search_keywords[1:]:
+            leagues |= Competition.objects.filter(league__icontains=term).values('league').distinct()
+
+        # Generate league URLs
+        league_urls = {}
+        for league in leagues:
+            league_name = league['league']
+            league_urls[league_name] = reverse('core:competition_schedule') + '?league=' + urllib.parse.quote(league_name)
     else:
         competitions = Competition.objects.none()
         events = Event.objects.none()
+        leagues = Competition.objects.none()
+        league_urls = {}
 
     return render(request, 'core/search_results.html', {
         'competitions': competitions,
         'events': events,
+        'league_urls': league_urls,
         'query': q,
     })
