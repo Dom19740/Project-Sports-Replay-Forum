@@ -18,7 +18,7 @@ eventsseason.php?id=
 """
 
 
-url = "https://www.thesportsdb.com/api/v2/json/livescore.php"
+url = "https://www.thesportsdb.com/api/v2/json/schedule/league/4370/2024"
 api_key = 449702
 
 headers = {
@@ -27,27 +27,16 @@ headers = {
 }
 
 response = requests.get(url, headers = headers)
+data = response.json()
 
 if response.status_code == 200:
-    print(response.json())
-else:
-    print(f"Request failed with status code: {response.status_code}")
-
-
-"""
-response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id=4328")
-
-
-if response.status_code == 200:
-    # Convert the response to JSON format
-    data = response.json()
     print(data)
 
-    # Save the JSON data to a file
     with open("TEST_api.json", "w") as json_file:
         
         json.dump(data, json_file, indent=4)  # 'indent=4' formats the JSON for readability
     
     print("JSON data saved successfully!")
     
-    """
+else:
+    print(f"Request failed with status code: {response.status_code}")
