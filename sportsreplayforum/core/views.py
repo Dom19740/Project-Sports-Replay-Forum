@@ -8,6 +8,7 @@ from .models import Competition, Event, Rating
 from datetime import timedelta
 import urllib
 
+# db league names converted to Titles  
 TITLES = {
     'Formula 1': 'FIA F1 World Championship',
     'UEFA Nations League': 'UEFA Nations League',
@@ -18,11 +19,9 @@ TITLES = {
 }
 
 
-def competition_schedule(request):
+def competition_schedule(request, league):
 
     today = timezone.now()
-    league = request.GET.get('league')
-
     title = TITLES.get(league, 'Unknown League')
 
     competitions = Competition.objects.order_by('-date').filter(league=league)
