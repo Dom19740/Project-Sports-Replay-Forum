@@ -10,7 +10,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         # Fetch the data from the API
         try:
-            response = requests.get("https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id=4370&s=2024")
+            response = requests.get("https://www.thesportsdb.com/api/v2/json/449702/eventsseason.php?id=4370&s=2024")
             response.raise_for_status()
         except requests.exceptions.RequestException as e:
             raise CommandError(f'Failed to fetch data from the API: {e}')
