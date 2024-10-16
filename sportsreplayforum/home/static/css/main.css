@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-	--dark-purple: #343079 ;
+	--dark-purple: #2c2640 ;
 	--light-purple: #ac3fd0;
 	--five-star-pink: #ee35b9;
 	--four-star-burnt: #f37484;
@@ -9,7 +9,8 @@
     --two-star-ocean: #95d0bb;
     --one-star-ice: #24e4e7;
     --bright-white: #ffffff;
-    --light-grey: #ffedc3;
+    --light-orange: #ffedc3;
+    --light-grey: #d9d9d9;
 }
 
 
@@ -52,9 +53,9 @@
 
 /* 4. Checkbox */
 .form-check-input[type="checkbox"] {
-    background-color: #ccc;
+    background-color: var(--light-grey);
 }
   
   .form-check-input[type="checkbox"]:checked {
-    background-color: var(--dark-purple);
+    background-color: var(--light-purple);
 }
