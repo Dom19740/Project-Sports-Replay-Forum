@@ -12,9 +12,13 @@
     --light-orange: #ffedc3;
     --light-grey: #d9d9d9;
 }
+/* General */
 
+body {
+    overflow-y: scroll;
+}
 
-/* 1. Buttons */
+/* Buttons */
 .btn-primary {
     background-color: var(--dark-purple);
     border-color: var(--dark-purple);
@@ -26,7 +30,7 @@
 }
 
 
-/* 2. Navbar */
+/* Navbar */
 .navbar-dark {
     background-color: var(--dark-purple) !important;
 }
@@ -40,18 +44,18 @@
 }
 
 
-/* 2. Search */
+/* Search */
 .search-input {
     width: 100px;
 }
 
-/* 3. Register */
+/* Register */
 .form-field {
     width: 300px;
     margin-top: 10px;
 }
 
-/* 4. Checkbox */
+/* Checkbox */
 .form-check-input[type="checkbox"] {
     background-color: var(--light-grey);
 }
@@ -60,7 +64,7 @@
     background-color: var(--light-purple);
 }
 
-/* 5. Form fields */
+/* Form fields */
 .form-control:focus {
     outline: 2px solid var(--five-star-pink);
 }
