@@ -49,6 +49,7 @@ def competition_schedule(request, league):
         'title': title,
         'upcoming_competitions': upcoming_competitions,
         'past_competitions': past_competitions,
+        'league': league,
     })
 
 
@@ -78,7 +79,8 @@ def event_list(request, competition_id):
             {'type': 'Upcoming', 'events': upcoming_events},
         ],
         'competition': competition,
-        'title': title
+        'title': title,
+        'league': competition.league,
     })
 
 
