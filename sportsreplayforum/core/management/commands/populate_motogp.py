@@ -9,7 +9,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # Fetch the data from the API
-        response = requests.get("https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id=4407")
+        response = requests.get("https://www.thesportsdb.com/api/v1/json/449702/eventsseason.php?id=4407")
 
         # Check if the request was successful
         if response.status_code != 200:
