@@ -9,7 +9,7 @@ eventresults.php?id=1963830 = USA results
 eventsseason.php?id=
 
 4490 Nations League
-4849 WSL
+4849 UEFA Champions League
 4328 Premier League
 4380 MotoGP
 4407 Moto GP
