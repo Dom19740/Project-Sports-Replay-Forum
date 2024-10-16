@@ -65,4 +65,4 @@ class Command(BaseCommand):
             if created:
                 race_event.save()
 
-        self.stdout.write(self.style.SUCCESS("Competitions and events populated successfully"))
+        self.stdout.write(self.style.SUCCESS("MotoGP events populated successfully"))
