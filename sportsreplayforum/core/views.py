@@ -192,7 +192,7 @@ def sign_in(request):
 def sign_out(request):
     logout(request)
     next_url = request.GET.get('next')
-    print(f"Next URL: {next_url}")  # Add this line to print the next URL
+    messages.success(request, 'You have logged out successfully.')
     if next_url:
         return redirect(next_url)
     else:
