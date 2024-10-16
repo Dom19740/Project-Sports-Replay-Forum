@@ -41,6 +41,9 @@ def competition_schedule(request):
             else:
                 past_competitions.append(competition)
 
+    upcoming_competitions = upcoming_competitions[:5]
+    past_competitions = past_competitions[:25]
+
     upcoming_competitions.reverse()
 
     return render(request, 'core/competition_schedule.html', {
@@ -72,7 +75,7 @@ def event_list(request, competition_id):
 
     return render(request, 'core/event_list.html', {
         'events_combined': [
-            {'type': 'Results', 'events': past_events},
+            {'type': 'Past', 'events': past_events},
             {'type': 'Upcoming', 'events': upcoming_events},
         ],
         'competition': competition,
