@@ -204,7 +204,7 @@ def sign_up(request):
             user.username = user.username.lower()
             user.save()
             user.backend = 'django.contrib.auth.backends.ModelBackend'
-            messages.success(request, 'You have signed up successfully.')
+            messages.success(request, 'You have registered up successfully.')
             login(request, user)
             next_url = request.GET.get('next')
             if next_url:
