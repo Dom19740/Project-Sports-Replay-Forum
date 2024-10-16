@@ -40,10 +40,11 @@ def competition_schedule(request, league):
             else:
                 past_competitions.append(competition)
 
-    upcoming_competitions = upcoming_competitions[:5]
+    upcoming_competitions.reverse()
+
+    upcoming_competitions = upcoming_competitions[:6]
     past_competitions = past_competitions[:25]
 
-    upcoming_competitions.reverse()
 
     return render(request, 'core/competition_schedule.html', {
         'title': title,
