@@ -99,13 +99,16 @@ def event(request, event_id):
 
     title = TITLES.get(event.event_list.league, 'Unknown League')
 
-    total_votes = (
-        event.rating.five_stars + 
-        event.rating.four_stars + 
-        event.rating.three_stars + 
-        event.rating.two_stars + 
-        event.rating.one_star
-    )
+    try:
+        total_votes = (
+            event.rating.five_stars + 
+            event.rating.four_stars + 
+            event.rating.three_stars + 
+            event.rating.two_stars + 
+            event.rating.one_star
+        )
+    except Event.rating.RelatedObjectDoesNotExist:
+        total_votes = 0
 
     return render(request, 'core/event.html', {
         'event': event,
