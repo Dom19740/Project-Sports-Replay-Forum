@@ -99,6 +99,14 @@ def event(request, event_id):
 
     title = TITLES.get(event.event_list.league, 'Unknown League')
 
+    total_votes = (
+        event.rating.five_stars + 
+        event.rating.four_stars + 
+        event.rating.three_stars + 
+        event.rating.two_stars + 
+        event.rating.one_star
+    )
+
     return render(request, 'core/event.html', {
         'event': event,
         'rating_text': rating_text,
@@ -106,6 +114,7 @@ def event(request, event_id):
         'title': title,
         'timezone': timezone,
         'timedelta': timedelta,
+        'total_votes': total_votes
     })
 
 
