@@ -265,16 +265,23 @@ def search(request):
         league_urls = {}
         for league in leagues:
             league_name = league['league']
-            league_urls[league_name] = reverse('core:competition_schedule') + '?league=' + urllib.parse.quote(league_name)
+            league_urls[league_name] = reverse('core:competition_schedule', kwargs={'league': league_name})
+
+        # Pass a default league argument to the template
+        league = None
+        if leagues:
+            league = leagues[0]['league']
     else:
         competitions = Competition.objects.none()
         events = Event.objects.none()
         leagues = Competition.objects.none()
         league_urls = {}
+        league = None
 
     return render(request, 'core/search_results.html', {
         'competitions': competitions,
         'events': events,
         'league_urls': league_urls,
         'query': q,
+        'league': league,  # Pass the league argument to the template
     })
