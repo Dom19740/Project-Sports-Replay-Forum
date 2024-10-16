@@ -18,7 +18,7 @@
         {% endif %}
         
         <p>Rating Breakdown - {{ total_votes }} votes</p>
-            <div style="width: 250px;"> <!-- Adjust the width as needed -->
+            <center<div style="width: 250px;"> <!-- Adjust the width as needed -->
                 <canvas id="ratingChart" width="250" height="250"></canvas> <!-- Set width and height -->
             </div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -50,9 +50,10 @@
                         }]
                     },
                     options: {
+                        responsive: false,
                         title: {
                             display: true,
-                            text: 'Rating Distribution'
+                            text: 'Rating Distribution',
                         }
                     }
                 });
