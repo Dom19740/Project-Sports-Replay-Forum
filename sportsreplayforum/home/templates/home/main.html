@@ -4,11 +4,9 @@
 
 <div class="container">
     <br>
-    <h2>WELCOME TO REPLAY HOT WATCH</h2>
-    <p>
-        A web application for sports fans to rate and discuss sports events, with a view to inform other users as to whether to watch the full replay or just highlights.
-    </p>
 
+    {% include 'core/welcome.html' %}
+    
     {% if user.is_authenticated %}
     <!-- do nothing -->
     {% else %}
