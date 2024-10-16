@@ -6,7 +6,8 @@
     <br>
     <h2>{{ title }} - {{ competition.name }}</h2>
 
-    <p>EVENTS</p>
+    <p><a href="{% url 'core:competition_schedule' league=league %}">Back to EVENT SCHEDULE</a></p>
+
     <div class="events-container">
         {% for event_group in events_combined %}
         <div class="events-container">
