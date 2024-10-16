@@ -17,7 +17,25 @@ eventsseason.php?id=
 
 """
 
-response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4328}")
+
+url = "https://www.thesportsdb.com/api/v2/json/livescore.php"
+api_key = 449702
+
+headers = {
+    "X-API-KEY": f"{api_key}",
+    "Content-Type": "application/json"
+}
+
+response = requests.get(url, headers = headers)
+
+if response.status_code == 200:
+    print(response.json())
+else:
+    print(f"Request failed with status code: {response.status_code}")
+
+
+"""
+response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id=4328")
 
 
 if response.status_code == 200:
@@ -32,3 +50,4 @@ if response.status_code == 200:
     
     print("JSON data saved successfully!")
     
+    """

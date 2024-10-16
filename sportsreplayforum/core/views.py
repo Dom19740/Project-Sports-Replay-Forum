@@ -11,7 +11,7 @@ import urllib
 TITLES = {
     'Formula 1': 'FIA F1 World Championship',
     'UEFA Nations League': 'UEFA Nations League',
-    'English UEFA Champions League': 'UEFA Champions League',
+    'UEFA Champions League': 'UEFA Champions League',
     'English Premier League': 'Premier League',
     'MotoGP': 'MotoGP',
     'FIFA World Cup': 'FIFA World Cup'

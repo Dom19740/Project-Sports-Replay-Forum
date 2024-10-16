@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
     """
     4490 = UEFA Nations League
-    4849 = UEFA Champions League
+    4480 = UEFA Champions League
     4328 = Premier League
     4429 = World Cup
     """
@@ -19,7 +19,7 @@ class Command(BaseCommand):
 
         # Fetch the data from the API
         try:
-            response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id={4328}")
+            response = requests.get(f"https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id=4480")
             response.raise_for_status()
         except requests.exceptions.RequestException as e:
             raise CommandError(f'Failed to fetch data from the API: {e}')
