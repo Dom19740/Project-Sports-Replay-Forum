@@ -8,13 +8,6 @@ import requests
 class Command(BaseCommand):
     help = 'Populate the database with Nations League competitions and events'
 
-    """
-    4490 = UEFA Nations League
-    4480 = UEFA Champions League
-    4328 = Premier League
-    4429 = World Cup
-    """
-
     def handle(self, *args, **kwargs):
         season_ids = {
             'UEFA Nations League': '4490',
