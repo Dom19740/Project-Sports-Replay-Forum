@@ -8,7 +8,6 @@ venv/
 .venv/
 
 # Django specific
-sportsreplayforum/staticfiles/
 db.sqlite3
 
 # Environment variables
