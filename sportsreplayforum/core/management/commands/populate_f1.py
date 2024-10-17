@@ -3,6 +3,7 @@ from django.utils import timezone
 from core.models import Competition, Event
 from dateutil import parser
 import requests, os
+from datetime import date #for testing
 
 class Command(BaseCommand):
     help = 'Populate the database with Formula 1 competitions and events'
@@ -14,20 +15,22 @@ class Command(BaseCommand):
             response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id=4370&s=2024")
             response.raise_for_status()
         except requests.exceptions.RequestException as e:
-
             raise CommandError(f'Failed to fetch data from the API: {e}')
 
         # Parse the JSON data
         data = response.json().get('events', [])
 
-        # Step 1: Create Competitions for events ending in "Prix"
-        for item in data:
+        # Get today's date for filtering purposes
+        today = timezone.now().date()
+        today = date(2024, 5, 4) #for testing
 
+        # Step 1: Create or update Competitions for events ending in "Prix"
+        for item in data:
             if item.get('strEvent') and item['strEvent'].endswith("Prix"):
                 competition_name = item['strEvent']
                 competition_date = parser.isoparse(item['strTimestamp']).date()
 
-                # Check if competition already exists
+                # Check if competition already exists, or create a new one
                 competition, created = Competition.objects.get_or_create(
                     name=competition_name,
                     date=competition_date,
@@ -36,16 +39,13 @@ class Command(BaseCommand):
                     }
                 )
 
-                if created:
-                    competition.save()
-
                 date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
                 is_finished = (
                     'Finished' in item['strStatus'] or
                     item.get('strVideo') != ""
                 )
 
-                # Create a race event for the competition
+                # Create or update the race event for the competition
                 race_event, created = Event.objects.get_or_create(
                     event_list=competition,
                     event_type='Race',
@@ -58,16 +58,12 @@ class Command(BaseCommand):
                 )
 
                 if not created:
-                    # Update the fields if the event already exists
-                    Event.objects.filter(pk=race_event.pk).update(
-                        video_id=item['strVideo'],
-                        is_finished=is_finished,
-                    )
-
-                if created:
+                    # If the event already exists, update the fields
+                    race_event.video_id = item['strVideo']
+                    race_event.is_finished = is_finished
                     race_event.save()
 
-        # Step 2: Create Events associated with each Competition
+        # Step 2: Create or update Events associated with each Competition (e.g., Qualifying, Sprint)
         for item in data:
             if item.get('strEvent'):
                 for competition in Competition.objects.all():
@@ -88,6 +84,7 @@ class Command(BaseCommand):
                             item.get('strVideo') != ""
                         )
 
+                        # Create or update the event
                         event, created = Event.objects.get_or_create(
                             event_list=competition,
                             event_type=event_type,
@@ -100,13 +97,9 @@ class Command(BaseCommand):
                         )
 
                         if not created:
-                            # Update the fields if the event already exists
-                            Event.objects.filter(pk=race_event.pk).update(
-                                video_id=item['strVideo'],
-                                is_finished=is_finished,
-                            )
-
-                        if created:
+                            # If the event already exists, update the fields
+                            event.video_id = item['strVideo']
+                            event.is_finished = is_finished
                             event.save()
 
-        self.stdout.write(self.style.SUCCESS("F1 events populated successfully"))
+        self.stdout.write(self.style.SUCCESS("F1 events populated and updated successfully"))
