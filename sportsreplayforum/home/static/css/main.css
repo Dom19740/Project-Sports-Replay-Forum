@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-	--dark-purple: #2c2640 ;
+	--dark-purple: #4f379c ;
 	--light-purple: #ac3fd0;
 	--five-star-pink: #ee35b9;
 	--four-star-burnt: #f37484;
@@ -11,6 +11,7 @@
     --bright-white: #ffffff;
     --light-orange: #ffedc3;
     --light-grey: #d9d9d9;
+    --dark-grey: #282828;
 }
 /* General */
 
@@ -32,7 +33,7 @@ body {
 
 /* Navbar */
 .navbar-dark {
-    background-color: var(--dark-purple) !important;
+    background-color: var(--dark-grey) !important;
 }
 
 .navbar-dark .nav-link {
