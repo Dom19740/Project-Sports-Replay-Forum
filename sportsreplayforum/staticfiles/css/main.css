@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+	--dark-purple: #4f379c ;
+	--light-purple: #ac3fd0;
+	--five-star-pink: #ee35b9;
+	--four-star-burnt: #f37484;
+	--three-star-orange: #f6933f;
+    --two-star-ocean: #95d0bb;
+    --one-star-ice: #24e4e7;
+    --bright-white: #ffffff;
+    --light-orange: #ffedc3;
+    --light-grey: #d9d9d9;
+    --dark-grey: #282828;
+}
+/* General */
+
+body {
+    overflow-y: scroll;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--dark-purple);
+    border-color: var(--dark-purple);
+}
+
+.btn-primary:hover {
+    background-color: var(--light-purple);
+    border-color: var(--light-purple);
+}
+
+
+/* Navbar */
+
+.navbar-brand img {
+    width: 40px;
+}
+
+.navbar-dark {
+    background-color: var(--dark-grey) !important;
+}
+
+.navbar-dark .nav-link {
+    color: var(--bright-white);
+}
+
+.nav-link:hover {
+    color: var(--light-grey) !important;
+}
+
+
+/* Search */
+.search-input {
+    width: 100px;
+}
+
+/* Register */
+.form-field {
+    width: 300px;
+    margin-top: 10px;
+}
+
+/* Checkbox */
+.form-check-input[type="checkbox"] {
+    background-color: var(--light-grey);
+}
+  
+  .form-check-input[type="checkbox"]:checked {
+    background-color: var(--light-purple);
+}
+
+/* Form fields */
+.form-control:focus {
+    outline: 2px solid var(--five-star-pink);
+}
