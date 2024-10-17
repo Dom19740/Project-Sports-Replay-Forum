@@ -32,8 +32,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-# project-sports-replay-forum.onrender.com
-ALLOWED_HOSTS = ['project-sports-replay-forum.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = ['hotwatchsports.onrender.com', '127.0.0.1']
 
 
 # Application definition
