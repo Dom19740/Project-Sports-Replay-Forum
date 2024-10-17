@@ -32,6 +32,11 @@ body {
 
 
 /* Navbar */
+
+.navbar-brand img {
+    width: 40px;
+}
+
 .navbar-dark {
     background-color: var(--dark-grey) !important;
 }
