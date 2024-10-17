@@ -13,9 +13,17 @@ TITLES = {
     'Formula 1': 'FIA F1 World Championship',
     'UEFA Nations League': 'UEFA Nations League',
     'UEFA Champions League': 'UEFA Champions League',
-    'English Premier League': 'Premier League',
+    'English Premier League': 'English Premier League',
     'MotoGP': 'MotoGP',
     'FIFA World Cup': 'FIFA World Cup'
+}
+
+RATINGS_TEXT = {
+    5: "Hot Watch! Definitely Worth Watching the Full Replay",
+    4: "",
+    3: "Mid temp! Worth Watching the Highlights",
+    2: "",
+    1: "Cold! Just Check Out the Results"
 }
 
 
@@ -87,13 +95,6 @@ def event_list(request, competition_id):
 
 def event(request, event_id):
     event = get_object_or_404(Event, id=event_id)
-    rating_text = {
-        5: "Hot! Definitely Worth Watching the Full Replay",
-        4: "",
-        3: "Mid temp! Worth Watching the Highlights",
-        2: "",
-        1: "Cold! Just Check the Results"
-    }
 
     video_id = event.video_id.split('=')[-1] if event.video_id else None
 
@@ -112,7 +113,7 @@ def event(request, event_id):
 
     return render(request, 'core/event.html', {
         'event': event,
-        'rating_text': rating_text,
+        'RATINGS_TEXT': RATINGS_TEXT,
         'video_id': video_id,
         'title': title,
         'timezone': timezone,
