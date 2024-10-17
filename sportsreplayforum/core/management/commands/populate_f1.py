@@ -2,15 +2,16 @@ from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from core.models import Competition, Event
 from dateutil import parser
-import requests
+import requests, os
 
 class Command(BaseCommand):
     help = 'Populate the database with Formula 1 competitions and events'
 
     def handle(self, *args, **kwargs):
         # Fetch the data from the API
+        api_key = os.getenv('API_KEY')
         try:
-            response = requests.get("https://www.thesportsdb.com/api/v1/json/449702/eventsseason.php?id=4370&s=2024")
+            response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id=4370&s=2024")
             response.raise_for_status()
         except requests.exceptions.RequestException as e:
 
