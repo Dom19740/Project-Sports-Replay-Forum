@@ -17,8 +17,8 @@ RUN pip install --upgrade pip \
 # Copy the project files
 COPY . /sportsreplayforum
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
+# Optionally copy already collected static files
+COPY ./staticfiles /sportsreplayforum/staticfiles  # Ensure this matches where you have collected them
 
 # Start the Gunicorn server
 ENTRYPOINT ["gunicorn", "sportsreplayforum.wsgi:application", "-b", "0.0.0.0:8000"]
