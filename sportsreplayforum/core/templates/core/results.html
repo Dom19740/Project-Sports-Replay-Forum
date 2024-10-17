@@ -7,14 +7,14 @@
     
         {% if event.rating.percentage >= 66 %}
             <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}%</p>
-            <h2>{{ rating_text.5 }}</h2>
+            <h2>{{ RATINGS_TEXT.5 }}</h2>
 
         {% elif event.rating.percentage >= 33 %}
             <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}%</p>
-            <h2>{{ rating_text.3 }}</h2>
+            <h2>{{ RATINGS_TEXT.3 }}</h2>
         {% else %}
             <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}%</p>
-            <h2>{{ rating_text.1 }}</h2>
+            <h2>{{ RATINGS_TEXT.1 }}</h2>
         {% endif %}
         
         <p>Rating Breakdown - {{ total_votes }} votes</p>

@@ -6,11 +6,11 @@
         {% if request.user.is_authenticated %}
             <form method="post" action="{% url 'core:vote' event.id %}">
             {% csrf_token %}
-            <input type="radio" name="stars" value="5" required> 5 stars - {{ rating_text.5 }}<br>
-            <input type="radio" name="stars" value="4"> 4 stars {{ rating_text.4 }}<br>
-                <input type="radio" name="stars" value="3"> 3 stars - {{ rating_text.3 }}<br>
-                <input type="radio" name="stars" value="2"> 2 stars {{ rating_text.2 }}<br>
-                <input type="radio" name="stars" value="1"> 1 stars - {{ rating_text.1 }}<br>
+            <input type="radio" name="stars" value="5" required> 5 stars - {{ RATINGS_TEXT.5 }}<br>
+            <input type="radio" name="stars" value="4"> 4 stars {{ RATINGS_TEXT.4 }}<br>
+                <input type="radio" name="stars" value="3"> 3 stars - {{ RATINGS_TEXT.3 }}<br>
+                <input type="radio" name="stars" value="2"> 2 stars {{ RATINGS_TEXT.2 }}<br>
+                <input type="radio" name="stars" value="1"> 1 stars - {{ RATINGS_TEXT.1 }}<br>
                 <br>
                 <input type="submit" class="btn btn-primary text-white" value="Vote">
             </form>
