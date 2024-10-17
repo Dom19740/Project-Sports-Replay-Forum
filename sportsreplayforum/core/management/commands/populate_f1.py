@@ -20,10 +20,6 @@ class Command(BaseCommand):
         # Parse the JSON data
         data = response.json().get('events', [])
 
-        # Get today's date for filtering purposes
-        today = timezone.now().date()
-        today = date(2024, 5, 4) #for testing
-
         # Step 1: Create or update Competitions for events ending in "Prix"
         for item in data:
             if item.get('strEvent') and item['strEvent'].endswith("Prix"):
