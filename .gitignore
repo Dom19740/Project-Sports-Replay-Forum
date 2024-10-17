@@ -1,15 +1,15 @@
-venv/
-__pycache__/
+# Python
+*.pyc
+sportsreplayforum/home/__pycache__/
+sportsreplayforum/sportsreplayforum/home/__pycache__/
 
-sportsreplayforum/sportsreplayforum/__pycache__/settings.cpython-310.pyc
-sportsreplayforum/sportsreplayforum/__pycache__/urls.cpython-310.pyc
-sportsreplayforum/f1/__pycache__/__init__.cpython-310.pyc
-sportsreplayforum/f1/__pycache__/admin.cpython-310.pyc
-sportsreplayforum/f1/__pycache__/apps.cpython-310.pyc
-sportsreplayforum/f1/__pycache__/models.cpython-310.pyc
-sportsreplayforum/f1/__pycache__/urls.cpython-310.pyc
-sportsreplayforum/f1/__pycache__/views.cpython-310.pyc
-sportsreplayforum/f1/migrations/__pycache__/__init__.cpython-310.pyc
-sportsreplayforum/f1/migrations/__pycache__/0001_initial.cpython-310.pyc
-sportsreplayforum/sportsreplayforum/__pycache__/settings.cpython-310.pyc
-sportsreplayforum/sportsreplayforum/__pycache__/urls.cpython-310.pyc
+# Virtual Environment
+venv/
+.venv/
+
+# Django specific
+sportsreplayforum/staticfiles/
+db.sqlite3
+
+# Environment variables
+.env

@@ -23,7 +23,7 @@ RATINGS_TEXT = {
     4: "",
     3: "Mid temp! Worth Watching the Highlights",
     2: "",
-    1: "Cold! Just Check Out the Results"
+    1: "Not Watch! Just Check Out the Results"
 }
 
 

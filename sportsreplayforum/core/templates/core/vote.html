@@ -22,7 +22,7 @@
             </nav>
         {% endif %}
     {% else %}
-        <p>Voting is available 45 minutes after the events starts</p>
+        <p>Voting is available 45 minutes after the event starts</p>
     {% endif %}
 </div>
 <div id="voted-container" {% if request.user in event.rating.voters.all %}style="display: block;"{% else %}style="display: none;"{% endif %}>
