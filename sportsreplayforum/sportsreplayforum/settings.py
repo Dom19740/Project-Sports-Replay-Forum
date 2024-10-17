@@ -30,9 +30,9 @@ APP_NAME = 'Sports Replay Forum'
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['hotwatchsports.onrender.com']
 
 
 # Application definition
