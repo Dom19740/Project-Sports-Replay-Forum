@@ -308,8 +308,6 @@ logger = logging.getLogger(__name__)
 
 def run_populate_f1(request):
     token = request.GET.get('token', '')
-    logger.debug(f"Received token: {token}")
-    logger.debug(f"Expected token: {settings.API_PULL_TOKEN}")
 
     # Compare the token with the one stored in settings
     if token != settings.API_PULL_TOKEN:
@@ -321,6 +319,5 @@ def run_populate_f1(request):
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)})
     
-def check_token(request):
-    return JsonResponse({'token': settings.API_PULL_TOKEN})
+
 
