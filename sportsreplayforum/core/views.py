@@ -9,6 +9,7 @@ from django.conf import settings
 from .forms import LoginForm, RegisterForm
 from .models import Competition, Event, Rating
 from datetime import timedelta
+import logging
 
 
 # db league names converted to Titles  
@@ -303,9 +304,12 @@ def search(request):
         'league': league,  # Pass the league argument to the template
     })
 
+logger = logging.getLogger(__name__)
 
 def run_populate_f1(request):
     token = request.GET.get('token', '')
+    logger.debug(f"Received token: {token}")
+    logger.debug(f"Expected token: {settings.API_PULL_TOKEN}")
 
     # Compare the token with the one stored in settings
     if token != settings.API_PULL_TOKEN:
@@ -316,3 +320,7 @@ def run_populate_f1(request):
         return JsonResponse({'status': 'success', 'message': 'F1 data populated successfully'})
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)})
+    
+def check_token(request):
+    return JsonResponse({'token': settings.API_PULL_TOKEN})
+

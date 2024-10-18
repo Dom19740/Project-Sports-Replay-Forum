@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import run_populate_f1
+from .views import run_populate_f1, check_token
 from . import views
 
 app_name = 'core'
@@ -14,4 +14,5 @@ urlpatterns = [
     path('replay_platforms/', views.replay_platforms, name='replay_platforms'),
     path('search/', views.search, name='search'),
     path('run-f1-populate/', run_populate_f1, name='run_populate_f1'),
+    path('check_token/', check_token, name='check_token'),
 ]
