@@ -16,7 +16,7 @@
       {% if field.name == 'password1' or field.name == 'password2' %}
         <input type="password" name="{{ field.name }}" class="form-control form-field p-2" placeholder="{{ field.label }}" value="{{ field.value }}">
       {% else %}
-        <input type="text" name="{{ field.name }}" class="form-control form-field p-2" placeholder="{{ field.label }}" value="{{ field.value }}">
+        <input type="text" name="{{ field.name }}" class="form-control form-field p-2" placeholder="{{ field.label }}">
       {% endif %}
       {% if field.errors %}
         <ul class="errorlist">
