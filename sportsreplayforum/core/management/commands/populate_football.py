@@ -10,10 +10,10 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         season_ids = {
-            'UEFA Nations League': '4490',
+"""             'World Cup': '4429',
+            'UEFA Nations League': '4490', """
             'UEFA Champions League': '4480',
             'Premier League': '4328',
-            'World Cup': '4429'
         }
         for season_name, season_id in season_ids.items():
             # Fetch the data from the API
