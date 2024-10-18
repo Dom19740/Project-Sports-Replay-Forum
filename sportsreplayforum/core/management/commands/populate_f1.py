@@ -14,7 +14,7 @@ class Command(BaseCommand):
             response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id=4370&s=2024")
             response.raise_for_status()
         except requests.exceptions.RequestException as e:
-            raise CommandError(f'Failed to fetch data from the API: {e}')
+            raise CommandError(f'Failed to fetch F1 data from the API: {e}')
 
         # Parse the JSON data
         data = response.json().get('events', [])

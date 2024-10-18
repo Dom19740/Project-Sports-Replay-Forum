@@ -2,26 +2,25 @@ from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from core.models import Competition, Event
 from dateutil import parser
-import requests
+import requests, os
 
 class Command(BaseCommand):
     help = 'Populate the database with Formula 1 competitions and events'
 
     def handle(self, *args, **kwargs):
         # Fetch the data from the API
-        response = requests.get("https://www.thesportsdb.com/api/v1/json/449702/eventsseason.php?id=4407")
-
-        # Check if the request was successful
-        if response.status_code != 200:
-            self.stderr.write(self.style.ERROR("Failed to fetch data from the API"))
-            return
+        api_key = os.getenv('API_KEY')
+        try:
+            response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id=4407")
+            response.raise_for_status()
+        except requests.exceptions.RequestException as e:
+            raise CommandError(f'Failed to fetch MotoGP data from the API: {e}')
 
         # Parse the JSON data
         data = response.json().get('events', [])
 
         # Step 1: Create Competitions for events ending in "Prix"
         for item in data:
-        
             competition_name = item['strEvent']
             competition_date = parser.isoparse(item['strTimestamp']).date()
 
@@ -33,9 +32,6 @@ class Command(BaseCommand):
                     'league': item['strLeague'],
                 }
             )
-
-            if created:
-                competition.save()
 
             date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
             is_finished = (
@@ -56,13 +52,9 @@ class Command(BaseCommand):
             )
 
             if not created:
-                # Update the fields if the event already exists
-                Event.objects.filter(pk=race_event.pk).update(
-                    video_id=item['strVideo'],
-                    is_finished=is_finished,
-                )
-
-            if created:
+                # If the event already exists, update the fields
+                race_event.video_id = item['strVideo']
+                race_event.is_finished = is_finished
                 race_event.save()
 
         self.stdout.write(self.style.SUCCESS("MotoGP events populated successfully"))

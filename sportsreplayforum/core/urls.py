@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import run_populate_f1, check_token
+from .views import run_populate
 from . import views
 
 app_name = 'core'
@@ -13,6 +13,7 @@ urlpatterns = [
     path('events/<int:event_id>/vote/', views.vote, name='vote'),
     path('replay_platforms/', views.replay_platforms, name='replay_platforms'),
     path('search/', views.search, name='search'),
-    path('run-f1-populate/', run_populate_f1, name='run_populate_f1'),
+    path('run-f1-populate/', lambda request: run_populate(request, 'populate_f1', 'F1 data populated successfully'), name='run_populate_f1'),
+    path('run-motogp-populate/', lambda request: run_populate(request, 'populate_motogp', 'MotoGP data populated successfully'), name='run_populate_motogp'),
+    path('run-football-populate/', lambda request: run_populate(request, 'populate_football', 'Football data populated successfully'), name='run_populate_football'),
 ]
-

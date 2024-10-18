@@ -3,7 +3,7 @@ from django.utils import timezone
 from core.models import Competition, Event
 from datetime import datetime
 from dateutil import parser
-import requests
+import requests, os
 
 class Command(BaseCommand):
     help = 'Populate the database with Nations League competitions and events'
@@ -17,8 +17,9 @@ class Command(BaseCommand):
         }
         for season_name, season_id in season_ids.items():
             # Fetch the data from the API
+            api_key = os.getenv('API_KEY')
             try:
-                response = requests.get(f"https://www.thesportsdb.com/api/v1/json/449702/eventsseason.php?id={season_id}")
+                response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id={season_id}")
                 response.raise_for_status()
             except requests.exceptions.RequestException as e:
                 raise CommandError(f'Error fetching data for {season_name}: {e}')
@@ -28,7 +29,6 @@ class Command(BaseCommand):
 
             # Step 1: Create Competitions for events by matchday
             for item in data:
-
                 date_obj = datetime.strptime(item['dateEvent'], "%Y-%m-%d")
                 competition_name = date_obj.strftime('%A %d %b')
                 competition_date = parser.isoparse(item['strTimestamp']).date()
@@ -39,9 +39,6 @@ class Command(BaseCommand):
                     name=competition_name,
                     date=competition_date,
                 )
-
-                if created:
-                    competition.save()
 
                 date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
                 is_finished = (
@@ -61,12 +58,9 @@ class Command(BaseCommand):
                 )
 
                 if not created:
-                    # Update the fields if the event already exists
-                    Event.objects.filter(pk=match_event.pk).update(
-                        video_id=item['strVideo'],
-                        is_finished=is_finished,
-                    )
-                if created:
+                    # If the event already exists, update the fields
+                    match_event.video_id = item['strVideo']
+                    match_event.is_finished = is_finished
                     match_event.save()
 
             self.stdout.write(self.style.SUCCESS(f"{item['strLeague']} populated successfully"))
