@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'home.apps.HomeConfig',
     'core.apps.CoreConfig',
+    'accounts.apps.AccountsConfig',
     'news.apps.NewsConfig',
     'api.apps.ApiConfig',
     'sports.f1.apps.F1Config',
@@ -167,7 +168,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     )
 }
-
 
 
 LOGOUT_REDIRECT_URL = '/'

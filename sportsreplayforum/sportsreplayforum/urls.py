@@ -1,12 +1,13 @@
-import os
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.static import serve
+import os
 
 urlpatterns = [
     path('', include('home.urls')),
     path('admin/', admin.site.urls),
     path('core/', include('core.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
 
 # Serve the static HTML
