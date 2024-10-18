@@ -39,14 +39,14 @@
                         <a class="nav-link" href="#">Hi {{ user.username }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'core:logout' %}?next={{ request.path }}">Logout</a>
+                        <a class="nav-link" href="{% url 'accounts:logout' %}?next={{ request.path }}">Logout</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'core:login' %}?next={{ request.path }}">Login</a>
+                        <a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.path }}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'core:register' %}?next={{ request.path }}">Register</a>
+                        <a class="nav-link" href="{% url 'accounts:register' %}?next={{ request.path }}">Register</a>
                     </li>
                 {% endif %}
                 &nbsp;&nbsp;
