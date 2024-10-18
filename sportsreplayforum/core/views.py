@@ -3,10 +3,13 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
 from django.urls import reverse
+from django.http import JsonResponse
+from django.core.management import call_command
+from django.conf import settings
 from .forms import LoginForm, RegisterForm
 from .models import Competition, Event, Rating
 from datetime import timedelta
-import urllib
+
 
 # db league names converted to Titles  
 TITLES = {
@@ -299,3 +302,17 @@ def search(request):
         'query': q,
         'league': league,  # Pass the league argument to the template
     })
+
+
+def run_populate_f1(request):
+    token = request.GET.get('token', '')
+
+    # Compare the token with the one stored in settings
+    if token != settings.API_PULL_TOKEN:
+        return JsonResponse({'status': 'error', 'message': 'Invalid token'}, status=403)
+
+    try:
+        call_command('populate_f1')
+        return JsonResponse({'status': 'success', 'message': 'F1 data populated successfully'})
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)})
