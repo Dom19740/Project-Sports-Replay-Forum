@@ -3,7 +3,6 @@ from django.utils import timezone
 from core.models import Competition, Event
 from dateutil import parser
 import requests, os
-from datetime import date #for testing
 
 class Command(BaseCommand):
     help = 'Populate the database with Formula 1 competitions and events'
