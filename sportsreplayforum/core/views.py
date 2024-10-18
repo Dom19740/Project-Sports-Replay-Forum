@@ -306,7 +306,7 @@ def search(request):
 
 logger = logging.getLogger(__name__)
 
-def run_populate_f1(request):
+def run_populate(request, command, success_message):
     token = request.GET.get('token', '')
 
     # Compare the token with the one stored in settings
@@ -314,10 +314,7 @@ def run_populate_f1(request):
         return JsonResponse({'status': 'error', 'message': 'Invalid token'}, status=403)
 
     try:
-        call_command('populate_f1')
-        return JsonResponse({'status': 'success', 'message': 'F1 data populated successfully'})
+        call_command(command)
+        return JsonResponse({'status': 'success', 'message': success_message})
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)})
-    
-
-
