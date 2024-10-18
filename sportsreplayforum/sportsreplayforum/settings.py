@@ -31,7 +31,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 API_PULL_TOKEN = os.getenv('API_PULL_TOKEN', 'fallback-token')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['hotwatchsports.onrender.com', '127.0.0.1']
 
@@ -149,6 +149,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']  
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
