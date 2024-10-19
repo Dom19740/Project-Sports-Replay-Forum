@@ -83,10 +83,8 @@ def event_list(request, competition_id):
     title = TITLES.get(competition.league, 'Unknown League')
 
     return render(request, 'core/event_list.html', {
-        'events_combined': [
-            {'type': 'Past', 'events': past_events},
-            {'type': 'Upcoming', 'events': upcoming_events},
-        ],
+        'upcoming_events': upcoming_events,
+        'past_events': past_events,
         'competition': competition,
         'title': title,
         'league': competition.league,

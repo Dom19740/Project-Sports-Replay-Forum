@@ -9,11 +9,11 @@
     <p><a href="{% url 'core:competition_schedule' league=league %}">Back to EVENT SCHEDULE</a></p>
 
     <div class="events-container">
-        {% for event_group in events_combined %}
-        <div class="events-container">
-            <p>{{ event_group.type }}</p>
+
+        <div class="events-list-left">
+            <p>Past</p>
             <ul>
-                {% for event in event_group.events %}
+                {% for event in past_events %}
                     <li>
                         <a href="{% url 'core:event' event.id %}">
                             {% if title == "FIA F1 World Championship" %}
@@ -27,7 +27,24 @@
                 {% endfor %}
             </ul>
         </div>
-        {% endfor %}
+        <div class="events-list-right">
+            <p>Upcoming</p>
+            <ul>
+                {% for event in upcoming_events %}
+                    <li>
+                        <a href="{% url 'core:event' event.id %}">
+                            {% if title == "FIA F1 World Championship" %}
+                                {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
+                            {% else %}
+                                {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
+                            {% endif %}
+                        
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
     </div>
 </div>
 
