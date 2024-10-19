@@ -1,0 +1,33 @@
+<!-- accounts/templates/accounts/profile.html -->
+{% extends 'base_menu.html' %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <h2>Profile</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <!-- User Update Form -->
+        <h3>Update Profile</h3>
+        {{ user_form.as_p }}
+        <button type="submit">Update Profile</button>
+        
+        <hr>
+
+        <!-- Password Change Form -->
+        <h3>Change Password</h3>
+        {{ password_form.as_p }}
+        <button type="submit">Change Password</button>
+        
+        <hr>
+
+        <!-- Delete Account Form -->
+        <h3>Delete Account</h3>
+        {{ delete_form.as_p }}
+        <button type="submit" class="btn btn-danger">Delete Account</button>
+
+    </form>
+</div>
+{% endblock %}
