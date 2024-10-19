@@ -74,3 +74,20 @@ body {
 .form-control:focus {
     outline: 2px solid var(--five-star-pink);
 }
+
+
+/* Container for both events lists */
+.events-container {
+    display: flex;          /* Enables flexbox */
+    justify-content: space-between; /* Adds space between both lists */
+    gap: 20px;              /* Adds space between the lists */
+    margin-top: 20px;
+}
+
+.events-list-left, .events-list-right {
+    flex: 1;                /* Makes both lists take up equal space */
+    min-width: 300px;       /* Ensures the lists have a minimum width */
+}
+
+
+

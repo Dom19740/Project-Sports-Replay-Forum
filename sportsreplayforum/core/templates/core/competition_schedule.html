@@ -2,47 +2,49 @@
 
 {% block content %}
 
-<div class="container">
+<div>
     <br>
     <h2>{{ title }}</h2>
     <p>EVENT SCHEDULE</p>
-    <div class="event_list-container">
-        <p>Past</p>
-        <ul>
-            {% for competition in past_competitions %}
-                <li>
-                    <a href="{% url 'core:event_list' competition.id %}">
-                        {% if title == "FIA F1 World Championship" %}
-                            {{ competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - 
-                        {% elif title == "MotoGP" %}
-                            {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} -
-                        {% endif %}
-                        {{ competition.name }}
-                    </a>
-                </li>
-            {% empty %}
-                <li>No past events.</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="event_list-container">
-        <p>Upcoming</p>
-        <ul>
-            {% for competition in upcoming_competitions %}
-                <li>
-                    <a href="{% url 'core:event_list' competition.id %}">
-                        {% if title == "FIA F1 World Championship" %}
-                            {{ competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - 
-                        {% elif title == "MotoGP" %}
-                            {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} -
-                        {% endif %}
-                        {{ competition.name }}
-                    </a>
-                </li>
-            {% empty %}
-                <li>No upcoming events.</li>
-            {% endfor %}
-        </ul>
+    <div class="events-container">
+        <div class="events-list-left">
+            <p>Past</p>
+            <ul>
+                {% for competition in past_competitions %}
+                    <li>
+                        <a href="{% url 'core:event_list' competition.id %}">
+                            {% if title == "FIA F1 World Championship" %}
+                                {{ competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - 
+                            {% elif title == "MotoGP" %}
+                                {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} -
+                            {% endif %}
+                            {{ competition.name }}
+                        </a>
+                    </li>
+                {% empty %}
+                    <li>No past events.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="events-list-right">
+            <p>Upcoming</p>
+            <ul>
+                {% for competition in upcoming_competitions %}
+                    <li>
+                        <a href="{% url 'core:event_list' competition.id %}">
+                            {% if title == "FIA F1 World Championship" %}
+                                {{ competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - 
+                            {% elif title == "MotoGP" %}
+                                {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} -
+                            {% endif %}
+                            {{ competition.name }}
+                        </a>
+                    </li>
+                {% empty %}
+                    <li>No upcoming events.</li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </div>
 
