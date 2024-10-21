@@ -3,9 +3,7 @@
 <h4>Spoiler Zone</h4>
 {% if event|is_past %}
 
-    <br>
-    <a href="{% url 'core:replay_platforms' %}">Links to Replay Platforms</a>
-    <br>
+
     <br>
     <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
@@ -34,8 +32,11 @@
     <br>
     <div class="show-results-container" style="display: none;">
         <p><a href="https://www.thesportsdb.com/event/{{ event.idEvent }}" title="Results" target="_blank" rel="noopener">LINK TO RESULTS</a>
-        <p>Actual results on this page coming soon</p>
     </div>
+    <div>
+        <a href="{% url 'core:replay_platforms' %}">LINKS TO REPLAY PLATFORMS</a>
+    </div>
+    <br><br>
 
 <!--    <center>
             <p>Result List - </p>
