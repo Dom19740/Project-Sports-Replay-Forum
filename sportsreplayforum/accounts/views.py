@@ -47,26 +47,28 @@ def sign_out(request):
         return redirect('home')
     
 
-def sign_up(request):
-    next_url = request.GET.get('next')
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
+# Create your views here.
+def sign_up(response):
+    next_url = response.GET.get('next')
+    if response.method == "POST":
+        form = RegisterForm(response.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
-            user.backend = 'django.contrib.auth.backends.ModelBackend'
-            messages.success(request, 'You have registered and logged in successfully.')
-            login(request, user)
-            next_url = request.GET.get('next')
+            messages.success(response, f'Hi {user.username.title()}, you have registered and logged in successfully.')
+            login(response, user)
+            next_url = response.GET.get('next')
+
             if next_url:
                 return redirect(next_url)
             else:
                 return redirect('home')
     else:
-        next_url = request.GET.get('next')
+        next_url = response.GET.get('next')
         form = RegisterForm()
-    return render(request, 'accounts/register.html', {'form': form, 'next': next_url})
+
+    return render(response, "accounts/register.html", {'form': form, 'next': next_url})
 
 
 @login_required
