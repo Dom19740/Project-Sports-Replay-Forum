@@ -31,11 +31,6 @@ class RegisterForm(UserCreationForm):
         self.fields['password1'].widget.attrs['placeholder'] = 'Password'
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
 
-    def clean_username(self):
-        username = self.cleaned_data['username']
-        if User.objects.filter(username=username).exists():
-            self.add_error('username', 'Username already exists')
-        return username
 
     def clean_email(self):
         email = self.cleaned_data['email']

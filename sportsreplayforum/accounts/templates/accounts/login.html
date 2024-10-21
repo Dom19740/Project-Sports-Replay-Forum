@@ -6,29 +6,15 @@
   
   {% include 'core/welcome.html' %}
 
-  <form method="POST" novalidate>
+  {% load crispy_forms_tags %}
+  
+  <form method="POST" class="form-group form-field">
     {% csrf_token %}
     <br>
-    <h2>Login</h2>
-	<br>
-    {% for field in form %}
-    <div class="form-group">
-      {% if field.name == 'password' %}
-        <input type="password" name="{{ field.name }}" class="form-control form-field p-2" placeholder="{{ field.label }}">
-      {% else %}
-        <input type="text" name="{{ field.name }}" class="form-control form-field p-2" placeholder="{{ field.label }}">
-      {% endif %}
-      {% if field.errors %}
-      <ul class="errorlist">
-        {% for error in field.errors %}
-        <li>{{ error }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </div>
-    {% endfor %}
+    <h2>Log in</h2>
     <br>
+    {{ form|crispy }}
     <button type="submit" class="btn btn-primary ml-2">Login</button>
   </form>
-</div>
+  
 {% endblock content %}
