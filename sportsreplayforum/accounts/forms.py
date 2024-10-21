@@ -1,10 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
+from django.contrib.auth import get_user_model
 
-class LoginForm(forms.Form):
-    username = forms.CharField(max_length=65)
-    password = forms.CharField(max_length=65, widget=forms.PasswordInput)
 
 class RegisterForm(UserCreationForm):
     class Meta:
@@ -45,6 +43,32 @@ class RegisterForm(UserCreationForm):
             self.fields['password1'].widget.attrs['value'] = self.data.get('password1')
             self.fields['password2'].widget.attrs['value'] = self.data.get('password2')
         return cleaned_data
+    
+    
+
+from django import forms
+from django.contrib.auth.forms import AuthenticationForm
+
+class LoginForm(AuthenticationForm):
+    error_messages = {
+        'invalid_login': "Invalid credentials. Please check your username and password and try again.",
+        'inactive': "This account is inactive.",
+    }
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+
+        # Remove labels by setting them to an empty string
+        self.fields['username'].label = ''
+        self.fields['password'].label = ''
+
+        # Set placeholders
+        self.fields['username'].widget.attrs['placeholder'] = 'Username'
+        self.fields['password'].widget.attrs['placeholder'] = 'Password'
+
+
+
+
+
 
 
 

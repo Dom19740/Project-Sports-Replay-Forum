@@ -3,12 +3,13 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
-from .forms import LoginForm, RegisterForm, UserUpdateForm, DeleteUserForm
-
+from .forms import RegisterForm, UserUpdateForm, DeleteUserForm, LoginForm
 
 
 def sign_up(response):
+
     next_url = response.GET.get('next')
+
     if response.method == "POST":
         form = RegisterForm(response.POST)
         if form.is_valid():
@@ -31,35 +32,61 @@ def sign_up(response):
 
 
 def sign_in(request):
+    next_url = request.GET.get('next')
 
-    if request.method == 'GET':
-        if request.user.is_authenticated:
-            return redirect('home')
-
-        next_url = request.GET.get('next')
-        form = LoginForm()
-        return render(request,'accounts/login.html', {'form': form, 'next': next_url})
-    
-    elif request.method == 'POST':
-        form = LoginForm(request.POST)
-        
+    if request.method == "POST":
+        form = LoginForm(request, data=request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request,username=username,password=password)
-            if user:
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
                 login(request, user)
-                messages.success(request,f'Hi {username.title()}, welcome back!')
-                next_url = request.GET.get('next')
+                messages.success(request, f'Welcome back, {user.username.title()}!')
+
                 if next_url:
                     return redirect(next_url)
                 else:
                     return redirect('home')
-        
-        # If the form is not valid, log the error
-        messages.error(request,f'Invalid username or password')
-        return render(request,'accounts/login.html',{'form': form})
+            else:
+                messages.error(request, 'Invalid username or password.')
+
+    else:
+        form = LoginForm()
+
+    return render(request, 'accounts/login.html', {'form': form, 'next': next_url})
+
+
+
+""" def sign_in(response):
+    next_url = response.GET.get('next')
+
+    if response.method == "POST":
+        form = AuthenticationForm(data=response.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(response, username=username, password=password)
+
+            if user is not None:
+                login(response, user)
+                messages.success(response, f'Welcome back, {user.username.title()}! You are now logged in.')
+                
+                if next_url:
+                    return redirect(next_url)
+                else:
+                    return redirect('home')
+            else:
+                messages.error(response, 'Invalid username or password.')
+        else:
+            messages.error(response, 'Please correct the errors below.')
     
+    else:
+        form = AuthenticationForm()
+
+    return render(response, 'accounts/login.html', {'form': form, 'next': next_url})
+     """
 
 def sign_out(request):
     logout(request)
