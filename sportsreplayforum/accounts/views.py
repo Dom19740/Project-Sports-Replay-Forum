@@ -6,6 +6,30 @@ from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, RegisterForm, UserUpdateForm, DeleteUserForm
 
 
+
+def sign_up(response):
+    next_url = response.GET.get('next')
+    if response.method == "POST":
+        form = RegisterForm(response.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            messages.success(response, f'Hi {user.username.title()}, you have registered and logged in successfully.')
+            login(response, user)
+            next_url = response.GET.get('next')
+
+            if next_url:
+                return redirect(next_url)
+            else:
+                return redirect('home')
+    else:
+        next_url = response.GET.get('next')
+        form = RegisterForm()
+
+    return render(response, "accounts/register.html", {'form': form, 'next': next_url})
+
+
 def sign_in(request):
 
     if request.method == 'GET':
@@ -47,29 +71,7 @@ def sign_out(request):
         return redirect('home')
     
 
-# Create your views here.
-def sign_up(response):
-    next_url = response.GET.get('next')
-    if response.method == "POST":
-        form = RegisterForm(response.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.username = user.username.lower()
-            user.save()
-            messages.success(response, f'Hi {user.username.title()}, you have registered and logged in successfully.')
-            login(response, user)
-            next_url = response.GET.get('next')
-
-            if next_url:
-                return redirect(next_url)
-            else:
-                return redirect('home')
-    else:
-        next_url = response.GET.get('next')
-        form = RegisterForm()
-
-    return render(response, "accounts/register.html", {'form': form, 'next': next_url})
-
+# Create your views here
 
 @login_required
 def profile_view(request):
