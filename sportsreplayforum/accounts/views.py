@@ -58,47 +58,13 @@ def sign_in(request):
     return render(request, 'accounts/login.html', {'form': form, 'next': next_url})
 
 
-
-""" def sign_in(response):
-    next_url = response.GET.get('next')
-
-    if response.method == "POST":
-        form = AuthenticationForm(data=response.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(response, username=username, password=password)
-
-            if user is not None:
-                login(response, user)
-                messages.success(response, f'Welcome back, {user.username.title()}! You are now logged in.')
-                
-                if next_url:
-                    return redirect(next_url)
-                else:
-                    return redirect('home')
-            else:
-                messages.error(response, 'Invalid username or password.')
-        else:
-            messages.error(response, 'Please correct the errors below.')
-    
-    else:
-        form = AuthenticationForm()
-
-    return render(response, 'accounts/login.html', {'form': form, 'next': next_url})
-     """
-
 def sign_out(request):
     logout(request)
     next_url = request.GET.get('next')
     messages.success(request, 'You have logged out successfully.')
-    if next_url:
-        return redirect(next_url)
-    else:
-        return redirect('home')
-    
 
-# Create your views here
+    return redirect('home')
+    
 
 @login_required
 def profile_view(request):
