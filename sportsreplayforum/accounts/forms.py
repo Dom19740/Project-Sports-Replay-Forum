@@ -7,8 +7,6 @@ class LoginForm(forms.Form):
     password = forms.CharField(max_length=65, widget=forms.PasswordInput)
 
 class RegisterForm(UserCreationForm):
-    email = forms.EmailField()
-
     class Meta:
         model = User
         fields = ["username", "email", "password1", "password2"]
@@ -20,6 +18,10 @@ class RegisterForm(UserCreationForm):
         self.fields['email'].required = False
         self.fields['password1'].help_text = ''
         self.fields['password2'].help_text = ''
+        self.fields['username'].widget.attrs['placeholder'] = 'Username'
+        self.fields['email'].widget.attrs['placeholder'] = 'Email (optional)'
+        self.fields['password1'].widget.attrs['placeholder'] = 'Password'
+        self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
 
     def clean_username(self):
         username = self.cleaned_data['username']
@@ -40,7 +42,6 @@ class RegisterForm(UserCreationForm):
             self.fields['password1'].widget.attrs['value'] = self.data.get('password1')
             self.fields['password2'].widget.attrs['value'] = self.data.get('password2')
         return cleaned_data
-        
 
 
 
