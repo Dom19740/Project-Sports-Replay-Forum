@@ -11,13 +11,21 @@ class RegisterForm(UserCreationForm):
         model = User
         fields = ["username", "email", "password1", "password2"]
 
-        
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # Remove labels by setting them to an empty string
+        self.fields['username'].label = ''
+        self.fields['email'].label = ''
+        self.fields['password1'].label = ''
+        self.fields['password2'].label = ''
+
+        # Update help_text, placeholders, and other attributes
         self.fields['username'].help_text = ''
         self.fields['email'].required = False
         self.fields['password1'].help_text = ''
         self.fields['password2'].help_text = ''
+
+        # Set placeholders
         self.fields['username'].widget.attrs['placeholder'] = 'Username'
         self.fields['email'].widget.attrs['placeholder'] = 'Email (optional)'
         self.fields['password1'].widget.attrs['placeholder'] = 'Password'
