@@ -18,8 +18,8 @@
         {% else %}
             <p>Register or Login to Vote</p>
             <nav>
-                <a href="{% url 'accounts:login' %}?next={{ request.path }}" class="btn btn-primary text-white">Login</a>
-                <a href="{% url 'accounts:register' %}?next={{ request.path }}" class="btn btn-primary text-white">Register</a>
+                <a href="{% url 'users:login' %}?next={{ request.path }}" class="btn btn-primary text-white">Login</a>
+                <a href="{% url 'users:register' %}?next={{ request.path }}" class="btn btn-primary text-white">Register</a>
             </nav>
         {% endif %}
     {% else %}

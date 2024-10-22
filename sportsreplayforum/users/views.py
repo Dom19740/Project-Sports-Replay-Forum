@@ -26,7 +26,7 @@ def sign_up(response):
         next_url = response.GET.get('next')
         form = CustomRegisterForm()
 
-    return render(response, "accounts/register.html", {'form': form, 'next': next_url})
+    return render(response, "users/register.html", {'form': form, 'next': next_url})
 
 
 def sign_in(request):
@@ -53,7 +53,7 @@ def sign_in(request):
     else:
         form = CustomLoginForm()
 
-    return render(request, 'accounts/login.html', {'form': form, 'next': next_url})
+    return render(request, 'users/login.html', {'form': form, 'next': next_url})
 
 
 def sign_out(request):
