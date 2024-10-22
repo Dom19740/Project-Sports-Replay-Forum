@@ -107,6 +107,7 @@ WSGI_APPLICATION = 'sportsreplayforum.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# local database OVERWRITTEN
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -114,6 +115,7 @@ DATABASES = {
     }
 }
 
+# render database
 DATABASES['default'] = dj_database_url.parse("postgresql://hotwatch_django_render_user:vDvbeZZ8fZvaLAROpTwWSdJHVKmihZFl@dpg-csbr77a3esus73804u90-a.frankfurt-postgres.render.com/hotwatch_django_render")
 
 # Password validation
