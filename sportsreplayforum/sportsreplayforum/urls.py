@@ -8,7 +8,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('core/', include('core.urls')),
     path('users/', include('users.urls')),
-    # path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 # Serve the static HTML

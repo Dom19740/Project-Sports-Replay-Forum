@@ -50,8 +50,6 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'core.apps.CoreConfig',
     'users.apps.UsersConfig',
-    'news.apps.NewsConfig',
-    'api.apps.ApiConfig',
     'sports.f1.apps.F1Config',
     'sports.nations.apps.NationsConfig',
     'sports.champions.apps.ChampionsConfig',
