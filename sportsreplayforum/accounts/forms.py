@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Authenti
 from django.contrib.auth import get_user_model
 
 
-class RegisterForm(UserCreationForm):
+class CustomRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ["username", "email", "password1", "password2"]
@@ -24,10 +24,10 @@ class RegisterForm(UserCreationForm):
         self.fields['password2'].help_text = ''
 
         # Set placeholders
-        self.fields['username'].widget.attrs['placeholder'] = 'Username*'
-        self.fields['email'].widget.attrs['placeholder'] = 'Email*'
-        self.fields['password1'].widget.attrs['placeholder'] = 'Password*'
-        self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password*'
+        self.fields['username'].widget.attrs['placeholder'] = 'Username'
+        self.fields['email'].widget.attrs['placeholder'] = 'Email'
+        self.fields['password1'].widget.attrs['placeholder'] = 'Password'
+        self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
 
 
     def clean_email(self):
@@ -49,13 +49,13 @@ class RegisterForm(UserCreationForm):
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 
-class LoginForm(AuthenticationForm):
+class CustomLoginForm(AuthenticationForm):
     error_messages = {
         'invalid_login': "Invalid credentials. Please check your username and password and try again.",
         'inactive': "This account is inactive.",
     }
     def __init__(self, *args, **kwargs):
-        super(LoginForm, self).__init__(*args, **kwargs)
+        super(CustomLoginForm, self).__init__(*args, **kwargs)
 
         # Remove labels by setting them to an empty string
         self.fields['username'].label = ''
@@ -67,17 +67,14 @@ class LoginForm(AuthenticationForm):
 
 
 
+from django.contrib.auth.forms import PasswordResetForm
 
+class CustomPasswordResetForm(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
+        # Remove labels by setting them to an empty string
+        self.fields['email'].label = ''
 
-
-
-class UserUpdateForm(UserChangeForm):
-    password = None  # We don't want to display the password field here
-
-    class Meta:
-        model = User
-        fields = ['username', 'email']  # Allow users to change only username and email
-
-class DeleteUserForm(forms.Form):
-    confirm = forms.BooleanField(required=True, label="Confirm account deletion")
+        # Set placeholders
+        self.fields['email'].widget.attrs['placeholder'] = 'Email'
