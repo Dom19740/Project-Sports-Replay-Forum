@@ -1,10 +1,20 @@
 from django.urls import path
+from django. contrib. auth import views as auth_views
+from .forms import CustomPasswordResetForm
 from . import views
+
 
 app_name = 'accounts'
 urlpatterns = [
     path('register/', views.sign_up, name='register'),
     path('login/', views.sign_in, name='login'),
     path('logout/', views.sign_out, name='logout'),
-    path('profile/', views.profile_view, name='profile'),
+    path('password-reset/', auth_views.PasswordResetView.as_view(
+        template_name='accounts/password_reset_form.html',
+        form_class=CustomPasswordResetForm,
+        email_template_name='accounts/password_reset_email.html'
+    ), name='password_reset'),
+    path('password_reset_done/', auth_views. PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('password_reset_confirm/<uidb64>/<token>/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_confirm'),
+    path('password_reset_complete/', auth_views. PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 ]
