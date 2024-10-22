@@ -7,12 +7,14 @@ sportsreplayforum/sportsreplayforum/__pycache__/settings.cpython-310.pyc
 
 # Virtual Environment
 venv/
-.venv/
+sportsreplayforum/.venv
 
 # Django specific
+f1_2024_races.json
 db.sqlite3
 
 # Environment variables
 .env
 
-
+# VS Code
+.vscode
