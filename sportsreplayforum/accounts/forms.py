@@ -19,15 +19,15 @@ class RegisterForm(UserCreationForm):
 
         # Update help_text, placeholders, and other attributes
         self.fields['username'].help_text = ''
-        self.fields['email'].required = False
+        self.fields['email'].required = True
         self.fields['password1'].help_text = ''
         self.fields['password2'].help_text = ''
 
         # Set placeholders
-        self.fields['username'].widget.attrs['placeholder'] = 'Username'
-        self.fields['email'].widget.attrs['placeholder'] = 'Email (optional)'
-        self.fields['password1'].widget.attrs['placeholder'] = 'Password'
-        self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
+        self.fields['username'].widget.attrs['placeholder'] = 'Username*'
+        self.fields['email'].widget.attrs['placeholder'] = 'Email*'
+        self.fields['password1'].widget.attrs['placeholder'] = 'Password*'
+        self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password*'
 
 
     def clean_email(self):
