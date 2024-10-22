@@ -32,10 +32,9 @@ SECRET_KEY = os.environ['SECRET_KEY']
 API_PULL_TOKEN = os.getenv('API_PULL_TOKEN', 'fallback-token')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False').lower() == "true"
 
-ALLOWED_HOSTS = ['hotwatchsports.onrender.com', '127.0.0.1']
-
+ALLOWED_HOSTS =  ['hotwatchsports.onrender.com', '127.0.0.1']
 
 # Application definition
 
@@ -114,7 +113,8 @@ DATABASES = {
 }
 
 # render database
-DATABASES['default'] = dj_database_url.parse("postgresql://hotwatch_django_render_user:vDvbeZZ8fZvaLAROpTwWSdJHVKmihZFl@dpg-csbr77a3esus73804u90-a.frankfurt-postgres.render.com/hotwatch_django_render")
+database_url = os.environ.get('DATABASE_URL')
+DATABASES['default'] = dj_database_url.parse(database_url)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
