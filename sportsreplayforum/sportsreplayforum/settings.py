@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 import os
+import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -113,6 +114,7 @@ DATABASES = {
     }
 }
 
+DATABASES['default'] = dj_database_url.parse("postgresql://hotwatch_django_render_user:vDvbeZZ8fZvaLAROpTwWSdJHVKmihZFl@dpg-csbr77a3esus73804u90-a.frankfurt-postgres.render.com/hotwatch_django_render")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
