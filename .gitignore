@@ -3,6 +3,7 @@
 sportsreplayforum/home/__pycache__/
 sportsreplayforum/sportsreplayforum/home/__pycache__/
 sportsreplayforum/sportsreplayforum/__pycache__/
+sportsreplayforum/sportsreplayforum/__pycache__/settings.cpython-310.pyc
 
 # Virtual Environment
 venv/
@@ -14,4 +15,4 @@ db.sqlite3
 # Environment variables
 .env
 
-sportsreplayforum/sportsreplayforum/__pycache__/settings.cpython-310.pyc
+
