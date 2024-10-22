@@ -34,7 +34,7 @@ API_PULL_TOKEN = os.getenv('API_PULL_TOKEN', 'fallback-token')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False').lower() == "true"
 
-ALLOWED_HOSTS =  ['hotwatchsports.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS =  ['*.onrender.com', '127.0.0.1']
 
 # Application definition
 
