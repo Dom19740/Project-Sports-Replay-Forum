@@ -44,11 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.sites',
+    'django.contrib.staticfiles',´
+
     'home.apps.HomeConfig',
     'core.apps.CoreConfig',
-    'users.apps.UsersConfig',
+    'accounts.apps.AccountsConfig',
+
     'sports.f1.apps.F1Config',
     'sports.nations.apps.NationsConfig',
     'sports.champions.apps.ChampionsConfig',
@@ -208,13 +209,15 @@ if (len(sys.argv) >= 2 and sys.argv[1] == 'runserver'):
     }
 '''
 
-SITE_ID = 1
-
 # Email settings
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-""" EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS') """
-EMAIL_HOST_USER = 'dbuzugbe@gmail.com'
-EMAIL_HOST_PASSWORD = 'mmdczuqebmhpkhrj'
+mail = os.environ.get("MAIL")
+mail_pass = os.environ.get("MAIL_PASS")
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+EMAIL_HOST_USER = mail
+EMAIL_HOST_PASSWORD = mail_pass
+DEFAULT_FROM_EMAIL = mail
+EMAIL_SUBJECT_PREFIX = "Password Recovery"
