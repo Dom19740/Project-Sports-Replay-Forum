@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm, SetPasswordForm
 from django.contrib.auth import get_user_model
 
 
@@ -71,3 +71,19 @@ class CustomPasswordResetForm(PasswordResetForm):
 
         # Set placeholders
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
+
+
+class CustomPasswordResetConfirmForm(SetPasswordForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Remove labels by setting them to an empty string
+        self.fields['new_password1'].label = ''
+        self.fields['new_password2'].label = ''
+
+        # Update help_text, placeholders, and other attributes
+        self.fields['new_password1'].help_text = ''
+        self.fields['new_password2'].help_text = ''
+
+        # Set placeholders
+        self.fields['new_password1'].widget.attrs['placeholder'] = 'Password'
+        self.fields['new_password2'].widget.attrs['placeholder'] = 'Confirm Password'
