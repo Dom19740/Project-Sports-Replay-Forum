@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'home.apps.HomeConfig',
     'core.apps.CoreConfig',
     'accounts.apps.AccountsConfig',
@@ -205,8 +204,6 @@ if (len(sys.argv) >= 2 and sys.argv[1] == 'runserver'):
         }
     }
 '''
-
-SITE_ID = 1
 
 # Email settings
 mail = os.environ.get("MAIL")
