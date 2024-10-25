@@ -7,28 +7,6 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomRegisterForm, CustomLoginForm
 
 
-class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
-
-    class Meta:
-        model = User
-        fields = ["username", "email", "password1", "password2"]
-
-
-def registration_view(request):
-    if request.method == "POST":
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect("index")
-    else:
-        form = RegistrationForm()
-
-    return render(request, "user/register.html", {"form": form})
-
-
-
 def registration_view(response):
 
     next_url = response.GET.get('next')
@@ -54,7 +32,7 @@ def registration_view(response):
     return render(response, "users/register.html", {'form': form, 'next': next_url})
 
 
-def sign_in(request):
+def login_in_view(request):
     next_url = request.GET.get('next')
 
     if request.method == "POST":
@@ -81,7 +59,7 @@ def sign_in(request):
     return render(request, 'users/login.html', {'form': form, 'next': next_url})
 
 
-def sign_out(request):
+def logut_view(request):
     logout(request)
     messages.success(request, 'You have logged out successfully.')
 
