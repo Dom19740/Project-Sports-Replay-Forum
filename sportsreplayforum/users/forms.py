@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm
 from django.contrib.auth import get_user_model
 
 
@@ -45,10 +45,6 @@ class CustomRegisterForm(UserCreationForm):
         return cleaned_data
     
     
-
-from django import forms
-from django.contrib.auth.forms import AuthenticationForm
-
 class CustomLoginForm(AuthenticationForm):
     error_messages = {
         'invalid_login': "Invalid credentials. Please check your username and password and try again.",
@@ -65,9 +61,6 @@ class CustomLoginForm(AuthenticationForm):
         self.fields['username'].widget.attrs['placeholder'] = 'Username'
         self.fields['password'].widget.attrs['placeholder'] = 'Password'
 
-
-
-from django.contrib.auth.forms import PasswordResetForm
 
 class CustomPasswordResetForm(PasswordResetForm):
     def __init__(self, *args, **kwargs):

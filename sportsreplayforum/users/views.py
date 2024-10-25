@@ -59,7 +59,7 @@ def login_in_view(request):
     return render(request, 'users/login.html', {'form': form, 'next': next_url})
 
 
-def logut_view(request):
+def logout_view(request):
     logout(request)
     messages.success(request, 'You have logged out successfully.')
 
