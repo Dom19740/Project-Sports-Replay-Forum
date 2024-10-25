@@ -32,7 +32,7 @@ def registration_view(response):
     return render(response, "users/register.html", {'form': form, 'next': next_url})
 
 
-def login_in_view(request):
+def login_view(request):
     next_url = request.GET.get('next')
 
     if request.method == "POST":

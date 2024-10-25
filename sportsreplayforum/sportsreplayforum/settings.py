@@ -44,11 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',´
+    'django.contrib.staticfiles',
 
     'home.apps.HomeConfig',
     'core.apps.CoreConfig',
-    'accounts.apps.AccountsConfig',
+    'users.apps.UsersConfig',
 
     'sports.f1.apps.F1Config',
     'sports.nations.apps.NationsConfig',
@@ -161,7 +161,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
     os.path.join(BASE_DIR, 'static'),
 ]
  """
-# Add the settings below
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
