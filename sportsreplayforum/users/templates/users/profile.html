@@ -5,45 +5,52 @@
 {% block content %}
 <div class="container">
     <br>
-    <h2>Profile : {{ user.username }}</h2>
-
-    <!-- Update Username Form -->
-    <form method="POST" action="{% url 'users:update_username' %}">
-        {% csrf_token %}
-        <p>Update Username</p>
-        {{ user_form|crispy }}
-        <button type="submit" class="btn btn-primary">Update Profile</button>
-    </form>
-    
+    <h2>Hi, {{ user.username|title }}</h2>
+    <br>
     <hr>
+    <p>Update Your Details</p>
+    <!-- Update Username Form -->
+    <div class="form-field">
+        <form method="POST" action="{% url 'users:update_username' %}" class="form-group">
+            {% csrf_token %}
 
+            {{ user_form|crispy }}
+            <button type="submit" class="btn btn-primary">Update Username</button>
+        </form>
+    </div>
+    <br>
     <!-- Update Email Form -->
-    <form method="POST" action="{% url 'users:update_email' %}">
-        {% csrf_token %}
-        <p>Update Email</p>
-        {{ email_form|crispy }}
-        <button type="submit" class="btn btn-primary">Update Email</button>
-    </form>
+    <div class="form-field">
+        <form method="POST" action="{% url 'users:update_email' %}">
+            {% csrf_token %}
+            {{ email_form|crispy }}
+            <button type="submit" class="btn btn-primary">Update Email</button>
+        </form>
+    </div>
     
     <hr>
 
     <!-- Change Password Form -->
-    <form method="POST" action="{% url 'users:change_password' %}">
-        {% csrf_token %}
-        <p>Change Password</p>
-        {{ password_form|crispy }}
-        <button type="submit" class="btn btn-primary">Change Password</button>
-    </form>
-    
+    <div class="form-field">
+        <form method="POST" action="{% url 'users:change_password' %}">
+            {% csrf_token %}
+            <p>Change Password</p>
+            {{ password_form|crispy }}
+            <button type="submit" class="btn btn-primary">Change Password</button>
+        </form>
+    </div>
+
     <hr>
-
+    
     <!-- Delete Account Form -->
-    <form method="POST" action="{% url 'users:delete_account' %}">
-        {% csrf_token %}
-        <p>Delete Account</p>
-        {{ delete_form|crispy }}
-        <button type="submit" class="btn btn-danger">Delete Account</button>
-    </form>
-
+    <div class="form-field">
+        <form method="POST" action="{% url 'users:delete_account' %}">
+            {% csrf_token %}
+            <p>Delete Account</p>
+            {{ delete_form|crispy }}
+            <button type="submit" class="btn btn-danger">Delete Account</button>
+        </form>
+    </div>
+    <br>
 </div>
 {% endblock %}
