@@ -1,33 +1,49 @@
-<!-- users/templates/users/profile.html -->
 {% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container">
     <br>
-    <h2>Profile</h2>
+    <h2>Profile : {{ user.username }}</h2>
 
-    <form method="POST">
+    <!-- Update Username Form -->
+    <form method="POST" action="{% url 'users:update_username' %}">
         {% csrf_token %}
-        
-        <!-- User Update Form -->
-        <h3>Update Profile</h3>
-        {{ user_form.as_p }}
-        <button type="submit">Update Profile</button>
-        
-        <hr>
-
-        <!-- Password Change Form -->
-        <h3>Change Password</h3>
-        {{ password_form.as_p }}
-        <button type="submit">Change Password</button>
-        
-        <hr>
-
-        <!-- Delete Account Form -->
-        <h3>Delete Account</h3>
-        {{ delete_form.as_p }}
-        <button type="submit" class="btn btn-danger">Delete Account</button>
-
+        <p>Update Username</p>
+        {{ user_form|crispy }}
+        <button type="submit" class="btn btn-primary">Update Profile</button>
     </form>
+    
+    <hr>
+
+    <!-- Update Email Form -->
+    <form method="POST" action="{% url 'users:update_email' %}">
+        {% csrf_token %}
+        <p>Update Email</p>
+        {{ email_form|crispy }}
+        <button type="submit" class="btn btn-primary">Update Email</button>
+    </form>
+    
+    <hr>
+
+    <!-- Change Password Form -->
+    <form method="POST" action="{% url 'users:change_password' %}">
+        {% csrf_token %}
+        <p>Change Password</p>
+        {{ password_form|crispy }}
+        <button type="submit" class="btn btn-primary">Change Password</button>
+    </form>
+    
+    <hr>
+
+    <!-- Delete Account Form -->
+    <form method="POST" action="{% url 'users:delete_account' %}">
+        {% csrf_token %}
+        <p>Delete Account</p>
+        {{ delete_form|crispy }}
+        <button type="submit" class="btn btn-danger">Delete Account</button>
+    </form>
+
 </div>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm, SetPasswordForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm, SetPasswordForm, PasswordChangeForm
 from django.contrib.auth import get_user_model
 
 
@@ -87,3 +87,24 @@ class CustomPasswordResetConfirmForm(SetPasswordForm):
         # Set placeholders
         self.fields['new_password1'].widget.attrs['placeholder'] = 'Password'
         self.fields['new_password2'].widget.attrs['placeholder'] = 'Confirm Password'
+
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username']
+
+
+class EmailUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['email']
+
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    # If additional styling or functionality is needed, customize here
+    pass
+
+
+class DeleteAccountForm(forms.Form):
+    confirm = forms.BooleanField(label="I confirm I want to delete my account", required=True)
