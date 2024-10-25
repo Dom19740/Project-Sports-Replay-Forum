@@ -105,17 +105,21 @@ WSGI_APPLICATION = 'sportsreplayforum.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# local database OVERWRITTEN
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
-# render database
-database_url = os.environ.get('DATABASE_URL')
-DATABASES['default'] = dj_database_url.parse(database_url)
+DATABASE_ENV = os.environ.get('DATABASE_ENV', 'local')
+
+if DATABASE_ENV == 'local':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+elif DATABASE_ENV == 'render':
+    database_url = os.environ.get('DATABASE_URL')
+    DATABASES = {
+        'default': dj_database_url.parse(database_url)
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
