@@ -3,31 +3,67 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from .forms import CustomRegisterForm, CustomLoginForm, UserUpdateForm, EmailUpdateForm, CustomPasswordChangeForm, DeleteAccountForm
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
+from django.core.mail import EmailMessage
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.contrib.auth import get_user_model, login
+from django.urls import reverse
+from .tokens import account_activation_token
 
 
-def registration_view(response):
+def registration_view(request):
 
-    next_url = response.GET.get('next')
+    next_url = request.GET.get('next')
+    form = CustomRegisterForm()
 
-    if response.method == "POST":
-        form = CustomRegisterForm(response.POST)
+    if request.method == "POST":
+        form = CustomRegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.username = user.username.lower()
+            user.is_active = False
             user.save()
-            messages.success(response, f'Hi {user.username.title()}, you have registered and logged in successfully.')
-            login(response, user)
-            next_url = response.GET.get('next')
 
-            if next_url:
-                return redirect(next_url)
-            else:
-                return redirect('home')
+            current_site = get_current_site(request)
+            mail_subject = 'Activate your account'
+            message = render_to_string('users/account_activation_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': account_activation_token.make_token(user),
+            })
+            to_email = form.cleaned_data.get('email')
+            email = EmailMessage(mail_subject, message, to=[to_email])
+            email.send()
+            messages.success(request, 'Please check your email address to complete the registration')
+            return redirect('home')
+    return render(request, 'users/register.html', {'form': form})
+
+
+def activate(request, uidb64, token):
+    User = get_user_model()
+
+    try:
+        uid= force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+
+        messages.success(request, f'Hi {user.username.title()}. Your account has been successfully activated, you can login.')
+        return redirect('users:login')
+
     else:
-        next_url = response.GET.get('next')
-        form = CustomRegisterForm()
+        messages.error(request, 'Activation link is invalid or expired')
+        return redirect('home')
+    
 
-    return render(response, "users/register.html", {'form': form, 'next': next_url})
 
 
 def login_view(request):

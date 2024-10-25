@@ -2,10 +2,13 @@ from django.urls import path, reverse_lazy
 from django.contrib.auth import views as auth_views
 from .forms import CustomPasswordResetForm, CustomPasswordResetConfirmForm
 from . import views
+from .views import activate
 
 app_name = 'users'
 urlpatterns = [
     path('register/', views.registration_view, name='register'),
+    path('activate/<str:uidb64>/<str:token>/', activate, name="activate"),
+
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
 

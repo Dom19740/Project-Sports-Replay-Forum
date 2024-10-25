@@ -1,0 +1,9 @@
+Hi {{ user.username|title }},
+
+Follow the link below to activate your account:
+
+{{ domain }}{% url 'users:activate' uidb64=uid token=token %}
+
+If you did not request an account activation, please ignore this email.
+
+- Hot Watch Sports Team
