@@ -11,6 +11,7 @@ sportsreplayforum/.venv
 
 # Django specific
 f1_2024_races.json
+sportsreplayforum/db.sqlite3
 db.sqlite3
 
 # Environment variables
