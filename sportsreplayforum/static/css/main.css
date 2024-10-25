@@ -89,5 +89,17 @@ body {
     min-width: 300px;       /* Ensures the lists have a minimum width */
 }
 
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+    .events-container {
+        flex-direction: column;  /* Stacks the lists vertically */
+        gap: 10px;               /* Reduces gap for smaller screens */
+    }
+
+    .events-list-left, .events-list-right {
+        min-width: auto;        /* Removes the min-width restriction */
+    }
+}
+
 
 
