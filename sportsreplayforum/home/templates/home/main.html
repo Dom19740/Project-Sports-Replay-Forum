@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Hot Watch Sports{% endblock %}
+{% block title %}Spoiler Free Sports Network{% endblock %}
 
 {% block content %}
 
@@ -31,17 +31,7 @@
                 {% endfor %}
             </ul>
         </div>
-    
-        <div class="events-list-right">
-            <h4>Most Rated Events</h4>
-            <ul>
-                {% for event in most_rated_events %}
-                    <li>
-                        <a href="{% url 'core:event' event.id %}"> {{ event.event_list.name }} - {{ event.event_type }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+
     </div>
 </div>
 

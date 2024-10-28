@@ -21,18 +21,9 @@ class HomeView(View):
         for rating in recent_ratings:
             if rating.event not in recent_voted_events:
                 recent_voted_events.append(rating.event)
-
-        # Get the top most rated events
-        most_rated_events = Event.objects.annotate(
-            total_votes=ExpressionWrapper(
-                models.F('rating__five_stars') + models.F('rating__four_stars') + models.F('rating__three_stars') + models.F('rating__two_stars') + models.F('rating__one_star'),
-                output_field=models.IntegerField()
-            )
-        ).order_by('-total_votes')[:5]
         
         context = {
             'recent_voted_events': recent_voted_events,
-            'most_rated_events': most_rated_events,
         }
 
         return render(request, 'home/main.html', context)
