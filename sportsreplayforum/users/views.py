@@ -11,7 +11,6 @@ from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, login
-from django.urls import reverse
 from .tokens import account_activation_token
 
 
@@ -64,17 +63,16 @@ def activate(request, uidb64, token):
         return redirect('home')
     
 
-
-
 def login_view(request):
     next_url = request.GET.get('next')
 
     if request.method == "POST":
         form = CustomLoginForm(request, data=request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
+            login_input = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = authenticate(request, username=username, password=password)
+
+            user = authenticate(request, username=login_input, password=password)
 
             if user is not None:
                 login(request, user)
@@ -85,7 +83,7 @@ def login_view(request):
                 else:
                     return redirect('home')
             else:
-                messages.error(request, 'Invalid username or password.')
+                messages.error(request, 'Invalid username/email or password.')
 
     else:
         form = CustomLoginForm()

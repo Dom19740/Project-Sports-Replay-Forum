@@ -47,18 +47,16 @@ class CustomRegisterForm(UserCreationForm):
 
 class CustomLoginForm(AuthenticationForm):
     error_messages = {
-        'invalid_login': "Invalid credentials. Please check your username and password and try again.",
+        'invalid_login': "Invalid credentials. Please check your username/email and password and try again.",
         'inactive': "This account is inactive.",
     }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Username field modifications
+        # Indicate that either username or email is accepted
         self.fields['username'].label = ''
-        self.fields['username'].widget.attrs['placeholder'] = 'Username'
-
-        # Password field modifications
+        self.fields['username'].widget.attrs['placeholder'] = 'Username or Email'
         self.fields['password'].label = ''
         self.fields['password'].widget.attrs['placeholder'] = 'Password'
 
