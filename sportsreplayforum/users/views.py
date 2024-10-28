@@ -97,7 +97,7 @@ def logout_view(request):
     logout(request)
     messages.success(request, 'You have logged out successfully.')
 
-    return redirect('home')
+    return redirect('users:login')
 
 
 @login_required

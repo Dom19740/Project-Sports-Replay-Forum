@@ -32,7 +32,7 @@
                         <a class="nav-link" href="{% url 'users:profile' %}">Hi, {{ user.username|title }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:logout' %}?next={{ request.path }}">Logout</a>
+                        <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
