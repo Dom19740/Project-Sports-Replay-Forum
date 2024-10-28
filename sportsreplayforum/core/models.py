@@ -12,7 +12,7 @@ class Competition(models.Model):
 
 class Event(models.Model):
     event_list = models.ForeignKey(Competition, on_delete=models.CASCADE, related_name='events')
-    event_type = models.CharField(max_length=50)  # e.g., 'race', 'qualifying', 'sprint', 'sprint shootout', 'match'.
+    event_type = models.CharField(max_length=50)
     date_time = models.DateTimeField()
     idEvent = models.CharField(max_length=255, default="")
     video_id = models.CharField(max_length=255, null=True, default="")
