@@ -38,6 +38,10 @@ body.dark-mode {
     margin-bottom: 25px;
     margin-left: 25px;
 }
+
+.inside-header {
+    margin-bottom: 25px;
+}
   
 .main-container {
     border: 2px solid var(--dark-grey);
@@ -66,6 +70,27 @@ body.dark-mode {
     background-color: var(--light-purple);
     border-color: var(--light-purple);
 }
+
+.btn-pill-light {
+    background-color: var(--light-purple);
+    color: #fff;
+    padding: 1px 12px; /* adjust the padding to make the button thinner */
+    font-size: 14px; /* adjust the font size to make the button thinner */
+    border-radius: 20px;
+    margin-bottom: 10px;
+    width: 300px;
+    text-align: left; 
+}
+
+.btn-pill-light:hover {
+    background-color: var(--dark-purple); /* change the hover color */
+    color: #fff;
+}
+
+.events-list li {
+    list-style: none;
+}
+
 
 /* Navbar */
 .navbar-brand img {
