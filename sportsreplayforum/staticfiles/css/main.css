@@ -62,11 +62,11 @@ body {
 }
 
 /* Checkbox */
-.form-check-input[type="checkbox"] {
+.toggle-switch[type="checkbox"] {
     background-color: var(--light-grey);
 }
   
-  .form-check-input[type="checkbox"]:checked {
+  .toggle-switch[type="checkbox"]:checked {
     background-color: var(--light-purple);
 }
 

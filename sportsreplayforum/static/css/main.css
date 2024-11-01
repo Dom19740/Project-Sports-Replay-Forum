@@ -19,29 +19,30 @@
     --text-color-dark: #ffffff;
 }
 /* General */
-  
-  body.light-mode {
+body {
+    overflow-y: scroll;
+    font-family: Poppins, sans-serif;
+}
+
+body.light-mode {
     background-color: var(--bg-color-light);
     color: var(--text-color-light);
-  }
+}
   
-  body.dark-mode {
+body.dark-mode {
     background-color: var(--bg-color-dark);
     color: var(--text-color-dark);
-  }
+}
   
-  .theme-toggle {
+.theme-toggle {
     background: none;
     border: none;
     font-size: 1rem;
     cursor: pointer;
-    color: var(--light-grey)
-  }
-  
-
-body {
-    overflow-y: scroll;
+    color: var(--light-grey);
+    padding-left: 15px;
 }
+
 
 /* Buttons */
 .btn-primary {
@@ -54,9 +55,7 @@ body {
     border-color: var(--light-purple);
 }
 
-
 /* Navbar */
-
 .navbar-brand img {
     width: 40px;
 }
@@ -79,24 +78,30 @@ body {
     width: 100px;
 }
 
-/* Register */
+/* Forms */
 .form-field {
     width: 300px;
     margin-top: 10px;
 }
 
+.form-control:focus {
+    outline: 2px solid var(--five-star-pink);
+}
+
+
 /* Checkbox */
-.form-check-input[type="checkbox"] {
+.toggle-switch[type="checkbox"] {
     background-color: var(--light-grey);
 }
   
-  .form-check-input[type="checkbox"]:checked {
+  .toggle-switch[type="checkbox"]:checked {
     background-color: var(--light-purple);
 }
 
-/* Form fields */
-.form-control:focus {
-    outline: 2px solid var(--five-star-pink);
+
+/* Welcome */
+.welcome-logo {
+    padding: 25px;
 }
 
 
