@@ -12,8 +12,32 @@
     --light-orange: #ffedc3;
     --light-grey: #d9d9d9;
     --dark-grey: #282828;
+
+    --bg-color-light: #ffffff;
+    --text-color-light: #000000;
+    --bg-color-dark: #000000;
+    --text-color-dark: #ffffff;
 }
 /* General */
+  
+  body.light-mode {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+  }
+  
+  body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+  }
+  
+  .theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--light-grey)
+  }
+  
 
 body {
     overflow-y: scroll;
