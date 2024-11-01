@@ -33,14 +33,26 @@ body.dark-mode {
     background-color: var(--bg-color-dark);
     color: var(--text-color-dark);
 }
+
+.main-header {
+    margin-bottom: 25px;
+    margin-left: 25px;
+}
   
-.theme-toggle {
-    background: none;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    color: var(--light-grey);
-    padding-left: 15px;
+.main-container {
+    border: 2px solid var(--dark-grey);
+    border-radius: 25px;
+    padding: 25px;
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
+
+/* Welcome */
+.welcome-logo {
+    max-width: 100%;
+    padding-bottom: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 
@@ -72,10 +84,17 @@ body.dark-mode {
     color: var(--light-grey) !important;
 }
 
-
-/* Search */
 .search-input {
     width: 100px;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--light-grey);
+    padding-left: 15px;
 }
 
 /* Forms */
@@ -98,11 +117,6 @@ body.dark-mode {
     background-color: var(--light-purple);
 }
 
-
-/* Welcome */
-.welcome-logo {
-    padding: 25px;
-}
 
 
 /* Container for both events lists */

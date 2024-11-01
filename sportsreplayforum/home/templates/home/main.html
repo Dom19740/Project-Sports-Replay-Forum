@@ -7,20 +7,28 @@
 <div class="container">
     <br>
 
-    {% include 'home/welcome.html' %}
+    <h4 class='main-header'>Welcome to</h4>
     
-    {% if user.is_authenticated %}
-    <!-- do nothing -->
-    {% else %}
-        <nav>
-            <a href="{% url 'users:login' %}" class="btn btn-primary text-white">Login</a>
-            <a href="{% url 'users:register' %}" class="btn btn-primary text-white">Register</a>
-        </nav>
-        <br>
-    {% endif %}
+    <div class='main-container'>
+
+        {% include 'home/welcome.html' %}
+    
+    
+        {% if user.is_authenticated %}
+        <!-- do nothing -->
+        {% else %}
+            <nav>
+                <a href="{% url 'users:login' %}" class="btn btn-primary text-white">Login</a>
+                <a href="{% url 'users:register' %}" class="btn btn-primary text-white">Register</a>
+            </nav>
+            <br>
+        {% endif %}
+
+    </div>
 
     <!-- Add a new wrapper div to hold both event lists -->
-    <div class="events-container">
+    <div class="main-container events-container">
+
         <div class="events-list-left">
             <h4>Recently Voted Events</h4>
             <ul>
