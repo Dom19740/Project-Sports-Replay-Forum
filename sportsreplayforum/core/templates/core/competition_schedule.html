@@ -1,53 +1,24 @@
-{% extends 'base_main.html' %}
+{% extends 'base_3_split.html' %}
 
 {% block title %}{{ title }} | Should I Watch Sports{% endblock %}
 
-{% block content %}
+{% block header %}{{ title }}{% endblock %}
 
-<div class="container">
-    <br>
-    <h2>{{ title }}</h2>
-    <p>EVENT SCHEDULE</p>
-    <div class="events-container">
-        <div class="events-list-left">
-            <p>Past</p>
-            <ul>
-                {% for competition in past_competitions %}
-                    <li>
-                        <a href="{% url 'core:event_list' competition.id %}">
-                            {% if title == "FIA F1 World Championship" %}
-                                {{ competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - 
-                            {% elif title == "MotoGP" %}
-                                {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} -
-                            {% endif %}
-                            {{ competition.name }}
-                        </a>
-                    </li>
-                {% empty %}
-                    <li>No past events.</li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="events-list-right">
-            <p>Upcoming</p>
-            <ul>
-                {% for competition in upcoming_competitions %}
-                    <li>
-                        <a href="{% url 'core:event_list' competition.id %}">
-                            {% if title == "FIA F1 World Championship" %}
-                                {{ competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - 
-                            {% elif title == "MotoGP" %}
-                                {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} -
-                            {% endif %}
-                            {{ competition.name }}
-                        </a>
-                    </li>
-                {% empty %}
-                    <li>No upcoming events.</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-</div>
+
+{% block main_container_left_1 %}
+
+    {% include 'core/past_events.html' %}
+
+{% endblock %}
+
+{% block main_container_left_2 %}
+
+    <p>posters</p>
+
+{% endblock %}
+
+{% block main_container_bottom %}
+
+    {% include 'core/upcoming_events.html' %}
 
 {% endblock %}

@@ -10,9 +10,9 @@
 
     <p><a href="{% url 'core:competition_schedule' league=league %}">Back to EVENT SCHEDULE</a></p>
 
-    <div class="events-container">
+    <div class="main-container-split">
 
-        <div class="events-list-left">
+        <div class="main-container-left">
             <p>Past</p>
             <ul>
                 {% for event in past_events %}
@@ -29,7 +29,7 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="events-list-right">
+        <div class="main-container-left-bottom">
             <p>Upcoming</p>
             <ul>
                 {% for event in upcoming_events %}

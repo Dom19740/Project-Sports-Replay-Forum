@@ -50,8 +50,8 @@ def competition_schedule(request, league):
 
     upcoming_competitions.reverse()
 
-    upcoming_competitions = upcoming_competitions[:6]
-    past_competitions = past_competitions[:25]
+    upcoming_competitions = upcoming_competitions[:5]
+    past_competitions = past_competitions[:5]
 
 
     return render(request, 'core/competition_schedule.html', {

@@ -1,0 +1,18 @@
+
+<p>Past Events</p>
+<ul>
+    {% for competition in past_competitions %}
+        <li>
+            <a href="{% url 'core:event_list' competition.id %}">
+                {% if title == "FIA F1 World Championship" %}
+                    {{ competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - 
+                {% elif title == "MotoGP" %}
+                    {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} -
+                {% endif %}
+                {{ competition.name }}
+            </a>
+        </li>
+    {% empty %}
+        <li>No past events.</li>
+    {% endfor %}
+</ul>

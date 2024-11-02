@@ -37,30 +37,36 @@ body.dark-mode {
 .main-header {
     margin-left: 25px;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .inside-header {
     margin-bottom: 25px;
 }
   
-.main-container {
+.main-container, .main-container-left-1, .main-container-left-2 {
     border: 2px solid var(--dark-grey);
     border-radius: 25px;
     padding: 25px;
     padding-left: 30px;
     padding-bottom: 10px;
-    margin-top: 15px;
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-bottom: 15px;
 }
 
-/* Container for both events lists */
-.events-container {
-    display: flex;          /* Enables flexbox */
-    justify-content: space-between; /* Adds space between both lists */
+.main-container-split {
+    display: flex;
+    flex-direction: column;
 }
-
-.events-list-left, .events-list-right {
-    flex: 1;                /* Makes both lists take up equal space */
-    min-width: 300px;       /* Ensures the lists have a minimum width */
+  
+.main-container-top {
+    display: flex;
+}
+  
+.main-container-left-1, .main-container-left-2 {
+    flex: 1;
+    min-width: 300px;
 }
 
 .events-list li {
@@ -151,6 +157,9 @@ body.dark-mode {
     outline: 2px solid var(--five-star-pink);
 }
 
+::placeholder {
+    font-size: 14px;
+}
 
 /* Checkbox */
 .toggle-switch[type="checkbox"] {
@@ -164,12 +173,12 @@ body.dark-mode {
 
 /* Media query for mobile screens */
 @media (max-width: 768px) {
-    .events-container {
+    .main-container-split {
         flex-direction: column;  /* Stacks the lists vertically */
         gap: 10px;               /* Reduces gap for smaller screens */
     }
 
-    .events-list-left, .events-list-right {
+    .main-container-left, .main-container-right {
         min-width: auto;        /* Removes the min-width restriction */
     }
 }
