@@ -91,10 +91,6 @@ body.dark-mode {
     justify-content: center;
     align-items: center;
 }
-  
-.list-container {
-    margin-top: 20px;
-}
 
 .events-list li {
     list-style: none;
