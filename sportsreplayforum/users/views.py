@@ -88,7 +88,7 @@ def login_view(request):
     else:
         form = CustomLoginForm()
 
-    return render(request, 'users/login.html', {'form': form, 'next': next_url})
+    return render(request, 'home/login.html', {'form': form, 'next': next_url})
 
 
 def logout_view(request):

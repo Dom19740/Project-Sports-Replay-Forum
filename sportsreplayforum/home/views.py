@@ -26,4 +26,4 @@ class HomeView(View):
             'recent_voted_events': recent_voted_events,
         }
 
-        return render(request, 'home/main.html', context)
+        return render(request, 'home/home.html', context)
