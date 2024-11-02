@@ -39,7 +39,7 @@ def registration_view(request):
             email.send()
             messages.success(request, 'Please check your email address to complete the registration')
             return redirect('home')
-    return render(request, 'users/register.html', {'form': form})
+    return render(request, 'home/register.html', {'form': form})
 
 
 def activate(request, uidb64, token):

@@ -4,19 +4,21 @@
 
 {% block content %}
 
-<div class="container">
-   
-    <div class='main-container'>
+<h4 class='main-header'>{% block header %} {% endblock %}</h4>
 
-        {% block main-container-top %} {% endblock %}
+    <div class="container">
+    
+        <div class='main-container'>
 
+            {% block main-container-top %} {% endblock %}
+
+        </div>
+
+        <div class="main-container">
+
+            {% block main-container-bottom %} {% endblock %}
+
+        </div>
     </div>
-
-    <div class="main-container">
-
-        {% block main-container-bottom %} {% endblock %}
-
-    </div>
-</div>
 
 {% endblock%}

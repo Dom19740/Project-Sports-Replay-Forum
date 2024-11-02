@@ -1,0 +1,12 @@
+<form method="POST" class="form-group">
+
+  <h4>Register for an account</h4>
+  {% load crispy_forms_tags %}
+  {% csrf_token %}
+
+  <div class="form-field">
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary ml-2">Register</button>
+  </div>
+  
+</form>
