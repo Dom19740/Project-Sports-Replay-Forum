@@ -66,25 +66,25 @@ def event_list(request, competition_id):
     competition = get_object_or_404(Competition, id=competition_id)
     events = Event.objects.filter(event_list=competition).order_by('-date_time')
 
-    upcoming_events = []
-    past_events = []
+    events_upcoming = []
+    events_past = []
 
     current_time = timezone.now()
     threshold = timedelta(minutes=45)
 
     for event in events:
         if event.date_time + threshold <= current_time:
-            past_events.append(event)
+            events_past.append(event)
         else:
-            upcoming_events.append(event)
+            events_upcoming.append(event)
 
-    upcoming_events.reverse()
+    events_upcoming.reverse()
 
     title = TITLES.get(competition.league, 'Unknown League')
 
     return render(request, 'core/event_list.html', {
-        'upcoming_events': upcoming_events,
-        'past_events': past_events,
+        'events_upcoming': events_upcoming,
+        'events_past': events_past,
         'competition': competition,
         'title': title,
         'league': competition.league,

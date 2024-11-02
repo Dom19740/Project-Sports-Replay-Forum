@@ -44,7 +44,7 @@ body.dark-mode {
     margin-bottom: 25px;
 }
   
-.main-container, .main-container-left-1, .main-container-left-2 {
+.main-container {
     border: 2px solid var(--dark-grey);
     border-radius: 25px;
     padding: 25px;
@@ -57,19 +57,24 @@ body.dark-mode {
 
 .main-container-split {
     display: flex;
+    flex-direction: row;
+  }
+
+.main-container-left {
+    display: flex;
     flex-direction: column;
 }
-  
-.main-container-top {
-    display: flex;
-}
-  
+
 .main-container-left-1, .main-container-left-2 {
     flex: 1;
     min-width: 300px;
 }
 
-.container-split {
+.main-container-right {
+    width: 100%;
+}
+
+.sub-container {
     display: flex;
     justify-content: space-between;
 }
@@ -82,6 +87,9 @@ body.dark-mode {
 .sub-container-right {
     flex: 1;
     min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
   
 .list-container {
@@ -113,20 +121,33 @@ body.dark-mode {
     border-color: var(--light-purple);
 }
 
+.btn-pill {
+  padding: 1px 12px;
+  font-size: 14px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  width: 330px;
+  text-align: left;
+  text-decoration: none;
+  display: block;
+}
+
 .btn-pill-light {
-    background-color: var(--light-purple);
-    color: #fff;
-    padding: 1px 12px; /* adjust the padding to make the button thinner */
-    font-size: 14px; /* adjust the font size to make the button thinner */
-    border-radius: 20px;
-    margin-bottom: 10px;
-    width: 300px;
-    text-align: left; 
+  background-color: var(--light-purple);
+  color: #fff;
 }
 
 .btn-pill-light:hover {
-    background-color: var(--dark-purple); /* change the hover color */
-    color: #fff;
+  background-color: var(--dark-purple);
+}
+
+.btn-pill-dark {
+  background-color: var(--dark-purple);
+  color: #fff;
+}
+
+.btn-pill-dark:hover {
+  background-color: var(--light-purple);
 }
 
 
@@ -192,7 +213,7 @@ body.dark-mode {
 
 /* Media query for mobile screens */
 @media (max-width: 768px) {
-    .main-container-split {
+    .main-sub-container {
         flex-direction: column;  /* Stacks the lists vertically */
         gap: 10px;               /* Reduces gap for smaller screens */
     }

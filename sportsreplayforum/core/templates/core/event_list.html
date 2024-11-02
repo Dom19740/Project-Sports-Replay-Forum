@@ -10,12 +10,12 @@
 
     <p><a href="{% url 'core:competition_schedule' league=league %}">Back to EVENT SCHEDULE</a></p>
 
-    <div class="main-container-split">
+    <div class="main-sub-container">
 
         <div class="main-container-left">
             <p>Past</p>
             <ul>
-                {% for event in past_events %}
+                {% for event in events_past %}
                     <li>
                         <a href="{% url 'core:event' event.id %}">
                             {% if title == "FIA F1 World Championship" %}
@@ -32,7 +32,7 @@
         <div class="main-container-left-bottom">
             <p>Upcoming</p>
             <ul>
-                {% for event in upcoming_events %}
+                {% for event in events_upcoming %}
                     <li>
                         <a href="{% url 'core:event' event.id %}">
                             {% if title == "FIA F1 World Championship" %}

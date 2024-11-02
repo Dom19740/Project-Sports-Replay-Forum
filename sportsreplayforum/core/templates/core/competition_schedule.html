@@ -7,18 +7,18 @@
 
 {% block main_container_left_1 %}
 
-    {% include 'core/past_events.html' %}
+    {% include 'core/events_past.html' %}
 
 {% endblock %}
 
 {% block main_container_left_2 %}
 
-    <p>posters</p>
+    {% include 'core/events_upcoming.html' %}
 
 {% endblock %}
 
-{% block main_container_bottom %}
+{% block main_container_right %}
 
-    {% include 'core/upcoming_events.html' %}
+    {% include 'core/competition_poster.html' %}
 
 {% endblock %}

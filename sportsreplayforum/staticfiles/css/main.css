@@ -77,7 +77,7 @@ body {
 
 
 /* Container for both events lists */
-.main-container-split {
+.main-sub-container {
     display: flex;          /* Enables flexbox */
     justify-content: space-between; /* Adds space between both lists */
     gap: 20px;              /* Adds space between the lists */
@@ -91,7 +91,7 @@ body {
 
 /* Media query for mobile screens */
 @media (max-width: 768px) {
-    .main-container-split {
+    .main-sub-container {
         flex-direction: column;  /* Stacks the lists vertically */
         gap: 10px;               /* Reduces gap for smaller screens */
     }
