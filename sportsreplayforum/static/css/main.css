@@ -69,6 +69,25 @@ body.dark-mode {
     min-width: 300px;
 }
 
+.container-split {
+    display: flex;
+    justify-content: space-between;
+}
+  
+.sub-container-left {
+    flex: 1;
+    min-width: 300px;
+}
+  
+.sub-container-right {
+    flex: 1;
+    min-width: 300px;
+}
+  
+.list-container {
+    margin-top: 20px;
+}
+
 .events-list li {
     list-style: none;
 }
