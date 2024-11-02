@@ -63,7 +63,6 @@ body.dark-mode {
     min-width: 300px;       /* Ensures the lists have a minimum width */
 }
 
-
 .events-list li {
     list-style: none;
 }
@@ -143,6 +142,9 @@ body.dark-mode {
 .form-field {
     width: 300px;
     margin-top: 10px;
+    padding-left: 35px;
+    padding-top: 15px;
+    padding-bottom: 25px;
 }
 
 .form-control:focus {
