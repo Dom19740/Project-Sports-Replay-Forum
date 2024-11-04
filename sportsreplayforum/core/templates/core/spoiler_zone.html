@@ -32,7 +32,7 @@
     <div class="show-score-container" style="display: none;">
 
 
-
+{% comment %} 
         <table>
             <thead>
                 <tr>
@@ -52,14 +52,7 @@
                 </tr>
                 {% endfor %}
             </tbody>
-        </table>
-
-
-
-
-
-
-
+        </table> {% endcomment %}
 
         <p><a href="https://www.thesportsdb.com/event/{{ event.idEvent }}" title="Results" target="_blank" rel="noopener">LINK TO RESULTS</a>
     </div>
@@ -68,38 +61,6 @@
     </div>
     <br><br>
 
-    <script>
-        // Get the first switch and its container
-        const switchCheckbox1 = document.getElementById('flexSwitchCheckDefault');
-        const videoContainer = document.querySelector('.show-video-container');
-
-        // Function to scroll to the video container smoothly
-        function scrollToElement(element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        // Event listener for the first switch
-        switchCheckbox1.addEventListener('change', () => {
-            videoContainer.style.display = switchCheckbox1.checked ? 'block' : 'none';
-            // Scroll down if the video is being shown
-            if (switchCheckbox1.checked) {
-                scrollToElement(videoContainer);
-            }
-        });
-
-        // Get the second switch and its container
-        const switchCheckbox2 = document.getElementById('flexSwitchCheckDefault2');
-        const resultsContainer = document.querySelector('.show-score-container');
-
-        // Event listener for the second switch
-        switchCheckbox2.addEventListener('change', () => {
-            resultsContainer.style.display = switchCheckbox2.checked ? 'block' : 'none';
-            // Scroll down if the results are being shown
-            if (switchCheckbox2.checked) {
-                scrollToElement(resultsContainer);
-            }
-        });
-    </script>
 
 {% endif %}
 </div>
