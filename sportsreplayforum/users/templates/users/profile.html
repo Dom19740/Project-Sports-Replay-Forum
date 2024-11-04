@@ -4,14 +4,14 @@
 
 {% load crispy_forms_tags %}
 
+
 {% block content %}
-<div class="container">
-    <br>
-    <h2>Hi, {{ user.username|title }}</h2>
-    <br>
-    <hr>
+<h5 class='main-header'>Hi, {{ user.username|title }}</h5>
+
+<div class='main-container-style'>
+
     <p>Update Your Details</p>
-    <!-- Update Username Form -->
+
     <div class="form-field">
         <form method="POST" action="{% url 'users:update_username' %}" class="form-group">
             {% csrf_token %}
@@ -20,8 +20,7 @@
             <button type="submit" class="btn btn-primary">Update Username</button>
         </form>
     </div>
-    <br>
-    <!-- Update Email Form -->
+
     <div class="form-field">
         <form method="POST" action="{% url 'users:update_email' %}">
             {% csrf_token %}
@@ -30,29 +29,33 @@
         </form>
     </div>
     
-    <hr>
+</div>
 
-    <!-- Change Password Form -->
+<div class='main-container-style'>
+
+    <p>Change Password</p>
+
     <div class="form-field">
         <form method="POST" action="{% url 'users:change_password' %}">
             {% csrf_token %}
-            <p>Change Password</p>
+            
             {{ password_form|crispy }}
             <button type="submit" class="btn btn-primary">Change Password</button>
         </form>
     </div>
 
-    <hr>
+</div>
+
+<div class='main-container-style'>
     
-    <!-- Delete Account Form -->
+    <p>Delete Account</p>
     <div class="form-field">
         <form method="POST" action="{% url 'users:delete_account' %}">
             {% csrf_token %}
-            <p>Delete Account</p>
             {{ delete_form|crispy }}
             <button type="submit" class="btn btn-danger">Delete Account</button>
         </form>
     </div>
-    <br>
+    
 </div>
 {% endblock %}

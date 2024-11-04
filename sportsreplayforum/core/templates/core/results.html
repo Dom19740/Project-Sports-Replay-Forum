@@ -13,13 +13,13 @@
 
     {% elif event.rating.percentage >= 33 %}
 
-        <h2>MID TEMP!</h2>
+        <h3>MID TEMP!</h3><img src="{% static 'img/logo_mid.png' %}" alt="MID TEMP" class="rating-logo">
         <h4>Watch the Highlights</h4>
 
     {% else %}
 
-        <h2>NOT WATCH</h2>
-        <h4p>Check Out the Results</h4>
+        <h3>NOT WATCH!</h3><img src="{% static 'img/logo_cold.png' %}" alt="NOT WATCH" class="rating-logo">
+        <h4>Check Out the Results</h4>
 
     {% endif %}
     
