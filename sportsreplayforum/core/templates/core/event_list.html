@@ -2,8 +2,12 @@
 
 {% block title %}{{ competition.name }} | Should I Watch Sports{% endblock %}
 
-{% block header %}{{ title }} - {{ competition.name }}{% endblock %}
+{% block header %}
 
+<a href="{% url 'core:competition_schedule' league=league %}" >{{ title }}</a> -
+{{ competition.name }}
+
+{% endblock %}
 
 {% block main_container_left_1 %}
 

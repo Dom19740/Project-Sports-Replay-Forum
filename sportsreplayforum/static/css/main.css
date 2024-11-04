@@ -12,12 +12,23 @@
     --light-orange: #ffedc3;
     --light-grey: #d9d9d9;
     --dark-grey: #282828;
+    --darker-grey: #1c1c1c;
 
     --bg-color-light: #ffffff;
     --text-color-light: #000000;
     --bg-color-dark: #000000;
     --text-color-dark: #ffffff;
 }
+
+a {
+    text-decoration: none;
+    color: var(--bright-white); /* or any other color you prefer */
+}
+
+a:hover {
+    color: var(--two-star-ocean); /* or any other color you prefer */
+}
+
 /* General */
 body {
     overflow-y: scroll;
@@ -142,10 +153,12 @@ body.dark-mode {
 
 .btn-pill-light:hover {
     background-color: var(--dark-purple);
+    color: #fff;
 }
 
 .btn-pill-dark:hover {
   background-color: var(--light-purple);
+  color: #fff;
 }
 
 .btn-pill-grey {
@@ -155,7 +168,7 @@ body.dark-mode {
 }
 
 .btn-pill-grey:hover {
-    background-color: var(--dark-purple);
+    background-color: var(--darker-grey);
 }
 
 
@@ -176,7 +189,7 @@ body.dark-mode {
 }
 
 .nav-link:hover {
-    color: var(--light-grey) !important;
+    color: var(--two-star-ocean) !important;
 }
 
 .search-input {

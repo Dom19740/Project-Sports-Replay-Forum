@@ -5,7 +5,7 @@
 {% block navbar %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">
+        <a class="navbar-brand" title="Home" href="{% url 'home' %}">
           <img src="{% static 'img/android-chrome-192x192.png' %}" alt="Should I Watch Sports">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,42 +14,39 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item {% if request.get_full_path == f1 %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'core:competition_schedule' league='Formula 1' %}">F1</a>
+                    <a class="nav-link" title="F1" href="{% url 'core:competition_schedule' league='Formula 1' %}">F1</a>
                 </li>
                 <li class="nav-item {% if request.get_full_path == motogp %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'core:competition_schedule' league='MotoGP' %}">MotoGP</a>
+                    <a class="nav-link" title="MotoGP" href="{% url 'core:competition_schedule' league='MotoGP' %}">MotoGP</a>
                 </li>
                 <li class="nav-item {% if request.get_full_path == premier %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'core:competition_schedule' league='English Premier League' %}">Premier League</a>
+                    <a class="nav-link" title="Premier League" href="{% url 'core:competition_schedule' league='English Premier League' %}">Premier League</a>
                 </li>
                 <li class="nav-item {% if request.get_full_path == champions %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'core:competition_schedule' league='UEFA Champions League' %}">Champions League</a>
+                    <a class="nav-link" title="Champions League" href="{% url 'core:competition_schedule' league='UEFA Champions League' %}">Champions League</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto"> <!-- 'ms-auto' to align to the right -->
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:profile' %}">Hi, {{ user.username|title }}</a>
+                        <a class="nav-link" title="Profile" href="{% url 'users:profile' %}">Hi, {{ user.username|title }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+                        <a class="nav-link" title="Logout" href="{% url 'users:logout' %}">Logout</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:login' %}?next={{ request.path }}">Login</a>
+                        <a class="nav-link" title="Login" href="{% url 'users:login' %}?next={{ request.path }}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:register' %}?next={{ request.path }}">Register</a>
+                        <a class="nav-link" title="Register" href="{% url 'users:register' %}?next={{ request.path }}">Register</a>
                     </li>
                 {% endif %}
                 
                 &nbsp;&nbsp;
                 {% include 'core/search.html' %}
-
-                <button id="theme-toggle" class="theme-toggle">
-                    <i class="fas fa-sun"></i>
-                </button>
-                
+                <button id="theme-toggle" class="theme-toggle" title="Change Theme"><i class="fas fa-sun"></i></button>
+            
             </ul>
         </div>
     </div>

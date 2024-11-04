@@ -1,31 +1,40 @@
-{% extends 'base_main.html' %}
+{% extends 'base_3_split.html' %}
 
 {% block title %}{{ event.event_list }} - {{ event.event_type|title }} | Should I Watch Sports{% endblock %}
 
-{% block content %}
+{% block header %}
 
-<div class="container">
-    <div>
-        <br>
-        <h2>{{ title }} - {{ event.event_list.name }}</h2>
+    <a href="{% url 'core:competition_schedule' league=event.event_list.league %}" >{{ title }}</a> -
+    <a href="{% url 'core:event_list' event.event_list.id %}" >{{ event.event_list }}</a> -
+    {{ event.event_type|title }}</a>
 
-        <p><a href="{% url 'core:event_list' event.event_list.id %}">Back to EVENTS</a></p>
-
-        <h3>
-            {% if title == "Formula 1 World Championship" %}
-                {{ event.date_time|date:"j M" }} - {{ event.event_type|title }}
-            {% else %}
-                {{ event.event_type|title }}
-            {% endif %}
-        </h3>
-    </div>
-
-    {% include 'core/vote.html' %}
-
-    <br>
-    
-    {% include 'core/results.html' %}
-
-    {% include 'core/spoiler_zone.html' %}
-    
 {% endblock %}
+
+{% block main_container_left_1 %}competition_schedule
+
+        <a href="{% url 'core:event_list' event.event_list.id %}" class="btn-pill btn-pill-grey rounded-pill">Back to Events</a>
+
+    
+        {% include 'core/vote.html' %}
+    
+        <br>
+        
+        {% include 'core/results.html' %}
+    
+        {% include 'core/spoiler_zone.html' %}
+        
+
+{% endblock %}
+
+{% block main_container_left_2 %}
+
+
+
+{% endblock %}
+
+{% block main_container_right %}
+
+
+
+{% endblock %}
+

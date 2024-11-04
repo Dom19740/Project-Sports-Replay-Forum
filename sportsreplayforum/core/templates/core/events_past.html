@@ -4,18 +4,18 @@
     <h5 class="inside-header">Past Events</h5>
     <p></p>
       <ul>
+        
+        {% for event in events_past %}
+          <li>
+            <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-light rounded-pill">
+                {% if title == "Formula 1 World Championship" %}
+                    {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
+                {% else %}
+                    {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
+                {% endif %}
+            </a>
+          </li>
+        {% endfor %}
         <a href="{% url 'core:competition_schedule' league=league %}" class="btn-pill btn-pill-grey rounded-pill">Back to Schedule</a>
-          {% for event in events_past %}
-              <li>
-                <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-light rounded-pill">
-                    {% if title == "Formula 1 World Championship" %}
-                        {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
-                    {% else %}
-                        {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
-                    {% endif %}
-                
-                </a>
-              </li>
-          {% endfor %}
       </ul>
 </div>
