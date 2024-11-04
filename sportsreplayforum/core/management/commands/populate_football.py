@@ -17,7 +17,7 @@ class Command(BaseCommand):
         }
         for season_name, season_id in season_ids.items():
             # Fetch the data from the API
-            api_key = os.getenv('API_KEY')
+            api_key = os.getenv('SPORTSDB_API_KEY')
             try:
                 response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id={season_id}")
                 response.raise_for_status()

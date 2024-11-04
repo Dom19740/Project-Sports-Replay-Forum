@@ -9,7 +9,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # Fetch the data from the API
-        api_key = os.getenv('API_KEY')
+        api_key = os.getenv('SPORTSDB_API_KEY')
         try:
             response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id=4370&s=2024")
             response.raise_for_status()

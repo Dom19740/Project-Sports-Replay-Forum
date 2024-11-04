@@ -5,7 +5,7 @@
 
     <br>
     <div class="form-check form-switch">
-        <input class="toggle-switch" type="checkbox" id="flexSwitchCheckDefault">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
         <label class="form-check-label" for="flexSwitchCheckDefault">Show Highlights</label>
     </div>
 
@@ -13,7 +13,7 @@
         <br>
         {% if video_id %}
             <a href="https://www.youtube.com/watch?v={{ video_id }}" title="Highlights" target="_blank" rel="noopener">
-                <img src="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg" style="width: 60%;" />
+                <img src="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg" style="width: 70%;" />
             </a>
         {% else %}
             <a href="https://www.youtube.com/results?search_query={{ event.event_type|title }} {{ event.date_time|date:'Y-m-d' }} highlights" title="Search YouTube" target="_blank" rel="noopener">
@@ -25,7 +25,7 @@
     </div>
 
     <div class="form-check form-switch">
-        <input class="toggle-switch" type="checkbox" id="flexSwitchCheckDefault2">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2">
         <label class="form-check-label" for="flexSwitchCheckDefault2">Show Results</label>
     </div>
     <br>

@@ -174,7 +174,7 @@ h3, .rating-logo {
 .btn-back {
     background-color: var(--dark-grey);
     color: #fff;
-    display: inline-block;
+    display: inline;
     width: auto;
 }
 
@@ -232,11 +232,11 @@ h3, .rating-logo {
 }
 
 /* Checkbox */
-.toggle-switch[type="checkbox"] {
+.form-check-input[type="checkbox"] {
     background-color: var(--light-grey);
 }
   
-  .toggle-switch[type="checkbox"]:checked {
+.form-check-input[type="checkbox"]:checked {
     background-color: var(--light-purple);
 }
 

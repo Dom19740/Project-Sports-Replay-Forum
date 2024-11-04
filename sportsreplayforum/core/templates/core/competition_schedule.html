@@ -2,7 +2,10 @@
 
 {% block title %}{{ title }} | Should I Watch Sports{% endblock %}
 
-{% block header %}{{ title }}{% endblock %}
+{% block header %}
+    {{ title }}
+    <a href="{% url 'home' %}" class="btn-pill btn-back">home</a>
+{% endblock %}
 
 
 {% block main_container_left_1 %}

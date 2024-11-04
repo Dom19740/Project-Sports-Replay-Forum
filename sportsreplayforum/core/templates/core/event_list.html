@@ -6,7 +6,7 @@
 
     <a href="{% url 'core:competition_schedule' league=league %}" >{{ title }}</a> -
     {{ competition.name }}
-    <a href="{% url 'core:competition_schedule' league=league %}" class="btn-pill btn-back">Back</a>
+    <a href="{% url 'core:competition_schedule' league=league %}" class="btn-pill btn-back">back</a>
     
 
 {% endblock %}
@@ -25,6 +25,6 @@
 
 {% block main_container_right %}
 
-    {% include 'core/events_poster.html' %}
+
 
 {% endblock %}
