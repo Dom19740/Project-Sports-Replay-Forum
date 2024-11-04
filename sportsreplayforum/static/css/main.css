@@ -60,7 +60,6 @@ body.dark-mode {
     border-radius: 25px;
     padding: 25px;
     padding-left: 30px;
-    padding-bottom: 10px;
     margin-left: 7px;
     margin-right: 7px;
     margin-bottom: 15px;
@@ -117,6 +116,12 @@ body.dark-mode {
     padding-right: 25px;
 }
 
+/* Event */
+
+
+.vote input[type="radio"] {
+    margin: 10px 10px;
+  }
 
 /* Buttons */
 .btn-primary {
@@ -161,17 +166,16 @@ body.dark-mode {
   color: #fff;
 }
 
-.btn-pill-grey {
+.btn-back {
     background-color: var(--dark-grey);
     color: #fff;
-
+    display: inline-block;
+    width: auto;
 }
 
-.btn-pill-grey:hover {
+.btn-back:hover {
     background-color: var(--darker-grey);
 }
-
-
 
 
 /* Navbar */

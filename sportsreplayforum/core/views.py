@@ -19,9 +19,9 @@ TITLES = {
 }
 
 RATINGS_TEXT = {
-    5: "Hot Watch! Definitely Worth Watching the Full Replay",
+    5: "Hot Watch! Definitely Watch the Full Replay",
     4: "",
-    3: "Mid temp! Worth Watching the Highlights",
+    3: "Mid Temp! Worth Watching the Highlights",
     2: "",
     1: "Not Watch! Just Check Out the Results"
 }

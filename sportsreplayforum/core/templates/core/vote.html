@@ -5,16 +5,16 @@
     <h5>Rate the Event</h5>
     {% if event|is_past and not event|voting_closed %}
         {% if request.user.is_authenticated %}
-            <form method="post" action="{% url 'core:vote' event.id %}">
+        <form method="post" action="{% url 'core:vote' event.id %}" class="vote">
             {% csrf_token %}
-            <input type="radio" name="stars" value="5" required> 5 stars - {{ RATINGS_TEXT.5 }}<br>
-            <input type="radio" name="stars" value="4"> 4 stars {{ RATINGS_TEXT.4 }}<br>
-                <input type="radio" name="stars" value="3"> 3 stars - {{ RATINGS_TEXT.3 }}<br>
-                <input type="radio" name="stars" value="2"> 2 stars {{ RATINGS_TEXT.2 }}<br>
-                <input type="radio" name="stars" value="1"> 1 stars - {{ RATINGS_TEXT.1 }}<br>
-                <br>
-                <input type="submit" class="btn btn-primary text-white" value="Vote">
-            </form>
+            <input type="radio" name="stars" value="5" required><span> 5 stars - {{ RATINGS_TEXT.5 }}</span><br>
+            <input type="radio" name="stars" value="4"><span> 4 stars {{ RATINGS_TEXT.4 }}</span><br>
+            <input type="radio" name="stars" value="3"><span> 3 stars - {{ RATINGS_TEXT.3 }}</span><br>
+            <input type="radio" name="stars" value="2"><span> 2 stars {{ RATINGS_TEXT.2 }}</span><br>
+            <input type="radio" name="stars" value="1"><span> 1 stars - {{ RATINGS_TEXT.1 }}</span><br>
+            <br>
+            <input type="submit" class="btn btn-primary text-white" value="Vote">
+          </form>
         {% else %}
             <p>Register or Login to Vote</p>
             <nav>
@@ -26,6 +26,7 @@
         <p>Rating opens 45 minutes after the event starts and is available for 7 days.</p>
     {% endif %}
 </div>
+
 <div id="voted-container" {% if request.user in event.rating.voters.all %}style="display: block;"{% else %}style="display: none;"{% endif %}>
     <br>
     <p>Thanks for voting</p>    

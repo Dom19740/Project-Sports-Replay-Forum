@@ -6,35 +6,26 @@
 
     <a href="{% url 'core:competition_schedule' league=event.event_list.league %}" >{{ title }}</a> -
     <a href="{% url 'core:event_list' event.event_list.id %}" >{{ event.event_list }}</a> -
-    {{ event.event_type|title }}</a>
+    {{ event.event_type|title }}</a> 
+    <a href="{% url 'core:event_list' event.event_list.id %}" class="btn-pill btn-back">Back</a>
 
 {% endblock %}
 
-{% block main_container_left_1 %}competition_schedule
-
-        <a href="{% url 'core:event_list' event.event_list.id %}" class="btn-pill btn-pill-grey rounded-pill">Back to Events</a>
-
-    
-        {% include 'core/vote.html' %}
-    
-        <br>
+{% block main_container_left_1 %}
         
-        {% include 'core/results.html' %}
-    
-        {% include 'core/spoiler_zone.html' %}
-        
+    {% include 'core/results.html' %}
 
 {% endblock %}
 
 {% block main_container_left_2 %}
 
-
+    {% include 'core/vote.html' %}
 
 {% endblock %}
 
 {% block main_container_right %}
 
-
+    {% include 'core/spoiler_zone.html' %}
 
 {% endblock %}
 

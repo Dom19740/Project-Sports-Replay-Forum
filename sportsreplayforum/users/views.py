@@ -11,6 +11,7 @@ from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, login
+from django.urls import reverse
 from .tokens import account_activation_token
 
 
@@ -79,7 +80,10 @@ def login_view(request):
                 messages.success(request, f'Welcome back, {user.username.title()}!')
 
                 if next_url:
-                    return redirect(next_url)
+                    if next_url == reverse('users:login'):
+                        return redirect('home')
+                    else:
+                        return redirect(next_url)
                 else:
                     return redirect('home')
             else:

@@ -1,65 +1,68 @@
-<div class="results-container">
-    <br>
-    <h5>Results</h5>
-    {% if event.rating.voters.all|length == 0 %}
-        <p>This event has no ratings.</p>
-        
-    {% else %}
+<h5>User Rating</h5>
+{% if event.rating.voters.all|length == 0 %}
+    <p>This event has no ratings.</p>
     
-        {% if event.rating.percentage >= 66 %}
-            <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}%</p>
-            <h2>{{ RATINGS_TEXT.5 }}</h2>
+{% else %}
 
-        {% elif event.rating.percentage >= 33 %}
-            <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}%</p>
-            <h2>{{ RATINGS_TEXT.3 }}</h2>
-        {% else %}
-            <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}%</p>
-            <h2>{{ RATINGS_TEXT.1 }}</h2>
-        {% endif %}
+    {% if event.rating.percentage >= 66 %}
         
-        <p>Rating Breakdown - {{ total_votes }} votes</p>
-            <center<div style="width: 250px;"> <!-- Adjust the width as needed -->
-                <canvas id="ratingChart" width="250" height="250"></canvas> <!-- Set width and height -->
-            </div>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <script>
-                const ctx = document.getElementById('ratingChart').getContext('2d');
-                const fiveStars = {{ event.rating.five_stars }};
-                const fourStars = {{ event.rating.four_stars }};
-                const threeStars = {{ event.rating.three_stars }};
-                const twoStars = {{ event.rating.two_stars }};
-                const oneStar = {{ event.rating.one_star }};
-                const totalVotes = fiveStars + fourStars + threeStars + twoStars + oneStar;
-                const chart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['5 stars', '4 stars', '3 stars', '2 stars', '1 star'],
-                        datasets: [{
-                            data: [fiveStars, fourStars, threeStars, twoStars, oneStar],
-                            backgroundColor: [
-                                '#ee35b9',
-                                '#f37484',
-                                '#f6933f',
-                                '#95d0bb',
-                                '#24e4e7',
-                            ],
-                            borderColor: [
-                                '#ee35b9',
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: false,
-                        title: {
-                            display: true,
-                            text: 'Rating Distribution',
-                        }
-                    }
-                });
-            </script>
-            </script>
+        <h3>HOT WATCH!</h3>
+        <h4>Definitely Watch the Full Replay</h4>
+
+    {% elif event.rating.percentage >= 33 %}
+
+        <h2>MID TEMP!</h2>
+        <h4>Watch the Highlights</h4>
+
+    {% else %}
+
+        <h2>NOT WATCH</h2>
+        <h4p>Check Out the Results</h4>
+
     {% endif %}
-    <br>
-</div>
+    
+    <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}% with {{ total_votes }} votes</p>
+
+    
+    <div> <!-- Adjust the width as needed -->
+        <canvas id="ratingChart" width="250"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('ratingChart').getContext('2d');
+        const fiveStars = {{ event.rating.five_stars }};
+        const fourStars = {{ event.rating.four_stars }};
+        const threeStars = {{ event.rating.three_stars }};
+        const twoStars = {{ event.rating.two_stars }};
+        const oneStar = {{ event.rating.one_star }};
+        const totalVotes = fiveStars + fourStars + threeStars + twoStars + oneStar;
+        const chart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['5 stars', '4 stars', '3 stars', '2 stars', '1 star'],
+                datasets: [{
+                    data: [fiveStars, fourStars, threeStars, twoStars, oneStar],
+                    backgroundColor: [
+                        '#ee35b9',
+                        '#f37484',
+                        '#f6933f',
+                        '#95d0bb',
+                        '#24e4e7',
+                    ],
+                    borderColor: [
+                        '#ee35b9',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: false,
+                title: {
+                    display: true,
+                    text: 'Rating Distribution',
+                }
+            }
+        });
+    </script>
+    
+{% endif %}
