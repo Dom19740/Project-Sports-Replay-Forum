@@ -1,7 +1,6 @@
 {% load event_tags %}
 
 <div id="vote-container" {% if not request.user.is_superuser and request.user in event.rating.voters.all %}style="display: none;"{% endif %}>
-    <br>
     <h5>Rate the Event</h5>
     {% if event|is_past and not event|voting_closed %}
         {% if request.user.is_authenticated %}
@@ -28,6 +27,5 @@
 </div>
 
 <div id="voted-container" {% if request.user in event.rating.voters.all %}style="display: block;"{% else %}style="display: none;"{% endif %}>
-    <br>
     <p>Thanks for voting</p>    
 </div>
