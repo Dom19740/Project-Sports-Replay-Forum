@@ -1,3 +1,5 @@
+{% load static %}
+
 <h5>User Rating</h5>
 {% if event.rating.voters.all|length == 0 %}
     <p>This event has no ratings.</p>
@@ -6,7 +8,7 @@
 
     {% if event.rating.percentage >= 66 %}
         
-        <h3>HOT WATCH!</h3>
+        <h3>HOT WATCH!</h3><img src="{% static 'img/logo_flame_large.png' %}" alt="HOT WATCH" class="rating-logo">
         <h4>Definitely Watch the Full Replay</h4>
 
     {% elif event.rating.percentage >= 33 %}
@@ -25,7 +27,7 @@
 
     
     <div> <!-- Adjust the width as needed -->
-        <canvas id="ratingChart" width="250"></canvas>
+        <canvas id="ratingChart" width="250" height="200"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -60,7 +62,17 @@
                 title: {
                     display: true,
                     text: 'Rating Distribution',
-                }
+                },
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            boxWidth: 10,
+                            padding: 15,
+                        }
+                    }
+                },
+                
             }
         });
     </script>

@@ -117,7 +117,12 @@ body.dark-mode {
 }
 
 /* Event */
-
+h3, .rating-logo {
+    display: inline;
+    vertical-align: middle;
+    width: 25px;
+    margin: 10px;
+}
 
 .vote input[type="radio"] {
     margin: 10px 10px;
