@@ -6,26 +6,24 @@
 
 <h4 class='main-header'>{% block header %} {% endblock %}</h4>
 
-<div class='main-container-split'>
-
+<div class="main-container-split">
+    
     <div class="main-container-left">
         
-        <div class="main-container main-container-left-1">
+        <div class="main-container-style main-container-left-1">
             {% block main_container_left_1 %} {% endblock %}
         </div>
 
-        <div class="main-container main-container-left-2">
+        <div class="main-container-style main-container-left-2">
             {% block main_container_left_2 %} {% endblock %}
         </div>
 
     </div>
 
-    <div class="main-container main-container-right">
+    <div class="main-container-style main-container-right">
         {% block main_container_right %} {% endblock %}
     </div>
 
 </div>
-
-
 
 {% endblock%}

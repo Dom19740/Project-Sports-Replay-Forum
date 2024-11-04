@@ -10,7 +10,7 @@ from datetime import timedelta, datetime
 
 # db league names converted to Titles  
 TITLES = {
-    'Formula 1': 'FIA F1 World Championship',
+    'Formula 1': 'Formula 1 World Championship',
     'UEFA Nations League': 'UEFA Nations League',
     'UEFA Champions League': 'UEFA Champions League',
     'English Premier League': 'English Premier League',

@@ -44,7 +44,7 @@ body.dark-mode {
     margin-bottom: 25px;
 }
   
-.main-container {
+.main-container-style {
     border: 2px solid var(--dark-grey);
     border-radius: 25px;
     padding: 25px;
@@ -55,10 +55,9 @@ body.dark-mode {
     margin-bottom: 15px;
 }
 
-.main-container-split {
-    display: flex;
-    flex-direction: row;
-  }
+.main-container-left, .main-container-right {
+    flex: 1;
+}
 
 .main-container-left {
     display: flex;
@@ -67,35 +66,22 @@ body.dark-mode {
 
 .main-container-left-1, .main-container-left-2 {
     flex: 1;
-    min-width: 300px;
 }
 
-.main-container-right {
-    width: 100%;
+.main-container-split {
+    display: flex;
+    flex-direction: row;
 }
 
-.sub-container {
-    display: flex;
-    justify-content: space-between;
-}
-  
-.sub-container-left {
+.main-container-split > div {
     flex: 1;
-    min-width: 300px;
 }
-  
-.sub-container-right {
-    flex: 1;
-    min-width: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
+
 
 .events-list li {
     list-style: none;
 }
-
 
 /* Welcome */
 .welcome-logo {
@@ -104,6 +90,7 @@ body.dark-mode {
     padding-left: 25px;
     padding-right: 25px;
 }
+
 
 
 /* Buttons */
@@ -126,6 +113,7 @@ body.dark-mode {
   text-align: left;
   text-decoration: none;
   display: block;
+  max-width: 100%;
 }
 
 .btn-pill-light {
@@ -208,14 +196,14 @@ body.dark-mode {
 
 
 /* Media query for mobile screens */
-@media (max-width: 768px) {
-    .main-sub-container {
-        flex-direction: column;  /* Stacks the lists vertically */
-        gap: 10px;               /* Reduces gap for smaller screens */
-    }
+@media (max-width: 990px) {
 
     .main-container-left, .main-container-right {
         min-width: auto;        /* Removes the min-width restriction */
+    }
+
+    .main-container-split {
+        flex-direction: column; /* Stack the containers vertically */
     }
 }
 

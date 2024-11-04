@@ -4,21 +4,21 @@
 
 {% block content %}
 
-<div class="container">
+<div>
     <br>
     <h2>{{ title }} - {{ competition.name }}</h2>
 
     <p><a href="{% url 'core:competition_schedule' league=league %}">Back to EVENT SCHEDULE</a></p>
 
-    <div class="main-sub-container">
+    <div>
 
-        <div class="main-container-left">
+        <div>
             <p>Past</p>
             <ul>
                 {% for event in events_past %}
                     <li>
                         <a href="{% url 'core:event' event.id %}">
-                            {% if title == "FIA F1 World Championship" %}
+                            {% if title == "Formula 1 World Championship" %}
                                 {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
                             {% else %}
                                 {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
@@ -29,13 +29,13 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="main-container-left-bottom">
+        <div>
             <p>Upcoming</p>
             <ul>
                 {% for event in events_upcoming %}
                     <li>
                         <a href="{% url 'core:event' event.id %}">
-                            {% if title == "FIA F1 World Championship" %}
+                            {% if title == "Formula 1 World Championship" %}
                                 {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
                             {% else %}
                                 {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>

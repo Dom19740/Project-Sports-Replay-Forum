@@ -12,7 +12,7 @@
         <p><a href="{% url 'core:event_list' event.event_list.id %}">Back to EVENTS</a></p>
 
         <h3>
-            {% if title == "FIA F1 World Championship" %}
+            {% if title == "Formula 1 World Championship" %}
                 {{ event.date_time|date:"j M" }} - {{ event.event_type|title }}
             {% else %}
                 {{ event.event_type|title }}
