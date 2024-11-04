@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Competition, Event, Rating
+from .models import Competition, Event, Rating, Result_f1
 
 # Register the Competition model
 @admin.register(Competition)
@@ -29,3 +29,9 @@ class RatingAdmin(admin.ModelAdmin):
     def get_voters(self, obj):
         return ', '.join([voter.username for voter in obj.voters.all()])
     get_voters.short_description = 'Voters'
+
+
+@admin.register(Result_f1)   
+class Result_f1Admin(admin.ModelAdmin):
+    list_display = ('event', 'position', 'driver', 'team', 'time')
+    list_filter = ('event', 'position', 'driver', 'team', 'time')

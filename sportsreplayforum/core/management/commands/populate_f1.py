@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from core.models import Competition, Event
 from dateutil import parser
+from .pop_results_f1 import pop_results_f1
 import requests, os
 
 class Command(BaseCommand):
@@ -58,6 +59,9 @@ class Command(BaseCommand):
                     race_event.is_finished = is_finished
                     race_event.save()
 
+                    if event.is_finished:
+                        pop_results_f1(event.idEvent)
+
         # Step 2: Create or update Events associated with each Competition (e.g., Qualifying, Sprint)
         for item in data:
             if item.get('strEvent'):
@@ -96,5 +100,8 @@ class Command(BaseCommand):
                             event.video_id = item['strVideo']
                             event.is_finished = is_finished
                             event.save()
+
+                            if event.is_finished:
+                                pop_results_f1(event.idEvent)
 
         self.stdout.write(self.style.SUCCESS("F1 events populated and updated successfully"))

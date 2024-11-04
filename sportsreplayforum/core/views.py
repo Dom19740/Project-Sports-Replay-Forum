@@ -4,8 +4,8 @@ from django.urls import reverse
 from django.http import JsonResponse
 from django.core.management import call_command
 from django.conf import settings
-from .models import Competition, Event, Rating
-from datetime import timedelta, datetime
+from .models import Competition, Event, Rating, Result_f1
+from datetime import timedelta
 
 
 # db league names converted to Titles  
@@ -98,6 +98,7 @@ def event(request, event_id):
 
     title = TITLES.get(event.event_list.league, 'Unknown League')
 
+    results = event.results.all()
 
     try:
         total_votes = (
@@ -110,8 +111,6 @@ def event(request, event_id):
     except Event.rating.RelatedObjectDoesNotExist:
         total_votes = 0
 
-
-
     return render(request, 'core/event.html', {
         'event': event,
         'RATINGS_TEXT': RATINGS_TEXT,
@@ -120,6 +119,7 @@ def event(request, event_id):
         'timezone': timezone,
         'timedelta': timedelta,
         'total_votes': total_votes,
+        'results': results,
     })
 
 

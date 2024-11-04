@@ -33,3 +33,13 @@ class Rating(models.Model):
 
     def __str__(self):
         return f"{self.event.event_type} - {self.event.event_list.name}"
+    
+class Result_f1(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='results')
+    position = models.IntegerField()
+    driver = models.CharField(max_length=255)
+    team = models.CharField(max_length=255)
+    time = models.CharField(max_length=255, null=True)    
+
+    def __str__(self):
+        return f"{self.player} - {self.event.event_type} - {self.position}"
