@@ -77,11 +77,26 @@ body.dark-mode {
     flex: 1;
 }
 
+.sub-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.sub-container-left, .sub-container-right {
+    flex: 1;
+}
+
+.flame-logo {
+    max-width: 175px;
+    width: 10%;
+    height: auto;
+}
 
 
 .events-list li {
     list-style: none;
 }
+
 
 /* Welcome */
 .welcome-logo {
@@ -90,7 +105,6 @@ body.dark-mode {
     padding-left: 25px;
     padding-right: 25px;
 }
-
 
 
 /* Buttons */

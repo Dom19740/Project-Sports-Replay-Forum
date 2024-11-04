@@ -1,0 +1,23 @@
+{% load static %}
+
+<div class="events-list">
+    <h4 class="inside-header">Past Events</h4>
+    <ul>
+      {% for competition in past_competitions %}
+        <li>
+          <a href="{% url 'core:event_list' competition.id %}" class="btn-pill btn-pill-light rounded-pill"> 
+          
+            {% if title == "Formula 1 World Championship" %}
+              {{ competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - 
+            {% elif title == "MotoGP" %}
+              {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} -
+            {% endif %}
+            Matchday {{ competition.name }}
+            
+          </a>
+        </li>
+      {% empty %}
+        <li>No past events.</li>
+      {% endfor %}
+    </ul>
+</div>

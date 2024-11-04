@@ -1,15 +1,15 @@
 <div class="list-container events-list">    
     <h4 class="inside-header ">Upcoming</h4>
     <ul>
-        {% for competition in upcoming_competitions %}
+        {% for event in events_upcoming %}
             <li>
-                <a href="{% url 'core:event_list' competition.id %}" class="btn-pill btn-pill-dark rounded-pill">
+                <a href="{% url 'core:event' event.id %}">
                     {% if title == "Formula 1 World Championship" %}
-                        {{ competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - 
-                    {% elif title == "MotoGP" %}
-                        {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} -
+                        {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
+                    {% else %}
+                        {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
                     {% endif %}
-                    {{ competition.name }}
+                
                 </a>
             </li>
         {% empty %}
