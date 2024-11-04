@@ -135,17 +135,27 @@ body.dark-mode {
   color: #fff;
 }
 
-.btn-pill-light:hover {
-  background-color: var(--dark-purple);
-}
-
 .btn-pill-dark {
   background-color: var(--dark-purple);
   color: #fff;
 }
 
+.btn-pill-light:hover {
+    background-color: var(--dark-purple);
+}
+
 .btn-pill-dark:hover {
   background-color: var(--light-purple);
+}
+
+.btn-pill-grey {
+    background-color: var(--dark-grey);
+    color: #fff;
+
+}
+
+.btn-pill-grey:hover {
+    background-color: var(--dark-purple);
 }
 
 

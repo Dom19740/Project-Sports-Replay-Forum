@@ -1,33 +1,20 @@
 {% load static %}
 
-<div class="sub-container">
-
-  <div class="sub-container-left">
-    <p>Check past events to see if it's a </p>
-    <p>HOT WATCH - watch the full replay</p>
-    <p>MID TEMP - catch the highlights</p>
-    <p>NOT WATCH - skip to the results</p>
-  </div>
-
-  <div class="sub-container-right">
-    <img src="{% static 'img/logo_flame_large.png' %}" class="flame-logo" alt="Flame Logo">
-  </div>
-
-</div>
-
 <div class="events-list">
-    <h4 class="inside-header">Past Events</h4>
+    <h5 class="inside-header">Past Events</h5>
+    <p></p>
       <ul>
+        <a href="{% url 'core:competition_schedule' league=league %}" class="btn-pill btn-pill-grey rounded-pill">Back to Schedule</a>
           {% for event in events_past %}
               <li>
-                  <a href="{% url 'core:event' event.id %}">
-                      {% if title == "Formula 1 World Championship" %}
-                          {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
-                      {% else %}
-                          {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
-                      {% endif %}
-                  
-                  </a>
+                <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-light rounded-pill">
+                    {% if title == "Formula 1 World Championship" %}
+                        {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
+                    {% else %}
+                        {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
+                    {% endif %}
+                
+                </a>
               </li>
           {% endfor %}
       </ul>
