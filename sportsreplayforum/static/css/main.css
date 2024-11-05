@@ -64,7 +64,7 @@ body.dark-mode {
     border: 2px solid var(--dark-grey);
     border-radius: 25px;
     padding: 25px;
-    margin: 7px 0 15px 7px;
+    margin: 0px -5px 15px 5px;
 }
 
 /* If you need two columns for main content sections, adjust grid-template-columns */
@@ -72,25 +72,16 @@ body.dark-mode {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two equal columns */
     gap: 15px; /* Add spacing between columns */
-    align-items: stretch; /* Ensures items fill the container height */
+    align-items: stretch;
 }
 
-/* Example for sub-containers */
-.sub-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-}
-
-/* For items within .main-container-left */
 .main-container-left {
     display: grid;
-    grid-template-rows: auto auto; /* Adjust rows as needed */
-    gap: 15px;
+    grid-template-rows: auto auto;
 }
 
 .main-container-left-1, .main-container-left-2 {
-    /* Remove flex properties */
-    grid-row: span 1; /* Each takes up one row; adjust if different layout needed */
+    grid-row: span 1;
 }
 
 
