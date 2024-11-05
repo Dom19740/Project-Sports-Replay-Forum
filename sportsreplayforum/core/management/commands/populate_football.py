@@ -10,8 +10,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         season_ids = {
-"""             'World Cup': '4429',
-            'UEFA Nations League': '4490', """
             'UEFA Champions League': '4480',
             'Premier League': '4328',
         }
@@ -38,6 +36,10 @@ class Command(BaseCommand):
                     league=item['strLeague'],
                     name=competition_name,
                     date=competition_date,
+                    defaults={
+                        'banner': item['strLeagueBadge'],
+                        'badge': item['strLeagueBadge'],
+                    }
                 )
 
                 date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
@@ -54,6 +56,7 @@ class Command(BaseCommand):
                     defaults={
                         'video_id': item['strVideo'],
                         'is_finished': is_finished,
+                        'poster': item['strThumb'],
                     }
                 )
 
