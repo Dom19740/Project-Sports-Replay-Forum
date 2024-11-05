@@ -184,7 +184,7 @@ def replay_platforms(request):
 search_terms = {
     'f1': ['formula 1'],
     'football': ['premier', 'nations', 'champions'],
-    'motorsport': ['motogp', 'formula 1'],
+    'motorsport': ['motogp', 'formula 1', 'NASCAR', 'IndyCar'],
 }
 
 search_terms['motor'] = search_terms['motorsport']

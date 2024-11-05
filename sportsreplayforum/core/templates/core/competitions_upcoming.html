@@ -8,7 +8,7 @@
 
         {% if title == "Formula 1 World Championship" %}
           {{competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }}{{ competition.end_date|date:"M" }} - {{ competition.name }}
-        {% elif title == "MotoGP" %}
+          {% elif title == "MotoGP" or title == "NASCAR Cup Series" or title == "IndyCar Series"%}
           {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - {{ competition.name }}
         {% else %}
           Matchday {{ competition.name }}

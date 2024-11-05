@@ -20,6 +20,12 @@
                     <a class="nav-link" title="MotoGP" href="{% url 'core:competition_schedule' league='MotoGP' %}">MotoGP</a>
                 </li>
                 <li class="nav-item {% if request.get_full_path == premier %}active{% endif %}">
+                    <a class="nav-link" title="IndyCar Series" href="{% url 'core:competition_schedule' league='IndyCar Series' %}">IndyCar</a>
+                </li>
+                <li class="nav-item {% if request.get_full_path == champions %}active{% endif %}">
+                    <a class="nav-link" title="NASCAR Cup Series" href="{% url 'core:competition_schedule' league='NASCAR Cup Series' %}">NASCAR</a>
+                </li>
+                <li class="nav-item {% if request.get_full_path == champions %}active{% endif %}">
                     <a class="nav-link" title="Premier League" href="{% url 'core:competition_schedule' league='English Premier League' %}">Premier League</a>
                 </li>
                 <li class="nav-item {% if request.get_full_path == champions %}active{% endif %}">

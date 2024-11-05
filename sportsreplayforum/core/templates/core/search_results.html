@@ -1,9 +1,11 @@
-{% extends 'base_main.html' %}
+{% extends 'base_2_split.html' %}
 
-{% block content %}
-<div class="container">
-    <br>
-    <h2>Search Results</h2>
+{% block title %}Should I Watch Sports{% endblock %}
+
+{% block header %}Search Results{% endblock %}
+
+{% block main_container_top %}
+
     <p>You searched for: {{ query }}</p>
 
     <h5>Leagues</h5>
@@ -32,5 +34,10 @@
             <li>No events found.</li>
         {% endfor %}
     </ul>
-</div>
+
+{% endblock %}
+
+
+{% block main_container_bottom %}
+
 {% endblock %}
