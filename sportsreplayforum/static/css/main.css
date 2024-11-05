@@ -24,6 +24,7 @@
 body {
     overflow-y: scroll;
     font-family: Poppins, sans-serif;
+    font-weight: 200;
 }
 
 a {
@@ -39,7 +40,6 @@ a:hover {
 body.light-mode {
     background-color: var(--bg-color-light);
     color: var(--text-color-light);
-    
 }
   
 body.dark-mode {
