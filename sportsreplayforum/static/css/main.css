@@ -13,12 +13,22 @@
     --light-grey: #d9d9d9;
     --dark-grey: #282828;
     --darker-grey: #1c1c1c;
-
     --bg-color-light: #ffffff;
     --text-color-light: #000000;
     --bg-color-dark: #000000;
     --text-color-dark: #ffffff;
 }
+
+
+/* General */
+body {
+    overflow-y: scroll;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+
 
 a {
     text-decoration: none;
@@ -29,11 +39,6 @@ a:hover {
     color: var(--two-star-ocean); /* or any other color you prefer */
 }
 
-/* General */
-body {
-    overflow-y: scroll;
-    font-family: Poppins, sans-serif;
-}
 
 body.light-mode {
     background-color: var(--bg-color-light);
@@ -108,13 +113,14 @@ body.dark-mode {
 }
 
 
-/* Welcome */
+Welcome */
 .welcome-logo {
     max-width: 100%;
     padding-bottom: 25px;
     padding-left: 25px;
     padding-right: 25px;
 }
+
 
 /* Event */
 h3, .rating-logo {
@@ -126,7 +132,14 @@ h3, .rating-logo {
 
 .vote input[type="radio"] {
     margin: 10px 10px;
-  }
+}
+
+.spoiler-warning span{
+    background-color: red;
+    font-weight: 500;
+    padding: 0 25px;
+}
+
 
 /* Buttons */
 .btn-primary {
@@ -142,6 +155,7 @@ h3, .rating-logo {
 .btn-pill {
   padding: 1px 12px;
   font-size: 14px;
+  font-weight: 100;
   border-radius: 20px;
   margin-bottom: 10px;
   width: 330px;
@@ -214,6 +228,7 @@ h3, .rating-logo {
     padding-left: 15px;
 }
 
+
 /* Forms */
 .form-field {
     width: 300px;
@@ -231,7 +246,6 @@ h3, .rating-logo {
     font-size: 14px;
 }
 
-/* Checkbox */
 .form-check-input[type="checkbox"] {
     background-color: var(--light-grey);
 }

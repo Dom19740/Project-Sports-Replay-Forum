@@ -2,6 +2,10 @@
 
 <h5>Spoiler Zone</h5>
 {% if event|is_past %}
+    <br>
+    <div>
+        <a href="{% url 'core:replay_platforms' %}" class="btn-pill btn-back">LINKS TO REPLAY PLATFORMS</a>
+    </div>
 
     <br>
     <div class="form-check form-switch">
@@ -16,9 +20,10 @@
                 <img src="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg" style="width: 70%;" />
             </a>
         {% else %}
-            <a href="https://www.youtube.com/results?search_query={{ event.event_type|title }} {{ event.date_time|date:'Y-m-d' }} highlights" title="Search YouTube" target="_blank" rel="noopener">
-                SEARCH YOUTUBE {{ event.event_type|title }} {{ event.date_time|date:'Y-m-d' }}
-            </a>
+
+            <p class="spoiler-warning"><span>WARNING! Opening YouTube may reveal the final score or result</span></p>
+            <a href="https://www.youtube.com/results?search_query={{ event.event_type|title }} {{ event.date_time|date:'Y-m-d' }} highlights" title="Search YouTube" target="_blank" rel="noopener" class="btn-pill btn-back">YOUTUBE HIGHLIGHTS</a>
+        
         {% endif %}
         <br>
         <br>
@@ -30,36 +35,8 @@
     </div>
     <br>
     <div class="show-score-container" style="display: none;">
-
-
-{% comment %} 
-        <table>
-            <thead>
-                <tr>
-                    <th>Position</th>
-                    <th>Player</th>
-                    <th>Team</th>
-                    <th>Detail</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for result in results %}
-                <tr>
-                    <td>{{ result.position }}</td>
-                    <td>{{ result.player }}</td>
-                    <td>{{ result.team }}</td>
-                    <td>{{ result.time }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table> {% endcomment %}
-
-        <p><a href="https://www.thesportsdb.com/event/{{ event.idEvent }}" title="Results" target="_blank" rel="noopener">LINK TO RESULTS</a>
+        <p><a href="https://www.thesportsdb.com/event/{{ event.idEvent }}" title="Results" target="_blank" rel="noopener" class="btn-pill btn-back">LINK TO RESULTS</a>
     </div>
-    <div>
-        <a href="{% url 'core:replay_platforms' %}">LINKS TO REPLAY PLATFORMS</a>
-    </div>
-    <br><br>
 
 
 {% endif %}
