@@ -11,11 +11,11 @@ from datetime import timedelta
 # db league names converted to Titles  
 TITLES = {
     'Formula 1': 'Formula 1 World Championship',
-    'UEFA Nations League': 'UEFA Nations League',
     'UEFA Champions League': 'UEFA Champions League',
     'English Premier League': 'English Premier League',
     'MotoGP': 'MotoGP',
-    'FIFA World Cup': 'FIFA World Cup'
+    'NASCAR Cup Series': 'NASCAR Cup Series',
+    'IndyCar Series': 'IndyCar Series',
 }
 
 RATINGS_TEXT = {
