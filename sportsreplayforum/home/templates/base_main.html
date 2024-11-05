@@ -3,7 +3,7 @@
 
 
 {% block navbar %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-3">
     <div class="container-fluid">
         <a class="navbar-brand" title="Home" href="{% url 'home' %}">
           <img src="{% static 'img/android-chrome-192x192.png' %}" alt="Should I Watch Sports">
@@ -26,13 +26,16 @@
                     <a class="nav-link" title="Champions League" href="{% url 'core:competition_schedule' league='UEFA Champions League' %}">Champions League</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto"> <!-- 'ms-auto' to align to the right -->
+            <ul class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" title="Profile" href="{% url 'users:profile' %}">Hi, {{ user.username|title }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" title="Logout" href="{% url 'users:logout' %}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" title="About" href="{% url 'about' %}">About</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
@@ -52,4 +55,18 @@
     </div>
 </nav>
 
+{% endblock %}
+
+{% block footer %}
+<footer class="text-center">
+    <div class="container-fluid">
+        <div class="container">  <!-- This will limit the width to match the navbar -->
+{% comment %}             <a href="{% url 'home' %}">
+                <img src="{% static 'img/android-chrome-192x192.png' %}" alt="Should I Watch Sports" width="50" class="footer">
+            </a> {% endcomment %}
+            <p>Contact us at: <a href="mailto:siws@dpbcreative.com">siws@dpbcreative.com</a></p>
+            <small>&copy; {{ current_year }} Should I Watch Sports. All rights reserved.</small>
+        </div>
+    </div>
+</footer>
 {% endblock %}

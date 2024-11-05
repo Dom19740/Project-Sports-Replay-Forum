@@ -198,6 +198,11 @@ h3, .rating-logo {
 
 
 /* Navbar */
+.navbar {
+    width: 100%;
+    margin: 5px;
+}
+
 .navbar-brand img {
     width: 40px;
 }
@@ -252,6 +257,15 @@ h3, .rating-logo {
   
 .form-check-input[type="checkbox"]:checked {
     background-color: var(--light-purple);
+}
+
+
+/* Footer */
+footer {
+    border-radius: 10px;
+    background-color: var(--dark-grey) !important;
+    margin: 5px;
+    padding: 15px;
 }
 
 

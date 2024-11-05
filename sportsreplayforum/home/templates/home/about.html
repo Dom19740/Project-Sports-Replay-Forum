@@ -1,0 +1,41 @@
+{% extends 'base_2_split.html' %}
+
+{% block title %}Should I Watch Sports{% endblock %}
+
+{% block header %}About{% endblock %}
+
+{% block main_container_top %}
+
+{% load static %}
+
+<img src="{% static 'img/logo-welcome.png' %}" class="welcome-logo" alt="Welcome Logo">
+<br>
+<br>
+<ul>
+    <p>Our aim is to help sports fans determine whether it is worth spending their time watching an event. No one likes to spend 2hrs watching a dull race or a 0-0 match when there are so many other things to be doing.</p>
+    <p>You can check our rating system to see how other fans recommend to watch.</p>
+    <p>And you can help other users by registering and rating events yourself.</p>
+</ul>
+
+
+{% endblock %}
+
+{% block main_container_bottom %}
+
+    <h5 class="inside-header">Roadmap</h5>
+    <ul>
+        <p>Here are some additional features that we plan to add to the site:</p>
+        <ul>
+            <li>AI ratings, so that users don't have to wait until a user has provided a rating, they can get an idea of how the event was straight away.</li>
+            <li>Better integration of highlights from various sources</li>
+            <li>Actual results embedded into the Spoiler Zone</li>
+            <li>Sport news feed embedded into the Spoiler Zone</li>
+            <li>More competitions</li>
+            <li>More leagues</li>
+            <li>More events</li>
+        </ul>
+    </ul>
+
+
+{% endblock %}
+

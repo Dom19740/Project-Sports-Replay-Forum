@@ -27,3 +27,6 @@ class HomeView(View):
         }
 
         return render(request, 'home/home.html', context)
+
+def about_view(request):
+    return render(request, 'home/about.html')

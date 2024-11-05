@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Filtered ESPN News</title>
+  <title>Filtered Yahoo Sports News</title>
 </head>
 <body>
 
-  <h1>Filtered ESPN News</h1>
+  <h1>Filtered Yahoo Sports News</h1>
   <label for="searchTerm">Search for a term:</label>
   <input type="text" id="searchTerm" placeholder="e.g., Mahomes" />
   <button onclick="fetchAndFilterNews()">Search</button>
@@ -37,7 +37,7 @@
         const link = item.querySelector("link").textContent;
 
         // Check if title or description includes the search term
-        if ((title.toLowerCase().includes(searchTerm) || description.toLowerCase().includes(searchTerm)) && count < 1000) {
+        if ((title.toLowerCase().includes(searchTerm) || description.toLowerCase().includes(searchTerm)) && count < 5) {
           const listItem = document.createElement("li");
           const anchor = document.createElement("a");
           anchor.href = link;
