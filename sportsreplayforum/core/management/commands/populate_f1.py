@@ -32,6 +32,8 @@ class Command(BaseCommand):
                     date=competition_date,
                     defaults={
                         'league': item['strLeague'],
+                        'banner': item['strBanner'],
+                        'badge': item['strLeagueBadge'],
                     }
                 )
 
@@ -50,6 +52,7 @@ class Command(BaseCommand):
                     defaults={
                         'video_id': item['strVideo'],
                         'is_finished': is_finished,
+                        'poster': item['strPoster'],
                     }
                 )
 
@@ -92,6 +95,7 @@ class Command(BaseCommand):
                             defaults={
                                 'video_id': item['strVideo'],
                                 'is_finished': is_finished,
+                                'poster': item['strPoster'],
                             }
                         )
 

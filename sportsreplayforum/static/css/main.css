@@ -39,6 +39,7 @@ a:hover {
 body.light-mode {
     background-color: var(--bg-color-light);
     color: var(--text-color-light);
+    
 }
   
 body.dark-mode {
@@ -109,12 +110,19 @@ body.dark-mode {
 }
 
 
-Welcome */
+/* Welcome */
 .welcome-logo {
     max-width: 100%;
     padding-bottom: 25px;
     padding-left: 25px;
     padding-right: 25px;
+}
+
+/* Schedule */
+.sign-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 

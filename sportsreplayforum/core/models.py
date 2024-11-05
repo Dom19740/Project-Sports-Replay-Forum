@@ -6,6 +6,8 @@ class Competition(models.Model):
     league = models.CharField(max_length=255, default="")
     name = models.CharField(max_length=255)
     date = models.DateField()
+    banner = models.CharField(max_length=255, default="")
+    badge = models.CharField(max_length=255, default="")
 
     def __str__(self):
         return self.name
@@ -17,6 +19,7 @@ class Event(models.Model):
     idEvent = models.CharField(max_length=255, default="")
     video_id = models.CharField(max_length=255, null=True, default="")
     is_finished = models.BooleanField(default=False)
+    poster = models.CharField(max_length=255, default="")
 
     def __str__(self):
         return f"{self.event_type} for {self.event_list.name} on {self.date_time}"

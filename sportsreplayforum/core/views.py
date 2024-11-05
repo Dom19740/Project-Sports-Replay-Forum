@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.http import JsonResponse
 from django.core.management import call_command
 from django.conf import settings
-from .models import Competition, Event, Rating, Result_f1
+from .models import Competition, Event, Rating
 from datetime import timedelta
 
 
@@ -52,13 +52,16 @@ def competition_schedule(request, league):
 
     upcoming_competitions = upcoming_competitions[:5]
     past_competitions = past_competitions[:5]
-
-
+    banner = competition.banner
+    badge = competition.badge
+    
     return render(request, 'core/competition_schedule.html', {
         'title': title,
         'upcoming_competitions': upcoming_competitions,
         'past_competitions': past_competitions,
         'league': league,
+        'banner': banner,
+        'badge': badge,
     })
 
 
@@ -81,6 +84,7 @@ def event_list(request, competition_id):
     events_upcoming.reverse()
 
     title = TITLES.get(competition.league, 'Unknown League')
+    banner = competition.banner
 
     return render(request, 'core/event_list.html', {
         'events_upcoming': events_upcoming,
@@ -88,6 +92,7 @@ def event_list(request, competition_id):
         'competition': competition,
         'title': title,
         'league': competition.league,
+        'banner': banner,
     })
 
 
@@ -99,6 +104,7 @@ def event(request, event_id):
     title = TITLES.get(event.event_list.league, 'Unknown League')
 
     results = event.results.all()
+    poster = event.poster
 
     try:
         total_votes = (
@@ -120,6 +126,7 @@ def event(request, event_id):
         'timedelta': timedelta,
         'total_votes': total_votes,
         'results': results,
+        'poster': poster,
     })
 
 
