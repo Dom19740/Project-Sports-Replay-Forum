@@ -21,7 +21,10 @@
 
 
 /* General */
-
+body {
+    overflow-y: scroll;
+    font-family: Poppins, sans-serif;
+}
 
 a {
     text-decoration: none;
