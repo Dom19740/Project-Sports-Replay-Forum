@@ -59,47 +59,31 @@ body.dark-mode {
 /* Main Containers */
 
 .main-container-style {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column for now; adjust if needed */
     border: 2px solid var(--dark-grey);
     border-radius: 25px;
     padding: 25px;
-    padding-left: 30px;
-    margin-left: 7px;
-    margin-right: 7px;
-    margin-bottom: 15px;
+    margin: 0px -5px 15px 5px;
 }
 
-.main-container-left, .main-container-right {
-    flex: 1;
+/* If you need two columns for main content sections, adjust grid-template-columns */
+.main-container-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 15px; /* Add spacing between columns */
+    align-items: stretch;
 }
 
 .main-container-left {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto auto;
 }
 
 .main-container-left-1, .main-container-left-2 {
-    flex: 1;
+    grid-row: span 1;
 }
 
-.main-container-split {
-    display: flex;
-    flex-direction: row;
-        align-items: stretch; /* Allows child containers to fill height */
-
-}
-
-.main-container-split > div {
-    flex: 1;
-}
-
-.sub-container {
-    display: flex;
-    flex-direction: row;
-}
-
-.sub-container-left, .sub-container-right {
-    flex: 1;
-}
 
 .flame-logo {
     max-width: 175px;
@@ -279,12 +263,10 @@ footer {
 
 /* Media query for mobile screens */
 @media (max-width: 990px) {
-
-    .main-container-left, .main-container-right {
-        min-width: auto;        /* Removes the min-width restriction */
-    }
-
     .main-container-split {
-        flex-direction: column; /* Stack the containers vertically */
+        grid-template-columns: 1fr; /* Stack in a single column on mobile */
     }
 }
+
+
+
