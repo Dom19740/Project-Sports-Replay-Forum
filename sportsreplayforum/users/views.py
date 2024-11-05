@@ -40,7 +40,7 @@ def registration_view(request):
             email.send()
             messages.success(request, 'Please check your email address to complete the registration')
             return redirect('home')
-    return render(request, 'home/register.html', {'form': form})
+    return render(request, 'users/register.html', {'form': form})
 
 
 def activate(request, uidb64, token):
@@ -92,7 +92,7 @@ def login_view(request):
     else:
         form = CustomLoginForm()
 
-    return render(request, 'home/login.html', {'form': form, 'next': next_url})
+    return render(request, 'users/login.html', {'form': form, 'next': next_url})
 
 
 def logout_view(request):
