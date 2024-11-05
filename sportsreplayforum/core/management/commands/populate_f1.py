@@ -52,7 +52,7 @@ class Command(BaseCommand):
                     defaults={
                         'video_id': item['strVideo'],
                         'is_finished': is_finished,
-                        'poster': item['strPoster'],
+                        'poster': item['strThumb'],
                     }
                 )
 
@@ -95,7 +95,7 @@ class Command(BaseCommand):
                             defaults={
                                 'video_id': item['strVideo'],
                                 'is_finished': is_finished,
-                                'poster': item['strPoster'],
+                                'poster': item['strThumb'],
                             }
                         )
 
