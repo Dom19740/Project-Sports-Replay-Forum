@@ -44,11 +44,14 @@
     {% block navbar %} {% endblock %}
     {% block welcome %} {% endblock %}
     {% block messages %}
+
+    <div class="message-container">
         {% if messages %}
             {% for message in messages %}
                 <div class="alert alert-info">{{ message }}</div>
             {% endfor %}
         {% endif %}
+    </div>
 
     {% endblock %}
 
