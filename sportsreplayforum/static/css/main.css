@@ -287,4 +287,16 @@ footer {
     .main-container-split {
         flex-direction: column; /* Stack the containers vertically */
     }
+
+    .form-field {
+        width: 100%; /* or a percentage value that suits your design */
+        padding-left: 10px; /* adjust padding to fit mobile screen */
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
 }
