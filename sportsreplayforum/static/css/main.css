@@ -25,6 +25,27 @@ body {
     overflow-y: scroll;
     font-family: Poppins, sans-serif;
     font-weight: 200;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+  
+h2 {
+font-size: 2rem;
+}
+
+h3 {
+font-size: 1.75rem;
+}
+
+h4 {
+font-size: 1.5rem;
+}
+
+h5 {
+font-size: 1rem;
 }
 
 a {
@@ -177,7 +198,6 @@ h3, .rating-logo {
 
 .btn-pill {
   padding: 1px 12px;
-  font-size: 14px;
   font-weight: 100;
   border-radius: 20px;
   margin-bottom: 10px;
@@ -246,7 +266,7 @@ h3, .rating-logo {
 .theme-toggle {
     background: none;
     border: none;
-    font-size: 1rem;
+    /* font-size: 1rem; */
     cursor: pointer;
     color: var(--light-grey);
     padding-left: 15px;
@@ -277,7 +297,7 @@ h3, .rating-logo {
 }
 
 ::placeholder {
-    font-size: 14px;
+   /*  font-size: 14px; */
 }
 
 .form-check-input[type="checkbox"] {
@@ -303,6 +323,15 @@ footer {
 /* Media query for mobile screens */
 @media (max-width: 990px) {
 
+    p {
+        text-align: justify;
+    }
+
+
+    .mobile-break {
+        display: block;
+    }
+      
     .main-container-left, .main-container-right {
         min-width: auto;        /* Removes the min-width restriction */
     }
@@ -328,3 +357,10 @@ footer {
     }
 
 }
+
+
+@media (min-width: 769px) {
+    .mobile-break {
+      display: none;
+    }
+} 
