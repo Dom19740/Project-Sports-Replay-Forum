@@ -63,7 +63,6 @@ body.dark-mode {
     border: 2px solid var(--dark-grey);
     border-radius: 25px;
     padding: 25px;
-    padding-left: 30px;
     margin-left: 7px;
     margin-right: 7px;
     margin-bottom: 15px;
@@ -145,6 +144,10 @@ body.dark-mode {
 h3, .rating-logo {
     display: inline;
     vertical-align: middle;
+
+}
+
+.rating-logo {
     width: 25px;
     margin: 10px;
 }
@@ -306,6 +309,11 @@ footer {
 
     .main-container-split {
         flex-direction: column; /* Stack the containers vertically */
+    }
+
+    .main-header {
+        /* font-size: 90%; */
+        padding-right: 50px;  
     }
 
     .form-field {

@@ -1,19 +1,19 @@
 <div class="list-container events-list">    
     <h5 class="inside-header ">Upcoming</h5>
-    <ul>
-        {% for event in events_upcoming %}
-            <li>
-                <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-dark rounded-pill">
-                    {% if title == "Formula 1 World Championship" %}
-                        {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
-                    {% else %}
-                        {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
-                    {% endif %}
-                
-                </a>
-            </li>
-        {% empty %}
-            <li>No upcoming events.</li>
-        {% endfor %}
-    </ul>
+
+    {% for event in events_upcoming %}
+        <li>
+            <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-dark rounded-pill">
+                {% if title == "Formula 1 World Championship" %}
+                    {{ event.date_time|date:"j M" }} - {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
+                {% else %}
+                    {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
+                {% endif %}
+            
+            </a>
+        </li>
+    {% empty %}
+        <li>No upcoming events.</li>
+    {% endfor %}
+
 </div>
