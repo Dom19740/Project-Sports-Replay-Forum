@@ -20,11 +20,32 @@
 }
 
 
-/* General */
+/* GENERAL */
 body {
     overflow-y: scroll;
     font-family: Poppins, sans-serif;
     font-weight: 200;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+  
+h2 {
+font-size: 2rem;
+}
+
+h3 {
+font-size: 1.75rem;
+}
+
+h4 {
+font-size: 1.5rem;
+}
+
+h5 {
+font-size: 1rem;
 }
 
 a {
@@ -52,17 +73,68 @@ body.dark-mode {
     margin-bottom: 20px;
 }
 
+
+
 .inside-header {
     margin-bottom: 25px;
 }
 
-/* Main Containers */
+/* GENERAL END */
 
+/* NAVBAR */
+.navbar-brand img {
+    width: 40px;
+}
+
+.navbar-dark {
+    background-color: var(--dark-grey) !important;
+    border-radius: 10px;
+}
+
+.navbar-dark .nav-link {
+    color: var(--bright-white);
+}
+
+.nav-link:hover {
+    color: var(--two-star-ocean) !important;
+}
+
+.search-input {
+    width: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    /* font-size: 1rem; */
+    cursor: pointer;
+    color: var(--light-grey);
+    padding-left: 15px;
+}
+
+.mobile-menu::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: #ffffff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.message-container {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+/* NAVBAR END*/
+
+/* MAIN CONTAINERS */
 .main-container-style {
     border: 2px solid var(--dark-grey);
     border-radius: 25px;
     padding: 25px;
-    padding-left: 30px;
     margin-left: 7px;
     margin-right: 7px;
     margin-bottom: 15px;
@@ -84,8 +156,7 @@ body.dark-mode {
 .main-container-split {
     display: flex;
     flex-direction: row;
-        align-items: stretch; /* Allows child containers to fill height */
-
+    align-items: stretch;
 }
 
 .main-container-split > div {
@@ -112,16 +183,21 @@ body.dark-mode {
     list-style: none;
 }
 
+/* MAIN CONTAINERS END */
 
-/* Welcome */
+/* WELCOME */
 .welcome-logo {
     max-width: 100%;
     padding-bottom: 25px;
-    padding-left: 25px;
-    padding-right: 25px;
 }
 
-/* Schedule */
+.badge-link img {
+    height: 65px; /* set the height to the desired value */
+}
+
+/* WELCOME END */
+
+/* SCHEDULE */
 .sign-container {
     display: grid;
     justify-content: center;
@@ -135,10 +211,16 @@ body.dark-mode {
 
 }
 
-/* Event */
+/* SCHEDULE END */
+
+/* EVENT */
 h3, .rating-logo {
     display: inline;
     vertical-align: middle;
+
+}
+
+.rating-logo {
     width: 25px;
     margin: 10px;
 }
@@ -153,8 +235,9 @@ h3, .rating-logo {
     padding: 0 25px;
 }
 
+/* EVENT END */
 
-/* Buttons */
+/* BUTTONS */
 .btn-primary {
     background-color: var(--dark-purple);
     border-color: var(--dark-purple);
@@ -167,7 +250,6 @@ h3, .rating-logo {
 
 .btn-pill {
   padding: 1px 12px;
-  font-size: 14px;
   font-weight: 100;
   border-radius: 20px;
   margin-bottom: 10px;
@@ -198,52 +280,25 @@ h3, .rating-logo {
   color: #fff;
 }
 
-.btn-standard {
+.btn-back, .btn-standard {
     background-color: var(--dark-grey);
     color: #fff;
     display: inline;
     width: auto;
+    font-size: .85rem;
 }
 
-.btn-standard:hover {
+.btn-back:hover, .btn-standard:hover {
     background-color: var(--darker-grey);
 }
 
-
-/* Navbar */
-.navbar-brand img {
-    width: 40px;
-}
-
-.navbar-dark {
-    background-color: var(--dark-grey) !important;
-    border-radius: 10px;
-}
-
-.navbar-dark .nav-link {
-    color: var(--bright-white);
-}
-
-.nav-link:hover {
-    color: var(--two-star-ocean) !important;
-}
-
-.search-input {
-    width: 100px;
-}
-
-.theme-toggle {
-    background: none;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    color: var(--light-grey);
-    padding-left: 15px;
-}
+/* BUTTONS END */
 
 
-/* Forms */
+/* FORMS */
 .form-field {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
     width: 300px;
     margin-top: 10px;
     padding-left: 35px;
@@ -251,12 +306,18 @@ h3, .rating-logo {
     padding-bottom: 15px;
 }
 
+.form-control {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px; /* Adjust the size here */
+
+}
+
 .form-control:focus {
     outline: 2px solid var(--five-star-pink);
 }
 
 ::placeholder {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .form-check-input[type="checkbox"] {
@@ -267,8 +328,9 @@ h3, .rating-logo {
     background-color: var(--light-purple);
 }
 
+/* FORMS END */
 
-/* Footer */
+/* FOOTER */
 footer {
     border-radius: 10px;
     background-color: var(--dark-grey) !important;
@@ -276,10 +338,19 @@ footer {
     padding: 15px;
 }
 
+/* FOOTER END */
 
 /* Media query for mobile screens */
 @media (max-width: 990px) {
 
+    p {
+        text-align: justify;
+    }
+
+    .mobile-break {
+        display: block;
+    }
+      
     .main-container-left, .main-container-right {
         min-width: auto;        /* Removes the min-width restriction */
     }
@@ -287,4 +358,31 @@ footer {
     .main-container-split {
         flex-direction: column; /* Stack the containers vertically */
     }
+
+    .main-header {
+        /* font-size: 90%; */
+        padding-right: 50px;
+    }
+
+    .btn-back {
+        display: none;
+    }
+
+    .form-field {
+        width: 100%; /* or a percentage value that suits your design */
+        padding-left: 10px; /* adjust padding to fit mobile screen */
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
 }
+
+@media (min-width: 769px) {
+    .mobile-break {
+      display: none;
+    }
+} 
