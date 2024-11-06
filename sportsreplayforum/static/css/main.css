@@ -73,6 +73,8 @@ body.dark-mode {
     margin-bottom: 20px;
 }
 
+
+
 .inside-header {
     margin-bottom: 25px;
 }
@@ -198,6 +200,7 @@ h3, .rating-logo {
 
 .btn-pill {
   padding: 1px 12px;
+/*   font-size: .75rem; */
   font-weight: 100;
   border-radius: 20px;
   margin-bottom: 10px;
@@ -228,14 +231,15 @@ h3, .rating-logo {
   color: #fff;
 }
 
-.btn-back {
+.btn-back, .btn-standard {
     background-color: var(--dark-grey);
     color: #fff;
     display: inline;
     width: auto;
+    font-size: .85rem;
 }
 
-.btn-back:hover {
+.btn-back:hover, .btn-standard:hover {
     background-color: var(--darker-grey);
 }
 
@@ -327,7 +331,6 @@ footer {
         text-align: justify;
     }
 
-
     .mobile-break {
         display: block;
     }
@@ -342,7 +345,11 @@ footer {
 
     .main-header {
         /* font-size: 90%; */
-        padding-right: 50px;  
+        padding-right: 50px;
+    }
+
+    .btn-back {
+        display: none;
     }
 
     .form-field {

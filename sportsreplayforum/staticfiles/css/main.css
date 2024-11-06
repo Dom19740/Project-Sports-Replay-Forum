@@ -198,14 +198,14 @@ h3, .rating-logo {
   color: #fff;
 }
 
-.btn-back {
+.btn-standard {
     background-color: var(--dark-grey);
     color: #fff;
     display: inline;
     width: auto;
 }
 
-.btn-back:hover {
+.btn-standard:hover {
     background-color: var(--darker-grey);
 }
 

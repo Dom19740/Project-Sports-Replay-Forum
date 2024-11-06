@@ -7,7 +7,6 @@
     <a href="{% url 'core:competition_schedule' league=event.event_list.league %}" >{{ title }}</a> -
     <a href="{% url 'core:event_list' event.event_list.id %}" >{{ event.event_list }}</a> -
     {{ event.event_type|title }}</a> 
-    <a href="{% url 'core:event_list' event.event_list.id %}" class="btn-pill btn-back">back</a>
 
 {% endblock %}
 
