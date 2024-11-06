@@ -302,7 +302,8 @@ h3, .rating-logo {
 
 .form-control {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px; /* Adjust the size here */
+    font-size: 14px; /* Adjust the size here */
+
 }
 
 .form-control:focus {
