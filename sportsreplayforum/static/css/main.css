@@ -200,7 +200,6 @@ h3, .rating-logo {
 
 .btn-pill {
   padding: 1px 12px;
-/*   font-size: .75rem; */
   font-weight: 100;
   border-radius: 20px;
   margin-bottom: 10px;
@@ -265,6 +264,8 @@ h3, .rating-logo {
 
 .search-input {
     width: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .theme-toggle {
@@ -289,6 +290,8 @@ h3, .rating-logo {
 
 /* FORMS */
 .form-field {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
     width: 300px;
     margin-top: 10px;
     padding-left: 35px;
@@ -296,12 +299,18 @@ h3, .rating-logo {
     padding-bottom: 15px;
 }
 
+
+.form-control {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px; /* Adjust the size here */
+}
+
 .form-control:focus {
     outline: 2px solid var(--five-star-pink);
 }
 
 ::placeholder {
-   /*  font-size: 14px; */
+    font-size: 12px;
 }
 
 .form-check-input[type="checkbox"] {

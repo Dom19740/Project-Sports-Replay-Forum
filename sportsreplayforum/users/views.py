@@ -12,7 +12,9 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, login
 from django.urls import reverse
+from django.conf import settings
 from .tokens import account_activation_token
+import os
 
 
 def registration_view(request):
@@ -35,8 +37,17 @@ def registration_view(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
+
+            # Prepare email
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])
+            email.content_subtype = "html"
+
+            # Attach the logo image
+            logo_path = os.path.join(settings.BASE_DIR, 'static/img/logo-welcome.png')
+            email.attach_file(logo_path, mimetype="image/png")
+            email.attachments[-1].content_id = "welcome-logo"
+
             email.send()
             messages.success(request, 'Please check your email address to complete the registration')
             return redirect('home')

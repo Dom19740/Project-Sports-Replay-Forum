@@ -51,8 +51,6 @@
                         <a class="nav-link" title="Register" href="{% url 'users:register' %}?next={{ request.path }}">Register</a>
                     </li>
                 {% endif %}
-                
-                &nbsp;&nbsp;
                 {% include 'core/search.html' %}
             
             </ul>
