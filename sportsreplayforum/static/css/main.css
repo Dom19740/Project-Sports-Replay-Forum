@@ -20,7 +20,7 @@
 }
 
 
-/* General */
+/* GENERAL */
 body {
     overflow-y: scroll;
     font-family: Poppins, sans-serif;
@@ -56,8 +56,9 @@ body.dark-mode {
     margin-bottom: 25px;
 }
 
-/* Main Containers */
+/* GENERAL END */
 
+/* MAIN CONTAINERS */
 .main-container-style {
     border: 2px solid var(--dark-grey);
     border-radius: 25px;
@@ -84,7 +85,7 @@ body.dark-mode {
 .main-container-split {
     display: flex;
     flex-direction: row;
-        align-items: stretch; /* Allows child containers to fill height */
+    align-items: stretch; /* Allows child containers to fill height */
 
 }
 
@@ -112,8 +113,9 @@ body.dark-mode {
     list-style: none;
 }
 
+/* MAIN CONTAINERS END */
 
-/* Welcome */
+/* WELCOME */
 .welcome-logo {
     max-width: 100%;
     padding-bottom: 25px;
@@ -121,7 +123,9 @@ body.dark-mode {
     padding-right: 25px;
 }
 
-/* Schedule */
+/* WELCOME END */
+
+/* SCHEDULE */
 .sign-container {
     display: grid;
     justify-content: center;
@@ -135,7 +139,9 @@ body.dark-mode {
 
 }
 
-/* Event */
+/* SCHEDULE END */
+
+/* EVENT */
 h3, .rating-logo {
     display: inline;
     vertical-align: middle;
@@ -153,8 +159,9 @@ h3, .rating-logo {
     padding: 0 25px;
 }
 
+/* EVENT END */
 
-/* Buttons */
+/* BUTTONS */
 .btn-primary {
     background-color: var(--dark-purple);
     border-color: var(--dark-purple);
@@ -209,8 +216,9 @@ h3, .rating-logo {
     background-color: var(--darker-grey);
 }
 
+/* BUTTONS END */
 
-/* Navbar */
+/* NAVBAR */
 .navbar-brand img {
     width: 40px;
 }
@@ -241,8 +249,18 @@ h3, .rating-logo {
     padding-left: 15px;
 }
 
+.mobile-menu::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: #ffffff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
-/* Forms */
+/* NAVBAR END*/
+
+/* FORMS */
 .form-field {
     width: 300px;
     margin-top: 10px;
@@ -267,8 +285,9 @@ h3, .rating-logo {
     background-color: var(--light-purple);
 }
 
+/* FORMS END */
 
-/* Footer */
+/* FOOTER */
 footer {
     border-radius: 10px;
     background-color: var(--dark-grey) !important;
@@ -276,6 +295,7 @@ footer {
     padding: 15px;
 }
 
+/* FOOTER END */
 
 /* Media query for mobile screens */
 @media (max-width: 990px) {

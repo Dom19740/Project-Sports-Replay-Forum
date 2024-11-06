@@ -12,7 +12,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mobile-menu">
                 <li class="nav-item {% if request.get_full_path == f1 %}active{% endif %}">
                     <a class="nav-link" title="F1" href="{% url 'core:competition_schedule' league='Formula 1' %}">F1</a>
                 </li>
@@ -32,7 +32,7 @@
                     <a class="nav-link" title="Champions League" href="{% url 'core:competition_schedule' league='UEFA Champions League' %}">Champions League</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto mobile-menu">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" title="Profile" href="{% url 'users:profile' %}">Hi, {{ user.username|title }}</a>
