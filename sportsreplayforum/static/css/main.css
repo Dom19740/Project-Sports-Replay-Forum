@@ -229,10 +229,21 @@ h3, .rating-logo {
     margin: 10px 10px;
 }
 
-.spoiler-warning span{
-    background-color: red;
-    font-weight: 500;
-    padding: 0 25px;
+.spoiler-warning {
+    text-align: center;
+    background-color: #ff0015; /* Light red background */
+    color: #ffffff; /* Darker red text for contrast */
+    border: 1px solid #ffffff; /* Border matching the background color */
+    border-radius: 8px;
+    padding: 10px;
+    padding-bottom: 0px;
+    margin-top: 10px;
+    max-width: 400px;
+    font-weight: bold;
+}
+
+.spoiler-buttons {
+    margin-top: 25px;
 }
 
 /* EVENT END */
@@ -319,6 +330,7 @@ h3, .rating-logo {
 ::placeholder {
     font-size: 12px;
 }
+
 
 .form-check-input[type="checkbox"] {
     background-color: var(--light-grey);

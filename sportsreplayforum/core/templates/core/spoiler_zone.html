@@ -14,27 +14,30 @@
     </div>
 
     <div class="show-video-container" style="display: none;">
-        <br>
         {% if video_id %}
-            <center><a href="https://www.youtube.com/watch?v={{ video_id }}" title="Highlights" target="_blank" rel="noopener">
-                <img src="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg" style="width: 100%;" />
-            </a>
+        <center><a href="https://www.youtube.com/watch?v={{ video_id }}" title="Highlights" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg" style="width: 100%;" />
+        </a>
         {% else %}
 
-            <p class="spoiler-warning"><span>WARNING! Opening YouTube may reveal the final score or result</span></p>
-            <a href="https://www.youtube.com/results?search_query={{ event.event_type|title }} {{ event.date_time|date:'Y-m-d' }} highlights" title="Search YouTube" target="_blank" rel="noopener" class="btn-pill btn-standard">YouTube Highlights</a>
-        
+        <div class="spoiler-buttons">
+                <a href="https://www.youtube.com/results?search_query={{ event.event_type|title }} {{ event.date_time|date:'Y-m-d' }} highlights" title="Search YouTube" target="_blank" rel="noopener" class="btn-pill btn-standard">YouTube Highlights</a>
+        </div>
+        <div class="spoiler-warning">
+            <p>WARNING! Opening YouTube may reveal the final score or result</p>
+        </div>
+    
         {% endif %}
         <br>
         <br>
-    </div>
+        </div>
 
-    <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2">
-        <label class="form-check-label" for="flexSwitchCheckDefault2">Show Results & News</label>
-    </div>
-    <br>
-    <div class="show-score-container" style="display: none;">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2">
+            <label class="form-check-label" for="flexSwitchCheckDefault2">Show Results & News</label>
+        </div>
+
+        <div class="show-score-container spoiler-buttons" style="display: none;">
         <p><a href="https://www.google.com/search?q={{ title }}+{{ event.event_list }}+{{ event.event_type|title }}+results" title="Search for results" target="_blank" rel="noopener" class="btn-pill btn-standard">Results</a></p>
         <p><a href="https://www.google.com/search?q={{ title }}+news&tbm=nws" title="Search for news" target="_blank" rel="noopener" class="btn-pill btn-standard">{{ title }} News</a></p>    </div>
 
