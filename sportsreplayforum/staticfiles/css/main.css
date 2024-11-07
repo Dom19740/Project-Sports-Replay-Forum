@@ -118,7 +118,7 @@ body.dark-mode {
     content: "";
     display: block;
     height: 1px;
-    background-color: #ffffff;
+    background-color: var(--darker-grey);
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -163,6 +163,12 @@ body.dark-mode {
     flex: 1;
 }
 
+.sub-container-split {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
 .sub-container {
     display: flex;
     flex-direction: row;
@@ -170,6 +176,10 @@ body.dark-mode {
 
 .sub-container-left, .sub-container-right {
     flex: 1;
+}
+
+.sub-container-left {
+    margin-right: 25px;
 }
 
 .flame-logo {
@@ -208,7 +218,7 @@ body.dark-mode {
     max-width: 100%;
     height: auto;
     margin: 0 auto;
-
+    border-radius: 8px;
 }
 
 /* SCHEDULE END */
@@ -229,10 +239,21 @@ h3, .rating-logo {
     margin: 10px 10px;
 }
 
-.spoiler-warning span{
-    background-color: red;
-    font-weight: 500;
-    padding: 0 25px;
+.spoiler-warning {
+    
+    background-color: #ff0015; /* Light red background */
+    color: #ffffff; /* Darker red text for contrast */
+    border: 1px solid #ffffff; /* Border matching the background color */
+    border-radius: 8px;
+    padding: 10px;
+    padding-bottom: 0px;
+    margin-top: 10px;
+    max-width: 400px;
+    font-weight: 400;
+}
+
+.spoiler-buttons {
+    margin-top: 25px;
 }
 
 /* EVENT END */
@@ -292,6 +313,29 @@ h3, .rating-logo {
     background-color: var(--darker-grey);
 }
 
+.btn-feedback {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--dark-grey);
+    opacity: 0.8;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1000;  /* Make sure the button stays on top */
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.btn-feedback:hover {
+    background-color: #525252;
+    color: white;
+    opacity: 1;
+}
+
 /* BUTTONS END */
 
 
@@ -320,6 +364,7 @@ h3, .rating-logo {
     font-size: 12px;
 }
 
+
 .form-check-input[type="checkbox"] {
     background-color: var(--light-grey);
 }
@@ -341,6 +386,19 @@ footer {
 /* FOOTER END */
 
 /* Media query for mobile screens */
+@media (max-width: 1200px) {
+    .sub-container-split {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .chart-container {
+        margin-bottom: 20px;
+    }
+} 
+
+
 @media (max-width: 990px) {
 
     p {
