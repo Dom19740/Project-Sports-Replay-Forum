@@ -26,7 +26,7 @@
     <p>Our users say this event has a heat rating of: {{ event.rating.percentage|floatformat:0 }}% with {{ total_votes }} votes</p>
 
     
-    <div> <!-- Adjust the width as needed -->
+    <div class="chart-container"> <!-- Adjust the width as needed -->
         <canvas id="ratingChart" width="250" height="200"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
