@@ -1,7 +1,7 @@
 {% load static %}
 
 <h5>AI Rating</h5>
-{% if event.rating.voters.all|length == 0 %}
+{% if not event.ai_review %}
     <p>This event has no ratings.</p>
     
 {% else %}
@@ -22,8 +22,7 @@
         <h5>Check Out the Results</h5>
 
     {% endif %}
-    
-    <p>The Brazilian Grand Prix featured a chaotic start, numerous safety cars, and strategic gambles due to weather changes, creating a thrilling race with incredible drives through the field. Heart-pounding moments from top to bottom make it a must-watch. 
-    <br><br>Rating: 5 out of 5.</p>
+    <p>{{ event.ai_review }}</p>
+    <p>Rating: {{ event.ai_rating }} out of 5.</p>
 
 {% endif %}

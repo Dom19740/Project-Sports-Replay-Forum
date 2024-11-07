@@ -105,6 +105,8 @@ def event(request, event_id):
 
     results = event.results.all()
     poster = event.poster
+    ai_review = event.ai_review
+    ai_rating = event.ai_rating
 
     try:
         total_votes = (
@@ -127,6 +129,8 @@ def event(request, event_id):
         'total_votes': total_votes,
         'results': results,
         'poster': poster,
+        'ai_review': ai_review,
+        'ai_rating': ai_rating
     })
 
 

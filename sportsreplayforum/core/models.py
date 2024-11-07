@@ -20,6 +20,8 @@ class Event(models.Model):
     video_id = models.CharField(max_length=255, null=True, default="")
     is_finished = models.BooleanField(default=False)
     poster = models.CharField(max_length=255, default="")
+    ai_review = models.TextField(null=True, default="")
+    ai_rating = models.CharField(max_length=255, default="")
 
     def __str__(self):
         return f"{self.event_type} for {self.event_list.name} on {self.date_time}"
