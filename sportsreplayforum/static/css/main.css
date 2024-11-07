@@ -118,7 +118,7 @@ body.dark-mode {
     content: "";
     display: block;
     height: 1px;
-    background-color: #ffffff;
+    background-color: var(--darker-grey);
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -208,7 +208,7 @@ body.dark-mode {
     max-width: 100%;
     height: auto;
     margin: 0 auto;
-
+    border-radius: 8px;
 }
 
 /* SCHEDULE END */
