@@ -313,6 +313,29 @@ h3, .rating-logo {
     background-color: var(--darker-grey);
 }
 
+.btn-feedback {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--dark-grey);
+    opacity: 0.8;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1000;  /* Make sure the button stays on top */
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.btn-feedback:hover {
+    background-color: #525252;
+    color: white;
+    opacity: 1;
+}
+
 /* BUTTONS END */
 
 
