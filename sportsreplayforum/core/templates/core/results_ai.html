@@ -1,0 +1,29 @@
+{% load static %}
+
+<h5>AI Rating</h5>
+{% if event.rating.voters.all|length == 0 %}
+    <p>This event has no ratings.</p>
+    
+{% else %}
+
+    {% if event.rating.percentage >= 66 %}
+        
+        <h3>HOT WATCH!</h3><img src="{% static 'img/logo_flame_large.png' %}" alt="HOT WATCH" class="rating-logo">
+        <h5>Definitely Watch the Full Replay</h5>
+
+    {% elif event.rating.percentage >= 33 %}
+
+        <h3>MID TEMP!</h3><img src="{% static 'img/logo_mid.png' %}" alt="MID TEMP" class="rating-logo">
+        <h5>Watch the Highlights</h5>
+
+    {% else %}
+
+        <h3>NOT WATCH!</h3><img src="{% static 'img/logo_cold.png' %}" alt="NOT WATCH" class="rating-logo">
+        <h5>Check Out the Results</h5>
+
+    {% endif %}
+    
+    <p>The Brazilian Grand Prix featured a chaotic start, numerous safety cars, and strategic gambles due to weather changes, creating a thrilling race with incredible drives through the field. Heart-pounding moments from top to bottom make it a must-watch. 
+    <br><br>Rating: 5 out of 5.</p>
+
+{% endif %}

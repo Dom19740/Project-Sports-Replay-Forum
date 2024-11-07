@@ -163,6 +163,12 @@ body.dark-mode {
     flex: 1;
 }
 
+.sub-container-split {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
 .sub-container {
     display: flex;
     flex-direction: row;

@@ -11,8 +11,18 @@
 {% endblock %}
 
 {% block main_container_left_1 %}
-        
-    {% include 'core/results.html' %}
+
+    <div class="sub-container-split">
+
+        <div class="sub-container-left">
+            {% include 'core/results.html' %}
+        </div>
+
+        <div class="sub-container-right">
+            {% include 'core/results_ai.html' %}
+        </div>
+
+    </div>
 
 {% endblock %}
 
@@ -29,6 +39,7 @@
     </div>
     <br>
     <br>
+
     {% include 'core/spoiler_zone.html' %}
 
 {% endblock %}
