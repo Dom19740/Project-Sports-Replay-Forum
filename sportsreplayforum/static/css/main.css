@@ -240,7 +240,7 @@ h3, .rating-logo {
 }
 
 .spoiler-warning {
-    text-align: center;
+    
     background-color: #ff0015; /* Light red background */
     color: #ffffff; /* Darker red text for contrast */
     border: 1px solid #ffffff; /* Border matching the background color */
@@ -249,7 +249,7 @@ h3, .rating-logo {
     padding-bottom: 0px;
     margin-top: 10px;
     max-width: 400px;
-    font-weight: bold;
+    font-weight: 400;
 }
 
 .spoiler-buttons {

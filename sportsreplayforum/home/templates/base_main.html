@@ -40,9 +40,6 @@
                     <li class="nav-item">
                         <a class="nav-link" title="Logout" href="{% url 'users:logout' %}">Logout</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" title="About" href="{% url 'about' %}">About</a>
-                    </li>
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link" title="Login" href="{% url 'users:login' %}?next={{ request.path }}">Login</a>
@@ -51,6 +48,9 @@
                         <a class="nav-link" title="Register" href="{% url 'users:register' %}?next={{ request.path }}">Register</a>
                     </li>
                 {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" title="About" href="{% url 'about' %}">About</a>
+                </li>
                 {% include 'core/search.html' %}
             
             </ul>
