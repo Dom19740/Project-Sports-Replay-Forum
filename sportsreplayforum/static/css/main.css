@@ -224,12 +224,15 @@ body.dark-mode {
 h3, .rating-logo {
     display: inline;
     vertical-align: middle;
-
 }
 
 .rating-logo {
     width: 25px;
     margin: 10px;
+}
+
+.ai_review {
+    text-align: justify;
 }
 
 .vote input[type="radio"] {
@@ -266,6 +269,7 @@ a i {
 a i:hover {
 	color: var(--dark-purple);
 }
+/* play video link end */
 
 /* EVENT END */
 
@@ -316,9 +320,8 @@ a i:hover {
     background-color: var(--dark-grey);
     color: #fff;
     font-size: .85rem;
-    width: auto;
+    width: ;
     display: inline-block;
-
 }
 
 .btn-back:hover, .btn-standard:hover {
