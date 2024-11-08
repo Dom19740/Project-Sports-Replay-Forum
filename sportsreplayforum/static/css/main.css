@@ -323,6 +323,7 @@ a i:hover {
     font-size: .85rem;
     display: inline-block;
     width: auto;
+    margin-bottom: 0px;
 }
 
 .btn-back:hover, .btn-standard:hover {

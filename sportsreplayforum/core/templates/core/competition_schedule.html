@@ -3,9 +3,10 @@
 {% block title %}{{ title }} | Should I Watch Sports{% endblock %}
 
 {% block header %}
-    {{ title }}
-{% endblock %}
 
+    {{ title }} <a href="{% url 'home' %}" class="btn-pill btn-back">back</a>
+
+{% endblock %}
 
 {% block main_container_left_1 %}
 
