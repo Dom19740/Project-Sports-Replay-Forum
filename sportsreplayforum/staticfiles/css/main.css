@@ -224,7 +224,6 @@ body.dark-mode {
 h3, .rating-logo {
     display: inline;
     vertical-align: middle;
-
 }
 
 .rating-logo {
@@ -232,26 +231,45 @@ h3, .rating-logo {
     margin: 10px;
 }
 
-.vote input[type="radio"] {
-    margin: 10px 10px;
+.ai_review {
+    text-align: justify;
 }
 
-.spoiler-warning {
-    
-    background-color: #ff0015; /* Light red background */
-    color: #ffffff; /* Darker red text for contrast */
-    border: 1px solid #ffffff; /* Border matching the background color */
-    border-radius: 8px;
-    padding: 10px;
-    padding-bottom: 0px;
-    margin-top: 10px;
-    max-width: 400px;
-    font-weight: 400;
+.vote input[type="radio"] {
+    margin: 10px 10px;
 }
 
 .spoiler-buttons {
     margin-top: 25px;
 }
+
+/* play video link */
+.image-wrapper {
+	position: relative;
+}
+
+.image-wrapper a {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+a i {
+	font-size: 100px;
+	transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	color: var(--light-purple);
+
+}
+
+a i:hover {
+	color: var(--dark-purple);
+}
+/* play video link end */
 
 /* EVENT END */
 
@@ -266,12 +284,13 @@ h3, .rating-logo {
     border-color: var(--light-purple);
 }
 
-.btn-pill {
+.btn-pill,.btn-back, .btn-standard {
   padding: 1px 12px;
   font-weight: 350;
+  font-size: .8rem;
   border-radius: 20px;
   margin-bottom: 10px;
-  width: 330px;
+  width: 350px;
   text-align: left;
   text-decoration: none;
   display: block;
@@ -301,9 +320,10 @@ h3, .rating-logo {
 .btn-back, .btn-standard {
     background-color: var(--dark-grey);
     color: #fff;
-    display: inline;
-    width: auto;
     font-size: .85rem;
+    display: inline-block;
+    width: auto;
+    margin-bottom: 0px;
 }
 
 .btn-back:hover, .btn-standard:hover {
@@ -361,6 +381,9 @@ h3, .rating-logo {
     font-size: 12px;
 }
 
+.form-check {
+    margin-left: 5px;
+}
 
 .form-check-input[type="checkbox"] {
     background-color: var(--light-grey);
