@@ -12,6 +12,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, login
 from django.urls import reverse
+from django.core.paginator import Paginator
 from .tokens import account_activation_token
 from core.models import Event
 
@@ -105,16 +106,19 @@ def logout_view(request):
 
 @login_required
 def profile_view(request):
-    # Renders the profile page with all forms and rated events
     user = request.user
     rated_events = Event.objects.filter(rating__voters=user)
+
+    paginator = Paginator(rated_events, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'user_form': UserUpdateForm(instance=user),
         'email_form': EmailUpdateForm(instance=user),
         'password_form': CustomPasswordChangeForm(user=user),
         'delete_form': DeleteAccountForm(),
-        'rated_events': rated_events,
+        'page_obj': page_obj,
     }
 
     return render(request, 'users/profile.html', context)
