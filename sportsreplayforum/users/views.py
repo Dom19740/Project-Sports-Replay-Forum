@@ -13,6 +13,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, login
 from django.urls import reverse
 from .tokens import account_activation_token
+from core.models import Event
 
 
 def registration_view(request):
@@ -104,13 +105,20 @@ def logout_view(request):
 
 @login_required
 def profile_view(request):
-    # Renders the profile page with all forms
-    return render(request, 'users/profile.html', {
-        'user_form': UserUpdateForm(instance=request.user),
-        'email_form': EmailUpdateForm(instance=request.user),
-        'password_form': CustomPasswordChangeForm(user=request.user),
-        'delete_form': DeleteAccountForm()
-    })
+    # Renders the profile page with all forms and rated events
+    user = request.user
+    rated_events = Event.objects.filter(rating__voters=user)
+
+    context = {
+        'user_form': UserUpdateForm(instance=user),
+        'email_form': EmailUpdateForm(instance=user),
+        'password_form': CustomPasswordChangeForm(user=user),
+        'delete_form': DeleteAccountForm(),
+        'rated_events': rated_events,
+    }
+
+    return render(request, 'users/profile.html', context)
+
 
 @login_required
 def update_username(request):
