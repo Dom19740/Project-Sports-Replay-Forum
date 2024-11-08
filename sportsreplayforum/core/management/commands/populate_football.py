@@ -28,7 +28,7 @@ class Command(BaseCommand):
             # Step 1: Create Competitions for events by matchday
             for item in data:
                 date_obj = datetime.strptime(item['dateEvent'], "%Y-%m-%d")
-                competition_name = date_obj.strftime('%A %d %b')
+                competition_name = date_obj.strftime('%a %d %b')
                 competition_date = parser.isoparse(item['strTimestamp']).date()
 
                 # Check if competition already exists

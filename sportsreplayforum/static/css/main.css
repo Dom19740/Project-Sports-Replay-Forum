@@ -287,9 +287,10 @@ a i:hover {
 .btn-pill,.btn-back, .btn-standard {
   padding: 1px 12px;
   font-weight: 350;
+  font-size: .8rem;
   border-radius: 20px;
   margin-bottom: 10px;
-  width: 330px;
+  width: 350px;
   text-align: left;
   text-decoration: none;
   display: block;
@@ -320,8 +321,8 @@ a i:hover {
     background-color: var(--dark-grey);
     color: #fff;
     font-size: .85rem;
-    width: ;
     display: inline-block;
+    width: auto;
 }
 
 .btn-back:hover, .btn-standard:hover {
