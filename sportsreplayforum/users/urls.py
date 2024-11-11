@@ -7,6 +7,7 @@ from .views import activate
 app_name = 'users'
 urlpatterns = [
     path('register/', views.registration_view, name='register'),
+    path('register/complete/', views.registration_complete, name='register_complete'),
     path('activate/<str:uidb64>/<str:token>/', activate, name="activate"),
 
     path('login/', views.login_view, name='login'),

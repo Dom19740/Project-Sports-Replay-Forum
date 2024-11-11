@@ -2,8 +2,6 @@
 
 {% block title %}Should I Watch Sports{% endblock %}
 
-{% block header %}About{% endblock %}
-
 {% block main_container_top %}
 
 {% load static %}
@@ -11,6 +9,8 @@
 <img src="{% static 'img/logo-welcome.png' %}" class="welcome-logo" alt="Welcome Logo">
 <br>
 <br>
+<h5 class="inside-header">About</h5>
+
 <ul>
     <p>Our aim is to help sports fans determine whether it is worth spending their time watching an event.</p>
     <p>No one likes to spend 2hrs watching a dull race or a 0-0 match when there are so many other things to be doing.</p>
@@ -50,6 +50,38 @@
         <small>&copy; {{ current_year }} dpb creative. All rights reserved.</small>
     </ul>
 
-
 {% endblock %}
 
+
+{% block main_container_third %}
+    <div class="container mt-5">
+        <h1>Terms and Conditions</h1>
+        <p>Last updated: November 2024</p>
+
+        <h2>1. Introduction</h2>
+        <p>Welcome to Should I Watch Sports (SIWS). These Terms and Conditions govern your use of our website, located at <a href="https://shouldiwatchsports.onrender.com/">shouldiwatchsports.onrender.com</a>. By accessing and using this website, you agree to be bound by these Terms and Conditions. If you do not agree with any of these terms, please do not use our site.</p>
+
+        <h2>2. User Accounts</h2>
+        <p>To access certain features of the website, including commenting and ratings, you may be required to create a user account. By creating an account, you agree to provide accurate and complete information, including a valid email address. You are responsible for maintaining the confidentiality of your account credentials.</p>
+
+        <h2>3. Cookies</h2>
+        <p>Our website uses cookies to enhance your experience, particularly for user authentication and maintaining session states during your visit. Specifically, we use session cookies to log you into your account. These cookies are temporary and are deleted once you log out or close your browser.</p>
+
+        <h2>4. Data Privacy</h2>
+        <p>We do not track or analyze personal data for marketing purposes. We may collect certain personal information (e.g., email address) when you create an account, but we will not share this information with third parties without your consent, except as required by law. For more information on how we handle your data, please refer to our <a href="/privacy-policy">Privacy Policy</a>.</p>
+
+        <h2>5. Content</h2>
+        <p>The content on this website, including user ratings, reviews, and event information, is provided for informational purposes only. SIWS does not guarantee the accuracy, completeness, or reliability of any content, and users are encouraged to verify any information before acting on it.</p>
+
+        <h2>6. Liability</h2>
+        <p>SIWS is not responsible for any direct or indirect damages arising from the use or inability to use the website or its content. By using this site, you agree that you do so at your own risk.</p>
+
+        <h2>7. Modification of Terms</h2>
+        <p>We may update or modify these Terms and Conditions at any time. Changes will be posted on this page with an updated "Last updated" date. By continuing to use the website, you agree to the updated terms.</p>
+
+        <h2>8. Governing Law</h2>
+        <p>These Terms and Conditions are governed by the laws of [Your Country/State]. Any disputes will be resolved in the appropriate courts of [Location].</p>
+
+        <h2>9. Contact Information</h2>
+        <p>If you have any questions regarding these Terms and Conditions, please contact us at [Your Contact Email].</p>
+    </div>

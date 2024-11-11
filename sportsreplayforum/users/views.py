@@ -40,9 +40,12 @@ def registration_view(request):
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])
             email.send()
-            messages.success(request, 'Please check your email address to complete the registration')
-            return redirect('home')
+            # messages.success(request, 'Please check your email address to complete the registration')
+            return redirect('users:register_complete')
     return render(request, 'users/register.html', {'form': form})
+
+def registration_complete(request):
+    return render(request, 'users/register_complete.html')
 
 
 def activate(request, uidb64, token):
