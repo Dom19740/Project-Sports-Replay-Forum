@@ -10,8 +10,6 @@ venv/
 sportsreplayforum/.venv
 
 # Django specific
-f1_2024_races.json
-sportsreplayforum/db.sqlite3
 db.sqlite3
 
 # Environment variables
@@ -19,6 +17,10 @@ db.sqlite3
 
 # VS Code
 .vscode
+
+#Project
+f1_2024_races.json
+sportsreplayforum/db.sqlite3
 sportsreplayforum/staticfiles/css/main copy 2.css
 sportsreplayforum/staticfiles/css/main copy.css
 sportsreplayforum/static/css/main copy.css

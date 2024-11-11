@@ -29,6 +29,18 @@
 
     <meta name="" content="">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPVXS4BPPE"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    GOOGLE_ANALYTICS_TRACKING_ID = os.environ.get("MAIL_PASS")
+
+    gtag('config', "GOOGLE_ANALYTICS_TRACKING_ID");
+    </script>
+
 
     {% block head %} {% endblock %}
 
