@@ -80,7 +80,8 @@ body.dark-mode {
 
 /* NAVBAR */
 .navbar-brand img {
-    width: 40px;
+    width: 107px;
+    margin-left: 1px; ;
 }
 
 .navbar-dark {
@@ -396,12 +397,18 @@ a i:hover {
 /* FORMS END */
 
 /* FOOTER */
-footer {
-    border-radius: 10px;
-    background-color: var(--dark-grey) !important;
-    margin: 5px;
-    padding: 15px;
+.bg-dark {
+    background-color: var(--bg-color-dark)!important;
+    padding: 10px;
+    padding-top: 25px;
 }
+
+.bg-dark p {
+    color: var(--light-grey)!important;
+    font-size: 11px;
+}
+
+
 
 /* FOOTER END */
 
@@ -456,6 +463,18 @@ footer {
     .search-input {
         width: 100%;
     }
+
+    footer .text-end {
+        padding-right: 50px;
+    }
+    
+    
+    /* Adjust logo size */
+    footer img {
+        height: 50px; /* Custom logo height */
+        align-items: center;
+    }
+    
 
 }
 
