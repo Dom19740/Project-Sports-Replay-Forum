@@ -1,33 +1,33 @@
-{% extends 'base_2_split.html' %}
-
-{% block title %}Should I Watch Sports{% endblock %}
-
-{% block main_container_top %}
-
+{% extends 'base_main.html' %}
 {% load static %}
 
-<img src="{% static 'img/logo-welcome.png' %}" class="welcome-logo" alt="Welcome Logo">
-<br>
-<br>
-<h5 class="inside-header">About</h5>
+{% block title %}About | Should I Watch Sports{% endblock %}
 
-<ul>
-    <p>Our aim is to help sports fans determine whether it is worth spending their time watching an event.</p>
-    <p>No one likes to spend 2hrs watching a dull race or a 0-0 match when there are so many other things to be doing.</p>
-    <p>You can check our rating system to see how other fans and our continuously impoving AI rating system will recommend to watch.</p>
-    <p>And you can help other users by registering and rating events yourself.</p>
-    <br>
-    <p>Due to rights issues and restrictions, we are unable to provide replay streams. Use your favourite sports package or online stream to find replays</p>
-    <a href="{% url 'core:replay_platforms' %}" class="btn-pill btn-standard">Links to Replay Platforms</a>
-</ul>
+{% block content %}
 
+<h5 class='main-header'></h5>
+    
+    <div class='main-container-style'>
+       
+        <img src="{% static 'img/logo-welcome.png' %}" class="welcome-logo" alt="Welcome Logo">
+        <br>
+        <br>
+        <h5 class="inside-header">About</h5>
 
-{% endblock %}
+        <p>Our aim is to help sports fans determine whether it is worth spending their time watching an event.</p>
+        <p>No one likes to spend 2hrs watching a dull race or a 0-0 match when there are so many other things to be doing.</p>
+        <p>You can check our rating system to see how other fans and our continuously impoving AI rating system will recommend to watch.</p>
+        <p>And you can help other users by registering and rating events yourself.</p>
+        <br>
+        <p>Due to rights issues and restrictions, we are unable to provide replay streams. Use your favourite sports package or online stream to find replays</p>
+        <a href="{% url 'core:replay_platforms' %}" class="btn-pill btn-standard">Links to Replay Platforms</a>
 
-{% block main_container_bottom %}
+    </div>
 
-    <h5 class="inside-header">Roadmap</h5>
-    <ul>
+    <div class="main-container-style">
+
+        <h5 class="inside-header">Roadmap</h5>
+
         <p>Here are some additional features that we plan to add in the future:</p>
         <ul>
             <li>Further integration of AI ratings, so that users don't have to wait until a user has provided a rating, they can get an idea of how the event was straight away.</li>
@@ -43,45 +43,101 @@
             <li>More leagues</li>
             <li>More events</li>
         </ul>
-    </ul>
-    <ul>
-        <p>Use the feedback form to let us know what you think of the site, or feel free to get in contact on the email below.</p>
-        <p><a href="mailto:siws@dpbcreative.com" class="btn-pill btn-standard">siws@dpbcreative.com</a></p>
-        <small>&copy; {{ current_year }} dpb creative. All rights reserved.</small>
-    </ul>
+        </ul>
+            <p>Use the feedback form to let us know what you think of the site, or feel free to get in contact on the email below.</p>
+            <p><a href="mailto:siws@dpbcreative.com" class="btn-pill btn-standard">siws@dpbcreative.com</a></p>
+           
+        </ul>
 
-{% endblock %}
-
-
-{% block main_container_third %}
-    <div class="container mt-5">
-        <h1>Terms and Conditions</h1>
-        <p>Last updated: November 2024</p>
-
-        <h2>1. Introduction</h2>
-        <p>Welcome to Should I Watch Sports (SIWS). These Terms and Conditions govern your use of our website, located at <a href="https://shouldiwatchsports.onrender.com/">shouldiwatchsports.onrender.com</a>. By accessing and using this website, you agree to be bound by these Terms and Conditions. If you do not agree with any of these terms, please do not use our site.</p>
-
-        <h2>2. User Accounts</h2>
-        <p>To access certain features of the website, including commenting and ratings, you may be required to create a user account. By creating an account, you agree to provide accurate and complete information, including a valid email address. You are responsible for maintaining the confidentiality of your account credentials.</p>
-
-        <h2>3. Cookies</h2>
-        <p>Our website uses cookies to enhance your experience, particularly for user authentication and maintaining session states during your visit. Specifically, we use session cookies to log you into your account. These cookies are temporary and are deleted once you log out or close your browser.</p>
-
-        <h2>4. Data Privacy</h2>
-        <p>We do not track or analyze personal data for marketing purposes. We may collect certain personal information (e.g., email address) when you create an account, but we will not share this information with third parties without your consent, except as required by law. For more information on how we handle your data, please refer to our <a href="/privacy-policy">Privacy Policy</a>.</p>
-
-        <h2>5. Content</h2>
-        <p>The content on this website, including user ratings, reviews, and event information, is provided for informational purposes only. SIWS does not guarantee the accuracy, completeness, or reliability of any content, and users are encouraged to verify any information before acting on it.</p>
-
-        <h2>6. Liability</h2>
-        <p>SIWS is not responsible for any direct or indirect damages arising from the use or inability to use the website or its content. By using this site, you agree that you do so at your own risk.</p>
-
-        <h2>7. Modification of Terms</h2>
-        <p>We may update or modify these Terms and Conditions at any time. Changes will be posted on this page with an updated "Last updated" date. By continuing to use the website, you agree to the updated terms.</p>
-
-        <h2>8. Governing Law</h2>
-        <p>These Terms and Conditions are governed by the laws of [Your Country/State]. Any disputes will be resolved in the appropriate courts of [Location].</p>
-
-        <h2>9. Contact Information</h2>
-        <p>If you have any questions regarding these Terms and Conditions, please contact us at [Your Contact Email].</p>
     </div>
+
+    <div class="main-container-style">
+
+        <div>
+            <h5 class="inside-header">Terms and Conditions</h5>
+            <p>Last updated: November 2024</p>
+
+            <p><strong>1. Introduction</strong></p>
+            <p>Welcome to Should I Watch Sports (SIWS). These Terms and Conditions govern your use of our website, located at <a href="https://shouldiwatchsports.onrender.com/">shouldiwatchsports.onrender.com</a>. By accessing and using this website, you agree to be bound by these Terms and Conditions. If you do not agree with any of these terms, please do not use our site.</p>
+
+            <p><strong>2. User Accounts</strong></p>
+            <p>To access certain features of the website, including commenting and ratings, you may be required to create a user account. By creating an account, you agree to provide accurate and complete information, including a valid email address. You are responsible for maintaining the confidentiality of your account credentials.</p>
+
+            <p><strong>3. Cookies</strong></p>
+            <p>Our website uses cookies to enhance your experience, particularly for user authentication and maintaining session states during your visit. Specifically, we use session cookies to log you into your account. These cookies are temporary and are deleted once you log out or close your browser.</p>
+
+            <p><strong>4. Data Privacy</strong></p>
+            <p>We do not track or analyze personal data for marketing purposes. We may collect certain personal information (e.g., email address) when you create an account, but we will not share this information with third parties without your consent, except as required by law. For more information on how we handle your data, please refer to our <a href="/privacy-policy">Privacy Policy</a>.</p>
+
+            <p><strong>5. Content</strong></p>
+            <p>The content on this website, including user ratings, reviews, and event information, is provided for informational purposes only. SIWS does not guarantee the accuracy, completeness, or reliability of any content, and users are encouraged to verify any information before acting on it.</p>
+
+            <p><strong>6. Liability</strong></p>
+            <p>SIWS is not responsible for any direct or indirect damages arising from the use or inability to use the website or its content. By using this site, you agree that you do so at your own risk.</p>
+
+            <p><strong>7. Modification of Terms</strong></p>
+            <p>We may update or modify these Terms and Conditions at any time. Changes will be posted on this page with an updated "Last updated" date. By continuing to use the website, you agree to the updated terms.</p>
+
+            <p><strong>8. Governing Law</strong></p>
+            <p>These Terms and Conditions are governed by the laws of [Your Country/State]. Any disputes will be resolved in the appropriate courts of [Location].</p>
+
+            <p><strong>9. Contact Information</strong></p>
+            <p>If you have any questions regarding these Terms and Conditions, please contact us at siws@dpbcreative.com.</p>
+        </div>
+
+    </div>
+
+    <div class="main-container-style">
+
+        <div>
+            <h5 class="inside-header">Privacy Policy</h5>
+            <p>Last updated: November 2024</p>
+
+            <p>We value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you visit our website located at <a href="https://shouldiwatchsports.onrender.com/">shouldiwatchsports.onrender.com</a>.</p>
+
+            <p><strong>1. Information We Collect</strong></p>
+            <p>When you use our website, we may collect personal information, including your email address and username, which you provide when creating an account.</p>
+
+            <p><strong>2. How We Use Your Information</strong></p>
+            <p>We use the information you provide to personalize your experience, enable certain features (such as ratings and reviews), and communicate with you, such as sending account-related notifications. We also use cookies to keep you logged in and ensure the proper functioning of our website.</p>
+
+            <p><strong>3. Cookies and Tracking</strong></p>
+            <p>Our website does not use tracking tools or analytics services to collect personal data. However, we may collect basic server logs, such as your IP address, browser type, and referring URL, for security, performance, and troubleshooting purposes. These logs are not used for tracking user behavior or analytics.</p>
+
+            <p><strong>4. Data Sharing and Disclosure</strong></p>
+            <p>We do not sell, rent, or trade your personal information to third parties. We may share your information with trusted service providers who assist in operating the website or conducting our business, but these parties are bound to keep your information confidential and secure. We may also disclose your information when required by law or to protect our legal rights.</p>
+
+            <p><strong>5. Data Security</strong></p>
+            <p>We take reasonable precautions to protect your personal information from unauthorized access, alteration, or destruction. However, please note that no method of data transmission or storage is 100% secure, and we cannot guarantee the absolute security of your data.</p>
+
+            <p><strong>6. Your Rights</strong></p>
+            <p>You have the right to access, correct, or delete your personal information at any time. If you would like to update your account details or request the deletion of your account, you can do so on your profile page or please contact us at siws@dpbcreative.com.</p>
+
+            <p><strong>7. Third-Party Links</strong></p>
+            <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of those websites. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+
+            <p><strong>8. Children’s Privacy</strong></p>
+            <p>SIWS does not knowingly collect personal information from children under the age of 13. If we learn that we have inadvertently collected personal information from a child under 13, we will take steps to delete that information.</p>
+
+            <p><strong>9. Changes to This Privacy Policy</strong></p>
+            <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last updated" date. We encourage you to review this policy periodically to stay informed about how we protect your data.</p>
+
+            <p><strong>10. Contact Us</strong></p>
+            <p>If you have any questions or concerns about this Privacy Policy or how we handle your personal data, please contact us at siws@dpbcreative.com.</p>
+    </div>
+
+{% endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
