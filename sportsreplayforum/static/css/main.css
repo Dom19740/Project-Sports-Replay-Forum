@@ -264,6 +264,10 @@ h3, .rating-logo {
 	transform: translate(-50%, -50%);
 }
 
+.play-button {
+    font-size: 100px;
+}
+
 a i {
 	font-size: 100px;
 	transition: all 0.5s ease;
@@ -480,6 +484,10 @@ a i:hover {
     footer img {
         height: 50px; /* Custom logo height */
         align-items: center;
+    }
+
+    .play-button {
+        font-size: 70px;
     }
 }
 
