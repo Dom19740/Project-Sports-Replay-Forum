@@ -17,6 +17,7 @@
 
     <!-- jQuery UI CSS -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css" crossorigin="anonymous">
+    
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous">
@@ -29,22 +30,17 @@
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
     <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
 
-
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPVXS4BPPE"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
-    GOOGLE_ANALYTICS_TRACKING_ID = os.environ.get("MAIL_PASS")
-
-    gtag('config', "GOOGLE_ANALYTICS_TRACKING_ID");
+    gtag('config', "G-BPVXS4BPPE");
     </script>
 
     <!-- Consent Manager -->
-    <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/5a806eeef19c1.js" data-cmp-host="b.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
+{% comment %}     <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/5a806eeef19c1.js" data-cmp-host="b.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script> {% endcomment %}
 
     {% block head %} {% endblock %}
 
@@ -73,6 +69,8 @@
 </div>
 
 {% block footer %} {% endblock %}
+
+
 
 
 <!-- Floating Button -->

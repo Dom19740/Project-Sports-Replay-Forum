@@ -28,3 +28,22 @@
 <a class="badge-link" alt="" title="Champions" href="{% url 'core:competition_schedule' league='UEFA Champions League' %}">
     <img src="{% static 'img/sports/logo_champions.png' %}" alt="Champions">
 </a>
+
+
+<!-- Welcome Modal -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="welcomeModalLabel">Welcome!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Welcome to "Should I Watch Sports"! Find out if a sports event is worth watching without spoilers.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
