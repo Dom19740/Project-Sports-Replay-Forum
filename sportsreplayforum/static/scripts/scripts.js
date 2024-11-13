@@ -1,4 +1,3 @@
-
 // Convert UTC to local time
 document.addEventListener("DOMContentLoaded", function () {
   const eventElements = document.querySelectorAll('.event-datetime');
@@ -25,13 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Spoiler Switches
-// Get the switches and containerers
 const switchCheckbox1 = document.getElementById('flexSwitchCheckDefault');
 const videoContainer = document.querySelector('.show-video-container');
 const switchCheckbox2 = document.getElementById('flexSwitchCheckDefault2');
 const resultsContainer = document.querySelector('.show-score-container');
 
-// Event listener for the first switch
 switchCheckbox1.addEventListener('change', () => {
   videoContainer.style.display = switchCheckbox1.checked ? 'block' : 'none';
   if (switchCheckbox1.checked) {
@@ -39,7 +36,6 @@ switchCheckbox1.addEventListener('change', () => {
   }
 });
 
-// Event listener for the second switch
 switchCheckbox2.addEventListener('change', () => {
   resultsContainer.style.display = switchCheckbox2.checked ? 'block' : 'none';
   if (switchCheckbox2.checked) {
@@ -47,7 +43,14 @@ switchCheckbox2.addEventListener('change', () => {
   }
 });
 
-// Function to scroll to the element smoothly
 function scrollToElement(element) {
   element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+// Modal Pop up
+document.addEventListener("DOMContentLoaded", function() {
+  if (!localStorage.getItem("welcomeShown")) {
+      $('#welcomeModal').modal('show');
+      localStorage.setItem("welcomeShown", "true");
+  }
+});

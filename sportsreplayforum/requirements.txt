@@ -14,6 +14,8 @@ cryptography==43.0.1
 defusedxml==0.8.0rc2
 dj-database-url==2.2.0
 Django==5.1.1
+django-appconf==1.0.6
+django-cookiebanner==0.2.8
 django-crispy-forms==2.3
 django-extensions==3.2.3
 django-social-auth==0.7.28

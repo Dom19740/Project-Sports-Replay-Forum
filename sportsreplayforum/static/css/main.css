@@ -397,7 +397,7 @@ a i:hover {
 /* FORMS END */
 
 /* FOOTER */
-.bg-dark {
+.footer {
     background-color: var(--bg-color-dark)!important;
     padding: 10px;
     padding-top: 25px;
