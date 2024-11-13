@@ -81,7 +81,7 @@ body.dark-mode {
 /* NAVBAR */
 .navbar-brand img {
     width: 80px;
-    margin-left: 0px; ;
+    margin-left: 10px; ;
 }
 
 .navbar-dark {
@@ -201,6 +201,14 @@ body.dark-mode {
 
 .badge-link img {
     height: 65px; /* set the height to the desired value */
+}
+
+.modal-dialog {
+    margin-top: 100px;
+}
+
+.modal-content {
+    color: #000000;
 }
 
 /* WELCOME END */
@@ -397,7 +405,7 @@ a i:hover {
 /* FORMS END */
 
 /* FOOTER */
-.bg-dark {
+.footer {
     background-color: var(--bg-color-dark)!important;
     padding: 10px;
     padding-top: 25px;
@@ -474,8 +482,6 @@ a i:hover {
         height: 50px; /* Custom logo height */
         align-items: center;
     }
-    
-
 }
 
 @media (min-width: 769px) {

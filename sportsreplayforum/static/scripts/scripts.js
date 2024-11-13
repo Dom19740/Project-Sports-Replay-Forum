@@ -44,6 +44,9 @@ function scrollToElement(element) {
 
 // Modal Pop up
 document.addEventListener("DOMContentLoaded", function() {
-  console.log("Modal code is running!");
-  $('#welcomeModal').modal('show');
+  if (!localStorage.getItem('welcomeModalShown')) {
+    console.log("Modal code is running!");
+    $('#welcomeModal').modal('show');
+    localStorage.setItem('welcomeModalShown', 'true');
+  }
 });

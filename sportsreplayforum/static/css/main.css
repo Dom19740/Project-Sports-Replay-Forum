@@ -203,6 +203,14 @@ body.dark-mode {
     height: 65px; /* set the height to the desired value */
 }
 
+.modal-dialog {
+    margin-top: 100px;
+}
+
+.modal-content {
+    color: #000000;
+}
+
 /* WELCOME END */
 
 /* SCHEDULE */
@@ -474,8 +482,6 @@ a i:hover {
         height: 50px; /* Custom logo height */
         align-items: center;
     }
-    
-
 }
 
 @media (min-width: 769px) {
