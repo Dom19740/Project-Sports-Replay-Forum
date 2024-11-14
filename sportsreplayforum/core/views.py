@@ -7,16 +7,18 @@ from django.conf import settings
 from .models import Competition, Event, Rating
 from datetime import timedelta
 
+sports = [
+    {'name': 'Formula 1', 'logo': 'logo_f1.png'},
+    {'name': 'MotoGP', 'logo': 'logo_motogp.png'},
+    {'name': 'IndyCar Series', 'logo': 'logo_indy.png'},
+    {'name': 'NASCAR Cup Series', 'logo': 'logo_nascar.png'},
+    {'name': 'English Premier League', 'logo': 'logo_premier.png'},
+    {'name': 'UEFA Champions League', 'logo': 'logo_champions.png'},
+    {'name': 'NFL', 'logo': 'logo_nhl.png'},
+    {'name': 'NBA', 'logo': 'logo_nba.png'},
+    {'name': 'NHL', 'logo': 'logo_nhl.png'},
+]
 
-# db league names converted to Titles  
-TITLES = {
-    'Formula 1': 'Formula One',
-    'UEFA Champions League': 'UEFA Champions League',
-    'English Premier League': 'English Premier League',
-    'MotoGP': 'MotoGP',
-    'NASCAR Cup Series': 'NASCAR Cup Series',
-    'IndyCar Series': 'IndyCar Series',
-}
 
 RATINGS_TEXT = {
     5: "Hot Watch!",
@@ -30,7 +32,7 @@ RATINGS_TEXT = {
 def competition_schedule(request, league):
 
     today = timezone.now()
-    title = TITLES.get(league, 'Unknown League')
+    title = next((sport['name'] for sport in sports if sport['name'] == league), 'Unknown League')
 
     competitions = Competition.objects.order_by('-date').filter(league=league)
 
@@ -83,7 +85,7 @@ def event_list(request, competition_id):
 
     events_upcoming.reverse()
 
-    title = TITLES.get(competition.league, 'Unknown League')
+    title = next((sport['name'] for sport in sports if sport['name'] == competition.league), 'Unknown League')
     banner = competition.banner
 
     return render(request, 'core/event_list.html', {
@@ -101,8 +103,7 @@ def event(request, event_id):
 
     video_id = event.video_id.split('=')[-1] if event.video_id else None
 
-    title = TITLES.get(event.event_list.league, 'Unknown League')
-
+    title = next((sport['name'] for sport in sports if sport['name'] == event.event_list.league), 'Unknown League')
     results = event.results.all()
     poster = event.poster
     ai_review = event.ai_review

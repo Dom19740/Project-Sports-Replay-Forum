@@ -4,6 +4,7 @@ from django.conf import settings
 from django.db.models import ExpressionWrapper
 from django.db import models
 from core.models import Event, Rating
+from core.views import sports
 
 class HomeView(View):
     def get(self, request):
@@ -12,7 +13,8 @@ class HomeView(View):
         islocal = host.find('localhost') >= 0 or host.find('127.0.0.1') >= 0
         context = {
             'installed': settings.INSTALLED_APPS,
-            'islocal': islocal
+            'islocal': islocal,
+            'sports': sports,
         }
 
         # Get the last events to receive a vote
