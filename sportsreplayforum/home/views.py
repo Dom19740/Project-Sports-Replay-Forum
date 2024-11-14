@@ -23,7 +23,6 @@ class HomeView(View):
         context = {
             'installed': settings.INSTALLED_APPS,
             'islocal': islocal,
-            'sports': sports,
             'recent_voted_events': recent_voted_events,
         }
         return render(request, 'home/home.html', context)

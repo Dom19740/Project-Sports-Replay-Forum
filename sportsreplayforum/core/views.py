@@ -64,7 +64,6 @@ def competition_schedule(request, league):
         'league': league,
         'banner': banner,
         'badge': badge,
-        'sports': sports,
     })
 
 
@@ -96,7 +95,6 @@ def event_list(request, competition_id):
         'title': title,
         'league': competition.league,
         'banner': banner,
-        'sports': sports,
     })
 
 
@@ -134,7 +132,6 @@ def event(request, event_id):
         'poster': poster,
         'ai_review': ai_review,
         'ai_rating': ai_rating,
-        'sports': sports,
     })
 
 

@@ -49,13 +49,6 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'users.apps.UsersConfig',
 
-    'sports.f1.apps.F1Config',
-    'sports.nations.apps.NationsConfig',
-    'sports.champions.apps.ChampionsConfig',
-    'sports.premier.apps.PremierConfig',
-    'sports.motogp.apps.MotogpConfig',
-    'sports.worldcup.apps.WorldcupConfig',
-
     # Extensions - installed with requirements.txt
     'django_extensions', 
     'crispy_forms',  
@@ -93,6 +86,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.sports_processor',
             ],
         },
     },
