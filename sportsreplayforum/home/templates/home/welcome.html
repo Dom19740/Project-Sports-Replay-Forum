@@ -10,11 +10,13 @@
 <p>Watch the highlights video and access results directly from our event pages, even on non rated events. </p>
 <br>
 
-{% for sport in sports %}
-    <a class="badge-link" alt="" title="{{ sport.name }}" href="{% url 'core:competition_schedule' league=sport.name %}">
-        <img src="{% static 'img/sports/'|add:sport.logo %}" alt="{{ sport.name }}">
-    </a>
-{% endfor %}
+<div class="badge-container">
+    {% for sport in sports %}
+        <a class="badge-link" alt="" title="{{ sport.name }}" href="{% url 'core:competition_schedule' league=sport.name %}">
+            <img src="{% static 'img/sports/'|add:sport.logo %}" alt="{{ sport.name }}">
+        </a>
+    {% endfor %}
+</div>
 
 <!-- Welcome Modal -->
 <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
