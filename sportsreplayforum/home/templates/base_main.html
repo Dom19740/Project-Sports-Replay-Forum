@@ -13,24 +13,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mobile-menu">
-                <li class="nav-item {% if request.get_full_path == f1 %}active{% endif %}">
-                    <a class="nav-link" title="F1" href="{% url 'core:competition_schedule' league='Formula 1' %}">F1</a>
-                </li>
-                <li class="nav-item {% if request.get_full_path == motogp %}active{% endif %}">
-                    <a class="nav-link" title="MotoGP" href="{% url 'core:competition_schedule' league='MotoGP' %}">MotoGP</a>
-                </li>
-                <li class="nav-item {% if request.get_full_path == premier %}active{% endif %}">
-                    <a class="nav-link" title="IndyCar Series" href="{% url 'core:competition_schedule' league='IndyCar Series' %}">IndyCar</a>
-                </li>
-                <li class="nav-item {% if request.get_full_path == champions %}active{% endif %}">
-                    <a class="nav-link" title="NASCAR Cup Series" href="{% url 'core:competition_schedule' league='NASCAR Cup Series' %}">NASCAR</a>
-                </li>
-                <li class="nav-item {% if request.get_full_path == champions %}active{% endif %}">
-                    <a class="nav-link" title="Premier League" href="{% url 'core:competition_schedule' league='English Premier League' %}">Premier League</a>
-                </li>
-                <li class="nav-item {% if request.get_full_path == champions %}active{% endif %}">
-                    <a class="nav-link" title="Champions League" href="{% url 'core:competition_schedule' league='UEFA Champions League' %}">Champions League</a>
-                </li>
+                {% for sport in sports %}
+                    <li class="nav-item">
+                        <a class="nav-link" title="{{ sport.name }}" href="{% url 'core:competition_schedule' league=sport.name %}">
+                            {{ sport.title }}</a>
+                    </li>
+                {% endfor %}
             </ul>
             <ul class="navbar-nav ms-auto mobile-menu">
                 {% if user.is_authenticated %}

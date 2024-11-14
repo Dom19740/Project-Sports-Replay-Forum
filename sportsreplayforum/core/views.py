@@ -8,15 +8,15 @@ from .models import Competition, Event, Rating
 from datetime import timedelta
 
 sports = [
-    {'name': 'Formula 1', 'logo': 'logo_f1.png'},
-    {'name': 'MotoGP', 'logo': 'logo_motogp.png'},
-    {'name': 'IndyCar Series', 'logo': 'logo_indy.png'},
-    {'name': 'NASCAR Cup Series', 'logo': 'logo_nascar.png'},
-    {'name': 'English Premier League', 'logo': 'logo_premier.png'},
-    {'name': 'UEFA Champions League', 'logo': 'logo_champions.png'},
-    {'name': 'NFL', 'logo': 'logo_nhl.png'},
-    {'name': 'NBA', 'logo': 'logo_nba.png'},
-    {'name': 'NHL', 'logo': 'logo_nhl.png'},
+    {'name': 'Formula 1', 'title': 'F1', 'logo': 'logo_f1.png'},
+    {'name': 'MotoGP', 'title': 'MotoGP', 'logo': 'logo_motogp.png'},
+    #{'name': 'IndyCar Series', 'title': 'IndyCar', 'logo': 'logo_indy.png'},
+    #{'name': 'NASCAR Cup Series', 'title': 'NASCAR', 'logo': 'logo_nascar.png'},
+    {'name': 'English Premier League', 'title': 'Premier League', 'logo': 'logo_premier.png'},
+    {'name': 'UEFA Champions League', 'title': 'Champions League', 'logo': 'logo_champions.png'},
+    {'name': 'NFL', 'title': 'NFL', 'logo': 'logo_nfl.png'},
+    {'name': 'NBA', 'title': 'NBA', 'logo': 'logo_nba.png'},
+    {'name': 'NHL', 'title': 'NHL', 'logo': 'logo_nhl.png'},
 ]
 
 
@@ -64,6 +64,7 @@ def competition_schedule(request, league):
         'league': league,
         'banner': banner,
         'badge': badge,
+        'sports': sports,
     })
 
 
@@ -95,6 +96,7 @@ def event_list(request, competition_id):
         'title': title,
         'league': competition.league,
         'banner': banner,
+        'sports': sports,
     })
 
 
@@ -131,7 +133,8 @@ def event(request, event_id):
         'results': results,
         'poster': poster,
         'ai_review': ai_review,
-        'ai_rating': ai_rating
+        'ai_rating': ai_rating,
+        'sports': sports,
     })
 
 

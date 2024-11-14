@@ -10,27 +10,11 @@
 <p>Watch the highlights video and access results directly from our event pages, even on non rated events. </p>
 <br>
 
-<a class="badge-link" alt="" title="F1" href="{% url 'core:competition_schedule' league='Formula 1' %}">
-    <img src="{% static 'img/sports/logo_f1.png' %}" alt="F1">
-</a>
-<a class="badge-link" alt="" title="MotoGP" href="{% url 'core:competition_schedule' league='MotoGP' %}">
-    <img src="{% static 'img/sports/logo_motogp.png' %}" alt="MotoGP">
-</a>
-<a class="badge-link" alt="" title="Indy" href="{% url 'core:competition_schedule' league='IndyCar Series' %}">
-    <img src="{% static 'img/sports/logo_indy.png' %}" alt="Indy">
-</a>
-<a class="badge-link" alt="" title="NASCAR" href="{% url 'core:competition_schedule' league='NASCAR Cup Series' %}">
-    <img src="{% static 'img/sports/logo_nascar.png' %}" alt="NASCAR">
-</a>
-<a class="badge-link" alt="" title="Premier" href="{% url 'core:competition_schedule' league='English Premier League' %}">
-    <img src="{% static 'img/sports/logo_premier.png' %}" alt="Premier">
-</a>
-<a class="badge-link" alt="" title="Champions" href="{% url 'core:competition_schedule' league='UEFA Champions League' %}">
-    <img src="{% static 'img/sports/logo_champions.png' %}" alt="Champions">
-</a>
-
-
-
+{% for sport in sports %}
+    <a class="badge-link" alt="" title="{{ sport.name }}" href="{% url 'core:competition_schedule' league=sport.name %}">
+        <img src="{% static 'img/sports/'|add:sport.logo %}" alt="{{ sport.name }}">
+    </a>
+{% endfor %}
 
 <!-- Welcome Modal -->
 <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
