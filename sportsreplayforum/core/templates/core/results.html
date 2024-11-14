@@ -78,3 +78,25 @@
     </script>
     
 {% endif %}
+
+<div class="share-buttons-container">
+    <!-- Facebook Share Button -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}" target="_blank" title="Share on Facebook">
+        <i class="fa-brands fa-facebook share-buttons"></i>
+    </a>
+
+    <!-- Twitter Share Button -->
+    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ event.event_list }}%20{{ event.event_type|title }}%20Rating%20-%20Should%20I%20Watch%20Sports" target="_blank" title="Share on Twitter">
+        <i class="fa-brands fa-x-twitter share-buttons"></i>
+    </a>
+
+    <!-- WhatsApp Share Button (mobile only) -->
+    <a href="https://wa.me/?text={{ event.event_list }}%20{{ event.event_type|title }}%20Rating%20-%20Should%20I%20Watch%20Sports:%20{{ request.build_absolute_uri }}" target="_blank" title="Share on WhatsApp">
+        <i class="fa-brands fa-whatsapp share-buttons"></i>
+    </a>
+
+    <!-- Reddit Share Button -->
+    <a href="https://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ event.event_list }}%20{{ event.event_type|title }}%20Rating%20-%20Should%20I%20Watch%20Sports" target="_blank" title="Share on Reddit">
+        <i class="fa-brands fa-reddit share-buttons"></i>
+    </a>
+</div>
