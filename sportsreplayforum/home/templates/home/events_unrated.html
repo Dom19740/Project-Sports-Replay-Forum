@@ -1,0 +1,23 @@
+<div class="main-container-left events-list">
+
+    <h5 class="inside-header">Most Recent Events</h5>
+
+    {% for event in last_events %}
+        <li>
+            <a href="{% url 'core:event' event.event.id %}" class="btn-pill btn-pill-dark rounded-pill">
+                {% if event.league == "Formula 1" %}
+                    {{ event.event.event_list.name }} {{ event.event.event_type }}
+                {% elif event.league == "MotoGP" or event.league == "NASCAR Cup Series" or event.league == "IndyCar Series"%}
+                    {{ event.event.event_list.name }} {{ event.event.event_type }} 
+                {% else %}
+                    {{ event.event.event_type }}
+                {% endif %}
+                {% if event.event.rating.percentage %}
+                 - {{ event.event.rating.percentage|floatformat:0 }}% HOT
+                {% endif %}
+            </a>
+        </li>
+        
+    {% endfor %}
+   
+</div>
