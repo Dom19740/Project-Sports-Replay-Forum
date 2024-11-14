@@ -289,8 +289,9 @@ body.dark-mode {
 /* WELCOME */
 .welcome-logo {
     max-width: 100%;
-    padding-bottom: 25px;
+    padding-bottom: 20px;
 }
+
 
 .badge-link img {
     height: 65px; /* set the height to the desired value */
@@ -457,7 +458,6 @@ a i:hover {
     }
 } 
 
-
 @media (max-width: 990px) {
 
     p {
@@ -477,7 +477,6 @@ a i:hover {
     }
 
     .main-header {
-        /* font-size: 90%; */
         padding-right: 50px;
     }
 
@@ -500,7 +499,6 @@ a i:hover {
         padding-right: 50px;
     }
     
-    
     /* Adjust logo size */
     footer img {
         height: 50px; /* Custom logo height */
@@ -511,6 +509,7 @@ a i:hover {
         font-size: 70px;
     }
 }
+
 
 @media (min-width: 769px) {
     .mobile-break {
