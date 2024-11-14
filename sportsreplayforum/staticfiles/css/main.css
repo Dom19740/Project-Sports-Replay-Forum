@@ -264,6 +264,10 @@ h3, .rating-logo {
 	transform: translate(-50%, -50%);
 }
 
+.play-button {
+    font-size: 100px;
+}
+
 a i {
 	font-size: 100px;
 	transition: all 0.5s ease;
@@ -296,7 +300,6 @@ a i:hover {
 .btn-pill,.btn-back, .btn-standard {
   padding: 1px 12px;
   font-weight: 350;
-  font-size: .8rem;
   border-radius: 20px;
   margin-bottom: 10px;
   width: 350px;
@@ -481,6 +484,10 @@ a i:hover {
     footer img {
         height: 50px; /* Custom logo height */
         align-items: center;
+    }
+
+    .play-button {
+        font-size: 70px;
     }
 }
 
