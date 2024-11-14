@@ -15,6 +15,7 @@ from django.urls import reverse
 from django.core.paginator import Paginator
 from .tokens import account_activation_token
 from core.models import Event
+from core.views import sports
 
 
 def registration_view(request):
@@ -97,7 +98,9 @@ def login_view(request):
     else:
         form = CustomLoginForm()
 
-    return render(request, 'users/login.html', {'form': form, 'next': next_url})
+    return render(request, 'users/login.html', {
+        'form': form, 'next': next_url
+    })
 
 
 def logout_view(request):
