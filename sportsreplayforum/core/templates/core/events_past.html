@@ -6,7 +6,7 @@
     {% for event in events_past %}
       <li>
         <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-light rounded-pill">
-            {% if title == "Formula One" %}
+            {% if title == "Formula 1" %}
                 {{ event.date_time|date:"j M" }} {{ event.event_type|title }}
                 {% if event.rating.percentage %}
                  - {{ event.rating.percentage|floatformat:0 }}% HOT
