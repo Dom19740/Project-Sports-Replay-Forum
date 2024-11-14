@@ -233,3 +233,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
+TEMPLATE_CONTEXT_PROCESSORS = [
+    'sportsreplayforum.core.context_processors.sports',
+]
