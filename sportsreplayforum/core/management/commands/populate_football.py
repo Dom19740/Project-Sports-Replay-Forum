@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from core.models import Competition, Event
-from datetime import datetime
+from datetime import datetime, timedelta
 from dateutil import parser
 import requests, os
 
@@ -10,8 +10,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         season_ids = {
-            #'UEFA Champions League': '4480',
-            #'Premier League': '4328',
+            'UEFA Champions League': '4480',
+            'Premier League': '4328',
             'NFL': '4391',
             'NBA': '4387',
             'NHL': '4380',
@@ -28,8 +28,19 @@ class Command(BaseCommand):
             # Parse the JSON data
             data = response.json().get('events', [])
 
+            # Define the date range
+            start_date = datetime.now() - timedelta(days=30)  # 1 month ago
+            end_date = datetime.now() + timedelta(days=30)  # 1 month from now
+
+            filtered_data = [item for item in data if start_date <= parser.isoparse(item['strTimestamp']) <= end_date]
+
+            # Delete competitions that are over 4 months old
+            four_months_ago = datetime.now() - timedelta(days=120)
+            Event.objects.filter(event_list__date__lt=four_months_ago).delete()
+            Competition.objects.filter(date__lt=four_months_ago).delete()
+
             # Step 1: Create Competitions for events by matchday
-            for item in data:
+            for item in filtered_data:
                 date_obj = datetime.strptime(item['dateEvent'], "%Y-%m-%d")
                 competition_name = date_obj.strftime('%a %d %b')
                 competition_date = parser.isoparse(item['strTimestamp']).date()
