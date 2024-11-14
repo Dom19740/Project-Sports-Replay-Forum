@@ -289,14 +289,9 @@ body.dark-mode {
 /* WELCOME */
 .welcome-logo {
     max-width: 100%;
-    margin: 0 auto;
-    display: block;
+    padding-bottom: 20px;
 }
 
-.badge-container {
-    display: flex;
-    justify-content: center;
-}
 
 .badge-link img {
     height: 65px; /* set the height to the desired value */
@@ -512,13 +507,6 @@ a i:hover {
 
     .play-button {
         font-size: 70px;
-    }
-}
-
-
-@media (max-width: 769px) {
-    .badge-container {
-        display: block;
     }
 }
 
