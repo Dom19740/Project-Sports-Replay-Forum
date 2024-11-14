@@ -6,7 +6,7 @@
     <a
       href="{% url 'core:event_list' competition.id %}" class="btn-pill btn-pill-light rounded-pill">
 
-      {% if title == "Formula One" %}
+      {% if title == "Formula 1" %}
         {{competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - {{ competition.name }}
       {% elif title == "MotoGP" or title == "NASCAR Cup Series" or title == "IndyCar Series"%}
         {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - {{ competition.name }}
