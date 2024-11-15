@@ -116,12 +116,14 @@ class CustomPasswordChangeForm(PasswordChangeForm):
         super().__init__(*args, **kwargs)
 
         # New password 1 field modifications
-
         self.fields['new_password1'].help_text = ''
 
         # New password 2 field modifications
-
         self.fields['new_password2'].help_text = ''
+
+        # Disable autofocus on old password field
+        self.fields['old_password'].widget.attrs['autofocus'] = False
+
 
 
 class DeleteAccountForm(forms.Form):
