@@ -273,14 +273,13 @@ body.dark-mode {
     
 }
 
-.badge-container {
-    flex-basis: calc(100% - 20px); /* adjust the value as needed */
-    margin: 10px;
-}
-
 .main-container-left-1, .main-container-left-2, .main-container-right-1, .main-container-right-2 {
     position: relative;
     flex: 1;
+}
+
+.main-container-right-1 {
+    padding: 25px;
 }
 
 .main-container-split {
@@ -300,7 +299,6 @@ body.dark-mode {
 .badge-container {
     display: flex;
     justify-content: center;
-
 }
 
 .welcome-logo {
@@ -318,6 +316,8 @@ body.dark-mode {
     height: auto;
     max-height: 65px;
     max-width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .modal-dialog {
@@ -500,10 +500,7 @@ a i:hover {
     .main-container-split-home {
         flex-direction: column;
     }
-    .main-container-right {
-        order: -1;
-    }
-      
+
     .main-container-left, .main-container-right {
         min-width: auto;        /* Removes the min-width restriction */
     }
@@ -511,6 +508,20 @@ a i:hover {
     .main-container-split {
         flex-direction: column; /* Stack the containers vertically */
     }
+
+    .main-container-right {
+        order: -1;
+    }
+      
+    .main-container-right-1 {
+        padding: 10px;
+    }
+
+    .badge-link img {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    
 
     .main-header {
         padding-right: 50px;
@@ -529,7 +540,6 @@ a i:hover {
         max-width: 100%;
     }
     
-
     .btn-back {
         display: none;
     }

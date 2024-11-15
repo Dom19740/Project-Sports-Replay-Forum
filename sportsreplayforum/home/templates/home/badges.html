@@ -1,0 +1,9 @@
+{% load static %}
+
+<div class="badge-container">
+    {% for sport in sports %}
+        <a class="badge-link" alt="" title="{{ sport.name }}" href="{% url 'core:competition_schedule' league=sport.name %}">
+            <img src="{% static 'img/sports/'|add:sport.logo %}" alt="{{ sport.name }}">
+        </a>
+    {% endfor %}
+</div>

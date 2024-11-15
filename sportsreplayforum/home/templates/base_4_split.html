@@ -1,0 +1,37 @@
+{% extends 'base_main.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<h5 class='main-header'>{% block header %} {% endblock %}</h5>
+
+<div class="main-container-split">
+    
+    <div class="main-container-left">
+        
+        <div class="main-container-style main-container-left-1">
+            {% block main_container_left_1 %} {% endblock %}
+        </div>
+
+        <div class="main-container-style main-container-left-2">
+            {% block main_container_left_2 %} {% endblock %}
+        </div>
+
+    </div>
+
+    <div class="main-container-right">
+        
+        <div class="main-container-style main-container-right-1">
+            {% block main_container_right_1 %} {% endblock %}
+        </div>
+
+        <div class="main-container-style main-container-right-2">
+            {% block main_container_right_2 %} {% endblock %}
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock%}

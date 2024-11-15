@@ -2,18 +2,8 @@
 <div class="main-container-right-home">
 
     <img src="{% static 'img/logo-welcome.png' %}" class="welcome-logo" alt="">
-    
-    <div class="badge-container">
-        {% for sport in sports %}
-            <a class="badge-link" alt="" title="{{ sport.name }}" href="{% url 'core:competition_schedule' league=sport.name %}">
-                <img src="{% static 'img/sports/'|add:sport.logo %}" alt="{{ sport.name }}">
-            </a>
-        {% endfor %}
-    </div>
-
 
     <div class="text-wrapper">
-        <br
         <p>Missed a game or race and want to know if it's worth watching, but can't find out without seeing the results?</p>
         <p>SIWS provides ratings by other users and by AI (currently only for F1 events, more sports coming soon), helping you decide without spoilers.</p>
 
@@ -31,7 +21,7 @@
 </div>
 
 <!-- Welcome Modal -->
-<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+{% comment %} <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -46,5 +36,5 @@
 
         </div>
     </div>
-</div>
+</div> {% endcomment %}
 
