@@ -1,0 +1,22 @@
+{% extends 'base_main.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<h5 class='main-header'>{% block header %} {% endblock %}</h5>
+
+
+<div class="main-container-split">
+    
+    <div class="main-container-style main-container-left">
+            {% block main_container_left %} {% endblock %}
+    </div>
+
+    <div class="main-container-style main-container-right">
+        {% block main_container_right %} {% endblock %}
+    </div>
+
+</div>
+
+{% endblock%}
