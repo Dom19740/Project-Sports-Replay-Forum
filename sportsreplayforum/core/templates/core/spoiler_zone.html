@@ -2,6 +2,7 @@
 
 <h5>Spoiler Zone</h5>
 {% if event|is_past %}
+
     {% if video_id %}
     <br>
     <div class="form-check form-switch">
@@ -31,5 +32,7 @@
         <p><a href="https://www.google.com/search?q={{ title }}+{{ event.event_list }}+results" title="Search for results" target="_blank" rel="noopener" class="btn-pill btn-standard">{{ title }} {{ event.event_list }} Results</a></p>
         <p><a href="https://www.google.com/search?q={{ title }}+news&tbm=nws" title="Search for news" target="_blank" rel="noopener" class="btn-pill btn-standard">{{ title }} News</a></p>  
     </div>
+{% else %}
 
+    <p>Event has not started yet.</p>
 {% endif %}
