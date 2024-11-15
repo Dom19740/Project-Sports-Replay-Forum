@@ -868,7 +868,7 @@
                 }
             }
 
-            this.dom.$results.html($ul).show();
+            this.dom.$ratings.html($ul).show();
 
             // Always recalculate position since window size or
             // input element location may have changed.

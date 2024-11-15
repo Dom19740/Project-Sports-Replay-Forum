@@ -12,7 +12,7 @@
             <input type="radio" name="stars" value="2"><span> 2 stars {{ RATINGS_TEXT.2 }}</span><br>
             <input type="radio" name="stars" value="1"><span> 1 stars - {{ RATINGS_TEXT.1 }}</span><br>
             <br>
-            <input type="submit" class="btn btn-primary text-white" value="Vote">
+            <input type="submit" class="btn btn-primary text-white" value="Submit">
           </form>
         {% else %}
             <br>
@@ -28,5 +28,5 @@
 </div>
 
 <div id="voted-container" {% if request.user in event.rating.voters.all %}style="display: block;"{% else %}style="display: none;"{% endif %}>
-    <p>Thanks for voting</p>    
+    <p>Thanks for rating</p>    
 </div>
