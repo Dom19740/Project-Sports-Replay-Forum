@@ -108,7 +108,7 @@ if DATABASE_ENV == 'local':
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-elif DATABASE_ENV == 'render':
+elif DATABASE_ENV == 'external':
     database_url = os.environ.get('DATABASE_URL')
     DATABASES = {
         'default': dj_database_url.parse(database_url)
