@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.conf import settings
-from django.db.models import Q
-from django.db import models
+from django.utils import timezone
 from datetime import datetime
 from core.models import Event, Rating
 from core.views import sports
@@ -26,7 +25,7 @@ class HomeView(View):
         })
 
         # Get the next 5 events that will occur
-        now = datetime.now()
+        now = timezone.now()
         last_events = Event.objects.filter(date_time__lte=now).order_by('-date_time')[:5]
         last_events_list = []
         
