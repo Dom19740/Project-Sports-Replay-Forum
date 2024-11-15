@@ -2,7 +2,6 @@ from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from core.models import Competition, Event
 from dateutil import parser
-#from .pop_results_f1 import Command
 import requests, os
 
 class Command(BaseCommand):
