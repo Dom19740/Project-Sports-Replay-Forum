@@ -306,7 +306,6 @@ body.dark-mode {
 }
 
 .welcome-logo {
-    
     max-width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -314,7 +313,9 @@ body.dark-mode {
 
 
 .badge-link img {
-    height: 65px; /* set the height to the desired value */
+    height: auto;
+    max-height: 65px;
+    max-width: 100%;
 }
 
 .modal-dialog {
