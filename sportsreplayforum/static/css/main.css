@@ -309,6 +309,10 @@ body.dark-mode {
     padding-bottom: 20px;
 }
 
+.text-wrapper {
+    margin-left: 50px;
+    margin-right: 50px;
+}
 
 .badge-link img {
     height: auto;
@@ -466,6 +470,12 @@ a i:hover {
 
 /* Media query for mobile screens */
 @media (max-width: 1200px) {
+
+    .text-wrapper {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
     .sub-container-split {
         display: flex;
         flex-direction: column;
