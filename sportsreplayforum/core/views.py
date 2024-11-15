@@ -104,7 +104,6 @@ def event(request, event_id):
     video_id = event.video_id.split('=')[-1] if event.video_id else None
 
     title = next((sport['name'] for sport in sports if sport['name'] == event.event_list.league), 'Unknown League')
-    results = event.results.all()
     poster = event.poster
     ai_review = event.ai_review
     ai_rating = event.ai_rating
@@ -128,7 +127,6 @@ def event(request, event_id):
         'timezone': timezone,
         'timedelta': timedelta,
         'total_votes': total_votes,
-        'results': results,
         'poster': poster,
         'ai_review': ai_review,
         'ai_rating': ai_rating,
