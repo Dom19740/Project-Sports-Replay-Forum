@@ -1,5 +1,5 @@
 {% load static %}
-<div class="main-container-right-welcome">
+<div class="main-container-right-home">
     <div class="badge-container">
         {% for sport in sports %}
             <a class="badge-link" alt="" title="{{ sport.name }}" href="{% url 'core:competition_schedule' league=sport.name %}">

@@ -263,7 +263,7 @@ body.dark-mode {
     flex: 1;
 }
 
-.main-container-right-welcome {
+.main-container-right-home {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -486,6 +486,13 @@ a i:hover {
 
     .mobile-break {
         display: block;
+    }
+
+    .main-container-split-home {
+        flex-direction: column;
+    }
+    .main-container-right {
+        order: -1;
     }
       
     .main-container-left, .main-container-right {
