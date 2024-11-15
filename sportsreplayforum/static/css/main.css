@@ -261,6 +261,9 @@ body.dark-mode {
 
 .main-container-left, .main-container-right {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .main-container-right-home {
@@ -274,13 +277,8 @@ body.dark-mode {
     flex-basis: calc(100% - 20px); /* adjust the value as needed */
     margin: 10px;
 }
-.main-container-left {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
 
-.main-container-left-1, .main-container-left-2 {
+.main-container-left-1, .main-container-left-2, .main-container-right-1, .main-container-right-2 {
     position: relative;
     flex: 1;
 }
@@ -330,12 +328,12 @@ body.dark-mode {
 
 /* SCHEDULE */
 .sign-container {
-    display: grid;
+    display: flex;
     justify-content: center;
     align-items: center
 }
 
-.banner {
+.banner, .poster {
     max-width: 100%;
     height: auto;
     margin: 0 auto;
@@ -508,6 +506,20 @@ a i:hover {
         padding-right: 50px;
     }
 
+    .banner-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .banner {
+        height: auto;
+        margin: 0 auto;
+        max-height: 75px;
+        max-width: 100%;
+    }
+    
+
     .btn-back {
         display: none;
     }
@@ -527,7 +539,6 @@ a i:hover {
         padding-right: 50px;
     }
     
-    /* Adjust logo size */
     footer img {
         height: 50px; /* Custom logo height */
         align-items: center;
