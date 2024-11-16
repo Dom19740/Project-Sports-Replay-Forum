@@ -74,6 +74,10 @@ body.dark-mode {
     margin-bottom: 25px;
 }
 
+.pagination {
+    margin-top: 15px;
+}
+
 /* GENERAL END */
 
 /* NAVBAR */
