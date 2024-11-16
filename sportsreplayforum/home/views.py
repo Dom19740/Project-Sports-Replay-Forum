@@ -5,13 +5,13 @@ from django.utils import timezone
 from datetime import datetime, timedelta
 from django.http import JsonResponse
 from core.models import Event, Rating
-from core.views import sports
+
 
 class HomeView(View):
     def get(self, request):
         # Get todays events
         now = timezone.now()
-        today = now.date()
+        today = now.replace(hour=0, minute=0, second=0, microsecond=0)
         tomorrow = today + timedelta(days=1)
 
         recent_ratings = Rating.objects.all().order_by('-id')[:10]
@@ -24,8 +24,8 @@ class HomeView(View):
                 'event': event,
                 'league': league,
         })
-
-        todays_events = Event.objects.filter(date_time__range=(datetime.combine(today, datetime.min.time()), datetime.combine(tomorrow, datetime.min.time()))).order_by('date_time')
+            
+        todays_events = Event.objects.filter(date_time__range=(today, tomorrow)).order_by('date_time')
 
         context = {
             'installed': settings.INSTALLED_APPS,
