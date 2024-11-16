@@ -2,18 +2,18 @@
 
 <div >
     <h5 class="inside-header">Todays Events</h5>
-    <ul class="events-list events-scroll">
+    <div class="events-list events-scroll">
         {% for event in todays_events %}
         <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-dark rounded-pill">
-            <img src="{% static 'img/sports/icon_'|add:event.event_list.league %}.png" alt="{{ event.event_list.league }}" class="event-icon">
-            {% if event.event_list.league == "Formula 1" %}
-                {{ event.event_list.name }} {{ event.event }}
-            {% elif event.event_list.league == "MotoGP" or event.event_list.league == "NASCAR Cup Series" or event.event_list.league == "IndyCar Series"%}
-                {{ event.event_list.name }} {{ event.event_type }} 
-            {% else %}
-                {{ event.event_type }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
-            {% endif %}
+        <img src="{% static 'img/sports/icon_'|add:event.event_list.league %}.png" alt="{{ event.event_list.league }}" class="event-icon">
+        {% if event.event_list.league == "Formula 1" %}
+            {{ event.event_list.name }} {{ event.event }}
+        {% elif event.event_list.league == "MotoGP" or event.event_list.league == "NASCAR Cup Series" or event.event_list.league == "IndyCar Series"%}
+            {{ event.event_list.name }} {{ event.event_type }} 
+        {% else %}
+            {{ event.event_type }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
+        {% endif %}
         </a>
     {% endfor %}
-    </ul>
+    </div>
 </div>

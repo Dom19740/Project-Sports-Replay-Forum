@@ -1,21 +1,22 @@
+{% load static %}
+
 <div >
     <h5 class="inside-header">Latest Rated Events</h5>
-    <ul class="events-list events-scroll">
+    <div class="events-list events-scroll">
         {% for event in recent_voted_events %}
-         
-                <a href="{% url 'core:event' event.event.id %}" class="btn-pill btn-pill-light rounded-pill">
-                    {% if event.league == "Formula 1" %}
-                        {{ event.event.event_list.name }} {{ event.event.event_type }}
-                    {% elif event.league == "MotoGP" or event.league == "NASCAR Cup Series" or event.league == "IndyCar Series"%}
-                        {{ event.event.event_list.name }} {{ event.event.event_type }} 
-                    {% else %}
-                        {{ event.event.event_type }}
-                    {% endif %}
-                    - {{ event.event.rating.percentage|floatformat:0 }}% Hot
-                </a>
-        
+        <a href="{% url 'core:event' event.event.id %}" class="btn-pill btn-pill-light rounded-pill">
+        <img src="{% static 'img/sports/icon_'|add:event.league %}.png" alt="{{ event.event_list.league }}" class="event-icon">
+        {% if event.league == "Formula 1" %}
+            {{ event.event.event_list.name }} {{ event.event.event_type }}
+        {% elif event.league == "MotoGP" or event.league == "NASCAR Cup Series" or event.league == "IndyCar Series"%}
+            {{ event.event.event_list.name }} {{ event.event.event_type }} 
+        {% else %}
+            {{ event.event.event_type }}
+        {% endif %}
+        - {{ event.event.rating.percentage|floatformat:0 }}% Hot
+    </a>
         {% endfor %}
-    </ul>
+    </div>
 </div>
 
 
