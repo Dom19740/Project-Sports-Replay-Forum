@@ -50,3 +50,36 @@ document.addEventListener("DOMContentLoaded", function() {
     localStorage.setItem('welcomeModalShown', 'true');
   }
 });
+
+// Event scroller
+const eventsList = document.getElementById('events-list');
+const container = eventsList.parentElement;
+
+container.addEventListener('scroll', handleScroll);
+
+function handleScroll() {
+  if (container.scrollTop + container.offsetHeight >= container.scrollHeight) {
+    loadMoreEvents();
+  }
+}
+
+function loadMoreEvents() {
+  fetch('/events/more/', {
+    method: 'GET',
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    appendEvents(data.events);
+  });
+}
+
+function appendEvents(events) {
+  events.forEach(event => {
+    const li = document.createElement('li');
+    li.innerHTML = `<!-- event HTML here -->`;
+    eventsList.appendChild(li);
+  });
+}
