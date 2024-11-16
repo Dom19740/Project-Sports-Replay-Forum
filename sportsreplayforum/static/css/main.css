@@ -143,7 +143,7 @@ body.dark-mode {
   font-weight: 350;
   border-radius: 20px;
   margin-bottom: 10px;
-  width: 350px;
+  width: 400px;
   text-align: left;
   text-decoration: none;
   display: block;
@@ -350,9 +350,10 @@ body.dark-mode {
   }
 
 .event-icon {
-    width: 20px;
-    height: 20px;
+    width: 17px;
+    height: 18px;
     margin-right: 5px;
+    padding-bottom: 1px;
 }
 
 /* WELCOME END */
@@ -565,6 +566,10 @@ a i:hover {
         margin: 0 auto;
         max-height: 75px;
         max-width: 100%;
+    }
+
+    .btn-pill {
+        text-align: center;
     }
     
     .btn-back {
