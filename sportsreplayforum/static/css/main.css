@@ -74,10 +74,6 @@ body.dark-mode {
     margin-bottom: 25px;
 }
 
-.pagination {
-    margin-top: 15px;
-}
-
 /* GENERAL END */
 
 /* NAVBAR */
@@ -330,6 +326,28 @@ body.dark-mode {
 .modal-content {
     color: #000000;
 }
+
+/* scroll bar */
+.events-scroll {
+    height: 200px;
+    overflow-y: auto;
+    scrollbar-color: var(--bg-color-dark) var(--darker-grey);
+    scrollbar-width: thin;
+  }
+  
+  .events-scroll::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+  }
+  
+  .events-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color);
+    border-radius: 20px;
+  }
+  
+  .events-scroll::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-background-color);
+    border-radius: 10px;
+  }
 
 /* WELCOME END */
 
