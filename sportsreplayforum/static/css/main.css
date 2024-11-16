@@ -266,13 +266,6 @@ body.dark-mode {
     justify-content: center;
 }
 
-.main-container-right-home {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    
-}
-
 .main-container-left-1, .main-container-left-2, .main-container-right-1, .main-container-right-2 {
     position: relative;
     flex: 1;
@@ -305,6 +298,12 @@ body.dark-mode {
     max-width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .text-wrapper {

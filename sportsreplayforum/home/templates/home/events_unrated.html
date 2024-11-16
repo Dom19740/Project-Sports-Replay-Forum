@@ -1,7 +1,5 @@
-<div class="main-container-left events-list">
-
+<div class="events-list">
     <h5 class="inside-header">Recent Events</h5>
-
     {% for event in last_events %}
         <li>
             <a href="{% url 'core:event' event.event.id %}" class="btn-pill btn-pill-dark rounded-pill">
@@ -16,8 +14,6 @@
                  - {{ event.event.rating.percentage|floatformat:0 }}% HOT
                 {% endif %}
             </a>
-        </li>
-        
+        </li>   
     {% endfor %}
-   
 </div>
