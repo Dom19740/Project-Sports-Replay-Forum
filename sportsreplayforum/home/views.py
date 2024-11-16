@@ -25,7 +25,9 @@ class HomeView(View):
                 'league': league,
         })
 
-        todays_events = Event.objects.filter(date_time__range=(datetime.combine(today, datetime.min.time()), datetime.combine(tomorrow, datetime.min.time()))).order_by('date_time')
+        #todays_events = Event.objects.filter(date_time__range=(datetime.combine(today, datetime.min.time()), datetime.combine(tomorrow, datetime.min.time()))).order_by('date_time')
+        todays_events = Event.objects.filter(date_time__gte=now).order_by('date_time')
+
 
         context = {
             'installed': settings.INSTALLED_APPS,
