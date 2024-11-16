@@ -13,7 +13,7 @@ class HomeView(View):
         islocal = host.find('localhost') >= 0 or host.find('127.0.0.1') >= 0
 
         # Get the last events to receive a vote
-        recent_ratings = Rating.objects.all().order_by('-id')[:5]
+        recent_ratings = Rating.objects.all().order_by('-id')[:6]
         recent_voted_events = []
         
         for rating in recent_ratings:
@@ -26,7 +26,7 @@ class HomeView(View):
 
         # Get the next 5 events that will occur
         now = timezone.now()
-        last_events = Event.objects.filter(date_time__lte=now).order_by('-date_time')[:5]
+        last_events = Event.objects.filter(date_time__lte=now).order_by('-date_time')[:6]
         last_events_list = []
         
         for event in last_events:
