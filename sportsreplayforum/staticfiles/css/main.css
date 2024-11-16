@@ -143,7 +143,7 @@ body.dark-mode {
   font-weight: 350;
   border-radius: 20px;
   margin-bottom: 10px;
-  width: 350px;
+  width: 400px;
   text-align: left;
   text-decoration: none;
   display: block;
@@ -266,13 +266,6 @@ body.dark-mode {
     justify-content: center;
 }
 
-.main-container-right-home {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    
-}
-
 .main-container-left-1, .main-container-left-2, .main-container-right-1, .main-container-right-2 {
     position: relative;
     flex: 1;
@@ -307,6 +300,12 @@ body.dark-mode {
     padding-bottom: 20px;
 }
 
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .text-wrapper {
     margin-left: 50px;
     margin-right: 50px;
@@ -326,6 +325,35 @@ body.dark-mode {
 
 .modal-content {
     color: #000000;
+}
+
+/* scroll bar */
+.events-scroll {
+    height: 200px;
+    overflow-y: auto;
+    scrollbar-color: var(--bg-color-dark) var(--darker-grey);
+    scrollbar-width: thin;
+  }
+  
+  .events-scroll::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+  }
+  
+  .events-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color);
+    border-radius: 20px;
+  }
+  
+  .events-scroll::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-background-color);
+    border-radius: 10px;
+  }
+
+.event-icon {
+    width: 17px;
+    height: 18px;
+    margin-right: 5px;
+    padding-bottom: 1px;
 }
 
 /* WELCOME END */
@@ -538,6 +566,10 @@ a i:hover {
         margin: 0 auto;
         max-height: 75px;
         max-width: 100%;
+    }
+
+    .btn-pill {
+        text-align: center;
     }
     
     .btn-back {
