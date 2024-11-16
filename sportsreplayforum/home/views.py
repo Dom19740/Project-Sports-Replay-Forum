@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.views import View
 from django.conf import settings
 from django.utils import timezone
-from datetime import datetime
+from datetime import datetime, timedelta
 from core.models import Event, Rating
 from core.views import sports
+from django.core.paginator import Paginator
 
 class HomeView(View):
     def get(self, request):
@@ -24,11 +25,19 @@ class HomeView(View):
                 'league': league
         })
 
-        # Get the next 5 events that will occur
+        # Get todays events
         now = timezone.now()
-        last_events = Event.objects.filter(date_time__lte=now).order_by('-date_time')[:6]
-        last_events_list = []
-        
+        today = now.date()
+        tomorrow = today + timedelta(days=1)
+
+        last_events = Event.objects.filter(date_time__range=(datetime.combine(today, datetime.min.time()), datetime.combine(tomorrow, datetime.min.time()))).order_by('date_time')
+
+        paginator = Paginator(last_events, 6)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        last_events_list = [{'event': event, 'league': event.event_list.league} for event in page_obj]
+
         for event in last_events:
             league = event.event_list.league  # Get the league for this event
             last_events_list.append({
@@ -40,7 +49,7 @@ class HomeView(View):
             'installed': settings.INSTALLED_APPS,
             'islocal': islocal,
             'recent_voted_events': recent_voted_events,
-            'last_events': last_events_list,
+            'page_obj': page_obj,
         }
         
         return render(request, 'home/home.html', context)

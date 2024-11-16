@@ -11,36 +11,35 @@
 <div class='main-container-style events-list'>
     <p>Your Rated Events</p>
     <ul>
-    {% for event in page_obj %}
-        <li>
-            <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-light rounded-pill"> {{ event.event_list.name }} - {{ event.event_type }} - {{ event.rating.percentage|floatformat:0 }}% Hot</a>
-        </li>
-    {% empty %}
-        <ul>
-            <p>No rated events yet.</p>
-        </ul>
-    {% endfor %}
-
-    <!-- Pagination controls -->
-     
-    <div class="pagination">
+        {% for event in page_obj %}
+            <li>
+                <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-light rounded-pill"> {{ event.event_list.name }} - {{ event.event_type }} - {{ event.rating.percentage|floatformat:0 }}% Hot</a>
+            </li>
+        {% empty %}
+            <ul>
+                <p>No rated events yet.</p>
+            </ul>
+        {% endfor %}
         
-        <span class="step-links">
-            {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-            {% endif %}
+        <div class="pagination">
+            
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
 
-            <span class="current">
-                {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                <span class="current">
+                    {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
             </span>
-
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
-    </div>
+            
+        </div>
     </ul>
 </div>
 
