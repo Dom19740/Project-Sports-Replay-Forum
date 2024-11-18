@@ -1,5 +1,5 @@
 {% load static %}
-<i class="fa-solid fa-angle-up" id="arrow"></i>
+<i class="fa-solid fa-xmark" id="arrow"></i>
 
 <div class="welcome-container">
     <div class="logo-container">
@@ -17,7 +17,7 @@
         <li>Watch the highlights video and access results directly from our event pages, on all events.</li>
     </div>
 </div>
-{% comment %} 
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const arrow = document.getElementById('arrow');
@@ -35,12 +35,12 @@
     // Apply initial state based on localStorage value
     if (wasHidden) {
       welcomeContainer.style.display = 'none';
-      arrow.classList.remove('fa-angle-up');
+      arrow.classList.remove('fa-xmark');
       arrow.classList.add('fa-angle-down');
     } else {
       welcomeContainer.style.display = 'block';
       arrow.classList.remove('fa-angle-down');
-      arrow.classList.add('fa-angle-up');
+      arrow.classList.add('fa-xmark');
     }
 
     // Add event listener for arrow click
@@ -51,13 +51,13 @@
         // Show the entire container (text and image)
         welcomeContainer.style.display = 'block';
         arrow.classList.remove('fa-angle-down');
-        arrow.classList.add('fa-angle-up');
+        arrow.classList.add('fa-xmark');
         // Store that the container is visible
         localStorage.setItem('welcomeContainerHidden', 'false');
       } else {
         // Hide the entire container (text and image)
         welcomeContainer.style.display = 'none';
-        arrow.classList.remove('fa-angle-up');
+        arrow.classList.remove('fa-xmark');
         arrow.classList.add('fa-angle-down');
         // Store that the container is hidden
         localStorage.setItem('welcomeContainerHidden', 'true');
@@ -66,8 +66,6 @@
   });
 </script>
 
-
- {% endcomment %}
 
 
 <!-- Welcome Modal -->
