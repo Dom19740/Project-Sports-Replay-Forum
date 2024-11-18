@@ -288,8 +288,7 @@ body.dark-mode {
 
 /* MAIN CONTAINERS END */
 
-/* WELCOME */
-
+/* HOME */
 .badge-container {
     display: flex;
     justify-content: center;
@@ -357,7 +356,7 @@ body.dark-mode {
     padding-bottom: 1px;
 }
 
-/* WELCOME END */
+/* HOME END */
 
 /* SCHEDULE */
 .sign-container {
@@ -376,7 +375,6 @@ body.dark-mode {
 /* SCHEDULE END */
 
 /* EVENT */
-
 .sub-container-split {
     display: flex;
     flex-direction: row;
@@ -467,8 +465,6 @@ a i:hover {
 }
 /* play video link end */
 
-
-
 .share-buttons {
     font-size: 30px !important;  /* Icon size */
     color: var(--dark-grey);  /* Default color */
@@ -485,7 +481,6 @@ a i:hover {
 }
 
 /* EVENT END */
-
 
 /* FOOTER */
 .footer {
