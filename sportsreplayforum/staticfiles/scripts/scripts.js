@@ -35,7 +35,7 @@ if (switchCheckbox1) {
     }
   });
   } else {
-    console.error("Element with ID 'flexSwitchCheckDefault' not found.");
+    console.warn("Element with ID 'flexSwitchCheckDefault' not found.");
 }
 
 function scrollToElement(element) {
@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // Event scroller
 const eventsList = document.getElementById('events-list');
 const container = eventsList.parentElement;
+
 
 container.addEventListener('scroll', handleScroll);
 

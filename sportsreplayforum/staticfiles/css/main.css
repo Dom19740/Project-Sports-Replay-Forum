@@ -277,6 +277,12 @@ body.dark-mode {
     padding: 25px;
 }
 
+.main-container-right-2 {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+}
+
 .main-container-split {
     display: flex;
     flex-direction: row;
@@ -307,11 +313,6 @@ body.dark-mode {
     flex-wrap: wrap;
 }
 
-.welcome-text {
-    margin-left: 50px;
-    margin-right: 50px;
-}
-
 .badge-link img {
     height: auto;
     max-height: 65px;
@@ -320,13 +321,17 @@ body.dark-mode {
     padding-right: 5px;
 }
 
-.modal-dialog {
+#arrow {
+    display: none; 
+}
+
+/* .modal-dialog {
     margin-top: 100px;
 }
 
 .modal-content {
     color: #000000;
-}
+} */
 
 /* scroll bar */
 .events-scroll {
@@ -503,7 +508,7 @@ a i:hover {
 /* Media query for mobile screens */
 @media (max-width: 1200px) {
 
-    .welcome-text {
+    .text-wrapper {
         margin-left: 0px;
         margin-right: 0px;
     }
@@ -537,6 +542,11 @@ a i:hover {
         min-width: auto;        /* Removes the min-width restriction */
     }
 
+    .main-container-right-2 {
+        padding: 25px;
+    }
+    
+
     .main-container-split {
         flex-direction: column; /* Stack the containers vertically */
     }
@@ -544,6 +554,25 @@ a i:hover {
     .main-container-right {
         order: -1;
     }
+
+    .welcome-container {
+        display: block; /* Show the welcome-container */
+    }
+    
+    #arrow {
+        display: block; 
+        text-align: center;
+    }
+    
+/*       #arrow {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        z-index: 100;
+    } */
       
     .main-container-right-1 {
         padding: 10px;
@@ -581,8 +610,8 @@ a i:hover {
     }
 
     .form-field {
-        width: 100%; /* or a percentage value that suits your design */
-        padding-left: 10px; /* adjust padding to fit mobile screen */
+        width: 100%;
+        padding-left: 10px;
         padding-top: 10px;
         padding-bottom: 10px;
     }
@@ -613,9 +642,17 @@ a i:hover {
     }
 }
 
-
+/* Always on desktop */
 @media (min-width: 769px) {
     .mobile-break {
       display: none;
     }
+
+/*     .welcome-container {
+        display: block;
+    }
+    
+      #arrow {
+        display: none;
+    } */
 } 
