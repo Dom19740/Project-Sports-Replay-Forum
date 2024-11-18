@@ -178,6 +178,7 @@ body.dark-mode {
     display: inline-block;
     width: auto;
     margin-bottom: 0px;
+    text-align: left;
 }
 
 .btn-back:hover, .btn-standard:hover {
@@ -619,10 +620,10 @@ a i:hover {
 }
 
 @media (max-width: 768px) {
-    .spoiler-buttons {
+/*     .spoiler-buttons {
         text-align: center;
     }
-}
+} */
 
 /* Always on desktop */
 @media (min-width: 769px) {
