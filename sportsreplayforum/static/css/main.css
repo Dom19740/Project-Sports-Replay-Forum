@@ -226,7 +226,6 @@ body.dark-mode {
 .form-control {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px; /* Adjust the size here */
-
 }
 
 .form-control:focus {
