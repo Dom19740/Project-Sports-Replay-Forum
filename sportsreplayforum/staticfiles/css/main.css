@@ -42,7 +42,7 @@ font-size: 1.5rem;
 }
 
 h5 {
-font-size: 1rem;
+font-size: 1.2rem;
 }
 
 a {
@@ -277,7 +277,7 @@ body.dark-mode {
     padding: 25px;
 }
 
-.main-container-right-2 {
+.right-home {
     padding-left: 50px;
     padding-right: 50px;
     padding-bottom: 50px;
@@ -559,7 +559,7 @@ a i:hover {
         text-align: center;
     }
 
-    .main-container-right-1 {
+    .right-1-home {
         padding: 10px;
     }
 
