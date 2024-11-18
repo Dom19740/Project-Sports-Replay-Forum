@@ -320,13 +320,17 @@ body.dark-mode {
     padding-right: 5px;
 }
 
-.modal-dialog {
+#arrow {
+    display: none; 
+}
+
+/* .modal-dialog {
     margin-top: 100px;
 }
 
 .modal-content {
     color: #000000;
-}
+} */
 
 /* scroll bar */
 .events-scroll {
@@ -544,6 +548,25 @@ a i:hover {
     .main-container-right {
         order: -1;
     }
+
+    .welcome-container {
+        display: block; /* Show the welcome-container */
+    }
+    
+    #arrow {
+        display: block; 
+        text-align: center;
+    }
+    
+/*       #arrow {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        z-index: 100;
+    } */
       
     .main-container-right-1 {
         padding: 10px;
@@ -613,9 +636,17 @@ a i:hover {
     }
 }
 
-
+/* Always on desktop */
 @media (min-width: 769px) {
     .mobile-break {
       display: none;
     }
+
+/*     .welcome-container {
+        display: block;
+    }
+    
+      #arrow {
+        display: none;
+    } */
 } 

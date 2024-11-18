@@ -1,19 +1,74 @@
 {% load static %}
+<i class="fa-solid fa-angle-up" id="arrow"></i>
+
 <div class="welcome-container">
-    <img src="{% static 'img/logo-welcome.png' %}" class="welcome-logo" alt="">
-    <div class="text-wrapper">
+    <div class="logo-container">
+      <img src="{% static 'img/logo-welcome.png' %}" class="welcome-logo" alt="Welcome Logo">
+    </div>
+    <div class="welcome-text">
         <p>Missed a game or race and want to know if it's worth watching, but can't find out without seeing the results?</p>
         <p>SIWS provides ratings by other users and by AI (currently only for F1 events, more sports coming soon), helping you decide without spoilers.</p>
+        <ul>
+            <li><strong>HOT WATCH</strong> - watch the full replay</li>
+            <li><strong>MID TEMP</strong> - catch the highlights</li>
+            <li><strong>NOT WATCH</strong> - skip to the results</li>
+        </ul>
+        <li>Rate an event that you watched, helping other users make a spoiler-free decision.</li>
+        <li>Watch the highlights video and access results directly from our event pages, on all events.</li>
+    </div>
+</div>
+{% comment %} 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const arrow = document.getElementById('arrow');
+    const welcomeContainer = document.querySelector('.welcome-container');
 
-        <li>Check the ratings. See if an event is a </p>
-            <ul>
-                <strong>HOT WATCH</strong> - watch the full replay
-                <br><strong>MID TEMP</strong> - catch the highlights
-                <br><strong>NOT WATCH</strong> - skip to the results</p>
-            </ul>
-        <li>Rate an event that you watched, helping other users make a spoiler free decision</p>
-        <li>Watch the highlights video and access results directly from our event pages, on all events. </p>
- </div>
+    // Check if the welcomeContainer element is found
+    if (!arrow || !welcomeContainer) {
+      console.error('Arrow or Welcome Container not found in the DOM.');
+      return;
+    }
+
+    // Check if the container was previously hidden (stored in localStorage)
+    const wasHidden = localStorage.getItem('welcomeContainerHidden') === 'true';
+
+    // Apply initial state based on localStorage value
+    if (wasHidden) {
+      welcomeContainer.style.display = 'none';
+      arrow.classList.remove('fa-angle-up');
+      arrow.classList.add('fa-angle-down');
+    } else {
+      welcomeContainer.style.display = 'block';
+      arrow.classList.remove('fa-angle-down');
+      arrow.classList.add('fa-angle-up');
+    }
+
+    // Add event listener for arrow click
+    arrow.addEventListener('click', () => {
+      const isHidden = welcomeContainer.style.display === 'none' || welcomeContainer.style.display === '';
+
+      if (isHidden) {
+        // Show the entire container (text and image)
+        welcomeContainer.style.display = 'block';
+        arrow.classList.remove('fa-angle-down');
+        arrow.classList.add('fa-angle-up');
+        // Store that the container is visible
+        localStorage.setItem('welcomeContainerHidden', 'false');
+      } else {
+        // Hide the entire container (text and image)
+        welcomeContainer.style.display = 'none';
+        arrow.classList.remove('fa-angle-up');
+        arrow.classList.add('fa-angle-down');
+        // Store that the container is hidden
+        localStorage.setItem('welcomeContainerHidden', 'true');
+      }
+    });
+  });
+</script>
+
+
+ {% endcomment %}
+
 
 <!-- Welcome Modal -->
 {% comment %} <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
