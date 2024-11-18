@@ -240,12 +240,13 @@ body.dark-mode {
 }
 
 .form-check-input[type="checkbox"] {
-    background-color: var(--light-grey);
+    background-color: var(--dark-purple);
 }
   
 .form-check-input[type="checkbox"]:checked {
     background-color: var(--light-purple);
 }
+
 
 /* FORMS END */
 
@@ -287,8 +288,7 @@ body.dark-mode {
 
 /* MAIN CONTAINERS END */
 
-/* WELCOME */
-
+/* HOME */
 .badge-container {
     display: flex;
     justify-content: center;
@@ -331,7 +331,7 @@ body.dark-mode {
 .events-scroll {
     height: 200px;
     overflow-y: auto;
-    scrollbar-color: var(--bg-color-dark) var(--darker-grey);
+    scrollbar-color: var(--dark-grey) var(--darker-grey);
     scrollbar-width: thin;
   }
   
@@ -339,14 +339,18 @@ body.dark-mode {
     width: var(--scrollbar-width);
   }
   
-  .events-scroll::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-color);
+   .events-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--dark-purple);
     border-radius: 20px;
   }
   
   .events-scroll::-webkit-scrollbar-track {
-    background-color: var(--scrollbar-background-color);
+    background-color: var(--four-star-burnt);
     border-radius: 10px;
+  }
+
+  .fa-arrows-up-down {
+    margin-left: 10px;
   }
 
 .event-icon {
@@ -356,7 +360,7 @@ body.dark-mode {
     padding-bottom: 1px;
 }
 
-/* WELCOME END */
+/* HOME END */
 
 /* SCHEDULE */
 .sign-container {
@@ -375,7 +379,6 @@ body.dark-mode {
 /* SCHEDULE END */
 
 /* EVENT */
-
 .sub-container-split {
     display: flex;
     flex-direction: row;
@@ -466,8 +469,6 @@ a i:hover {
 }
 /* play video link end */
 
-
-
 .share-buttons {
     font-size: 30px !important;  /* Icon size */
     color: var(--dark-grey);  /* Default color */
@@ -479,8 +480,11 @@ a i:hover {
     transform: scale(1.1);  /* Slightly enlarge icon on hover */
 }
 
-/* EVENT END */
+.spoiler-header {
+    margin-top: 25px;
+}
 
+/* EVENT END */
 
 /* FOOTER */
 .footer {
