@@ -478,11 +478,6 @@ a i:hover {
     transform: scale(1.1);  /* Slightly enlarge icon on hover */
 }
 
-.social-media-icons:not([data-abp]) {
-    display: block !important;
-    visibility: visible !important;
-}
-
 .spoiler-header {
     margin-top: 25px;
 }
