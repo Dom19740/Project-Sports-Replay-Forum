@@ -432,10 +432,6 @@ h3, .rating-logo {
     margin: 10px 10px;
 }
 
-/* .spoiler-buttons {
-    margin-top: 25px;
-} */
-
 /* play video link */
 .image-wrapper {
 	position: relative;
@@ -475,13 +471,13 @@ a i:hover {
 }
 
 .social-icons {
-    color: var(--dark-grey)!important;  /* Default color */
+    color: var(--dark-grey)!important;
     transition: color 0.2s, transform 0.2s;
 }
 
 .social-icons:hover {
-    color: var(--dark-purple)!important;  /* Change color on hover */
-    transform: scale(1.1);  /* Slightly enlarge icon on hover */
+    color: var(--dark-purple)!important;
+    transform: scale(1.1);
 }
 
 .spoiler-header {
@@ -539,41 +535,35 @@ a i:hover {
     }
 
     .main-container-left, .main-container-right {
-        min-width: auto;        /* Removes the min-width restriction */
+        min-width: auto;
     }
 
     .main-container-right-2 {
         padding: 25px;
     }
     
-
     .main-container-split {
-        flex-direction: column; /* Stack the containers vertically */
+        flex-direction: column;
     }
 
     .main-container-right {
         order: -1;
     }
 
+    .events-scroll {
+        height: 400px;
+      }
+      
+
     .welcome-container {
-        display: block; /* Show the welcome-container */
+        display: block; 
     }
     
     #arrow {
         display: block; 
         text-align: center;
     }
-    
-/*       #arrow {
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        cursor: pointer;
-        z-index: 100;
-    } */
-      
+
     .main-container-right-1 {
         padding: 10px;
     }
@@ -583,7 +573,6 @@ a i:hover {
         padding-right: 0px;
     }
     
-
     .main-header {
         padding-right: 50px;
     }
@@ -625,15 +614,13 @@ a i:hover {
     }
     
     footer img {
-        height: 50px; /* Custom logo height */
+        height: 50px;
         align-items: center;
     }
 
     .play-button {
         font-size: 70px;
     }
-
-
 }
 
 @media (max-width: 768px) {
@@ -648,11 +635,4 @@ a i:hover {
       display: none;
     }
 
-/*     .welcome-container {
-        display: block;
-    }
-    
-      #arrow {
-        display: none;
-    } */
 } 
