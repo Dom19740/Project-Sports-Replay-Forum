@@ -179,9 +179,6 @@ def vote(request, event_id):
 
     return redirect('core:event', event_id=event_id)
 
-def replay_platforms(request):
-    return render(request, 'core/replay_platforms.html')
-
 
 # Define your search terms globally or in the view
 search_terms = {
