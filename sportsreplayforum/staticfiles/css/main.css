@@ -249,6 +249,10 @@ body.dark-mode {
     background-color: var(--light-purple);
 }
 
+.form-check-label {
+    font-size: 14px;
+}
+
 
 /* FORMS END */
 
