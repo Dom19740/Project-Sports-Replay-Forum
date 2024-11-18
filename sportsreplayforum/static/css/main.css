@@ -468,14 +468,19 @@ a i:hover {
     right: 10px;
 }
 
-.social-media-icons {
-    color: var(--dark-grey);  /* Default color */
+.social-icons {
+    color: var(--dark-grey)!important;  /* Default color */
     transition: color 0.2s, transform 0.2s;
 }
 
-.social-media-icons:hover {
-    color: var(--dark-purple);  /* Change color on hover */
+.social-icons:hover {
+    color: var(--dark-purple)!important;  /* Change color on hover */
     transform: scale(1.1);  /* Slightly enlarge icon on hover */
+}
+
+.social-media-icons:not([data-abp]) {
+    display: block !important;
+    visibility: visible !important;
 }
 
 .spoiler-header {
