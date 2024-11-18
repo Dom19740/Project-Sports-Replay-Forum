@@ -277,6 +277,12 @@ body.dark-mode {
     padding: 25px;
 }
 
+.main-container-right-2 {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+}
+
 .main-container-split {
     display: flex;
     flex-direction: row;
@@ -305,11 +311,6 @@ body.dark-mode {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-}
-
-.text-wrapper {
-    margin-left: 50px;
-    margin-right: 50px;
 }
 
 .badge-link img {
@@ -540,6 +541,11 @@ a i:hover {
     .main-container-left, .main-container-right {
         min-width: auto;        /* Removes the min-width restriction */
     }
+
+    .main-container-right-2 {
+        padding: 25px;
+    }
+    
 
     .main-container-split {
         flex-direction: column; /* Stack the containers vertically */
