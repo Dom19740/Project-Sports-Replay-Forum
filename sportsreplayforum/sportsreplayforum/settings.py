@@ -32,8 +32,19 @@ API_PULL_TOKEN = os.getenv('API_PULL_TOKEN', 'fallback-token')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False').lower() == "true"
 
-ALLOWED_HOSTS =  ['shouldiwatchsports.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS =  [
+    'shouldiwatchsports.onrender.com',
+    '127.0.0.1',
+    'localhost',
+]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://shouldiwatchsports.onrender.com',
+]
+
+CSRF_COOKIE_SECURE = True
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
