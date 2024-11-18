@@ -47,3 +47,6 @@ def events_more(request):
 
 def about_view(request):
     return render(request, 'home/about.html')
+
+def replay_platforms_view(request):
+    return render(request, 'home/replay_platforms.html')
