@@ -27,10 +27,10 @@
 
     <div>
         <br>
-        <p><a href="https://www.google.com/search?q={{ title }}+{{ event.event_list }}+{{ event.event_type|title }}+results" title="Search for results" target="_blank" rel="noopener" class="btn-pill btn-standard">{{ event.event_type|title }} Result</a></p>
+        <p class="spoiler-buttons"><a href="https://www.google.com/search?q={{ title }}+{{ event.event_list }}+{{ event.event_type|title }}+results" title="Search for results" target="_blank" rel="noopener" class="btn-pill btn-standard">{{ event.event_type|title }} Result</a></p>
 
-        <p><a href="https://www.google.com/search?q={{ title }}+{{ event.event_list }}+results" title="Search for results" target="_blank" rel="noopener" class="btn-pill btn-standard">{{ title }} {{ event.event_list }} Results</a></p>
-        <p><a href="https://www.google.com/search?q={{ title }}+news&tbm=nws" title="Search for news" target="_blank" rel="noopener" class="btn-pill btn-standard">{{ title }} News</a></p>  
+        <p class="spoiler-buttons"><a href="https://www.google.com/search?q={{ title }}+{{ event.event_list }}+results" title="Search for results" target="_blank" rel="noopener" class="btn-pill btn-standard">{{ title }} {{ event.event_list }} Results</a></p>
+        <p class="spoiler-buttons"><a href="https://www.google.com/search?q={{ title }}+news&tbm=nws" title="Search for news" target="_blank" rel="noopener" class="btn-pill btn-standard">{{ title }} News</a></p>  
     </div>
 {% else %}
 
