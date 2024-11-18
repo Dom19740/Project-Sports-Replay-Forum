@@ -240,12 +240,13 @@ body.dark-mode {
 }
 
 .form-check-input[type="checkbox"] {
-    background-color: var(--light-grey);
+    background-color: var(--dark-purple);
 }
   
 .form-check-input[type="checkbox"]:checked {
     background-color: var(--light-purple);
 }
+
 
 /* FORMS END */
 
@@ -477,6 +478,10 @@ a i:hover {
 .share-buttons:hover {
     color: var(--dark-purple);  /* Change color on hover */
     transform: scale(1.1);  /* Slightly enlarge icon on hover */
+}
+
+.spoiler-header {
+    margin-top: 25px;
 }
 
 /* EVENT END */
