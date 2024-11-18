@@ -230,7 +230,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = mail
 EMAIL_HOST_PASSWORD = mail_pass
-DEFAULT_FROM_EMAIL = mail
+DEFAULT_FROM_EMAIL = 'SIWS <admin@shouldiwatchsports.com>'
 EMAIL_SUBJECT_PREFIX = "Password Recovery"
 
 
