@@ -581,8 +581,8 @@ a i:hover {
     }
 
     .form-field {
-        width: 100%; /* or a percentage value that suits your design */
-        padding-left: 10px; /* adjust padding to fit mobile screen */
+        width: 100%;
+        padding-left: 10px;
         padding-top: 10px;
         padding-bottom: 10px;
     }

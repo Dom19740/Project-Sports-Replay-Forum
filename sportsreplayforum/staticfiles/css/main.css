@@ -307,7 +307,7 @@ body.dark-mode {
     flex-wrap: wrap;
 }
 
-.text-wrapper {
+.welcome-text {
     margin-left: 50px;
     margin-right: 50px;
 }
@@ -503,7 +503,7 @@ a i:hover {
 /* Media query for mobile screens */
 @media (max-width: 1200px) {
 
-    .text-wrapper {
+    .welcome-text {
         margin-left: 0px;
         margin-right: 0px;
     }
