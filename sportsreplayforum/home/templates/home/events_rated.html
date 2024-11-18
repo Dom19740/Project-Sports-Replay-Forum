@@ -1,7 +1,7 @@
 {% load static %}
 
 <div >
-    <h5 class="inside-header">Latest Rated Events</h5>
+    <h5 class="inside-header">Latest Rated Events<i class="fa-solid fa-arrows-up-down"></i></h5>
     <div class="events-list events-scroll">
         {% for event in recent_voted_events %}
         <a href="{% url 'core:event' event.event.id %}" class="btn-pill btn-pill-light rounded-pill">
