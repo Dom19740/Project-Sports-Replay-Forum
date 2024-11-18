@@ -51,7 +51,7 @@ a {
 }
 
 a:hover {
-    color: var(--two-star-ocean); /* or any other color you prefer */
+    color: var(--light-purple); /* or any other color you prefer */
 }
 
 body.light-mode {
@@ -92,7 +92,7 @@ body.dark-mode {
 }
 
 .nav-link:hover {
-    color: var(--two-star-ocean) !important;
+    color: var(--light-purple) !important;
 }
 
 .search-input {
@@ -398,18 +398,11 @@ body.dark-mode {
     margin-right: 25px;
 }
 
-.share-buttons-container {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-}
-
 .flame-logo {
     max-width: 175px;
     width: 10%;
     height: auto;
 }
-
 
 .events-list li {
     list-style: none;
@@ -469,13 +462,18 @@ a i:hover {
 }
 /* play video link end */
 
-.share-buttons {
-    font-size: 30px !important;  /* Icon size */
+.social-share-icons-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.social-media-icons {
     color: var(--dark-grey);  /* Default color */
     transition: color 0.2s, transform 0.2s;
 }
 
-.share-buttons:hover {
+.social-media-icons:hover {
     color: var(--dark-purple);  /* Change color on hover */
     transform: scale(1.1);  /* Slightly enlarge icon on hover */
 }
