@@ -36,6 +36,8 @@ ALLOWED_HOSTS =  [
     'shouldiwatchsports.onrender.com',
     '127.0.0.1',
     'localhost',
+    'shouldiwatchsports.com',
+    'www.shouldiwatchsports.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
