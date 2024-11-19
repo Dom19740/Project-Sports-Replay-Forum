@@ -359,7 +359,7 @@ body.dark-mode {
     border-radius: 10px;
   }
 
-  .fa-arrows-up-down {
+  .fa-arrow-down-wide-short {
     margin-left: 10px;
     font-size: 16px;
   }
@@ -564,7 +564,7 @@ a i:hover {
         overflow-y: visible;
     }
 
-    .inside-header .fa-arrows-up-down {
+    .inside-header .fa-arrow-down-wide-short {
         display: none;
     }
     
