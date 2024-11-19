@@ -10,7 +10,7 @@
 
 <div class='main-container-style events-list'>
     <p>Your Rated Events</p>
-    <ul>
+  
         {% for event in page_obj %}
             <li>
                 <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-light rounded-pill"> {{ event.event_list.name }} - {{ event.event_type }} - {{ event.rating.percentage|floatformat:0 }}% Hot</a>
@@ -40,7 +40,7 @@
             </span>
             
         </div>
-    </ul>
+
 </div>
 
 
