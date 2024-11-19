@@ -83,6 +83,7 @@
     <a href=" https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}" target="_blank" title="Share on Facebook">
         <i style="font-size: 24px" class="fa-brands fa-facebook social-icons"></i>
       </a>
+
     <!-- WhatsApp Share Button (mobile only) -->
     <a href=" https://wa.me/?text={{ event.event_list }}%20{{ event.event_type|title }}%20Rating%20-%20Should%20I%20Watch%20Sports:%20{{ request.build_absolute_uri }}" target="_blank" title="Share on WhatsApp">
         <i style="font-size: 24px" class="fa-brands fa-whatsapp social-icons"></i>
@@ -97,4 +98,5 @@
     <a href=" https://bsky.app/intent/compose?text={{ event.event_list }}%20{{ event.event_type|title }}%20Rating%20-%20Should%20I%20Watch%20Sports%20{{ request.build_absolute_uri|urlencode }}" target="_blank" title="Share on Bluesky">
         <i style="font-size: 24px" class="fa-brands fa-bluesky social-icons"></i>
     </a>
+
 </div>
