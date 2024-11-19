@@ -523,7 +523,18 @@ a i:hover {
     .chart-container {
         margin-bottom: 20px;
     }
-} 
+}
+
+@media (min-width: 990px) and (max-width: 1200px) {
+    .navbar-nav {
+        display: flex;
+        align-items: center; /* Ensures vertical centering */
+    }
+    .navbar-nav.nav-item {
+        display: flex;
+        align-items: center; /* Vertically center each item */
+    }
+}
 
 @media (max-width: 990px) {
 
