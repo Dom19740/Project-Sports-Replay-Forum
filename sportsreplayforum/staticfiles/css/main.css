@@ -142,7 +142,7 @@ body.dark-mode {
 .btn-pill,.btn-back, .btn-standard {
   padding: 1px 12px;
   font-weight: 350;
-  border-radius: 20px;
+  border-radius: 7px!important;
   margin-bottom: 10px;
   width: 400px;
   text-align: left;
@@ -153,27 +153,27 @@ body.dark-mode {
 
 .btn-pill-light {
   background-color: var(--light-purple);
-  color: #fff;
+  color: var(--bright-white);
 }
 
 .btn-pill-dark {
   background-color: var(--dark-purple);
-  color: #fff;
+  color: var(--bright-white);
 }
 
 .btn-pill-light:hover {
     background-color: var(--dark-purple);
-    color: #fff;
+    color: var(--bright-white);
 }
 
 .btn-pill-dark:hover {
   background-color: var(--light-purple);
-  color: #fff;
+  color: var(--bright-white);
 }
 
 .btn-back, .btn-standard {
     background-color: var(--dark-grey);
-    color: #fff;
+    color: var(--bright-white);
     font-size: .85rem;
     display: inline-block;
     width: auto;
@@ -192,7 +192,7 @@ body.dark-mode {
     right: 20px;
     background-color: var(--dark-grey);
     opacity: 0.8;
-    color: white;
+    color: var(--bright-white);
     border-radius: 10px;
     padding: 10px 20px;
     font-size: 12px;
@@ -205,7 +205,7 @@ body.dark-mode {
 
 .btn-feedback:hover {
     background-color: #525252;
-    color: white;
+    color: var(--bright-white);
     opacity: 1;
 }
 
@@ -359,8 +359,9 @@ body.dark-mode {
     border-radius: 10px;
   }
 
-  .fa-arrows-up-down {
+  .fa-arrow-down-wide-short {
     margin-left: 10px;
+    font-size: 16px;
   }
 
 .event-icon {
@@ -557,6 +558,15 @@ a i:hover {
     .welcome-container {
         display: block; 
     }
+
+    .events-scroll {
+        height: auto;
+        overflow-y: visible;
+    }
+
+    .inside-header .fa-arrow-down-wide-short {
+        display: none;
+    }
     
     #arrow {
         display: block; 
@@ -621,12 +631,6 @@ a i:hover {
         font-size: 70px;
     }
 }
-
-@media (max-width: 768px) {
-/*     .spoiler-buttons {
-        text-align: center;
-    }
-} */
 
 /* Always on desktop */
 @media (min-width: 769px) {

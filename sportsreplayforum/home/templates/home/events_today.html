@@ -1,7 +1,10 @@
 {% load static %}
 
 <div >
-    <h5 class="inside-header">Todays Events<i class="fa-solid fa-arrows-up-down"></i></h5>
+    <h5 class="inside-header">
+        <span>Todays Events</span>
+        <i class="fa-solid fa-arrow-down-wide-short"></i>
+    </h5>
     <div class="events-list events-scroll">
         {% for event in todays_events %}
         <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-dark rounded-pill">
