@@ -1,2 +1,20 @@
-# Sports-Replay-Forum
- A web application for sports fans to rate and discuss sports events, with a view to inform other users as to whether to watch the full replay or just highlights.
+
+# Project-Sports-Replay-Forum
+
+Welcome to **Project-Sports-Replay-Forum**, renamed as **Should I Watch Sports**, a web application designed to help users decide whether to watch recent sports events based on spoiler-free ratings. This platform offers a combination of AI-generated and user-generated ratings, along with easy access to highlights and results, making it easy for users to choose the best races to watch.
+
+## Features
+
+- **Spoiler-Free Ratings**: Get AI-generated and user-submitted ratings for motosport, football and other sporting events. Events have a % Hot ratings and are defined as *Hot Watch*, *Mid Temp*, and *Not Watch*.
+- **Event Highlights**: Watch curated highlights moments of available sports and races directly from the site.
+- **Competition Schedule**: Stay up to date with upcoming games and races.
+- **User Voting**: Rate events and contribute to the community’s decision-making process.
+- **Direct Access to Results**: Quickly access race results for events, even if they haven't been rated.
+
+## Tech Stack
+
+- **Backend**: Django/Python
+- **Database**: PostgreSQL (Supabase)
+- **Frontend**: HTML, CSS (Bootstrap), JavaScript
+- **Hosting**: Render
+- **Version Control**: GitHub
