@@ -1,3 +1,6 @@
+# Copyright (c) 2024 dpb creative
+# This code is licensed for non-commercial use only. See LICENSE file for details.
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.urls import reverse
