@@ -18,3 +18,17 @@ Welcome to **Project-Sports-Replay-Forum**, renamed as **Should I Watch Sports**
 - **Frontend**: HTML, CSS (Bootstrap), JavaScript
 - **Hosting**: Render
 - **Version Control**: GitHub
+
+## Purpose
+
+This repository is designed to demonstrate my skills in development.  
+It is not intended for public use, redistribution, or commercial applications.
+
+## License
+
+This project is licensed under the **Non-Commercial Use License**.  
+**You may view, use, and modify this code for personal or educational purposes only.**  
+Commercial use, redistribution, or publication of this work in any form is strictly prohibited without explicit permission from the author.
+
+If you're interested in using this project commercially, please contact me at dom@dpbcreative.com
+
