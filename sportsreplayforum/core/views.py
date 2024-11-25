@@ -153,7 +153,6 @@ def vote(request, event_id):
         elif rating_type == '1':
             rating.one_star += 1
 
-        # Calculate the total votes
         total_votes = (
             rating.five_stars + 
             rating.four_stars + 
@@ -183,7 +182,6 @@ def vote(request, event_id):
     return redirect('core:event', event_id=event_id)
 
 
-# Define your search terms globally or in the view
 search_terms = {
     'f1': ['formula 1'],
     'football': ['premier', 'nations', 'champions'],
@@ -196,15 +194,11 @@ search_terms['motor'] = search_terms['motorsport']
 def search(request):
     q = request.GET.get('q')
     if q:
-        # Check if the query matches any of the predefined search terms
         if q.lower() in search_terms:
-            # Use the corresponding terms for querying
             search_keywords = search_terms[q.lower()]
         else:
-            # If no predefined term is found, use the query directly
             search_keywords = [q]
 
-        # Query the database for each search keyword
         competitions = Competition.objects.filter(
             name__icontains=search_keywords[0]
         )
@@ -223,13 +217,11 @@ def search(request):
         for term in search_keywords[1:]:
             leagues |= Competition.objects.filter(league__icontains=term).values('league').distinct()
 
-        # Generate league URLs
         league_urls = {}
         for league in leagues:
             league_name = league['league']
             league_urls[league_name] = reverse('core:competition_schedule', kwargs={'league': league_name})
 
-        # Pass a default league argument to the template
         league = None
         if leagues:
             league = leagues[0]['league']
@@ -245,14 +237,13 @@ def search(request):
         'events': events,
         'league_urls': league_urls,
         'query': q,
-        'league': league,  # Pass the league argument to the template
+        'league': league,
     })
 
 
 def run_populate(request, command, success_message):
     token = request.GET.get('token', '')
 
-    # Compare the token with the one stored in settings
     if token != settings.API_PULL_TOKEN:
         return JsonResponse({'status': 'error', 'message': 'Invalid token'}, status=403)
 

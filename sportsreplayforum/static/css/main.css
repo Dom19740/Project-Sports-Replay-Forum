@@ -27,11 +27,11 @@ body {
 
 a {
     text-decoration: none;
-    color: var(--bright-white); /* or any other color you prefer */
+    color: var(--bright-white);
 }
 
 a:hover {
-    color: var(--light-purple); /* or any other color you prefer */
+    color: var(--light-purple);
 }
 
 body.light-mode {
@@ -85,7 +85,6 @@ body.dark-mode {
 .theme-toggle {
     background: none;
     border: none;
-    /* font-size: 1rem; */
     cursor: pointer;
     color: var(--light-grey);
     padding-left: 15px;
@@ -178,7 +177,7 @@ body.dark-mode {
     font-size: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
-    z-index: 1000;  /* Make sure the button stays on top */
+    z-index: 1000;
     transition: background-color 0.3s;
     text-decoration: none;
 }
@@ -205,7 +204,7 @@ body.dark-mode {
 
 .form-control {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px; /* Adjust the size here */
+    font-size: 14px;
 }
 
 .form-control:focus {
@@ -508,11 +507,11 @@ a i:hover {
 @media (min-width: 990px) and (max-width: 1200px) {
     .navbar-nav {
         display: flex;
-        align-items: center; /* Ensures vertical centering */
+        align-items: center;
     }
     .navbar-nav.nav-item {
         display: flex;
-        align-items: center; /* Vertically center each item */
+        align-items: center;
     }
 }
 

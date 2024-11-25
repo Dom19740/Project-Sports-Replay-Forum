@@ -142,6 +142,7 @@ def update_username(request):
         form = UserUpdateForm(instance=request.user)
     return render(request, 'users/profile.html', {'user_form': form})
 
+
 @login_required
 def update_email(request):
     if request.method == 'POST':
@@ -154,18 +155,20 @@ def update_email(request):
         form = EmailUpdateForm(instance=request.user)
     return render(request, 'users/profile.html', {'email_form': form})
 
+
 @login_required
 def change_password(request):
     if request.method == 'POST':
         form = CustomPasswordChangeForm(data=request.POST, user=request.user)
         if form.is_valid():
             user = form.save()
-            update_session_auth_hash(request, user)  # Keeps the user logged in
+            update_session_auth_hash(request, user)
             messages.success(request, 'Password changed successfully.')
             return redirect('users:profile')
     else:
         form = CustomPasswordChangeForm(user=request.user)
     return render(request, 'users/profile.html', {'password_form': form})
+
 
 @login_required
 def delete_account(request):
@@ -174,7 +177,7 @@ def delete_account(request):
         if form.is_valid() and form.cleaned_data.get('confirm'):
             request.user.delete()
             messages.success(request, 'Account deleted successfully.')
-            return redirect('home')  # Redirect to home page after deletion
+            return redirect('home') 
     else:
         form = DeleteAccountForm()
     return render(request, 'users/profile.html', {'delete_form': form})

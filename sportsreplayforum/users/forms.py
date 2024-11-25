@@ -11,22 +11,18 @@ class CustomRegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Username field modifications
         self.fields['username'].label = ''
         self.fields['username'].help_text = ''
         self.fields['username'].widget.attrs['placeholder'] = 'Username'
 
-        # Email field modifications
         self.fields['email'].label = ''
         self.fields['email'].required = True
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
 
-        # Password1 field modifications
         self.fields['password1'].label = ''
         self.fields['password1'].help_text = ''
         self.fields['password1'].widget.attrs['placeholder'] = 'Password'
 
-        # Password2 field modifications
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = ''
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
@@ -54,7 +50,6 @@ class CustomLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Indicate that either username or email is accepted
         self.fields['username'].label = ''
         self.fields['username'].widget.attrs['placeholder'] = 'Username or Email'
         self.fields['password'].label = ''
@@ -65,7 +60,6 @@ class CustomPasswordResetForm(PasswordResetForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Email field modifications
         self.fields['email'].label = ''
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
 
@@ -74,12 +68,10 @@ class CustomPasswordResetConfirmForm(SetPasswordForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # New password 1 field modifications
         self.fields['new_password1'].label = ''
         self.fields['new_password1'].help_text = ''
         self.fields['new_password1'].widget.attrs['placeholder'] = 'Password'
 
-        # New password 2 field modifications
         self.fields['new_password2'].label = ''
         self.fields['new_password2'].help_text = ''
         self.fields['new_password2'].widget.attrs['placeholder'] = 'Confirm Password'
@@ -115,15 +107,11 @@ class CustomPasswordChangeForm(PasswordChangeForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # New password 1 field modifications
         self.fields['new_password1'].help_text = ''
 
-        # New password 2 field modifications
         self.fields['new_password2'].help_text = ''
 
-        # Disable autofocus on old password field
         self.fields['old_password'].widget.attrs['autofocus'] = False
-
 
 
 class DeleteAccountForm(forms.Form):
