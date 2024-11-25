@@ -61,9 +61,6 @@ class Command(BaseCommand):
                     race_event.is_finished = is_finished
                     race_event.save()
 
-                    #if race_event.is_finished:
-                    #    Command().handle(race_event.idEvent)
-
         # Step 2: Create or update Events associated with each Competition (e.g., Qualifying, Sprint)
         for item in data:
             if item.get('strEvent'):
@@ -103,8 +100,5 @@ class Command(BaseCommand):
                             event.video_id = item['strVideo']
                             event.is_finished = is_finished
                             event.save()
-
-                            #if event.is_finished:
-                            #    Command().handle(event.idEvent)
 
         self.stdout.write(self.style.SUCCESS("F1 events populated and updated successfully"))

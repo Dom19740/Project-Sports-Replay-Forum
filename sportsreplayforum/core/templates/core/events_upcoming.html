@@ -9,7 +9,6 @@
                 {% else %}
                     {{ event.event_type|title }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
                 {% endif %}
-            
             </a>
         </li>
     {% empty %}

@@ -4,18 +4,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   eventElements.forEach(function (element) {
     const utcTime = element.getAttribute('data-utc');
-    // Convert the UTC time string (ISO 8601) to a Date object
     const localDate = new Date(utcTime);
 
-    // Check if the date is valid
     if (!isNaN(localDate)) {
-      // Format the date and time for the local time zone
       const localTimeString = localDate.toLocaleString([], {
         hour: '2-digit',
         minute: '2-digit',
         hour12: false // Use 24-hour format
       });
-      // Update the span content with the local time string
       element.textContent = localTimeString;
     } else {
       element.textContent = 'Invalid date';
