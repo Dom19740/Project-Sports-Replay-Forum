@@ -308,13 +308,13 @@ body.dark-mode {
     display: none; 
 }
 
-/* .modal-dialog {
+.modal-dialog {
     margin-top: 100px;
 }
 
 .modal-content {
     color: #000000;
-} */
+}
 
 /* scroll bar */
 .events-scroll {
