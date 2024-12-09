@@ -3,7 +3,7 @@
 sportsreplayforum/home/__pycache__/
 sportsreplayforum/sportsreplayforum/home/__pycache__/
 sportsreplayforum/sportsreplayforum/__pycache__/
-sportsreplayforum/sportsreplayforum/__pycache__/settings.cpython-310.pyc
+
 
 # Virtual Environment
 venv/
@@ -17,6 +17,7 @@ db.sqlite3
 
 # VS Code
 .vscode
+.history
 
 #Project
 f1_2024_races.json
@@ -30,4 +31,4 @@ pseudocode.py
 f1_2024_races.json
 dump-hotwatch_django_render-202411151446.sql
 sportsreplayforum/database_backup.sql
-sportsreplayforum/home/__pycache__/views.cpython-310.pyc
+
