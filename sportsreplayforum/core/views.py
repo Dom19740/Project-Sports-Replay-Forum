@@ -13,13 +13,13 @@ from datetime import timedelta
 sports = [
     {'name': 'Formula 1', 'title': 'F1', 'logo': 'logo_f1.png'},
     {'name': 'MotoGP', 'title': 'MotoGP', 'logo': 'logo_motogp.png'},
-    #{'name': 'IndyCar Series', 'title': 'IndyCar', 'logo': 'logo_indy.png'},
-    #{'name': 'NASCAR Cup Series', 'title': 'NASCAR', 'logo': 'logo_nascar.png'},
-    {'name': 'English Premier League', 'title': 'Premier League', 'logo': 'logo_premier.png'},
-    {'name': 'UEFA Champions League', 'title': 'Champions League', 'logo': 'logo_champions.png'},
-    {'name': 'NFL', 'title': 'NFL', 'logo': 'logo_nfl.png'},
-    {'name': 'NBA', 'title': 'NBA', 'logo': 'logo_nba.png'},
-    {'name': 'NHL', 'title': 'NHL', 'logo': 'logo_nhl.png'},
+    {'name': 'IndyCar Series', 'title': 'IndyCar', 'logo': 'logo_indy.png'},
+    {'name': 'NASCAR Cup Series', 'title': 'NASCAR', 'logo': 'logo_nascar.png'},
+    # {'name': 'English Premier League', 'title': 'Premier League', 'logo': 'logo_premier.png'},
+    # {'name': 'UEFA Champions League', 'title': 'Champions League', 'logo': 'logo_champions.png'},
+    # {'name': 'NFL', 'title': 'NFL', 'logo': 'logo_nfl.png'},
+    # {'name': 'NBA', 'title': 'NBA', 'logo': 'logo_nba.png'},
+    # {'name': 'NHL', 'title': 'NHL', 'logo': 'logo_nhl.png'},
 ]
 
 
