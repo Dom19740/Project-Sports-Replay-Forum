@@ -13,7 +13,7 @@ crispy-bootstrap5==2024.10
 cryptography==44.0.0
 defusedxml==0.8.0rc2
 dj-database-url==2.3.0
-Django==5.1.4
+Django==5.1.5
 django-appconf==1.0.6
 django-cookiebanner==0.2.8
 django-crispy-forms==2.3
@@ -24,12 +24,13 @@ gunicorn==23.0.0
 httplib2==0.22.0
 idna==3.10
 kombu==5.4.2
-numpy==2.2.1
+numpy==2.2.2
 oauthlib==3.2.2
 packaging==24.2
 pandas==2.2.3
+pip-review==1.3.0
 pipdeptree==2.24.0
-prompt_toolkit==3.0.48
+prompt_toolkit==3.0.50
 psycopg2-binary==2.9.10
 pycparser==2.22
 PyJWT==2.10.1
@@ -46,7 +47,7 @@ social-auth-core==4.5.4
 sqlparse==0.5.3
 thesportsdb==0.1.3
 typing_extensions==4.12.2
-tzdata==2024.2
+tzdata==2025.1
 urllib3==2.3.0
 vine==5.1.0
 wcwidth==0.2.13
