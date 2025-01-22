@@ -38,10 +38,16 @@ ALLOWED_HOSTS =  [
     'localhost',
     'shouldiwatchsports.com',
     'www.shouldiwatchsports.com',
+    '212.227.79.104',
+    'siws.dpbcreative.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://shouldiwatchsports.onrender.com',
+    'shouldiwatchsports.com',
+    'www.shouldiwatchsports.com',
+    '212.227.79.104',
+    'siws.dpbcreative.com',
 ]
 
 CSRF_COOKIE_SECURE = True
