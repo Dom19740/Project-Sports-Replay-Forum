@@ -44,10 +44,10 @@ ALLOWED_HOSTS =  [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://shouldiwatchsports.onrender.com',
-    'shouldiwatchsports.com',
-    'www.shouldiwatchsports.com',
-    '212.227.79.104',
-    'siws.dpbcreative.com',
+    'https://shouldiwatchsports.com',
+    'https://www.shouldiwatchsports.com',
+    'https://212.227.79.104',
+    'https://siws.dpbcreative.com',
 ]
 
 CSRF_COOKIE_SECURE = True
