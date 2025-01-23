@@ -6,8 +6,7 @@ sportsreplayforum/sportsreplayforum/__pycache__/
 
 
 # Virtual Environment
-venv/
-sportsreplayforum/.venv
+.venv/
 
 # Django specific
 db.sqlite3
@@ -21,15 +20,5 @@ db.sqlite3
 
 #Project
 f1_2024_races.json
-sportsreplayforum/db.sqlite3
-sportsreplayforum/staticfiles/css/main copy 2.css
-sportsreplayforum/staticfiles/css/main copy.css
-sportsreplayforum/static/css/main copy.css
-html_test.html
-html_test copy.html
-pseudocode.py
-f1_2024_races.json
-dump-hotwatch_django_render-202411151446.sql
-sportsreplayforum/database_backup.sql
-
-sportsreplayforum/requirements_old.txt
+db.sqlite3
+staticfiles
