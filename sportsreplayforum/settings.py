@@ -39,8 +39,8 @@ ALLOWED_HOSTS =  [
     'shouldiwatchsports.com',
     'www.shouldiwatchsports.com',
     '212.227.79.104',
-    'siws.dpbcreative.com',
-    'www.siws.dpbcreative.com',
+    'test.shouldiwatchsports.com',
+    'www.test.shouldiwatchsports.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -48,8 +48,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://shouldiwatchsports.com',
     'https://www.shouldiwatchsports.com',
     'https://212.227.79.104',
-    'https://siws.dpbcreative.com',
-    'https://www.siws.dpbcreative.com',
+    'https://test.shouldiwatchsports.com',
+    'https://www.test.shouldiwatchsports.com',
 ]
 
 CSRF_COOKIE_SECURE = True
