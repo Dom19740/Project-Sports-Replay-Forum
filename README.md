@@ -16,7 +16,7 @@ Welcome to **Project-Sports-Replay-Forum**, renamed as **Should I Watch Sports**
 - **Backend**: Django/Python
 - **Database**: PostgreSQL (Supabase)
 - **Frontend**: HTML, CSS (Bootstrap), JavaScript
-- **Hosting**: Render
+- **Hosting**: Ubuntu, Gunicorn, Nginx
 - **Version Control**: GitHub
 
 ## Purpose

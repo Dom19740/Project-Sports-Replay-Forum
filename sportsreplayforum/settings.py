@@ -33,7 +33,6 @@ API_PULL_TOKEN = os.getenv('API_PULL_TOKEN', 'fallback-token')
 DEBUG = os.environ.get('DEBUG', 'False').lower() == "true"
 
 ALLOWED_HOSTS =  [
-    'shouldiwatchsports.onrender.com',
     '127.0.0.1',
     'localhost',
     'shouldiwatchsports.com',
@@ -44,12 +43,11 @@ ALLOWED_HOSTS =  [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://shouldiwatchsports.onrender.com',
     'https://shouldiwatchsports.com',
     'https://www.shouldiwatchsports.com',
     'https://212.227.79.104',
     'https://test.shouldiwatchsports.com'
-    'http://www.test.shouldiwatchsports.com'
+    'https://www.test.shouldiwatchsports.com'
 ]
 
 CSRF_COOKIE_SECURE = True
