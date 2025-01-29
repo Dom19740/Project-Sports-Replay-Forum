@@ -10,4 +10,4 @@ def is_past(event):
 
 @register.filter
 def voting_closed(event):
-    return event.date_time + timedelta(days=7) <= timezone.now()
+    return event.date_time + timedelta(days=365) <= timezone.now()
