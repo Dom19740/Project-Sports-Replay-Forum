@@ -27,11 +27,11 @@ body {
 
 a {
     text-decoration: none;
-    color: var(--bright-white);
+    color: var(--three-star-orange);
 }
 
 a:hover {
-    color: var(--light-purple);
+    color: var(--one-star-ice);
 }
 
 body.light-mode {
@@ -69,11 +69,11 @@ body.dark-mode {
 }
 
 .navbar-dark .nav-link {
-    color: var(--bright-white);
+    color: var(--three-star-orange);
 }
 
 .nav-link:hover {
-    color: var(--light-purple) !important;
+    color: var(--one-star-ice) !important;
 }
 
 .search-input {
