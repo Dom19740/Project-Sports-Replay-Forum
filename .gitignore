@@ -7,6 +7,7 @@ sportsreplayforum/sportsreplayforum/__pycache__/
 
 # Virtual Environment
 .venv/
+.venvsportsforum/
 
 # Django specific
 db.sqlite3
