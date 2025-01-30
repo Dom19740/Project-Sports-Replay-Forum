@@ -1,15 +1,13 @@
-venv/
+.history/
+.venv/
+.vscode/
 __pycache__/
+staticfiles/
 
-sportsreplayforum/sportsreplayforum/__pycache__/settings.cpython-310.pyc
-sportsreplayforum/sportsreplayforum/__pycache__/urls.cpython-310.pyc
-sportsreplayforum/f1/__pycache__/__init__.cpython-310.pyc
-sportsreplayforum/f1/__pycache__/admin.cpython-310.pyc
-sportsreplayforum/f1/__pycache__/apps.cpython-310.pyc
-sportsreplayforum/f1/__pycache__/models.cpython-310.pyc
-sportsreplayforum/f1/__pycache__/urls.cpython-310.pyc
-sportsreplayforum/f1/__pycache__/views.cpython-310.pyc
-sportsreplayforum/f1/migrations/__pycache__/__init__.cpython-310.pyc
-sportsreplayforum/f1/migrations/__pycache__/0001_initial.cpython-310.pyc
-sportsreplayforum/sportsreplayforum/__pycache__/settings.cpython-310.pyc
-sportsreplayforum/sportsreplayforum/__pycache__/urls.cpython-310.pyc
+sportsreplayforum/sportsreplayforum/__pycache__/
+sportsreplayforum/f1/__pycache__/
+sportsreplayforum/f1/migrations/__pycache__/_
+sportsreplayforum/sportsreplayforum/__pycache__/
+
+.env
+db.sqlite3
