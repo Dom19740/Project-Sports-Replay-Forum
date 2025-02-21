@@ -118,21 +118,6 @@ WSGI_APPLICATION = 'sportsreplayforum.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-""" DATABASE_ENV = os.environ.get('DATABASE_ENV', 'local')
-
-if DATABASE_ENV == 'local':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-elif DATABASE_ENV == 'external':
-    database_url = os.environ.get('DATABASE_URL')
-    DATABASES = {
-        'default': dj_database_url.parse(database_url)
-    } """
-
 postgre_pass = os.environ.get("POSTGRE_PASS")
 
 DATABASES = {
