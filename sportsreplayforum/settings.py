@@ -22,6 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Used for a default title
 APP_NAME = 'Sports Replay Forum'
 
+DJANGO_ENV = os.environ.get('DJANGO_ENV', 'local')  # 'local' or 'production'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -30,7 +32,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 API_PULL_TOKEN = os.getenv('API_PULL_TOKEN', 'fallback-token')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False').lower() == "true"
+DEBUG = os.environ.get('DJANGO_ENV', 'production') == 'local'
 
 ALLOWED_HOSTS =  [
     '127.0.0.1',
@@ -118,21 +120,19 @@ WSGI_APPLICATION = 'sportsreplayforum.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-DATABASE_ENV = os.environ.get('DATABASE_ENV', 'local')
+postgre_pass = os.environ.get("POSTGRE_PASS")
+postgre_host = os.environ.get("POSTGRE_HOST", "localhost" if DJANGO_ENV == 'local' else '212.227.79.104')
 
-if DATABASE_ENV == 'local':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sportsforum',
+        'USER': 'dom974',
+        'PASSWORD': postgre_pass,
+        'HOST': postgre_host,
+        'PORT': '5432',
     }
-elif DATABASE_ENV == 'external':
-    database_url = os.environ.get('DATABASE_URL')
-    DATABASES = {
-        'default': dj_database_url.parse(database_url)
-    }
-
+}
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
