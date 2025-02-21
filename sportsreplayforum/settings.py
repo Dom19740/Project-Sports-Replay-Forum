@@ -115,13 +115,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sportsreplayforum.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-
 postgre_pass = os.environ.get("POSTGRE_PASS")
-postgre_host = os.environ.get("POSTGRE_HOST", "localhost" if DJANGO_ENV == 'local' else '212.227.79.104')
+postgre_host = "212.227.79.104" if DJANGO_ENV == 'local' else 'localhost'
 
 DATABASES = {
     'default': {
