@@ -58,7 +58,7 @@ def competition_schedule(request, league):
     upcoming_competitions = upcoming_competitions[:5]
     past_competitions = past_competitions[:5]
     banner = competition.banner
-    badge = competition.badge
+    badge = next((sport['logo'] for sport in sports if sport['name'] == league), 'default_logo.png')
     
     return render(request, 'core/competition_schedule.html', {
         'title': title,

@@ -1,4 +1,5 @@
 {% extends 'base_3_split_left.html' %}
+{% load static %}
 
 {% block title %}{{ title }} | Should I Watch Sports{% endblock %}
 
@@ -23,7 +24,7 @@
 {% block main_container_right %}
 
     <div class="sign-container">
-        <img src="{{ badge }}" alt="League Badge" class="banner">
+        <img src="{% static 'img/sports/' %}{{ badge }}" alt="League Badge" class="banner">
     </div>
     
 {% endblock %}
