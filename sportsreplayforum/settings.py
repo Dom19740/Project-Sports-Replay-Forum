@@ -252,7 +252,7 @@ LOGGING = {
         'file': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
-            'filename': '/home/dom974/var/www/sportsforum/djangologs/django_error.log',
+            'filename': os.path.join(BASE_DIR, 'logs', 'django_error.log'),
         },
     },
     'loggers': {
