@@ -243,3 +243,23 @@ AUTHENTICATION_BACKENDS = [
 TEMPLATE_CONTEXT_PROCESSORS = [
     'sportsreplayforum.core.context_processors.sports',
 ]
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': '/home/dom974/var/www/sportsforum/djangologs/django_error.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}
