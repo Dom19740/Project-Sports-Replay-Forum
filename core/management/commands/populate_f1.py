@@ -11,7 +11,7 @@ class Command(BaseCommand):
         # Fetch the data from the API
         api_key = os.getenv('SPORTSDB_API_KEY')
         try:
-            response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id=4370&s=2024")
+            response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id=4370&s=2025")
             response.raise_for_status()
         except requests.exceptions.RequestException as e:
             raise CommandError(f'Failed to fetch F1 data from the API: {e}')

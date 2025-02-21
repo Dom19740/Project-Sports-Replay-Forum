@@ -23,7 +23,7 @@ class Command(BaseCommand):
             except requests.exceptions.RequestException as e:
                 raise CommandError(f'Failed to fetch MotoGP data from the API: {e}')
 
-            # Parse the JSON data
+           # Parse the JSON data
             data = response.json().get('events', [])
 
             # Step 1: Create Competitions for events ending in "Prix"
@@ -44,8 +44,8 @@ class Command(BaseCommand):
 
                 date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
                 is_finished = (
-                    'Finished' in item['strStatus'] or
-                    item.get('strVideo') != ""
+                    item['strStatus'] is not None and 'Finished' in item['strStatus'] or
+                    item.get('strVideo') not in [None, ""]
                 )
 
                 # Create a race event for the competition
@@ -55,15 +55,15 @@ class Command(BaseCommand):
                     date_time=date_time,
                     idEvent=item['idEvent'],
                     defaults={
-                        'video_id': item['strVideo'],
+                        'video_id': item.get('strVideo', ''),  # Provide a default value if 'strVideo' is missing
                         'is_finished': is_finished,
-                        'poster': item['strThumb'],
+                        'poster': item.get('strThumb', ''),  # Provide a default value if 'strThumb' is missing
                     }
                 )
 
                 if not created:
                     # If the event already exists, update the fields
-                    race_event.video_id = item['strVideo']
+                    race_event.video_id = item.get('strVideo', '')
                     race_event.is_finished = is_finished
                     race_event.save()
 

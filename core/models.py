@@ -7,7 +7,7 @@ class Competition(models.Model):
     name = models.CharField(max_length=255)
     date = models.DateField()
     banner = models.CharField(max_length=255, default="")
-    badge = models.CharField(max_length=255, default="")
+    badge = models.CharField(max_length=255, default="", null=True)
 
     def __str__(self):
         return self.name
@@ -18,7 +18,7 @@ class Event(models.Model):
     date_time = models.DateTimeField()
     idEvent = models.CharField(max_length=255, default="")
     video_id = models.CharField(max_length=255, null=True, default="")
-    is_finished = models.BooleanField(default=False)
+    is_finished = models.BooleanField(default=False, null=True)
     poster = models.CharField(max_length=255, default="")
     ai_review = models.TextField(null=True, default="")
     ai_rating = models.CharField(max_length=255, default="")
