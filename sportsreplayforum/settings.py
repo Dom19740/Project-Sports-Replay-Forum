@@ -118,20 +118,6 @@ WSGI_APPLICATION = 'sportsreplayforum.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-postgre_pass = os.environ.get("POSTGRE_PASS")
-
-""" DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sportsforum',
-        'USER': 'dom974',
-        'PASSWORD': postgre_pass,
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-} """
-
-
 DATABASE_ENV = os.environ.get('DATABASE_ENV', 'local')
 
 if DATABASE_ENV == 'local':
