@@ -126,7 +126,7 @@ DATABASES = {
         'NAME': 'sportsforum',
         'USER': 'dom974',
         'PASSWORD': postgre_pass,
-        'HOST': '212.227.79.104',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
