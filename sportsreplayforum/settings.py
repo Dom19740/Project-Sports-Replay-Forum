@@ -16,13 +16,15 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Used for a default title
 APP_NAME = 'Sports Replay Forum'
 
-DJANGO_ENV = os.environ.get('DJANGO_ENV', 'local')  # 'local' or 'production'
+DJANGO_ENV = os.environ.get('DJANGO_ENV', 'production')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -32,7 +34,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 API_PULL_TOKEN = os.getenv('API_PULL_TOKEN', 'fallback-token')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_ENV', 'production') == 'local'
+DEBUG = DJANGO_ENV == 'local'
 
 ALLOWED_HOSTS =  [
     '127.0.0.1',
