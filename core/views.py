@@ -161,18 +161,18 @@ def vote(request, event_id):
             rating.one_star
         )
 
-        # Calculate the total score based on percentage values
+        # Calculate the total score based on normalized weights
         weighted_average = (
-            (rating.five_stars * 90) + 
-            (rating.four_stars * 70) + 
-            (rating.three_stars * 50) + 
-            (rating.two_stars * 30) + 
-            (rating.one_star * 10)
+            (rating.five_stars * 5) + 
+            (rating.four_stars * 4) + 
+            (rating.three_stars * 3) + 
+            (rating.two_stars * 2) + 
+            (rating.one_star * 1)
         ) / total_votes
 
         # Scale the weighted average to a range of 1 to 100
         if total_votes > 0:
-            rating.percentage = weighted_average
+            rating.percentage = (weighted_average / 5) * 100
         else:
             rating.percentage = 0.0  # Handle no votes
 
