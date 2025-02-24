@@ -281,7 +281,20 @@ body.dark-mode {
 /* HOME */
 .badge-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around; /* or use space-between */
+}
+
+.badge-link img {
+    height: auto;
+    max-height: 65px;
+    max-width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    transition: transform 0.3s ease;
+}
+
+.badge-link img:hover {
+    transform: scale(1.1);
 }
 
 .welcome-logo {
@@ -627,4 +640,4 @@ a i:hover {
       display: none;
     }
 
-} 
+}
