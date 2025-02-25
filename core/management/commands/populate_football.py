@@ -12,9 +12,9 @@ class Command(BaseCommand):
         season_ids = {
             'UEFA Champions League': '4480',
             'Premier League': '4328',
-            'NFL': '4391',
-            'NBA': '4387',
-            'NHL': '4380',
+            #'NFL': '4391',
+            #'NBA': '4387',
+            #'NHL': '4380',
         }
         for season_name, season_id in season_ids.items():
             # Fetch the data from the API

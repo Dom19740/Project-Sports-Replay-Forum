@@ -19,6 +19,11 @@ Welcome to **Project-Sports-Replay-Forum**, renamed as **Should I Watch Sports**
 - **Hosting**: Ubuntu, Gunicorn, Nginx
 - **Version Control**: GitHub
 
+## Management
+
+- **Add/Remove Sports**: core/views.py
+- **Populate Sports**: python3 manage.py populate_f1 (core/management/commands)
+
 ## Purpose
 
 This repository is designed to demonstrate my skills in development.  
