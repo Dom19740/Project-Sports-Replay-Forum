@@ -6,7 +6,7 @@ register = template.Library()
 
 @register.filter
 def is_past(event):
-    return event.date_time + timedelta(minutes=45) <= timezone.now()
+    return event.date_time + timedelta(minutes=90) <= timezone.now()
 
 @register.filter
 def voting_closed(event):
