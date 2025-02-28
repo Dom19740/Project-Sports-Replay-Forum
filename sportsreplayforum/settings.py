@@ -41,7 +41,6 @@ ALLOWED_HOSTS =  [
     'localhost',
     'shouldiwatchsports.com',
     'www.shouldiwatchsports.com',
-    '212.227.79.104',
     'test.shouldiwatchsports.com',
     'www.test.shouldiwatchsports.com'
 ]
@@ -49,9 +48,8 @@ ALLOWED_HOSTS =  [
 CSRF_TRUSTED_ORIGINS = [
     'https://shouldiwatchsports.com',
     'https://www.shouldiwatchsports.com',
-    'https://212.227.79.104',
-    'https://test.shouldiwatchsports.com'
-    'https://www.test.shouldiwatchsports.com'
+    'http://test.shouldiwatchsports.com'
+    'http://www.test.shouldiwatchsports.com'
 ]
 
 CSRF_COOKIE_SECURE = True
