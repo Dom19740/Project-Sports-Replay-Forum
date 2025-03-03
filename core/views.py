@@ -141,51 +141,53 @@ def vote(request, event_id):
     rating, created = Rating.objects.get_or_create(event=event)
 
     if request.method == 'POST':
-        rating_type = request.POST.get('stars')
-        if rating_type == '5':
-            rating.five_stars += 1
-        elif rating_type == '4':
-            rating.four_stars += 1
-        elif rating_type == '3':
-            rating.three_stars += 1
-        elif rating_type == '2':
-            rating.two_stars += 1
-        elif rating_type == '1':
-            rating.one_star += 1
+        if 'stars' in request.POST:
+            rating_type = request.POST.get('stars')
 
-        total_votes = (
-            rating.five_stars + 
-            rating.four_stars + 
-            rating.three_stars + 
-            rating.two_stars + 
-            rating.one_star
-        )
+            if rating_type == '5':
+                rating.five_stars += 1
+            elif rating_type == '4':
+                rating.four_stars += 1
+            elif rating_type == '3':
+                rating.three_stars += 1
+            elif rating_type == '2':
+                rating.two_stars += 1
+            elif rating_type == '1':
+                rating.one_star += 1
 
-        # Calculate the total score based on normalized weights
-        weighted_average = (
-            (rating.five_stars * 5) + 
-            (rating.four_stars * 4) + 
-            (rating.three_stars * 3) + 
-            (rating.two_stars * 2) + 
-            (rating.one_star * 1)
-        ) / total_votes
+            total_votes = (
+                rating.five_stars + 
+                rating.four_stars + 
+                rating.three_stars + 
+                rating.two_stars + 
+                rating.one_star
+            )
 
-        # Scale the weighted average to a range of 1 to 100
-        if total_votes > 0:
-            rating.percentage = (weighted_average / 5) * 100
-        else:
-            rating.percentage = 0.0  # Handle no votes
+            # Calculate the total score based on normalized weights
+            weighted_average = (
+                (rating.five_stars * 5) + 
+                (rating.four_stars * 4) + 
+                (rating.three_stars * 3) + 
+                (rating.two_stars * 2) + 
+                (rating.one_star * 1)
+            ) / total_votes
 
-        rating.save()
-        rating.voters.add(request.user)
+            # Scale the weighted average to a range of 1 to 100
+            if total_votes > 0:
+                rating.percentage = (weighted_average / 5) * 100
+            else:
+                rating.percentage = 0.0  # Handle no votes
 
-    elif 'like' in request.POST:
-        rating.likes += 1
-        rating.save()
+            rating.save()
+            rating.voters.add(request.user)
 
-    elif 'dislike' in request.POST:
-        rating.dislikes += 1
-        rating.save()
+        elif 'like' in request.POST:
+            rating.likes += 1
+            rating.save()
+
+        elif 'dislike' in request.POST:
+            rating.dislikes += 1
+            rating.save()
 
     return redirect('core:event', event_id=event_id)
 
