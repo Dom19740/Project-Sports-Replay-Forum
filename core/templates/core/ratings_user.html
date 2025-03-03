@@ -100,12 +100,15 @@
     </a>
 </div>
 
-<form method="post" action="{% url 'core:vote' event.id %}">
+
+<form method="post" action="{% url 'core:vote' event.id %}" class="mt-3">
     {% csrf_token %}
-    <button type="submit" name="like">Like</button>
-    <button type="submit" name="dislike">Dislike</button>
+    <div class="btn-group rounded-pill" role="group" aria-label="Like Dislike">
+        <button type="submit" name="like" class="btn btn-outline-secondary btn-like">
+            <i class="fas fa-thumbs-up"></i> {{ event.rating.likes }}
+        </button>
+        <button type="submit" name="dislike" class="btn btn-outline-secondary btn-like">
+            <i class="fas fa-thumbs-down"></i> {{ event.rating.dislikes }}
+        </button>
+    </div>
 </form>
-
-<p>Likes: {{ event.rating.likes }}</p>
-<p>Dislikes: {{ event.rating.dislikes }}</p>
-
