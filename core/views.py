@@ -138,7 +138,7 @@ def event(request, event_id):
 
 def vote(request, event_id):
     event = get_object_or_404(Event, id=event_id)
-    rating, created = Rating.objects.get_or_create(event=event)
+    rating = Rating.objects.get_or_create(event=event)
 
     if request.method == 'POST':
         rating_type = request.POST.get('stars')
@@ -178,6 +178,14 @@ def vote(request, event_id):
 
         rating.save()
         rating.voters.add(request.user)
+
+    elif 'like' in request.POST:
+        rating.likes += 1
+        rating.save()
+
+    elif 'dislike' in request.POST:
+        rating.dislikes += 1
+        rating.save()
 
     return redirect('core:event', event_id=event_id)
 

@@ -98,5 +98,11 @@
     <a href=" https://bsky.app/intent/compose?text={{ event.event_list }}%20{{ event.event_type|title }}%20Rating%20-%20Should%20I%20Watch%20Sports%20{{ request.build_absolute_uri|urlencode }}" target="_blank" title="Share on Bluesky">
         <i style="font-size: 24px" class="fa-brands fa-bluesky social-icons"></i>
     </a>
-
 </div>
+
+<form method="post" action="{% url 'core:vote' event.id %}">
+    {% csrf_token %}
+    <button type="submit" name="like">Like</button>
+    <button type="submit" name="dislike">Dislike</button>
+</form>
+
