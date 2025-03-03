@@ -138,7 +138,7 @@ def event(request, event_id):
 
 def vote(request, event_id):
     event = get_object_or_404(Event, id=event_id)
-    rating = Rating.objects.get_or_create(event=event)
+    rating, created = Rating.objects.get_or_create(event=event)
 
     if request.method == 'POST':
         rating_type = request.POST.get('stars')
