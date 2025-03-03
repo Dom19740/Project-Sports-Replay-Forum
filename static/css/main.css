@@ -445,7 +445,6 @@ h3, .rating-logo {
     color: white;
 }
 
-
 /* play video link */
 .image-wrapper {
 	position: relative;
@@ -469,12 +468,12 @@ a i {
 	-moz-transition: all 0.5s ease;
 	-ms-transition: all 0.5s ease;
 	-o-transition: all 0.5s ease;
-	color: var(--bg-color-light);
+	color: var(--dark-purple);
 
 }
 
 a i:hover {
-	color: var(--dark-purple);
+	color: var(--light-purple);
 }
 /* play video link end */
 
