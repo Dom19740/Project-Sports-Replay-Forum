@@ -307,6 +307,12 @@ body.dark-mode {
     padding-bottom: 20px;
 }
 
+.welcome-heat-logos {
+    width: 25px;
+    margin: 5px;
+    margin-right: 10px;
+}
+
 .logo-container {
     display: flex;
     justify-content: center;
@@ -428,6 +434,7 @@ h3, .rating-logo {
 .rating-logo {
     width: 25px;
     margin: 10px;
+    margin-left: 0px;
 }
 
 .ai_review {
