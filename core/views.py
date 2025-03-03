@@ -181,13 +181,29 @@ def vote(request, event_id):
             rating.save()
             rating.voters.add(request.user)
 
-        elif 'like' in request.POST:
-            rating.likes += 1
-            rating.save()
-
+        like_type = None
+        if 'like' in request.POST:
+            like_type = 'liked'
         elif 'dislike' in request.POST:
-            rating.dislikes += 1
-            rating.save()
+            like_type = 'disliked'
+
+        if like_type:
+            current_vote = request.COOKIES.get(f'voted_{event_id}')
+            if current_vote != like_type:
+                if current_vote == 'liked':
+                    rating.likes -= 1
+                elif current_vote == 'disliked':
+                    rating.dislikes -= 1
+
+                if like_type == 'liked':
+                    rating.likes += 1
+                elif like_type == 'disliked':
+                    rating.dislikes += 1
+
+                rating.save()
+                response = redirect('core:event', event_id=event_id)
+                response.set_cookie(f'voted_{event_id}', like_type, max_age=365*24*60*60)
+                return response
 
     return redirect('core:event', event_id=event_id)
 
