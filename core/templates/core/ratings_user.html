@@ -105,10 +105,16 @@
     {% csrf_token %}
     <div class="btn-group rounded-pill" role="group" aria-label="Like Dislike">
         <button type="submit" name="like" class="btn btn-outline-secondary btn-like">
-            <i class="fas fa-thumbs-up"></i> {{ event.rating.likes }}
+            <i class="fas fa-thumbs-up"></i>
+            {% if event.rating.likes > 0 %}
+                {{ event.rating.likes }}
+            {% endif %}
         </button>
         <button type="submit" name="dislike" class="btn btn-outline-secondary btn-like">
-            <i class="fas fa-thumbs-down"></i> {{ event.rating.dislikes }}
+            <i class="fas fa-thumbs-down"></i>
+            {% if event.rating.dislikes > 0 %}
+                {{ event.rating.dislikes }}
+            {% endif %}
         </button>
     </div>
 </form>
