@@ -1,0 +1,11 @@
+<h6 class="inside-header">Comments</h6>
+
+{% for comment in comments %}
+        <div>
+            <p><strong>{{ comment.author.username }}</strong>:
+            <p><small>{{ comment.created }}</small></p>
+            <p class="text-xl px-4">{{ comment.body }}</p>
+        </div>
+        <br>
+{% endfor %}
+
