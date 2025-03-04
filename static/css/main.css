@@ -447,13 +447,14 @@ h3, .rating-logo {
 
 .btn-like {
     background-color: var(--dark-purple);
-    color: var(--light-grey); /* Green color */
-    border-color: var(--dark-grey);
+    border-color: var(--dark-purple);
+    color: var(--bright-white);
 }
 
 .btn-like:hover {
     background-color: var(--light-purple);
-    color: white;
+    border-color: var(--light-purple);
+    color: var(--bright-white);
 }
 
 /* play video link */
