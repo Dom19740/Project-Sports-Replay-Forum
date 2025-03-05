@@ -25,3 +25,4 @@ db.sqlite3
 staticfiles
 core/migrations/
 logs/
+debug.log
