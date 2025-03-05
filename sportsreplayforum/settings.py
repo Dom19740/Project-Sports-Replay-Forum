@@ -67,6 +67,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
+    'django.contrib.sites',
     'home.apps.HomeConfig',
     'core.apps.CoreConfig',
     'users.apps.UsersConfig',
@@ -77,6 +79,8 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',  
     'rest_framework', 
 ]
+
+SITE_ID = 1
 
 # When we get to tagging
 
