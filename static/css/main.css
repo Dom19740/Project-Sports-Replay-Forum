@@ -267,7 +267,6 @@ body.dark-mode {
 .right-home {
     padding-left: 50px;
     padding-right: 50px;
-    padding-bottom: 50px;
 }
 
 .main-container-split {
@@ -311,6 +310,10 @@ body.dark-mode {
     width: 25px;
     margin: 5px;
     margin-right: 10px;
+}
+
+.welcome-text li {
+    list-style: none;
 }
 
 .logo-container {
