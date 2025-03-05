@@ -31,7 +31,7 @@ class RatingAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentsAdmin(admin.ModelAdmin):
-    list_display = ('author', 'parent_post', 'body', 'created')
+    list_display = ('author', 'event', 'body', 'created')
     list_filter = ('author', 'created')
-    search_fields = ('author', 'parent_post', 'body')
+    search_fields = ('author', 'event', 'body')
     date_hierarchy = 'created'
