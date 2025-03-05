@@ -10,7 +10,7 @@ class Command(BaseCommand):
             Site.objects.update_or_create(
                 id=1,
                 defaults={
-                    'domain': '127.0.0.1:8000',
+                    'domain': '127.0.0.1:5000',
                     'name': 'Local Site'
                 }
             )
