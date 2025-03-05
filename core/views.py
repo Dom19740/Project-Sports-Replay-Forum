@@ -7,7 +7,9 @@ from django.urls import reverse
 from django.http import JsonResponse
 from django.core.management import call_command
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from .models import Competition, Event, Rating
+from users.forms import CreateCommentForm, CreateReplyForm
 from datetime import timedelta
 
 sports = [
@@ -123,7 +125,9 @@ def event(request, event_id):
     except Event.rating.RelatedObjectDoesNotExist:
         total_votes = 0
 
-    return render(request, 'core/event.html', {
+    commentform = CreateCommentForm()
+
+    context = {
         'event': event,
         'RATINGS_TEXT': RATINGS_TEXT,
         'video_id': video_id,
@@ -135,7 +139,10 @@ def event(request, event_id):
         'ai_review': ai_review,
         'ai_rating': ai_rating,
         'comments': comments,
-    })
+        'commentform': commentform,
+    }
+
+    return render(request, 'core/event.html', context)
 
 
 def vote(request, event_id):
@@ -208,6 +215,21 @@ def vote(request, event_id):
                 return response
 
     return redirect('core:event', event_id=event_id)
+
+
+@login_required
+def comment_sent(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+
+    if request.method == 'POST':
+        form = CreateCommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.event = event
+            comment.author = request.user
+            comment.save()
+    
+    return redirect('core:event', event_id=event.id)
 
 
 search_terms = {

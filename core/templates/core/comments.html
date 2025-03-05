@@ -1,5 +1,18 @@
 <h6 class="inside-header">Comments</h6>
 
+{% if request.user.is_authenticated %}
+
+<div>
+    <form method='POST' action="{% url 'core:comment-sent' event.id %}" class='flex items-center p-4' autocomplete='off'>
+        {% csrf_token %}
+        {{ commentform }}
+        <button @click='open = false' class='' type ='submit'>Submit</button>
+</div>
+
+
+{% endif %}
+
+
 {% for comment in comments %}
         <div>
             <p><strong>{{ comment.author.username }}</strong>:

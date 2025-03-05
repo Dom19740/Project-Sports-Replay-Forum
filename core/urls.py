@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import run_populate
+from .views import run_populate, comment_sent
 from . import views
 
 app_name = 'core'
@@ -12,4 +12,5 @@ urlpatterns = [
     path('run-f1-populate/', lambda request: run_populate(request, 'populate_f1', 'F1 data populated successfully'), name='run_populate_f1'),
     path('run-motogp-populate/', lambda request: run_populate(request, 'populate_motor', 'Motorsport data populated successfully'), name='run_populate_motor'),
     path('run-football-populate/', lambda request: run_populate(request, 'populate_football', 'Football data populated successfully'), name='run_populate_football'),
+    path('commentsent/<pk>', comment_sent, name='comment-sent'),
 ]
