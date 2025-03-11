@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.shouldiwatchsports\.com [NC]
+RewriteRule ^(.*)$ https://shouldiwatchsports.com/$1 [R=301,L]
