@@ -107,7 +107,10 @@ def logout_view(request):
     logout(request)
     messages.success(request, 'You have logged out successfully.')
 
-    return redirect('users:login')
+    next_url = request.GET.get('next')
+    if next_url:
+        return redirect(next_url)
+    return redirect('home')
 
 
 @login_required

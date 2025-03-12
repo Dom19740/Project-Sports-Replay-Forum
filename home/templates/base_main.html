@@ -29,7 +29,7 @@
                         <a class="nav-link" title="Profile" href="{% url 'users:profile' %}">Hi, {{ user.username|title }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" title="Logout" href="{% url 'users:logout' %}">Logout</a>
+                        <a class="nav-link" title="Logout" href="{% url 'users:logout' %}?next={{ request.path }}">Logout</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
