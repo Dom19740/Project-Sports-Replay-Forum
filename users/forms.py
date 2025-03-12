@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm, SetPasswordForm, PasswordChangeForm
-
+from django.core.validators import EmailValidator
 
 class CustomRegisterForm(UserCreationForm):
+    email = forms.EmailField(validators=[EmailValidator()])
     class Meta:
         model = User
         fields = ["username", "email", "password1", "password2"]

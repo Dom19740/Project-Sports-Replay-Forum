@@ -13,6 +13,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, login
 from django.urls import reverse
 from django.core.paginator import Paginator
+from django.core.mail import BadHeaderError
 from .tokens import account_activation_token
 from core.models import Event
 from core.views import sports
@@ -40,8 +41,15 @@ def registration_view(request):
             })
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])
-            email.send()
-            # messages.success(request, 'Please check your email address to complete the registration')
+
+            try:
+                email.send()
+                
+            except BadHeaderError:
+                messages.error(request, 'Invalid header found.')
+            except Exception as e:
+                messages.error(request, f'An error occurred: your email is not valid. {e}')
+                return render(request, 'users/register.html', {'form': form})
             return redirect('users:register_complete')
     return render(request, 'users/register.html', {'form': form})
 
