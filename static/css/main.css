@@ -452,6 +452,7 @@ h3, .rating-logo {
     background-color: var(--dark-purple);
     border-color: var(--dark-purple);
     color: var(--bright-white);
+    margin-bottom: 15px;
 }
 
 .btn-like:hover {
@@ -579,6 +580,10 @@ a i:hover {
 
     .chart-container {
         margin-bottom: 20px;
+    }
+
+    .btn-like {
+        margin-bottom: 25px;
     }
 }
 
