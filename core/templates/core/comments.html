@@ -2,7 +2,7 @@
 
 {% if request.user.is_authenticated %}
 <div class="comment-form">
-    <form method='POST' action="{% url 'core:comment-sent' event.id %}" autocomplete='off'>
+    <form method='POST' action="{% url 'core:comment-sent' event.id %}#comments-section" autocomplete='off'>
         {% csrf_token %}
         {{ commentform }}
         <br>
@@ -11,10 +11,12 @@
 </div>
 {% endif %}
 
-{% for comment in comments %}
-    <br>
-    <div class="comment">
-        <p><strong>{{ comment.author.username }}</strong>: <span class="small">- {{ comment.created }}</span></p>
-        <p class="px-4">{{ comment.body }}</p>
-    </div>
-{% endfor %}
+<div id="comments-section">
+    {% for comment in comments %}
+        <br>
+        <div class="comment">
+            <p><strong>{{ comment.author.username }}</strong>: <span class="small">- {{ comment.created }}</span></p>
+            <p class="px-4">{{ comment.body }}</p>
+        </div>
+    {% endfor %}
+</div>

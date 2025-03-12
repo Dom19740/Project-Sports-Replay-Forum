@@ -514,7 +514,6 @@ a i:hover {
 }
 
 /* comments */
-
 .comment {
     border: 2px solid var(--dark-grey);
     border-radius: 15px;
@@ -530,9 +529,7 @@ a i:hover {
     padding: 15px;
     border-radius: 10px;
 }
-
 /* comments end */
-
 /* EVENT END */
 
 /* FOOTER */
