@@ -18,10 +18,13 @@
             <div class="d-flex justify-content-between">
                 <p><strong>{{ comment.author.username }}</strong>: <span class="small">- {{ comment.created }}</span></p>
                 {% if request.user.is_authenticated and request.user == comment.author %}
-                    <a href="{% url 'core:comment-delete' comment.id %}#comments-section" class="small">Delete</a>
+                    <a href="{% url 'core:comment-delete' comment.id %}#comments-section" class="small"><i class="fa-solid fa-trash comment-icon"></i></a>
                 {% endif %}
             </div>
-            <p class="px-4">{{ comment.body }}</p>
+            <div>
+                <p class="px-4">{{ comment.body }}</p>
+                <a href="" class="small"><i class="fas fa-reply comment-icon"></i> Reply</a>
+            </div>
         </div>
     {% endfor %}
 </div>

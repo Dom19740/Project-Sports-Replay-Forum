@@ -529,6 +529,17 @@ a i:hover {
     padding: 15px;
     border-radius: 10px;
 }
+
+.comment-icon {
+    font-size: 15px;
+    color: var(--three-star-orange);
+}
+
+.comment-icon:hover {
+    color: var(--one-star-ice);
+}
+
+
 /* comments end */
 /* EVENT END */
 
