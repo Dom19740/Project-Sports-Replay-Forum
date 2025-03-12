@@ -1,4 +1,14 @@
 <h6 class="inside-header">Comments</h6>
+<div class="flex items-center justify-between text-sm px-2">
+        {% if event.comments.count %}
+        Comments
+        <span id="commentscount-{{ event.id }}" class="font-light text-gray-500 ml-1">{{ event.comments.count }}</span>
+        {% else %}
+            {% if user.is_authenticated %}
+            Add comment
+            {% endif %}
+        {% endif %}
+</div>
 
 {% if request.user.is_authenticated %}
 
@@ -7,18 +17,16 @@
         {% csrf_token %}
         {{ commentform }}
         <button @click='open = false' class='' type ='submit'>Submit</button>
+    </form>
 </div>
-
 
 {% endif %}
 
-
 {% for comment in comments %}
-        <div>
-            <p><strong>{{ comment.author.username }}</strong>:
-            <p><small>{{ comment.created }}</small></p>
-            <p class="text-xl px-4">{{ comment.body }}</p>
-        </div>
-        <br>
+    <div>
+        <p><strong>{{ comment.author.username }}</strong>:</p>
+        <p><small>{{ comment.created }}</small></p>
+        <p class="text-xl px-4">{{ comment.body }}</p>
+    </div>
+    <br>
 {% endfor %}
-

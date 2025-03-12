@@ -55,6 +55,9 @@ class Comment(models.Model):
         except:
             return f'no author : {self.body[:30]}'
         
+    class Meta:
+        ordering = ['-created']
+        
 class Reply(models.Model):
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='replies')
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='replies')
