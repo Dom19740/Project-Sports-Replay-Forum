@@ -69,12 +69,10 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        if 'auto_login' in request.GET:
-            login(request, user)
-            messages.success(request, f'Hi {user.username.title()}. Your account has been successfully activated, and you are logged in.')
-        else:
-            messages.success(request, f'Hi {user.username.title()}. Your account has been successfully activated.')
-        return redirect('home')  # Redirect to home or any other page
+
+        messages.success(request, f'Hi {user.username.title()}. Your account has been successfully activated, you can login.')
+        return redirect('users:login')
+
     else:
         messages.error(request, 'Activation link is invalid or expired')
         return redirect('home')
