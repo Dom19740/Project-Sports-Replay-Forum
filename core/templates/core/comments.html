@@ -23,12 +23,21 @@
             </div>
             <div>
                 <p class="px-4">{{ comment.body }}</p>
-                <a href="" class="small"><i class="fas fa-reply comment-icon"></i> Reply</a>
+                <a href="javascript:void(0);" class="small reply-link" data-comment-id="{{ comment.id }}"><i class="fas fa-reply comment-icon"></i> Reply</a>
+            </div>
+
+            <div id="reply-form-{{ comment.id }}" style="display: none;">
+                <div class="comment-form">
+                    <form method='POST' action="{% url 'core:reply-sent' comment.id %}#comments-section" autocomplete='off'>
+                        {% csrf_token %}
+                        {{ replyform.as_p }}
+                        <button type="submit" class="btn btn-primary text-white" value="Submit">Submit</button>
+                    </form>
+                </div>
             </div>
 
             {% for reply in comment.replies.all %}
             <br>
-
             <div class="reply">
                 <div class="d-flex justify-content-between">
                     <p><strong>{{ reply.author.username }}</strong>: <span class="small">- {{ reply.created }}</span></p>
@@ -38,8 +47,24 @@
                 </div>
                 <p class="px-4">{{ reply.body }}</p>
             </div>
-
             {% endfor %}
         </div>
     {% endfor %}
 </div>
+
+<script>
+    // Reply form
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.reply-link').forEach(function(link) {
+            link.addEventListener('click', function() {
+                var commentId = this.getAttribute('data-comment-id');
+                var replyForm = document.getElementById('reply-form-' + commentId);
+                if (replyForm.style.display === 'none' || replyForm.style.display === '') {
+                    replyForm.style.display = 'block';
+                } else {
+                    replyForm.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>

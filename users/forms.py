@@ -128,16 +128,13 @@ class CreateCommentForm(forms.ModelForm):
         labels = {
             'body': ''
         }
-        labels = {
-            'body': ''
-        }
 
 class CreateReplyForm(forms.ModelForm):
     class Meta:
         model = Reply
         fields = ['body']
         widgets = {
-            'body': forms.Textarea(attrs={'class':'font1 text-4xl', 'rows': 3, 'placeholder': 'Add a reply...'})
+            'body': forms.Textarea(attrs={'class':'font1 text-4xl', 'rows': 2, 'placeholder': 'Add a reply...', 'style': 'width: 100%;'})
         }
         labels = {
             'body': ''

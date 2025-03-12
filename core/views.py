@@ -121,6 +121,8 @@ def event(request, event_id):
     ai_review = event.ai_review
     ai_rating = event.ai_rating
     comments = event.comments.prefetch_related('replies').all()
+    commentform = CreateCommentForm()
+    replyform = CreateReplyForm()
 
     try:
         total_votes = (
@@ -133,7 +135,6 @@ def event(request, event_id):
     except Event.rating.RelatedObjectDoesNotExist:
         total_votes = 0
 
-    commentform = CreateCommentForm()
 
     context = {
         'event': event,
@@ -148,6 +149,7 @@ def event(request, event_id):
         'ai_rating': ai_rating,
         'comments': comments,
         'commentform': commentform,
+        'replyform': replyform,
     }
 
     return render(request, 'core/event.html', context)
@@ -304,12 +306,29 @@ def comment_sent(request, pk):
 
 
 @login_required
+def reply_sent(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    event = comment.event
+
+    if request.method == 'POST':
+        form = CreateReplyForm(request.POST)
+        if form.is_valid():
+            reply = form.save(commit=False)
+            reply.comment = comment
+            reply.author = request.user
+            reply.save()
+    
+    return redirect('core:event', event_id=event.id)
+
+
+@login_required
 def comment_delete(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     event = comment.event
     if request.user == comment.author:
         comment.delete()
     return redirect('core:event', event_id=event.id)
+
 
 @login_required
 def reply_delete(request, pk):

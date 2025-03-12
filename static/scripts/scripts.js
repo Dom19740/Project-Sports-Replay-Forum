@@ -80,3 +80,6 @@ function appendEvents(events) {
     eventsList.appendChild(li);
   });
 }
+
+
+
