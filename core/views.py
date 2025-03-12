@@ -8,9 +8,10 @@ from django.http import JsonResponse
 from django.core.management import call_command
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from .models import Competition, Event, Rating
+from .models import Competition, Event, Rating, Comment
 from users.forms import CreateCommentForm, CreateReplyForm
 from datetime import timedelta
+from pyexpat.errors import messages
 
 sports = [
     {'name': 'Formula 1', 'title': 'F1', 'logo': 'logo_f1.png'},
@@ -24,6 +25,13 @@ sports = [
     # {'name': 'NHL', 'title': 'NHL', 'logo': 'logo_nhl.png'},
 ]
 
+search_terms = {
+    'f1': ['formula 1'],
+    'football': ['premier', 'nations', 'champions'],
+    'motorsport': ['motogp', 'formula 1', 'NASCAR', 'IndyCar'],
+}
+
+search_terms['motor'] = search_terms['motorsport']
 
 RATINGS_TEXT = {
     5: "Hot Watch!",
@@ -217,30 +225,6 @@ def vote(request, event_id):
     return redirect('core:event', event_id=event_id)
 
 
-@login_required
-def comment_sent(request, pk):
-    event = get_object_or_404(Event, pk=pk)
-
-    if request.method == 'POST':
-        form = CreateCommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.event = event
-            comment.author = request.user
-            comment.save()
-    
-    return redirect('core:event', event_id=event.id)
-
-
-search_terms = {
-    'f1': ['formula 1'],
-    'football': ['premier', 'nations', 'champions'],
-    'motorsport': ['motogp', 'formula 1', 'NASCAR', 'IndyCar'],
-}
-
-search_terms['motor'] = search_terms['motorsport']
-
-
 def search(request):
     q = request.GET.get('q')
     if q:
@@ -302,3 +286,27 @@ def run_populate(request, command, success_message):
         return JsonResponse({'status': 'success', 'message': success_message})
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)})
+
+
+@login_required
+def comment_sent(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+
+    if request.method == 'POST':
+        form = CreateCommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.event = event
+            comment.author = request.user
+            comment.save()
+    
+    return redirect('core:event', event_id=event.id)
+
+
+@login_required
+def comment_delete(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    event = comment.event  # Get the event from the comment
+    if request.user == comment.author:
+        comment.delete()
+    return redirect('core:event', event_id=event.id)

@@ -18,5 +18,9 @@
             <p><strong>{{ comment.author.username }}</strong>: <span class="small">- {{ comment.created }}</span></p>
             <p class="px-4">{{ comment.body }}</p>
         </div>
+        <div class='flex items-center gap-'>
+            {% if request.user.is_authenticated and request.user == comment.author %}
+                <a href="{% url 'core:comment-delete' comment.id %}#comments-section" class="btn btn-danger text-white">Delete</a>
+            {% endif %}
     {% endfor %}
 </div>
