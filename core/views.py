@@ -8,7 +8,7 @@ from django.http import JsonResponse
 from django.core.management import call_command
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from .models import Competition, Event, Rating, Comment
+from .models import Competition, Event, Rating, Comment, Reply
 from users.forms import CreateCommentForm, CreateReplyForm
 from datetime import timedelta
 from pyexpat.errors import messages
@@ -120,7 +120,7 @@ def event(request, event_id):
     poster = event.poster
     ai_review = event.ai_review
     ai_rating = event.ai_rating
-    comments = event.comments.all()
+    comments = event.comments.prefetch_related('replies').all()
 
     try:
         total_votes = (
@@ -306,7 +306,15 @@ def comment_sent(request, pk):
 @login_required
 def comment_delete(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
-    event = comment.event  # Get the event from the comment
+    event = comment.event
     if request.user == comment.author:
         comment.delete()
+    return redirect('core:event', event_id=event.id)
+
+@login_required
+def reply_delete(request, pk):
+    reply = get_object_or_404(Reply, pk=pk)
+    event = reply.comment.event
+    if request.user == reply.author:
+        reply.delete()
     return redirect('core:event', event_id=event.id)

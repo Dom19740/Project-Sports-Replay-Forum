@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Competition, Event, Rating, Comment
+from .models import Competition, Event, Rating, Comment, Reply
 
 
 @admin.register(Competition)
@@ -32,6 +32,14 @@ class RatingAdmin(admin.ModelAdmin):
 @admin.register(Comment)
 class CommentsAdmin(admin.ModelAdmin):
     list_display = ('author', 'event', 'body', 'created')
+    list_filter = ('author', 'created')
+    search_fields = ('author', 'event', 'body')
+    date_hierarchy = 'created'
+
+
+@admin.register(Reply)
+class ReplysAdmin(admin.ModelAdmin):
+    list_display = ('author', 'comment', 'body', 'created')
     list_filter = ('author', 'created')
     search_fields = ('author', 'event', 'body')
     date_hierarchy = 'created'

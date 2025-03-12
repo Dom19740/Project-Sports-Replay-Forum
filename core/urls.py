@@ -14,4 +14,5 @@ urlpatterns = [
     path('run-football-populate/', lambda request: run_populate(request, 'populate_football', 'Football data populated successfully'), name='run_populate_football'),
     path('commentsent/<pk>', comment_sent, name='comment-sent'),
     path('commentdelete/<uuid:pk>/', views.comment_delete, name='comment-delete'),
+    path('replydelete/<uuid:pk>/', views.reply_delete, name='reply-delete'),
 ]

@@ -63,9 +63,13 @@ class Reply(models.Model):
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='replies')
     body = models.CharField(max_length=500)
     created = models.DateTimeField(auto_now_add=True)
-    
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
     def __str__(self):
         try:
             return f'{self.author.username} : {self.body[:30]}' 
         except:
             return f'no author : {self.body[:30]}'
+        
+    class Meta:
+        ordering = ['-created']
