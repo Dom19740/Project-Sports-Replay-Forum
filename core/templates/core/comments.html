@@ -15,12 +15,13 @@
     {% for comment in comments %}
         <br>
         <div class="comment">
-            <p><strong>{{ comment.author.username }}</strong>: <span class="small">- {{ comment.created }}</span></p>
+            <div class="d-flex justify-content-between">
+                <p><strong>{{ comment.author.username }}</strong>: <span class="small">- {{ comment.created }}</span></p>
+                {% if request.user.is_authenticated and request.user == comment.author %}
+                    <a href="{% url 'core:comment-delete' comment.id %}#comments-section" class="small">Delete</a>
+                {% endif %}
+            </div>
             <p class="px-4">{{ comment.body }}</p>
         </div>
-        <div class='flex items-center gap-'>
-            {% if request.user.is_authenticated and request.user == comment.author %}
-                <a href="{% url 'core:comment-delete' comment.id %}#comments-section" class="btn btn-danger text-white">Delete</a>
-            {% endif %}
     {% endfor %}
 </div>
