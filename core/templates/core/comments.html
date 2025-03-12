@@ -1,14 +1,4 @@
-<h6 class="inside-header">Comments</h6>
-<div class="flex items-center justify-between text-sm px-2">
-        {% if event.comments.count %}
-        Comments
-        <span id="commentscount-{{ event.id }}" class="font-light text-gray-500 ml-1">{{ event.comments.count }}</span>
-        {% else %}
-            {% if user.is_authenticated %}
-            Add comment
-            {% endif %}
-        {% endif %}
-</div>
+<h6 class="inside-header">Comments <span>{{ event.comments.count }}</span></h6>
 
 {% if request.user.is_authenticated %}
 
