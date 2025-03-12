@@ -123,7 +123,10 @@ class CreateCommentForm(forms.ModelForm):
         model = Comment
         fields = ['body']
         widgets = {
-            'body': forms.Textarea(attrs={'class':'font1 text-4xl', 'rows': 3, 'placeholder': 'Add a comment...'})
+            'body': forms.Textarea(attrs={'class':'font1 text-4xl', 'rows': 2, 'placeholder': 'Add a comment...', 'style': 'width: 100%;'})
+        }
+        labels = {
+            'body': ''
         }
         labels = {
             'body': ''

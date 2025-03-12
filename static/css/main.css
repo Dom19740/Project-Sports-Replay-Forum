@@ -513,6 +513,26 @@ a i:hover {
     margin-bottom: 15px;
 }
 
+/* comments */
+
+.comment {
+    border: 2px solid var(--dark-grey);
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.comment-form {
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.comment-form textarea {
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* comments end */
+
 /* EVENT END */
 
 /* FOOTER */

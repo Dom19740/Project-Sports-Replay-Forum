@@ -1,22 +1,20 @@
 <h6 class="inside-header">Comments <span>{{ event.comments.count }}</span></h6>
 
 {% if request.user.is_authenticated %}
-
-<div>
-    <form method='POST' action="{% url 'core:comment-sent' event.id %}" class='flex items-center p-4' autocomplete='off'>
+<div class="comment-form">
+    <form method='POST' action="{% url 'core:comment-sent' event.id %}" autocomplete='off'>
         {% csrf_token %}
         {{ commentform }}
-        <button @click='open = false' class='' type ='submit'>Submit</button>
+        <br>
+        <button type="submit" class="btn btn-primary text-white" value="Submit">Submit</button>
     </form>
 </div>
-
 {% endif %}
 
 {% for comment in comments %}
-    <div>
-        <p><strong>{{ comment.author.username }}</strong>:</p>
-        <p><small>{{ comment.created }}</small></p>
-        <p class="text-xl px-4">{{ comment.body }}</p>
-    </div>
     <br>
+    <div class="comment">
+        <p><strong>{{ comment.author.username }}</strong>: <span class="small">- {{ comment.created }}</span></p>
+        <p class="px-4">{{ comment.body }}</p>
+    </div>
 {% endfor %}
