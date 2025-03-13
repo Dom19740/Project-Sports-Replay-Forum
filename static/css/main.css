@@ -708,6 +708,11 @@ a i:hover {
     .play-button {
         font-size: 70px;
     }
+
+    .comment p,
+    .reply p {
+        text-align: left;
+    }
 }
 
 /* Always on desktop */
