@@ -24,16 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const arrow = document.getElementById('arrow');
   const welcomeContainer = document.querySelector('.welcome-container');
 
-  // Check if the welcomeContainer element is found
   if (!arrow || !welcomeContainer) {
     console.error('Arrow or Welcome Container not found in the DOM.');
     return;
   }
 
-  // Check if the container was previously hidden (stored in localStorage)
   const wasHidden = localStorage.getItem('welcomeContainerHidden') === 'true';
 
-  // Apply initial state based on localStorage value
   if (wasHidden) {
     welcomeContainer.style.display = 'none';
     arrow.classList.remove('fa-xmark');
@@ -44,23 +41,21 @@ document.addEventListener('DOMContentLoaded', () => {
     arrow.classList.add('fa-xmark');
   }
 
-  // Add event listener for arrow click
   arrow.addEventListener('click', () => {
+
     const isHidden = welcomeContainer.style.display === 'none' || welcomeContainer.style.display === '';
 
     if (isHidden) {
-      // Show the entire container (text and image)
       welcomeContainer.style.display = 'block';
       arrow.classList.remove('fa-angle-down');
       arrow.classList.add('fa-xmark');
-      // Store that the container is visible
+
       localStorage.setItem('welcomeContainerHidden', 'false');
+
     } else {
-      // Hide the entire container (text and image)
       welcomeContainer.style.display = 'none';
       arrow.classList.remove('fa-xmark');
       arrow.classList.add('fa-angle-down');
-      // Store that the container is hidden
       localStorage.setItem('welcomeContainerHidden', 'true');
     }
   });
@@ -86,7 +81,9 @@ if (switchCheckbox1) {
 const switchCheckbox2 = document.getElementById('commentsSwitchCheckDefault');
 const commentsContainer = document.querySelector('.show-comments-container');
 
-const storedCommentsState = localStorage.getItem('commentsSwitchState');
+const pageCommentsKey = 'commentsSwitchState_' + window.location.pathname;
+const storedCommentsState = localStorage.getItem(pageCommentsKey);
+
 if (storedCommentsState === 'on') {
   switchCheckbox2.checked = true;
   commentsContainer.style.display = 'block';
@@ -96,11 +93,11 @@ if (switchCheckbox2) {
   switchCheckbox2.addEventListener('change', () => {
     if (switchCheckbox2.checked) {
       commentsContainer.style.display = 'block';
-      localStorage.setItem('commentsSwitchState', 'on');
+      localStorage.setItem(pageCommentsKey, 'on');
       scrollToElement(commentsContainer);
     } else {
       commentsContainer.style.display = 'none';
-      localStorage.setItem('commentsSwitchState', 'off');
+      localStorage.setItem(pageCommentsKey, 'off');
     }
   });
 } else {
