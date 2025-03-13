@@ -1,9 +1,13 @@
 <h6 class="inside-header">Comments <span>{{ event.comments.count }}</span></h6>
 
-<div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" id="commentsSwitchCheckDefault">
-    <label class="form-check-label" for="commentsSwitchCheckDefault">Show Comments</label>
-</div>
+{% if comments %}
+
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="commentsSwitchCheckDefault">
+        <label class="form-check-label" for="commentsSwitchCheckDefault">Show Comments</label>
+    </div>
+
+{% endif %}
 
 {% if request.user.is_authenticated %}
 <div class="comment-form">
@@ -77,4 +81,27 @@
             });
         });
     });
+
+    // Comments switcn and scroll
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.location.hash === "#comments-section") {
+          const switchCheckbox2 = document.getElementById('commentsSwitchCheckDefault');
+          const commentsContainer = document.querySelector('.show-comments-container');
+          const commentsSection = document.getElementById('comments-section');
+      
+          if (switchCheckbox2 && commentsContainer && commentsSection) {
+            // Force the switch on and show the container
+            switchCheckbox2.checked = true;
+            commentsContainer.style.display = 'block';
+      
+            // Optionally update local storage for this page
+            const pageCommentsKey = 'commentsSwitchState_' + window.location.pathname;
+            localStorage.setItem(pageCommentsKey, 'on');
+      
+            // Smoothly scroll to the comments section
+            commentsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+      });
+      
 </script>
