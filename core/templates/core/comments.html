@@ -21,7 +21,9 @@
 {% endif %}
 
 <div class="show-comments-container" style="display: none;">
+
     <div id="comments-section">
+
         {% for comment in comments %}
             <br>
             <div class="comment">
@@ -37,15 +39,16 @@
                     {% endif %}
                 </div>
 
-                {% if request.user.is_authenticated %}
-                    <div>
-                        <p class="px-4">{{ comment.body }}</p>
+                <div>
+                    <p class="px-4">{{ comment.body }}</p>
+
+                    {% if request.user.is_authenticated %}
                         <a href="javascript:void(0);" class="small reply-link" data-comment-id="{{ comment.id }}">
                             <i class="fas fa-reply comment-icon"></i> Reply
                         </a>
-                    </div>
-                {% endif %}
-
+                    {% endif %}
+                </div>
+                
                 <div id="reply-form-{{ comment.id }}" style="display: none;">
                     <div class="comment-form">
                         <form method='POST' action="{% url 'core:reply-sent' comment.id %}#comments-section" autocomplete='off'>
@@ -64,17 +67,21 @@
                             <strong>{{ reply.author.username }}</strong>:
                             <span class="small">- {{ reply.created|format_comment_date }}</span>
                         </p>
+
                         {% if request.user.is_authenticated and request.user == reply.author %}
                             <a href="{% url 'core:reply-delete' reply.id %}#comments-section" class="small">
                                 <i class="fa-solid fa-trash comment-icon"></i>
                             </a>
                         {% endif %}
+
                     </div>
                     <p class="px-4">{{ reply.body }}</p>
                 </div>
                 {% endfor %}
+
             </div>
         {% endfor %}
+
     </div>
 </div>
 
