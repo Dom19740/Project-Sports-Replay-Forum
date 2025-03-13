@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Spoiler Switches
+// Spoiler Switch
 const switchCheckbox1 = document.getElementById('flexSwitchCheckDefault');
 const videoContainer = document.querySelector('.show-video-container');
 
@@ -33,6 +33,23 @@ if (switchCheckbox1) {
   } else {
     console.warn("Element with ID 'flexSwitchCheckDefault' not found.");
 }
+
+
+// Comments Switch
+const switchCheckbox2 = document.getElementById('commentsSwitchCheckDefault');
+const commentsContainer = document.querySelector('.show-comments-container');
+
+if (switchCheckbox2) {
+  switchCheckbox2.addEventListener('change', () => {
+    commentsContainer.style.display = switchCheckbox2.checked ? 'block' : 'none';
+    if (switchCheckbox2.checked) {
+      scrollToElement(commentsContainer);
+    }
+  });
+} else {
+  console.warn("Element with ID 'commentsSwitchCheckDefault' not found.");
+}
+
 
 function scrollToElement(element) {
   element.scrollIntoView({ behavior: 'smooth', block: 'start' });

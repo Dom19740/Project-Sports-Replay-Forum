@@ -1,5 +1,10 @@
 <h6 class="inside-header">Comments <span>{{ event.comments.count }}</span></h6>
 
+<div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="commentsSwitchCheckDefault">
+    <label class="form-check-label" for="commentsSwitchCheckDefault">Show Comments</label>
+</div>
+
 {% if request.user.is_authenticated %}
 <div class="comment-form">
     <form method='POST' action="{% url 'core:comment-sent' event.id %}#comments-section" autocomplete='off'>
@@ -11,45 +16,50 @@
 </div>
 {% endif %}
 
-<div id="comments-section">
-    {% for comment in comments %}
-        <br>
-        <div class="comment">
-            <div class="d-flex justify-content-between">
-                <p><strong>{{ comment.author.username }}</strong>: <span class="small">- {{ comment.created }}</span></p>
-                {% if request.user.is_authenticated and request.user == comment.author %}
-                    <a href="{% url 'core:comment-delete' comment.id %}#comments-section" class="small"><i class="fa-solid fa-trash comment-icon"></i></a>
-                {% endif %}
-            </div>
-            <div>
-                <p class="px-4">{{ comment.body }}</p>
-                <a href="javascript:void(0);" class="small reply-link" data-comment-id="{{ comment.id }}"><i class="fas fa-reply comment-icon"></i> Reply</a>
-            </div>
 
-            <div id="reply-form-{{ comment.id }}" style="display: none;">
-                <div class="comment-form">
-                    <form method='POST' action="{% url 'core:reply-sent' comment.id %}#comments-section" autocomplete='off'>
-                        {% csrf_token %}
-                        {{ replyform.as_p }}
-                        <button type="submit" class="btn btn-primary text-white" value="Submit">Submit</button>
-                    </form>
-                </div>
-            </div>
+<div class="show-comments-container" style="display: none;">
 
-            {% for reply in comment.replies.all %}
+    <div id="comments-section">
+        {% for comment in comments %}
             <br>
-            <div class="reply">
+            <div class="comment">
                 <div class="d-flex justify-content-between">
-                    <p><strong>{{ reply.author.username }}</strong>: <span class="small">- {{ reply.created }}</span></p>
-                    {% if request.user.is_authenticated and request.user == reply.author %}
-                        <a href="{% url 'core:reply-delete' reply.id %}#comments-section" class="small"><i class="fa-solid fa-trash comment-icon"></i></a>
+                    <p><strong>{{ comment.author.username }}</strong>: <span class="small">- {{ comment.created }}</span></p>
+                    {% if request.user.is_authenticated and request.user == comment.author %}
+                        <a href="{% url 'core:comment-delete' comment.id %}#comments-section" class="small"><i class="fa-solid fa-trash comment-icon"></i></a>
                     {% endif %}
                 </div>
-                <p class="px-4">{{ reply.body }}</p>
+                <div>
+                    <p class="px-4">{{ comment.body }}</p>
+                    <a href="javascript:void(0);" class="small reply-link" data-comment-id="{{ comment.id }}"><i class="fas fa-reply comment-icon"></i> Reply</a>
+                </div>
+
+                <div id="reply-form-{{ comment.id }}" style="display: none;">
+                    <div class="comment-form">
+                        <form method='POST' action="{% url 'core:reply-sent' comment.id %}#comments-section" autocomplete='off'>
+                            {% csrf_token %}
+                            {{ replyform.as_p }}
+                            <button type="submit" class="btn btn-primary text-white" value="Submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+                {% for reply in comment.replies.all %}
+                <br>
+                <div class="reply">
+                    <div class="d-flex justify-content-between">
+                        <p><strong>{{ reply.author.username }}</strong>: <span class="small">- {{ reply.created }}</span></p>
+                        {% if request.user.is_authenticated and request.user == reply.author %}
+                            <a href="{% url 'core:reply-delete' reply.id %}#comments-section" class="small"><i class="fa-solid fa-trash comment-icon"></i></a>
+                        {% endif %}
+                    </div>
+                    <p class="px-4">{{ reply.body }}</p>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
+
 </div>
 
 <script>
