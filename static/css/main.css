@@ -514,6 +514,11 @@ a i:hover {
     margin-bottom: 15px;
 }
 
+.spoiler-buttons {
+    display: flex;
+    align-items: left;
+}
+
 /* comments */
 .comment {
     border: 2px solid var(--dark-grey);
@@ -563,6 +568,10 @@ a i:hover {
 }
 
 /* FOOTER END */
+
+
+
+/* MEDIA QUERIES */
 
 /* Media query for mobile screens */
 @media (max-width: 1200px) {
@@ -670,10 +679,6 @@ a i:hover {
         margin: 0 auto;
         max-height: 75px;
         max-width: 100%;
-    }
-
-    .btn-pill {
-        text-align: center;
     }
     
     .btn-back {
