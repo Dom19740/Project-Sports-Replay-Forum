@@ -39,11 +39,21 @@ if (switchCheckbox1) {
 const switchCheckbox2 = document.getElementById('commentsSwitchCheckDefault');
 const commentsContainer = document.querySelector('.show-comments-container');
 
+const storedCommentsState = localStorage.getItem('commentsSwitchState');
+if (storedCommentsState === 'on') {
+  switchCheckbox2.checked = true;
+  commentsContainer.style.display = 'block';
+}
+
 if (switchCheckbox2) {
   switchCheckbox2.addEventListener('change', () => {
-    commentsContainer.style.display = switchCheckbox2.checked ? 'block' : 'none';
     if (switchCheckbox2.checked) {
+      commentsContainer.style.display = 'block';
+      localStorage.setItem('commentsSwitchState', 'on');
       scrollToElement(commentsContainer);
+    } else {
+      commentsContainer.style.display = 'none';
+      localStorage.setItem('commentsSwitchState', 'off');
     }
   });
 } else {
