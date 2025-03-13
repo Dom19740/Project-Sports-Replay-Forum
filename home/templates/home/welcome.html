@@ -18,55 +18,6 @@
         <p>Watch the highlights video and access results directly from our event pages.</p>
     </div>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const arrow = document.getElementById('arrow');
-      const welcomeContainer = document.querySelector('.welcome-container');
-  
-      // Check if the welcomeContainer element is found
-      if (!arrow || !welcomeContainer) {
-        console.error('Arrow or Welcome Container not found in the DOM.');
-        return;
-      }
-  
-      // Check if the container was previously hidden (stored in localStorage)
-      const wasHidden = localStorage.getItem('welcomeContainerHidden') === 'true';
-  
-      // Apply initial state based on localStorage value
-      if (wasHidden) {
-        welcomeContainer.style.display = 'none';
-        arrow.classList.remove('fa-xmark');
-        arrow.classList.add('fa-angle-down');
-      } else {
-        welcomeContainer.style.display = 'block';
-        arrow.classList.remove('fa-angle-down');
-        arrow.classList.add('fa-xmark');
-      }
-  
-      // Add event listener for arrow click
-      arrow.addEventListener('click', () => {
-        const isHidden = welcomeContainer.style.display === 'none' || welcomeContainer.style.display === '';
-  
-        if (isHidden) {
-          // Show the entire container (text and image)
-          welcomeContainer.style.display = 'block';
-          arrow.classList.remove('fa-angle-down');
-          arrow.classList.add('fa-xmark');
-          // Store that the container is visible
-          localStorage.setItem('welcomeContainerHidden', 'false');
-        } else {
-          // Hide the entire container (text and image)
-          welcomeContainer.style.display = 'none';
-          arrow.classList.remove('fa-xmark');
-          arrow.classList.add('fa-angle-down');
-          // Store that the container is hidden
-          localStorage.setItem('welcomeContainerHidden', 'true');
-        }
-      });
-    });
-  </script>
-  
-
 
 <!-- Welcome Modal -->
 <!-- <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
