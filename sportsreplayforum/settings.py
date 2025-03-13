@@ -25,7 +25,6 @@ APP_NAME = 'Sports Replay Forum'
 
 DJANGO_ENV = os.environ.get('DJANGO_ENV', 'production')
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
