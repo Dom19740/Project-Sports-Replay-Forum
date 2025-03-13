@@ -36,12 +36,15 @@
                         </a>
                     {% endif %}
                 </div>
-                <div>
-                    <p class="px-4">{{ comment.body }}</p>
-                    <a href="javascript:void(0);" class="small reply-link" data-comment-id="{{ comment.id }}">
-                        <i class="fas fa-reply comment-icon"></i> Reply
-                    </a>
-                </div>
+
+                {% if request.user.is_authenticated %}
+                    <div>
+                        <p class="px-4">{{ comment.body }}</p>
+                        <a href="javascript:void(0);" class="small reply-link" data-comment-id="{{ comment.id }}">
+                            <i class="fas fa-reply comment-icon"></i> Reply
+                        </a>
+                    </div>
+                {% endif %}
 
                 <div id="reply-form-{{ comment.id }}" style="display: none;">
                     <div class="comment-form">
