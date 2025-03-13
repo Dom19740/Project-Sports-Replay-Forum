@@ -23,6 +23,5 @@ db.sqlite3
 f1_2024_races.json
 db.sqlite3
 staticfiles
-core/migrations/
 logs/
 debug.log
