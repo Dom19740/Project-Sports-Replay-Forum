@@ -641,6 +641,11 @@ a i:hover {
         display: block; 
     }
 
+    .break-here {
+        display: inline-block;
+        word-break: break-word;
+      }
+
     .events-scroll {
         height: auto;
         overflow-y: visible;
