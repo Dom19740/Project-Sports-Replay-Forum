@@ -198,7 +198,9 @@ def vote(request, event_id):
                 rating.percentage = 0.0  # Handle no votes
 
             rating.save()
-            rating.voters.add(request.user)
+
+            if request.user.is_authenticated:
+                rating.voters.add(request.user)
 
         like_type = None
         if 'like' in request.POST:

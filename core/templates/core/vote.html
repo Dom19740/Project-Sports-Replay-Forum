@@ -3,7 +3,6 @@
 <div {% if not request.user.is_superuser and request.user in event.rating.voters.all %}style="display: none;"{% endif %}>
     <h6>Rate the Event</h6>
      {% if event|is_past and not event|voting_closed %}
-        {% if request.user.is_authenticated %}
         <form method="post" action="{% url 'core:vote' event.id %}" class="vote">
             {% csrf_token %}
             <input type="radio" name="stars" value="5" required><span> 5 stars - {{ RATINGS_TEXT.5 }}</span><br>
@@ -14,15 +13,6 @@
             <br>
             <input type="submit" class="btn btn-primary text-white" value="Submit">
         </form>
-
-        {% else %}
-            
-            <p>Login to Rate or Comment</p>
-            <nav>
-                <a href="{% url 'users:login' %}?next={{ request.path }}" class="btn btn-primary text-white">Login</a> &nbsp;
-                <a href="{% url 'users:register' %}?next={{ request.path }}" class="btn btn-primary text-white">Register</a>
-            </nav>
-        {% endif %}
     {% else %}
         <p>Rating opens 45 minutes after the event starts and is available for 7 days.</p>
     {% endif %}
