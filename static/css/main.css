@@ -520,6 +520,10 @@ a i:hover {
 }
 
 /* comments */
+
+.comment-login {
+    padding-bottom: 0;
+}
 .comment {
     border: 2px solid var(--dark-grey);
     border-radius: 15px;
