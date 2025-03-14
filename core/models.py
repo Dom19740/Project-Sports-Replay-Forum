@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
 from django.contrib.auth.models import User
+import uuid
 
 class Competition(models.Model):
     league = models.CharField(max_length=255, default="")
@@ -35,6 +36,40 @@ class Rating(models.Model):
     one_star = models.IntegerField(default=0)
     percentage = models.FloatField(default=0.0)
     voters = models.ManyToManyField(User, related_name='rated_events')
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)
 
     def __str__(self):
         return f"{self.event.event_type} - {self.event.event_list.name}"
+
+class Comment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='comments')
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='comments')
+    body = models.CharField(max_length=500)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        try:
+            return f'{self.author.username} : {self.body[:30]}' 
+        except:
+            return f'no author : {self.body[:30]}'
+        
+    class Meta:
+        ordering = ['-created']
+        
+class Reply(models.Model):
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='replies')
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='replies')
+    body = models.CharField(max_length=500)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        try:
+            return f'{self.author.username} : {self.body[:30]}' 
+        except:
+            return f'no author : {self.body[:30]}'
+        
+    class Meta:
+        ordering = ['-created']

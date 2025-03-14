@@ -13,6 +13,7 @@ class HomeView(View):
         now = timezone.now()
         today = now.replace(hour=0, minute=0, second=0, microsecond=0)
         tomorrow = today + timedelta(days=1)
+        last_week = now - timedelta(days=7)
 
         recent_ratings = Rating.objects.all().order_by('-id')[:10]
         recent_voted_events = []
@@ -26,11 +27,13 @@ class HomeView(View):
         })
             
         todays_events = Event.objects.filter(date_time__range=(today, tomorrow)).order_by('date_time')
-
+        recent_events = Event.objects.filter(date_time__range=(last_week, now)).order_by('-date_time')
+        
         context = {
             'installed': settings.INSTALLED_APPS,
             'recent_voted_events': recent_voted_events,
             'todays_events': todays_events,
+            'recent_events': recent_events,
         }
         
         return render(request, 'home/home.html', context)

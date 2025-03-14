@@ -1,4 +1,4 @@
-{% extends 'base_3_split_right.html' %}
+{% extends 'base_4_split_right.html' %}
 
 {% block title %}{{ event.event_list }} - {{ event.event_type|title }} | Should I Watch Sports{% endblock %}
 
@@ -10,7 +10,7 @@
 
 {% endblock %}
 
-{% block main_container_left_1 %}
+{% block main_container_right_1 %}
 
     <div class="sub-container-split">
 
@@ -26,19 +26,25 @@
 
 {% endblock %}
 
-{% block main_container_left_2 %}
+{% block main_container_right_2 %}
 
     {% include 'core/vote.html' %}
 
 {% endblock %}
 
-{% block main_container_right %}
+{% block main_container_left %}
 
     <div class="sign-container">
         <img src="{{ poster }}" alt="Poster" class="poster">
     </div>
     
     {% include 'core/spoiler_zone.html' %}
+
+{% endblock %}
+
+{% block main_container_bottom %}
+
+    {% include 'core/comments.html' %}
 
 {% endblock %}
 

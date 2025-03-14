@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm, SetPasswordForm, PasswordChangeForm
+from core.models import Comment, Reply
 from django.core.validators import EmailValidator
 
 class CustomRegisterForm(UserCreationForm):
@@ -117,3 +118,26 @@ class CustomPasswordChangeForm(PasswordChangeForm):
 
 class DeleteAccountForm(forms.Form):
     confirm = forms.BooleanField(label="I confirm I want to delete my account", required=True)
+
+
+class CreateCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['body']
+        widgets = {
+            'body': forms.Textarea(attrs={'class':'font1 text-4xl', 'rows': 2, 'placeholder': 'Add a comment...', 'style': 'width: 100%;'})
+        }
+        labels = {
+            'body': ''
+        }
+
+class CreateReplyForm(forms.ModelForm):
+    class Meta:
+        model = Reply
+        fields = ['body']
+        widgets = {
+            'body': forms.Textarea(attrs={'class':'font1 text-4xl', 'rows': 2, 'placeholder': 'Add a reply...', 'style': 'width: 100%;'})
+        }
+        labels = {
+            'body': ''
+        }

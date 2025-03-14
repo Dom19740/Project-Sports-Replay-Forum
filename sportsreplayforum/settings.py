@@ -25,7 +25,6 @@ APP_NAME = 'Sports Replay Forum'
 
 DJANGO_ENV = os.environ.get('DJANGO_ENV', 'production')
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -41,7 +40,6 @@ ALLOWED_HOSTS =  [
     'localhost',
     'shouldiwatchsports.com',
     'www.shouldiwatchsports.com',
-    '212.227.79.104',
     'test.shouldiwatchsports.com',
     'www.test.shouldiwatchsports.com'
 ]
@@ -49,9 +47,8 @@ ALLOWED_HOSTS =  [
 CSRF_TRUSTED_ORIGINS = [
     'https://shouldiwatchsports.com',
     'https://www.shouldiwatchsports.com',
-    'https://212.227.79.104',
-    'https://test.shouldiwatchsports.com'
-    'https://www.test.shouldiwatchsports.com'
+    'http://test.shouldiwatchsports.com'
+    'http://www.test.shouldiwatchsports.com'
 ]
 
 CSRF_COOKIE_SECURE = True
@@ -124,12 +121,13 @@ WSGI_APPLICATION = 'sportsreplayforum.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 postgre_pass = os.environ.get("POSTGRE_PASS")
+postgre_name = "testsportsforum" if DJANGO_ENV == 'local' else 'sportsforum'
 postgre_host = "212.227.79.104" if DJANGO_ENV == 'local' else 'localhost'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sportsforum',
+        'NAME': postgre_name,
         'USER': 'dom974',
         'PASSWORD': postgre_pass,
         'HOST': postgre_host,
@@ -246,3 +244,32 @@ AUTHENTICATION_BACKENDS = [
 TEMPLATE_CONTEXT_PROCESSORS = [
     'sportsreplayforum.core.context_processors.sports',
 ]
+
+
+""" LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'debug.log'),
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'core': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+} """

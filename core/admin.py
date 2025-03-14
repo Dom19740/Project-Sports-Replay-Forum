@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import Competition, Event, Rating
+from .models import Competition, Event, Rating, Comment, Reply
 
 class UserAdmin(BaseUserAdmin):
     list_display = ('username', 'email', 'is_staff', 'is_active', 'is_superuser')
@@ -26,9 +26,25 @@ class EventAdmin(admin.ModelAdmin):
 
 @admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ('event', 'five_stars', 'four_stars', 'three_stars', 'two_stars', 'one_star', 'percentage', 'get_voters')
+    list_display = ('event', 'five_stars', 'four_stars', 'three_stars', 'two_stars', 'one_star', 'percentage', 'get_voters', 'likes', 'dislikes')
     list_filter = ('five_stars', 'four_stars', 'three_stars', 'two_stars', 'one_star', 'percentage')
 
     def get_voters(self, obj):
         return ', '.join([voter.username for voter in obj.voters.all()])
     get_voters.short_description = 'Voters'
+
+
+@admin.register(Comment)
+class CommentsAdmin(admin.ModelAdmin):
+    list_display = ('author', 'event', 'body', 'created')
+    list_filter = ('author', 'created')
+    search_fields = ('author', 'event', 'body')
+    date_hierarchy = 'created'
+
+
+@admin.register(Reply)
+class ReplysAdmin(admin.ModelAdmin):
+    list_display = ('author', 'comment', 'body', 'created')
+    list_filter = ('author', 'created')
+    search_fields = ('author', 'event', 'body')
+    date_hierarchy = 'created'

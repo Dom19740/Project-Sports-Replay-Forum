@@ -11,61 +11,13 @@
         <p>SIWS provides crowd-sourced and AI ratings (AI currently only for F1 events, other sports coming soon), helping you decide without spoilers.</p>
         <p>Rate an event that you watched, helping other users make a spoiler-free decision.</p>
         <ul>
-          <li><strong>HOT WATCH</strong> - watch the full replay</li>
-          <li><strong>MID TEMP</strong> - catch the highlights</li>
-          <li><strong>NOT WATCH</strong> - skip to the results</li>
+          <li><img src="{% static 'img/logo_flame_large.png' %}" alt="HOT WATCH" class="welcome-heat-logos"><strong>HOT WATCH</strong><span class="break-here"> - watch a full replay</span></li>
+          <li><img src="{% static 'img/logo_mid.png' %}" alt="MID TEMP" class="welcome-heat-logos"><strong>MID TEMP</strong><span class="break-here"> - catch the highlights</span></li>
+          <li><img src="{% static 'img/logo_cold.png' %}" alt="NOT WATCH" class="welcome-heat-logos"><strong>NOT WATCH</strong><span class="break-here"> - skip to the results</span></li>
         </ul>
         <p>Watch the highlights video and access results directly from our event pages.</p>
     </div>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const arrow = document.getElementById('arrow');
-      const welcomeContainer = document.querySelector('.welcome-container');
-  
-      // Check if the welcomeContainer element is found
-      if (!arrow || !welcomeContainer) {
-        console.error('Arrow or Welcome Container not found in the DOM.');
-        return;
-      }
-  
-      // Check if the container was previously hidden (stored in localStorage)
-      const wasHidden = localStorage.getItem('welcomeContainerHidden') === 'true';
-  
-      // Apply initial state based on localStorage value
-      if (wasHidden) {
-        welcomeContainer.style.display = 'none';
-        arrow.classList.remove('fa-xmark');
-        arrow.classList.add('fa-angle-down');
-      } else {
-        welcomeContainer.style.display = 'block';
-        arrow.classList.remove('fa-angle-down');
-        arrow.classList.add('fa-xmark');
-      }
-  
-      // Add event listener for arrow click
-      arrow.addEventListener('click', () => {
-        const isHidden = welcomeContainer.style.display === 'none' || welcomeContainer.style.display === '';
-  
-        if (isHidden) {
-          // Show the entire container (text and image)
-          welcomeContainer.style.display = 'block';
-          arrow.classList.remove('fa-angle-down');
-          arrow.classList.add('fa-xmark');
-          // Store that the container is visible
-          localStorage.setItem('welcomeContainerHidden', 'false');
-        } else {
-          // Hide the entire container (text and image)
-          welcomeContainer.style.display = 'none';
-          arrow.classList.remove('fa-xmark');
-          arrow.classList.add('fa-angle-down');
-          // Store that the container is hidden
-          localStorage.setItem('welcomeContainerHidden', 'true');
-        }
-      });
-    });
-  </script>
-  
 
 
 <!-- Welcome Modal -->

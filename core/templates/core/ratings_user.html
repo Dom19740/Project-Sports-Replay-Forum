@@ -8,17 +8,17 @@
 
     {% if event.rating.percentage >= 66 %}
         
-        <h3>HOT WATCH!</h3><img src="{% static 'img/logo_flame_large.png' %}" alt="HOT WATCH" class="rating-logo">
+        <img src="{% static 'img/logo_flame_large.png' %}" alt="HOT WATCH" class="rating-logo"><h3>HOT WATCH!</h3>
         <h6>Watch the Full Replay</h6>
 
     {% elif event.rating.percentage >= 33 %}
 
-        <h3>MID TEMP!</h3><img src="{% static 'img/logo_mid.png' %}" alt="MID TEMP" class="rating-logo">
+        <img src="{% static 'img/logo_mid.png' %}" alt="MID TEMP" class="rating-logo"><h3>MID TEMP!</h3>
         <h6>Watch the Highlights</h6>
 
     {% else %}
 
-        <h3>NOT WATCH!</h3><img src="{% static 'img/logo_cold.png' %}" alt="NOT WATCH" class="rating-logo">
+        <img src="{% static 'img/logo_cold.png' %}" alt="NOT WATCH" class="rating-logo"><h3>NOT WATCH!</h3>
         <h6>Check Out the Results</h6>
 
     {% endif %}
@@ -98,5 +98,25 @@
     <a href=" https://bsky.app/intent/compose?text={{ event.event_list }}%20{{ event.event_type|title }}%20Rating%20-%20Should%20I%20Watch%20Sports%20{{ request.build_absolute_uri|urlencode }}" target="_blank" title="Share on Bluesky">
         <i style="font-size: 24px" class="fa-brands fa-bluesky social-icons"></i>
     </a>
-
 </div>
+
+{% if event.rating.voters.all|length > 0 %}
+<form method="post" action="{% url 'core:vote' event.id %}" class="mt-3">
+{% csrf_token %}
+<div class="btn-group rounded-pill" role="group" aria-label="Like Dislike">
+    <button type="submit" name="like" class="btn btn-outline-secondary btn-like">
+        <i class="fas fa-thumbs-up"></i>
+        {% if event.rating.likes > 0 %}
+            {{ event.rating.likes }}
+        {% endif %}
+    </button>
+    <button type="submit" name="dislike" class="btn btn-outline-secondary btn-like">
+        <i class="fas fa-thumbs-down"></i>
+        {% if event.rating.dislikes > 0 %}
+            {{ event.rating.dislikes }}
+        {% endif %}
+    </button>
+</div>
+</form>
+{% endif %}
+

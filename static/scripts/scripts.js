@@ -19,7 +19,49 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Spoiler Switches
+// Welcome container hider
+document.addEventListener('DOMContentLoaded', () => {
+  const arrow = document.getElementById('arrow');
+  const welcomeContainer = document.querySelector('.welcome-container');
+
+  if (!arrow || !welcomeContainer) {
+    console.error('Arrow or Welcome Container not found in the DOM.');
+    return;
+  }
+
+  const wasHidden = localStorage.getItem('welcomeContainerHidden') === 'true';
+
+  if (wasHidden) {
+    welcomeContainer.style.display = 'none';
+    arrow.classList.remove('fa-xmark');
+    arrow.classList.add('fa-angle-down');
+  } else {
+    welcomeContainer.style.display = 'block';
+    arrow.classList.remove('fa-angle-down');
+    arrow.classList.add('fa-xmark');
+  }
+
+  arrow.addEventListener('click', () => {
+
+    const isHidden = welcomeContainer.style.display === 'none' || welcomeContainer.style.display === '';
+
+    if (isHidden) {
+      welcomeContainer.style.display = 'block';
+      arrow.classList.remove('fa-angle-down');
+      arrow.classList.add('fa-xmark');
+
+      localStorage.setItem('welcomeContainerHidden', 'false');
+
+    } else {
+      welcomeContainer.style.display = 'none';
+      arrow.classList.remove('fa-xmark');
+      arrow.classList.add('fa-angle-down');
+      localStorage.setItem('welcomeContainerHidden', 'true');
+    }
+  });
+});
+
+// Spoiler Switch
 const switchCheckbox1 = document.getElementById('flexSwitchCheckDefault');
 const videoContainer = document.querySelector('.show-video-container');
 
@@ -33,6 +75,35 @@ if (switchCheckbox1) {
   } else {
     console.warn("Element with ID 'flexSwitchCheckDefault' not found.");
 }
+
+
+// Comments Switch
+const switchCheckbox2 = document.getElementById('commentsSwitchCheckDefault');
+const commentsContainer = document.querySelector('.show-comments-container');
+
+const pageCommentsKey = 'commentsSwitchState_' + window.location.pathname;
+const storedCommentsState = localStorage.getItem(pageCommentsKey);
+
+if (storedCommentsState === 'on') {
+  switchCheckbox2.checked = true;
+  commentsContainer.style.display = 'block';
+}
+
+if (switchCheckbox2) {
+  switchCheckbox2.addEventListener('change', () => {
+    if (switchCheckbox2.checked) {
+      commentsContainer.style.display = 'block';
+      localStorage.setItem(pageCommentsKey, 'on');
+      scrollToElement(commentsContainer);
+    } else {
+      commentsContainer.style.display = 'none';
+      localStorage.setItem(pageCommentsKey, 'off');
+    }
+  });
+} else {
+  console.warn("Element with ID 'commentsSwitchCheckDefault' not found.");
+}
+
 
 function scrollToElement(element) {
   element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -80,3 +151,6 @@ function appendEvents(events) {
     eventsList.appendChild(li);
   });
 }
+
+
+

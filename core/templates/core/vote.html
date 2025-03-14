@@ -13,10 +13,11 @@
             <input type="radio" name="stars" value="1"><span> 1 stars - {{ RATINGS_TEXT.1 }}</span><br>
             <br>
             <input type="submit" class="btn btn-primary text-white" value="Submit">
-          </form>
+        </form>
+
         {% else %}
             
-            <p>Login or Register to Rate</p>
+            <p>Login to Rate or Comment</p>
             <nav>
                 <a href="{% url 'users:login' %}?next={{ request.path }}" class="btn btn-primary text-white">Login</a> &nbsp;
                 <a href="{% url 'users:register' %}?next={{ request.path }}" class="btn btn-primary text-white">Register</a>

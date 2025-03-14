@@ -7,8 +7,11 @@ from django.urls import reverse
 from django.http import JsonResponse
 from django.core.management import call_command
 from django.conf import settings
-from .models import Competition, Event, Rating
+from django.contrib.auth.decorators import login_required
+from .models import Competition, Event, Rating, Comment, Reply
+from users.forms import CreateCommentForm, CreateReplyForm
 from datetime import timedelta
+from pyexpat.errors import messages
 
 sports = [
     {'name': 'Formula 1', 'title': 'F1', 'logo': 'logo_f1.png'},
@@ -22,6 +25,13 @@ sports = [
     # {'name': 'NHL', 'title': 'NHL', 'logo': 'logo_nhl.png'},
 ]
 
+search_terms = {
+    'f1': ['formula 1'],
+    'football': ['premier', 'nations', 'champions'],
+    'motorsport': ['motogp', 'formula 1', 'NASCAR', 'IndyCar'],
+}
+
+search_terms['motor'] = search_terms['motorsport']
 
 RATINGS_TEXT = {
     5: "Hot Watch!",
@@ -110,6 +120,9 @@ def event(request, event_id):
     poster = event.poster
     ai_review = event.ai_review
     ai_rating = event.ai_rating
+    comments = event.comments.prefetch_related('replies').all()
+    commentform = CreateCommentForm()
+    replyform = CreateReplyForm()
 
     try:
         total_votes = (
@@ -122,7 +135,8 @@ def event(request, event_id):
     except Event.rating.RelatedObjectDoesNotExist:
         total_votes = 0
 
-    return render(request, 'core/event.html', {
+
+    context = {
         'event': event,
         'RATINGS_TEXT': RATINGS_TEXT,
         'video_id': video_id,
@@ -133,7 +147,12 @@ def event(request, event_id):
         'poster': poster,
         'ai_review': ai_review,
         'ai_rating': ai_rating,
-    })
+        'comments': comments,
+        'commentform': commentform,
+        'replyform': replyform,
+    }
+
+    return render(request, 'core/event.html', context)
 
 
 def vote(request, event_id):
@@ -141,54 +160,71 @@ def vote(request, event_id):
     rating, created = Rating.objects.get_or_create(event=event)
 
     if request.method == 'POST':
-        rating_type = request.POST.get('stars')
-        if rating_type == '5':
-            rating.five_stars += 1
-        elif rating_type == '4':
-            rating.four_stars += 1
-        elif rating_type == '3':
-            rating.three_stars += 1
-        elif rating_type == '2':
-            rating.two_stars += 1
-        elif rating_type == '1':
-            rating.one_star += 1
+        if 'stars' in request.POST:
+            rating_type = request.POST.get('stars')
 
-        total_votes = (
-            rating.five_stars + 
-            rating.four_stars + 
-            rating.three_stars + 
-            rating.two_stars + 
-            rating.one_star
-        )
+            if rating_type == '5':
+                rating.five_stars += 1
+            elif rating_type == '4':
+                rating.four_stars += 1
+            elif rating_type == '3':
+                rating.three_stars += 1
+            elif rating_type == '2':
+                rating.two_stars += 1
+            elif rating_type == '1':
+                rating.one_star += 1
 
-        # Calculate the total score based on normalized weights
-        weighted_average = (
-            (rating.five_stars * 5) + 
-            (rating.four_stars * 4) + 
-            (rating.three_stars * 3) + 
-            (rating.two_stars * 2) + 
-            (rating.one_star * 1)
-        ) / total_votes
+            total_votes = (
+                rating.five_stars + 
+                rating.four_stars + 
+                rating.three_stars + 
+                rating.two_stars + 
+                rating.one_star
+            )
 
-        # Scale the weighted average to a range of 1 to 100
-        if total_votes > 0:
-            rating.percentage = (weighted_average / 5) * 100
-        else:
-            rating.percentage = 0.0  # Handle no votes
+            # Calculate the total score based on normalized weights
+            weighted_average = (
+                (rating.five_stars * 5) + 
+                (rating.four_stars * 4) + 
+                (rating.three_stars * 3) + 
+                (rating.two_stars * 2) + 
+                (rating.one_star * 1)
+            ) / total_votes
 
-        rating.save()
-        rating.voters.add(request.user)
+            # Scale the weighted average to a range of 1 to 100
+            if total_votes > 0:
+                rating.percentage = (weighted_average / 5) * 100
+            else:
+                rating.percentage = 0.0  # Handle no votes
+
+            rating.save()
+            rating.voters.add(request.user)
+
+        like_type = None
+        if 'like' in request.POST:
+            like_type = 'liked'
+        elif 'dislike' in request.POST:
+            like_type = 'disliked'
+
+        if like_type:
+            current_vote = request.COOKIES.get(f'voted_{event_id}')
+            if current_vote != like_type:
+                if current_vote == 'liked':
+                    rating.likes -= 1
+                elif current_vote == 'disliked':
+                    rating.dislikes -= 1
+
+                if like_type == 'liked':
+                    rating.likes += 1
+                elif like_type == 'disliked':
+                    rating.dislikes += 1
+
+                rating.save()
+                response = redirect('core:event', event_id=event_id)
+                response.set_cookie(f'voted_{event_id}', like_type, max_age=365*24*60*60)
+                return response
 
     return redirect('core:event', event_id=event_id)
-
-
-search_terms = {
-    'f1': ['formula 1'],
-    'football': ['premier', 'nations', 'champions'],
-    'motorsport': ['motogp', 'formula 1', 'NASCAR', 'IndyCar'],
-}
-
-search_terms['motor'] = search_terms['motorsport']
 
 
 def search(request):
@@ -252,3 +288,52 @@ def run_populate(request, command, success_message):
         return JsonResponse({'status': 'success', 'message': success_message})
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)})
+
+
+@login_required
+def comment_sent(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+
+    if request.method == 'POST':
+        form = CreateCommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.event = event
+            comment.author = request.user
+            comment.save()
+    
+    return redirect('core:event', event_id=event.id)
+
+
+@login_required
+def reply_sent(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    event = comment.event
+
+    if request.method == 'POST':
+        form = CreateReplyForm(request.POST)
+        if form.is_valid():
+            reply = form.save(commit=False)
+            reply.comment = comment
+            reply.author = request.user
+            reply.save()
+    
+    return redirect('core:event', event_id=event.id)
+
+
+@login_required
+def comment_delete(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    event = comment.event
+    if request.user == comment.author:
+        comment.delete()
+    return redirect('core:event', event_id=event.id)
+
+
+@login_required
+def reply_delete(request, pk):
+    reply = get_object_or_404(Reply, pk=pk)
+    event = reply.comment.event
+    if request.user == reply.author:
+        reply.delete()
+    return redirect('core:event', event_id=event.id)
