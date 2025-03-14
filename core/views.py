@@ -216,7 +216,7 @@ def vote(request, event_id):
             like_type = 'disliked'
 
         if like_type:
-            current_vote = request.COOKIES.get(f'voted_{event_id}')
+            current_vote = request.COOKIES.get(f'liked_{event_id}')
             if current_vote != like_type:
                 if current_vote == 'liked':
                     rating.likes -= 1
@@ -230,7 +230,7 @@ def vote(request, event_id):
 
                 rating.save()
                 response = redirect('core:event', event_id=event_id)
-                response.set_cookie(f'voted_{event_id}', like_type, max_age=365*24*60*60)
+                response.set_cookie(f'liked_{event_id}', like_type, max_age=365*24*60*60)
                 return response
 
     return redirect('core:event', event_id=event_id)
