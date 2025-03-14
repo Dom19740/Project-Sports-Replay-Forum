@@ -135,6 +135,7 @@ def event(request, event_id):
     except Event.rating.RelatedObjectDoesNotExist:
         total_votes = 0
 
+    has_voted = request.COOKIES.get(f'voted_{event_id}', False)
 
     context = {
         'event': event,
@@ -150,6 +151,7 @@ def event(request, event_id):
         'comments': comments,
         'commentform': commentform,
         'replyform': replyform,
+        'has_voted': has_voted,
     }
 
     return render(request, 'core/event.html', context)
@@ -160,6 +162,10 @@ def vote(request, event_id):
     rating, created = Rating.objects.get_or_create(event=event)
 
     if request.method == 'POST':
+        current_vote = request.COOKIES.get(f'voted_{event_id}')
+        if current_vote:
+            return redirect('core:event', event_id=event_id)  # User has already voted
+
         if 'stars' in request.POST:
             rating_type = request.POST.get('stars')
 
@@ -199,8 +205,9 @@ def vote(request, event_id):
 
             rating.save()
 
-            if request.user.is_authenticated:
-                rating.voters.add(request.user)
+            response = redirect('core:event', event_id=event_id)
+            response.set_cookie(f'voted_{event_id}', 'true', max_age=365*24*60*60)
+            return response
 
         like_type = None
         if 'like' in request.POST:

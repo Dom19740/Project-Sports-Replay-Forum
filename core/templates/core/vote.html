@@ -1,6 +1,6 @@
 {% load event_tags %}
 
-<div {% if not request.user.is_superuser and request.user in event.rating.voters.all %}style="display: none;"{% endif %}>
+<div {% if has_voted %}style="display: none;"{% endif %}>
     <h6>Rate the Event</h6>
      {% if event|is_past and not event|voting_closed %}
         <form method="post" action="{% url 'core:vote' event.id %}" class="vote">
@@ -18,6 +18,6 @@
     {% endif %}
 </div>
 
-<div id="voted-container" {% if request.user in event.rating.voters.all %}style="display: block;"{% else %}style="display: none;"{% endif %}>
+<div id="voted-container" {% if has_voted %}style="display: block;"{% else %}style="display: none;"{% endif %}>
     <p>Thanks for rating</p>    
 </div>
