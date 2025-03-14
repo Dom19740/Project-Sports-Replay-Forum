@@ -162,11 +162,11 @@ def vote(request, event_id):
     rating, created = Rating.objects.get_or_create(event=event)
 
     if request.method == 'POST':
-        current_vote = request.COOKIES.get(f'voted_{event_id}')
-        if current_vote:
-            return redirect('core:event', event_id=event_id)  # User has already voted
-
         if 'stars' in request.POST:
+            current_vote = request.COOKIES.get(f'voted_{event_id}')
+            if current_vote:
+                return redirect('core:event', event_id=event_id)  # User has already voted
+
             rating_type = request.POST.get('stars')
 
             if rating_type == '5':
@@ -209,29 +209,30 @@ def vote(request, event_id):
             response.set_cookie(f'voted_{event_id}', 'true', max_age=365*24*60*60)
             return response
 
-        like_type = None
-        if 'like' in request.POST:
-            like_type = 'liked'
-        elif 'dislike' in request.POST:
-            like_type = 'disliked'
+        if 'like' in request.POST or 'dislike' in request.POST:
+            like_type = None
+            if 'like' in request.POST:
+                like_type = 'liked'
+            elif 'dislike' in request.POST:
+                like_type = 'disliked'
 
-        if like_type:
-            current_vote = request.COOKIES.get(f'liked_{event_id}')
-            if current_vote != like_type:
-                if current_vote == 'liked':
-                    rating.likes -= 1
-                elif current_vote == 'disliked':
-                    rating.dislikes -= 1
+            if like_type:
+                current_like = request.COOKIES.get(f'liked_{event_id}')
+                if current_like != like_type:
+                    if current_like == 'liked':
+                        rating.likes -= 1
+                    elif current_like == 'disliked':
+                        rating.dislikes -= 1
 
-                if like_type == 'liked':
-                    rating.likes += 1
-                elif like_type == 'disliked':
-                    rating.dislikes += 1
+                    if like_type == 'liked':
+                        rating.likes += 1
+                    elif like_type == 'disliked':
+                        rating.dislikes += 1
 
-                rating.save()
-                response = redirect('core:event', event_id=event_id)
-                response.set_cookie(f'liked_{event_id}', like_type, max_age=365*24*60*60)
-                return response
+                    rating.save()
+                    response = redirect('core:event', event_id=event_id)
+                    response.set_cookie(f'liked_{event_id}', like_type, max_age=365*24*60*60)
+                    return response
 
     return redirect('core:event', event_id=event_id)
 
