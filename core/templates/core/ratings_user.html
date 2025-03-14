@@ -1,34 +1,44 @@
 {% load static %}
 
 <h6>User Rating</h6>
-{% if event.rating.voters.all|length == 0 %}
+{% if total_votes == 0 %}
     <p>Be the first to rate this event.</p>
-    
 {% else %}
-
     {% if event.rating.percentage >= 66 %}
-        
         <img src="{% static 'img/logo_flame_large.png' %}" alt="HOT WATCH" class="rating-logo"><h3>HOT WATCH!</h3>
         <h6>Watch the Full Replay</h6>
-
     {% elif event.rating.percentage >= 33 %}
-
         <img src="{% static 'img/logo_mid.png' %}" alt="MID TEMP" class="rating-logo"><h3>MID TEMP!</h3>
         <h6>Watch the Highlights</h6>
-
     {% else %}
-
         <img src="{% static 'img/logo_cold.png' %}" alt="NOT WATCH" class="rating-logo"><h3>NOT WATCH!</h3>
         <h6>Check Out the Results</h6>
-
     {% endif %}
     
     <p>Rated {{ event.rating.percentage|floatformat:0 }}% Hot from {{ total_votes }} votes</p>
-
     
     <div class="chart-container">
         <canvas id="ratingChart" width="250" height="200"></canvas>
     </div>
+
+    <form method="post" action="{% url 'core:vote' event.id %}" class="mt-3">
+        {% csrf_token %}
+        <div class="btn-group rounded-pill" role="group" aria-label="Like Dislike">
+            <button type="submit" name="like" class="btn btn-outline-secondary btn-like">
+                <i class="fas fa-thumbs-up"></i>
+                {% if event.rating.likes > 0 %}
+                    {{ event.rating.likes }}
+                {% endif %}
+            </button>
+            <button type="submit" name="dislike" class="btn btn-outline-secondary btn-like">
+                <i class="fas fa-thumbs-down"></i>
+                {% if event.rating.dislikes > 0 %}
+                    {{ event.rating.dislikes }}
+                {% endif %}
+            </button>
+        </div>
+    </form>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const ctx = document.getElementById('ratingChart').getContext('2d');
@@ -76,7 +86,6 @@
             }
         });
     </script>
-    
 {% endif %}
 <div class="social-share-icons-container">
     <!-- Facebook Share Button -->
@@ -100,23 +109,5 @@
     </a>
 </div>
 
-{% if event.rating.voters.all|length > 0 %}
-<form method="post" action="{% url 'core:vote' event.id %}" class="mt-3">
-{% csrf_token %}
-<div class="btn-group rounded-pill" role="group" aria-label="Like Dislike">
-    <button type="submit" name="like" class="btn btn-outline-secondary btn-like">
-        <i class="fas fa-thumbs-up"></i>
-        {% if event.rating.likes > 0 %}
-            {{ event.rating.likes }}
-        {% endif %}
-    </button>
-    <button type="submit" name="dislike" class="btn btn-outline-secondary btn-like">
-        <i class="fas fa-thumbs-down"></i>
-        {% if event.rating.dislikes > 0 %}
-            {{ event.rating.dislikes }}
-        {% endif %}
-    </button>
-</div>
-</form>
-{% endif %}
+
 
