@@ -24,6 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 APP_NAME = 'Sports Replay Forum'
 
 DJANGO_ENV = os.environ.get('DJANGO_ENV', 'production')
+print(f"DJANGO_ENV is set to: {DJANGO_ENV}")
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -134,6 +136,9 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+print(f"Database name being used: {postgre_name}")
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
