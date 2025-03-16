@@ -12,6 +12,8 @@ class Command(BaseCommand):
         season_ids = {
             'UEFA Champions League': '4480',
             'Premier League': '4328',
+            'UEFA Europa League': '4481',
+            'Scottish Premier League': '4330',
             #'NFL': '4391',
             #'NBA': '4387',
             #'NHL': '4380',
