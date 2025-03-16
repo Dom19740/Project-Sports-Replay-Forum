@@ -3,26 +3,18 @@
 <h6>AI Rating</h6>
 {% if not event.ai_review %}
     <p>AI ratings coming soon.</p>
-    
 {% else %}
-
     {% if event.rating.percentage >= 66 %}
-        
-        <h3>HOT WATCH!</h3><img src="{% static 'img/logo_flame_large.png' %}" alt="HOT WATCH" class="rating-logo">
+        <img src="{% static 'img/logo_flame_large.png' %}" alt="HOT WATCH" class="rating-logo"><h3>HOT WATCH!</h3>
         <h6>Watch the Full Replay</h6>
-
     {% elif event.rating.percentage >= 33 %}
-
-        <h3>MID TEMP!</h3><img src="{% static 'img/logo_mid.png' %}" alt="MID TEMP" class="rating-logo">
+        <img src="{% static 'img/logo_mid.png' %}" alt="MID TEMP" class="rating-logo"><h3>MID TEMP!</h3>
         <h6>Watch the Highlights</h6>
-
     {% else %}
-
-        <h3>NOT WATCH!</h3><img src="{% static 'img/logo_cold.png' %}" alt="NOT WATCH" class="rating-logo">
+        <img src="{% static 'img/logo_cold.png' %}" alt="NOT WATCH" class="rating-logo"><h3>NOT WATCH!</h3>
         <h6>Check Out the Results</h6>
-
     {% endif %}
+
     <p class="ai-review">{{ event.ai_review }}</p>
     <p>Rated {{ event.ai_rating }}% Hot.</p>
-
 {% endif %}
