@@ -12,6 +12,7 @@ urlpatterns = [
     path('run-f1-populate/', lambda request: run_populate(request, 'populate_f1', 'F1 data populated successfully'), name='run_populate_f1'),
     path('run-motogp-populate/', lambda request: run_populate(request, 'populate_motor', 'Motorsport data populated successfully'), name='run_populate_motor'),
     path('run-football-populate/', lambda request: run_populate(request, 'populate_football', 'Football data populated successfully'), name='run_populate_football'),
+    path('run-football-us/', lambda request: run_populate(request, 'populate_us', 'US sport data populated successfully'), name='run_populate_us'),
     path('commentsent/<pk>', comment_sent, name='comment-sent'),
     path('replysent/<pk>/', reply_sent, name='reply-sent'),
     path('commentdelete/<uuid:pk>/', views.comment_delete, name='comment-delete'),
