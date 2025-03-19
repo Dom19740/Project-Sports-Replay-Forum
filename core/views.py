@@ -23,8 +23,8 @@ sports = [
     {'name': 'English Premier League', 'title': 'Premier League', 'logo': 'logo_premier.png'},
     {'name': 'Scottish Premier League', 'title': 'SPL', 'logo': 'logo_spl.png'},
     # {'name': 'NFL', 'title': 'NFL', 'logo': 'logo_nfl.png'},
-    # {'name': 'NBA', 'title': 'NBA', 'logo': 'logo_nba.png'},
-    # {'name': 'NHL', 'title': 'NHL', 'logo': 'logo_nhl.png'},
+    {'name': 'NBA', 'title': 'NBA', 'logo': 'logo_nba.png'},
+    {'name': 'NHL', 'title': 'NHL', 'logo': 'logo_nhl.png'},
 ]
 
 search_terms = {
