@@ -36,16 +36,32 @@ class Command(BaseCommand):
                 competition_name = item['strEvent']
                 competition_date = parser.isoparse(item['strTimestamp']).date()
 
+                # Fetch event-specific banner via individual event lookup
+                event_banner = league_banner
+                try:
+                    event_response = requests.get(
+                        f"https://www.thesportsdb.com/api/v1/json/{api_key}/lookupevent.php?id={item['idEvent']}"
+                    )
+                    event_response.raise_for_status()
+                    event_detail = event_response.json().get('events', [{}])[0]
+                    event_banner = event_detail.get('strBanner', '') or league_banner
+                except (requests.exceptions.RequestException, IndexError):
+                    pass
+
                 # Check if competition already exists, or create a new one
                 competition, created = Competition.objects.get_or_create(
                     name=competition_name,
                     date=competition_date,
                     defaults={
                         'league': item.get('strLeague', ''),
-                        'banner': league_banner,
+                        'banner': event_banner,
                         'badge': league_badge,
                     }
                 )
+
+                if not created and event_banner:
+                    competition.banner = event_banner
+                    competition.save()
 
                 date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
                 is_finished = (
