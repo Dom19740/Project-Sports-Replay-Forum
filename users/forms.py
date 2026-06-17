@@ -6,6 +6,12 @@ from django.core.validators import EmailValidator
 
 class CustomRegisterForm(UserCreationForm):
     email = forms.EmailField(validators=[EmailValidator()])
+    website = forms.CharField(required=False, widget=forms.TextInput(attrs={
+        'style': 'display:none !important;',
+        'tabindex': '-1',
+        'autocomplete': 'off',
+    }))
+
     class Meta:
         model = User
         fields = ["username", "email", "password1", "password2"]
@@ -28,6 +34,13 @@ class CustomRegisterForm(UserCreationForm):
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = ''
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
+
+        self.fields['website'].label = ''
+
+    def clean_website(self):
+        if self.cleaned_data.get('website'):
+            raise forms.ValidationError('Bot detected.')
+        return ''
 
     def clean_email(self):
         email = self.cleaned_data['email']
