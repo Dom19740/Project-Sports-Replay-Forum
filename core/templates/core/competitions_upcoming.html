@@ -1,23 +1,32 @@
 <div class="events-list">
   <h6 class="inside-header">Upcoming</h6>
 
-  {% for competition in upcoming_competitions %}
-  <li>
-    <a
-      href="{% url 'core:event_list' competition.id %}" class="btn-pill btn-pill-dark rounded-pill">
-
-      {% if title == "Formula 1" %}
-        {{competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - {{ competition.name }}
-      {% elif title == "MotoGP" or title == "NASCAR Cup Series" or title == "IndyCar Series"%}
-        {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - {{ competition.name }}
-      {% else %}
-        Matchday {{ competition.name }}
-      {% endif %}
-        
-    </a>
-  </li>
-  {% empty %}
-  <li>No upcoming events.</li>
-  {% endfor %}
+  {% if title == "FIFA World Cup" %}
+    {% for event in upcoming_events %}
+    <li>
+      <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-dark rounded-pill">
+        {{ event.event_type }} - {{ event.date_time|date:"d M" }} - <span class="event-datetime" data-utc="{{ event.date_time|date:'Y-m-d\TH:i:s\Z' }}"></span>
+      </a>
+    </li>
+    {% empty %}
+    <li>No upcoming events.</li>
+    {% endfor %}
+  {% else %}
+    {% for competition in upcoming_competitions %}
+    <li>
+      <a href="{% url 'core:event_list' competition.id %}" class="btn-pill btn-pill-dark rounded-pill">
+        {% if title == "Formula 1" %}
+          {{competition.start_date|date:"d" }}-{{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - {{ competition.name }}
+        {% elif title == "MotoGP" or title == "NASCAR Cup Series" or title == "IndyCar Series"%}
+          {{ competition.end_date|date:"d" }} {{ competition.end_date|date:"M" }} - {{ competition.name }}
+        {% else %}
+          Matchday {{ competition.name }}
+        {% endif %}
+      </a>
+    </li>
+    {% empty %}
+    <li>No upcoming events.</li>
+    {% endfor %}
+  {% endif %}
 
 </div>

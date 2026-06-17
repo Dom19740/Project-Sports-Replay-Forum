@@ -8,9 +8,9 @@ class Command(BaseCommand):
     help = 'Populate the database with motorsport competitions and events'
 
     def handle(self, *args, **kwargs):
-
+        
+        #COMMENT OUT MOTORSPORTS HERE IF YOU WANT TO REMOVE THEM FROM THE SITE
         season_ids = {
-            #COMMENT OUT MOTORSPORTS HERE IF YOU WANT TO REMOVE THEM FROM THE SITE
             'MotoGP': '4407',
             #'IndyCar Series': '4373',
             #'NASCAR Cup Series': '4393',

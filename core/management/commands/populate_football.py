@@ -10,10 +10,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         season_ids = {
-            'UEFA Champions League': '4480',
-            'Premier League': '4328',
-            'UEFA Europa League': '4481',
-            'Scottish Premier League': '4330',
+            'FIFA World Cup': '4429',
+            #'UEFA Champions League': '4480',
+            #'Premier League': '4328',
+            #'UEFA Europa League': '4481',
+            #'Scottish Premier League': '4330',
             #'NFL': '4391',
             #'NBA': '4387',
             #'NHL': '4380',
@@ -32,8 +33,11 @@ class Command(BaseCommand):
                 league_badge = ''
 
             # Fetch the data from the API
+            season_url = f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id={season_id}"
+            if season_id == '4429':  # FIFA World Cup - must specify the tournament year
+                season_url += '&s=2026'
             try:
-                response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id={season_id}")
+                response = requests.get(season_url)
                 response.raise_for_status()
             except requests.exceptions.RequestException as e:
                 raise CommandError(f'Error fetching data for {season_name}: {e}')

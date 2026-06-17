@@ -15,6 +15,7 @@ from pyexpat.errors import messages
 
 #COMMENT OUT SPORTS HERE IF YOU WANT TO REMOVE THEM FROM THE SITE
 sports = [
+    {'name': 'FIFA World Cup', 'title': 'FIFA World Cup', 'logo': 'logo_FIFA World Cup.png'},
     {'name': 'Formula 1', 'title': 'F1', 'logo': 'logo_f1.png'},
     {'name': 'MotoGP', 'title': 'MotoGP', 'logo': 'logo_motogp.png'},
     #{'name': 'IndyCar Series', 'title': 'IndyCar', 'logo': 'logo_indy.png'},
@@ -56,10 +57,11 @@ def competition_schedule(request, league):
     past_competitions = []
     
     for competition in competitions:
-        events = Event.objects.filter(event_list=competition)
+        events = Event.objects.filter(event_list=competition).order_by('date_time')
         if events.exists():
-            competition.start_date = events.order_by('date_time').first().date_time
-            competition.end_date = events.order_by('-date_time').first().date_time
+            competition.start_date = events.first().date_time
+            competition.end_date = events.last().date_time
+            competition.events_list = list(events)
 
             if competition.start_date >= today:
                 upcoming_competitions.append(competition)
@@ -72,15 +74,27 @@ def competition_schedule(request, league):
     past_competitions = past_competitions[:5]
     banner = competition.banner
     badge = next((sport['logo'] for sport in sports if sport['name'] == league), 'default_logo.png')
-    
-    return render(request, 'core/competition_schedule.html', {
+
+    context = {
         'title': title,
         'upcoming_competitions': upcoming_competitions,
         'past_competitions': past_competitions,
         'league': league,
         'banner': banner,
         'badge': badge,
-    })
+    }
+
+    if league == 'FIFA World Cup':
+        context['upcoming_events'] = Event.objects.filter(
+            event_list__league='FIFA World Cup',
+            date_time__gte=today,
+        ).order_by('date_time')[:8]
+        context['past_events'] = Event.objects.filter(
+            event_list__league='FIFA World Cup',
+            date_time__lt=today,
+        ).order_by('-date_time')[:8]
+
+    return render(request, 'core/competition_schedule.html', context)
 
 
 def event_list(request, competition_id):

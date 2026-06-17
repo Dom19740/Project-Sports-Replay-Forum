@@ -11,8 +11,8 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         season_ids = {
             #'NFL': '4391',
-            'NBA': '4387',
-            'NHL': '4380',
+            #'NBA': '4387',
+            #'NHL': '4380',
         }
         api_key = os.getenv('SPORTSDB_API_KEY')
         for season_name, season_id in season_ids.items():
