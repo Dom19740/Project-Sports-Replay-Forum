@@ -23,7 +23,7 @@
 
     <!-- Open Graph Tags for Social Media Previews -->
     <meta property="og:title" content="Should I Watch Sports - Spoiler-Free Ratings & Highlights">
-    <meta property="og:description" content="Want to find out if a recent game or race is worth watching without spoilers? SIWS provides AI and user-driven ratings for F1 and other sports.">
+    <meta property="og:description" content="Want to find out if a recent game or race is worth watching without spoilers? Should I Watch Sports provides AI and user-driven ratings for F1, MotoGP, FIFA World Cup and more.">
     <meta property="og:image" content="https://shouldiwatchsports.com/static/img/siws-preview.jpg"> <!-- Replace with actual image URL -->
     <meta property="og:url" content="https://shouldiwatchsports.com/">
     <meta property="og:type" content="website">
@@ -64,9 +64,29 @@
     gtag('config', "G-BPVXS4BPPE");
     </script>
 
-    <!-- Set Canonical UrL for SEO -->
-    <link rel="canonical" href="https://shouldiwatchsports.com/" />
-    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://shouldiwatchsports.com{{ request.path }}" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Should I Watch Sports",
+      "alternateName": ["SIWS", "shouldiwatchsports"],
+      "url": "https://shouldiwatchsports.com/",
+      "description": "Spoiler-free ratings for sports fans. Find out if a Formula 1 race, MotoGP round, or World Cup match is worth watching before you spend 2 hours on it.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://shouldiwatchsports.com/core/search/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
     {% block head %} {% endblock %}
 
 </head>
