@@ -5,7 +5,7 @@
     {% for event in past_events %}
     <li>
       <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-light rounded-pill">
-        {{ event.event_type }} - {{ event.date_time|date:"d M" }}
+        {{ event.event_type }} - {{ event.date_time|date:"d M" }}{% if event.rating.percentage %} - {{ event.rating.percentage|floatformat:0 }}% HOT{% endif %}
       </a>
     </li>
     {% empty %}
@@ -22,6 +22,7 @@
         {% else %}
           Matchday {{ competition.name }}
         {% endif %}
+        {% if competition.main_rating %} - {{ competition.main_rating|floatformat:0 }}% HOT{% endif %}
       </a>
     </li>
     {% empty %}

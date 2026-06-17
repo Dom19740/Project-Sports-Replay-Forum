@@ -63,6 +63,12 @@ def competition_schedule(request, league):
             competition.end_date = events.last().date_time
             competition.events_list = list(events)
 
+            race_event = next((e for e in competition.events_list if e.event_type == 'Race'), competition.events_list[0])
+            try:
+                competition.main_rating = race_event.rating.percentage
+            except Exception:
+                competition.main_rating = None
+
             if competition.start_date >= today:
                 upcoming_competitions.append(competition)
             else:
