@@ -5,7 +5,7 @@ from dateutil import parser
 import requests, os
 
 class Command(BaseCommand):
-    help = 'Populate the database with Formula 1 competitions and events'
+    help = 'Populate the database with motorsport competitions and events'
 
     def handle(self, *args, **kwargs):
 
@@ -33,50 +33,110 @@ class Command(BaseCommand):
                 response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id={season_id}")
                 response.raise_for_status()
             except requests.exceptions.RequestException as e:
-                raise CommandError(f'Failed to fetch MotoGP data from the API: {e}')
+                raise CommandError(f'Failed to fetch {season_name} data from the API: {e}')
 
             # Parse the JSON data
             data = response.json().get('events', [])
 
-            # Step 1: Create Competitions for events ending in "Prix"
+            # Step 1: Create Competitions for GP events and their Race sub-event
             for item in data:
-                competition_name = item['strEvent']
-                competition_date = parser.isoparse(item['strTimestamp']).date()
+                event_name = item.get('strEvent', '').strip()
+                if not event_name.endswith(' GP') and not event_name.endswith('  GP'):
+                    continue
 
-                # Check if competition already exists
+                competition_name = event_name
+
+                # Fetch event-specific banner via individual event lookup
+                event_banner = league_banner
+                try:
+                    event_response = requests.get(
+                        f"https://www.thesportsdb.com/api/v1/json/{api_key}/lookupevent.php?id={item['idEvent']}"
+                    )
+                    event_response.raise_for_status()
+                    event_detail = event_response.json().get('events', [{}])[0]
+                    event_banner = event_detail.get('strBanner', '') or league_banner
+                except (requests.exceptions.RequestException, IndexError):
+                    pass
+
+                competition_date = parser.isoparse(item['strTimestamp']).date()
                 competition, created = Competition.objects.get_or_create(
                     name=competition_name,
                     date=competition_date,
                     defaults={
                         'league': item.get('strLeague', ''),
-                        'banner': league_banner,
+                        'banner': event_banner,
                         'badge': league_badge,
                     }
                 )
 
+                if not created and event_banner:
+                    competition.banner = event_banner
+                    competition.save()
+
                 date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
                 is_finished = (
-                    item['strStatus'] is not None and 'Finished' in item['strStatus'] or
-                    item.get('strVideo') not in [None, ""]
+                    item.get('strStatus') is not None and 'Finished' in item.get('strStatus', '') or
+                    item.get('strVideo') not in [None, '']
                 )
 
-                # Create a race event for the competition
                 race_event, created = Event.objects.get_or_create(
                     event_list=competition,
                     event_type='Race',
                     date_time=date_time,
                     idEvent=item['idEvent'],
                     defaults={
-                        'video_id': item.get('strVideo', ''),  # Provide a default value if 'strVideo' is missing
+                        'video_id': item.get('strVideo', ''),
                         'is_finished': is_finished,
-                        'poster': item.get('strThumb', ''),  # Provide a default value if 'strThumb' is missing
+                        'poster': item.get('strThumb', ''),
                     }
                 )
 
                 if not created:
-                    # If the event already exists, update the fields
                     race_event.video_id = item.get('strVideo', '')
                     race_event.is_finished = is_finished
                     race_event.save()
 
-            self.stdout.write(self.style.SUCCESS(f"{item['strLeague']} populated successfully"))
+            # Step 2: Create sub-events (Sprint Race, Qualifying) under each Competition
+            for item in data:
+                event_name = item.get('strEvent', '').strip()
+                if not event_name:
+                    continue
+
+                for competition in Competition.objects.filter(league=season_name):
+                    location = competition.name.replace(' GP', '').strip()
+                    if not event_name.startswith(location + ' '):
+                        continue
+
+                    if 'Sprint Race' in event_name:
+                        event_type = 'Sprint Race'
+                    elif 'Qualifying 1' in event_name:
+                        event_type = 'Qualifying 1'
+                    elif 'Qualifying 2' in event_name:
+                        event_type = 'Qualifying 2'
+                    else:
+                        continue
+
+                    date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
+                    is_finished = (
+                        item.get('strStatus') is not None and 'Finished' in item.get('strStatus', '') or
+                        item.get('strVideo') not in [None, '']
+                    )
+
+                    event, created = Event.objects.get_or_create(
+                        event_list=competition,
+                        event_type=event_type,
+                        date_time=date_time,
+                        idEvent=item['idEvent'],
+                        defaults={
+                            'video_id': item.get('strVideo', ''),
+                            'is_finished': is_finished,
+                            'poster': item.get('strThumb', ''),
+                        }
+                    )
+
+                    if not created:
+                        event.video_id = item.get('strVideo', '')
+                        event.is_finished = is_finished
+                        event.save()
+
+            self.stdout.write(self.style.SUCCESS(f"{season_name} populated successfully"))
