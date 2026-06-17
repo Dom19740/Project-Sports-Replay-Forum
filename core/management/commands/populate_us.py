@@ -44,9 +44,9 @@ class Command(BaseCommand):
             filtered_data = [item for item in data if start_date <= parser.isoparse(item['strTimestamp']) <= end_date]
 
             # Delete competitions that are over 4 months old
-            four_months_ago = datetime.now() - timedelta(days=120)
-            Event.objects.filter(event_list__date__lt=four_months_ago).delete()
-            Competition.objects.filter(date__lt=four_months_ago).delete()
+            two_weeks_ago = datetime.now() - timedelta(weeks=2)
+            Event.objects.filter(date_time__lt=two_weeks_ago).delete()
+            Competition.objects.filter(events__isnull=True).delete()
 
             # Step 1: Create Competitions for events by matchday
             for item in filtered_data:

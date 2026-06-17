@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from core.models import Competition, Event
 from dateutil import parser
+from datetime import timedelta
 import requests, os
 
 class Command(BaseCommand):
@@ -29,6 +30,11 @@ class Command(BaseCommand):
 
         # Parse the JSON data
         data = response.json().get('events', [])
+
+        # Delete events and competitions over 2 weeks old
+        two_weeks_ago = timezone.now() - timedelta(weeks=2)
+        Event.objects.filter(date_time__lt=two_weeks_ago).delete()
+        Competition.objects.filter(events__isnull=True).delete()
 
         # Step 1: Create or update Competitions for events ending in "Prix"
         for item in data:
