@@ -10,20 +10,32 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
 
         season_ids = {
+            #COMMENT OUT MOTORSPORTS HERE IF YOU WANT TO REMOVE THEM FROM THE SITE
             'MotoGP': '4407',
-            'IndyCar Series': '4373',
-            'NASCAR Cup Series': '4393',
+            #'IndyCar Series': '4373',
+            #'NASCAR Cup Series': '4393',
         }
+        api_key = os.getenv('SPORTSDB_API_KEY')
         for season_name, season_id in season_ids.items():
+            # Fetch league banner and badge from league endpoint
+            try:
+                league_response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/lookupleague.php?id={season_id}")
+                league_response.raise_for_status()
+                league_info = league_response.json().get('leagues', [{}])[0]
+                league_banner = league_info.get('strBanner', '')
+                league_badge = league_info.get('strBadge', '')
+            except (requests.exceptions.RequestException, IndexError):
+                league_banner = ''
+                league_badge = ''
+
             # Fetch the data from the API
-            api_key = os.getenv('SPORTSDB_API_KEY')
             try:
                 response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id={season_id}")
                 response.raise_for_status()
             except requests.exceptions.RequestException as e:
                 raise CommandError(f'Failed to fetch MotoGP data from the API: {e}')
 
-           # Parse the JSON data
+            # Parse the JSON data
             data = response.json().get('events', [])
 
             # Step 1: Create Competitions for events ending in "Prix"
@@ -36,9 +48,9 @@ class Command(BaseCommand):
                     name=competition_name,
                     date=competition_date,
                     defaults={
-                        'league': item['strLeague'],
-                        'banner': item['strBanner'],
-                        'badge': item['strLeagueBadge'],
+                        'league': item.get('strLeague', ''),
+                        'banner': league_banner,
+                        'badge': league_badge,
                     }
                 )
 

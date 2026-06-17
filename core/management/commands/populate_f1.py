@@ -8,10 +8,21 @@ class Command(BaseCommand):
     help = 'Populate the database with Formula 1 competitions and events'
 
     def handle(self, *args, **kwargs):
-        # Fetch the data from the API
         api_key = os.getenv('SPORTSDB_API_KEY')
+
+        # Fetch league banner and badge from league endpoint
         try:
-            response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id=4370&s=2025")
+            league_response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/lookupleague.php?id=4370")
+            league_response.raise_for_status()
+            league_info = league_response.json().get('leagues', [{}])[0]
+            league_banner = league_info.get('strBanner', '')
+            league_badge = league_info.get('strBadge', '')
+        except (requests.exceptions.RequestException, IndexError):
+            league_banner = ''
+            league_badge = ''
+
+        try:
+            response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id=4370&s=2026")
             response.raise_for_status()
         except requests.exceptions.RequestException as e:
             raise CommandError(f'Failed to fetch F1 data from the API: {e}')
@@ -30,9 +41,9 @@ class Command(BaseCommand):
                     name=competition_name,
                     date=competition_date,
                     defaults={
-                        'league': item['strLeague'],
-                        'banner': item['strBanner'],
-                        'badge': item['strLeagueBadge'],
+                        'league': item.get('strLeague', ''),
+                        'banner': league_banner,
+                        'badge': league_badge,
                     }
                 )
 

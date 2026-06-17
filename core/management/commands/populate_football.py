@@ -18,9 +18,20 @@ class Command(BaseCommand):
             #'NBA': '4387',
             #'NHL': '4380',
         }
+        api_key = os.getenv('SPORTSDB_API_KEY')
         for season_name, season_id in season_ids.items():
+            # Fetch league banner and badge from league endpoint
+            try:
+                league_response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/lookupleague.php?id={season_id}")
+                league_response.raise_for_status()
+                league_info = league_response.json().get('leagues', [{}])[0]
+                league_banner = league_info.get('strBanner', '')
+                league_badge = league_info.get('strBadge', '')
+            except (requests.exceptions.RequestException, IndexError):
+                league_banner = ''
+                league_badge = ''
+
             # Fetch the data from the API
-            api_key = os.getenv('SPORTSDB_API_KEY')
             try:
                 response = requests.get(f"https://www.thesportsdb.com/api/v1/json/{api_key}/eventsseason.php?id={season_id}")
                 response.raise_for_status()
@@ -53,8 +64,8 @@ class Command(BaseCommand):
                     name=competition_name,
                     date=competition_date,
                     defaults={
-                        'banner': item['strLeagueBadge'],
-                        'badge': item['strLeagueBadge'],
+                        'banner': league_banner,
+                        'badge': league_badge,
                     }
                 )
 

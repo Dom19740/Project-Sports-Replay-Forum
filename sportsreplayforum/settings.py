@@ -124,7 +124,7 @@ WSGI_APPLICATION = 'sportsreplayforum.wsgi.application'
 
 postgre_pass = os.environ.get("POSTGRE_PASS")
 postgre_name = "testsportsforum" if DJANGO_ENV == 'local' else 'sportsforum'
-postgre_host = "212.227.79.104" if DJANGO_ENV == 'local' else 'localhost'
+postgre_host = "localhost"
 
 DATABASES = {
     'default': {
