@@ -2,22 +2,31 @@
 
 <div {% if has_voted %}style="display: none;"{% endif %}>
     <h6>Rate the Event</h6>
-     {% if event|is_past and not event|voting_closed %}
-        <form method="post" action="{% url 'core:vote' event.id %}" class="vote">
+    {% if event|is_past and not event|voting_closed %}
+        <form method="post" action="{% url 'core:vote' event.id %}" class="vote mt-2">
             {% csrf_token %}
-            <input type="radio" name="stars" value="5" required><span> 5 stars - {{ RATINGS_TEXT.5 }}</span><br>
-            <input type="radio" name="stars" value="4"><span> 4 stars {{ RATINGS_TEXT.4 }}</span><br>
-            <input type="radio" name="stars" value="3"><span> 3 stars - {{ RATINGS_TEXT.3 }}</span><br>
-            <input type="radio" name="stars" value="2"><span> 2 stars {{ RATINGS_TEXT.2 }}</span><br>
-            <input type="radio" name="stars" value="1"><span> 1 stars - {{ RATINGS_TEXT.1 }}</span><br>
-            <br>
-            <input type="submit" class="btn btn-primary text-white" value="Submit">
+            <input type="radio" name="stars" id="stars5" value="5" required>
+            <label for="stars5"><i class="fa-solid fa-star star-icon"></i> 5 stars &mdash; Hot Watch!</label>
+
+            <input type="radio" name="stars" id="stars4" value="4">
+            <label for="stars4"><i class="fa-solid fa-star star-icon"></i> 4 stars</label>
+
+            <input type="radio" name="stars" id="stars3" value="3">
+            <label for="stars3"><i class="fa-solid fa-star star-icon"></i> 3 stars &mdash; Mid Temp!</label>
+
+            <input type="radio" name="stars" id="stars2" value="2">
+            <label for="stars2"><i class="fa-solid fa-star star-icon"></i> 2 stars</label>
+
+            <input type="radio" name="stars" id="stars1" value="1">
+            <label for="stars1"><i class="fa-solid fa-star star-icon"></i> 1 star &mdash; Not Watch!</label>
+
+            <button type="submit" class="btn btn-primary text-white mt-3 w-100">Submit Rating</button>
         </form>
     {% else %}
-        <p>Rating opens 45 minutes after the event starts and is available for 7 days.</p>
+        <p class="text-muted small mt-2">Rating opens 45 minutes after the event starts and is available for 7 days.</p>
     {% endif %}
 </div>
 
 <div id="voted-container" {% if has_voted %}style="display: block;"{% else %}style="display: none;"{% endif %}>
-    <p>Thanks for rating</p>    
+    <p class="text-muted small">Thanks for rating!</p>
 </div>
