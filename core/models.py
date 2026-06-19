@@ -58,6 +58,22 @@ class Comment(models.Model):
     class Meta:
         ordering = ['-created']
         
+class CommentVote(models.Model):
+    LIKE = 'like'
+    DISLIKE = 'dislike'
+    VOTE_CHOICES = [(LIKE, 'Like'), (DISLIKE, 'Dislike')]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comment_votes')
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='votes')
+    vote = models.CharField(max_length=10, choices=VOTE_CHOICES)
+
+    class Meta:
+        unique_together = ['user', 'comment']
+
+    def __str__(self):
+        return f'{self.user.username} {self.vote}d {self.comment.id}'
+
+
 class Reply(models.Model):
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='replies')
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='replies')

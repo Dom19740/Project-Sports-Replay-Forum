@@ -8,7 +8,8 @@ from django.http import JsonResponse
 from django.core.management import call_command
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from .models import Competition, Event, Rating, Comment, Reply
+from django.db.models import Count, Q
+from .models import Competition, Event, Rating, Comment, Reply, CommentVote
 from users.forms import CreateCommentForm, CreateReplyForm
 from datetime import timedelta
 from pyexpat.errors import messages
@@ -143,9 +144,20 @@ def event(request, event_id):
     poster = event.poster
     ai_review = event.ai_review
     ai_rating = event.ai_rating
-    comments = event.comments.prefetch_related('replies').all()
+    comments = event.comments.prefetch_related('replies').annotate(
+        like_count=Count('votes', filter=Q(votes__vote='like')),
+        dislike_count=Count('votes', filter=Q(votes__vote='dislike')),
+    ).all()
     commentform = CreateCommentForm()
     replyform = CreateReplyForm()
+
+    if request.user.is_authenticated:
+        user_comment_votes = {
+            str(v.comment_id): v.vote
+            for v in CommentVote.objects.filter(user=request.user, comment__event=event)
+        }
+    else:
+        user_comment_votes = {}
 
     try:
         total_votes = (
@@ -175,6 +187,7 @@ def event(request, event_id):
         'commentform': commentform,
         'replyform': replyform,
         'has_voted': has_voted,
+        'user_comment_votes': user_comment_votes,
     }
 
     return render(request, 'core/event.html', context)
@@ -370,3 +383,34 @@ def reply_delete(request, pk):
     if request.user == reply.author:
         reply.delete()
     return redirect('core:event', event_id=event.id)
+
+
+@login_required
+def comment_vote(request, pk):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+    comment = get_object_or_404(Comment, pk=pk)
+    vote_type = request.POST.get('vote')
+
+    if vote_type not in (CommentVote.LIKE, CommentVote.DISLIKE):
+        return JsonResponse({'error': 'Invalid vote type'}, status=400)
+
+    existing = CommentVote.objects.filter(user=request.user, comment=comment).first()
+
+    if existing:
+        if existing.vote == vote_type:
+            existing.delete()
+            user_vote = None
+        else:
+            existing.vote = vote_type
+            existing.save()
+            user_vote = vote_type
+    else:
+        CommentVote.objects.create(user=request.user, comment=comment, vote=vote_type)
+        user_vote = vote_type
+
+    likes = comment.votes.filter(vote=CommentVote.LIKE).count()
+    dislikes = comment.votes.filter(vote=CommentVote.DISLIKE).count()
+
+    return JsonResponse({'likes': likes, 'dislikes': dislikes, 'user_vote': user_vote})

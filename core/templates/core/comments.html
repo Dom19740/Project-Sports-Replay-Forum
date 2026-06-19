@@ -53,11 +53,34 @@
                 <div>
                     <p class="px-4">{{ comment.body }}</p>
 
-                    {% if request.user.is_authenticated %}
-                        <a href="javascript:void(0);" class="small reply-link" data-comment-id="{{ comment.id }}">
-                            <i class="fas fa-reply comment-icon"></i> Reply
-                        </a>
-                    {% endif %}
+                    <div class="d-flex align-items-center gap-3 px-1">
+                        {% if request.user.is_authenticated %}
+                            {% with user_vote=user_comment_votes|get_item:comment.id %}
+                            <button class="btn btn-sm comment-vote-btn {% if user_vote == 'like' %}btn-primary{% else %}btn-outline-secondary{% endif %}"
+                                data-vote-url="{% url 'core:comment-vote' comment.id %}"
+                                data-vote="like">
+                                <i class="fa-solid fa-thumbs-up"></i>
+                                <span class="vote-like-count">{{ comment.like_count }}</span>
+                            </button>
+                            <button class="btn btn-sm comment-vote-btn {% if user_vote == 'dislike' %}btn-primary{% else %}btn-outline-secondary{% endif %}"
+                                data-vote-url="{% url 'core:comment-vote' comment.id %}"
+                                data-vote="dislike">
+                                <i class="fa-solid fa-thumbs-down"></i>
+                                <span class="vote-dislike-count">{{ comment.dislike_count }}</span>
+                            </button>
+                            {% endwith %}
+                            <a href="javascript:void(0);" class="small reply-link" data-comment-id="{{ comment.id }}">
+                                <i class="fas fa-reply comment-icon"></i> Reply
+                            </a>
+                        {% else %}
+                            <span class="small text-muted">
+                                <i class="fa-solid fa-thumbs-up"></i> {{ comment.like_count }}
+                            </span>
+                            <span class="small text-muted">
+                                <i class="fa-solid fa-thumbs-down"></i> {{ comment.dislike_count }}
+                            </span>
+                        {% endif %}
+                    </div>
                 </div>
                 
                 <div id="reply-form-{{ comment.id }}" style="display: none;">
@@ -97,6 +120,47 @@
 </div>
 
 <script>
+// Comment like/dislike
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.comment-vote-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const voteUrl = this.getAttribute('data-vote-url');
+            const voteType = this.getAttribute('data-vote');
+            const container = this.closest('.d-flex');
+            const likeBtn = container.querySelector('[data-vote="like"]');
+            const dislikeBtn = container.querySelector('[data-vote="dislike"]');
+
+            fetch(voteUrl, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `vote=${voteType}`
+            })
+            .then(r => r.json())
+            .then(data => {
+                likeBtn.querySelector('.vote-like-count').textContent = data.likes;
+                dislikeBtn.querySelector('.vote-dislike-count').textContent = data.dislikes;
+
+                likeBtn.className = likeBtn.className.replace(/btn-(primary|outline-secondary)/g, '');
+                dislikeBtn.className = dislikeBtn.className.replace(/btn-(primary|outline-secondary)/g, '');
+
+                if (data.user_vote === 'like') {
+                    likeBtn.classList.add('btn-primary');
+                    dislikeBtn.classList.add('btn-outline-secondary');
+                } else if (data.user_vote === 'dislike') {
+                    likeBtn.classList.add('btn-outline-secondary');
+                    dislikeBtn.classList.add('btn-primary');
+                } else {
+                    likeBtn.classList.add('btn-outline-secondary');
+                    dislikeBtn.classList.add('btn-outline-secondary');
+                }
+            });
+        });
+    });
+});
+
 // Reply form toggle
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.reply-link').forEach(function(link) {

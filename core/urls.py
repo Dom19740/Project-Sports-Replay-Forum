@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import run_populate, comment_sent, reply_sent, comment_delete, reply_delete
+from .views import run_populate, comment_sent, reply_sent, comment_delete, reply_delete, comment_vote
 from . import views
 
 app_name = 'core'
@@ -18,4 +18,5 @@ urlpatterns = [
     path('replysent/<pk>/', reply_sent, name='reply-sent'),
     path('commentdelete/<uuid:pk>/', views.comment_delete, name='comment-delete'),
     path('replydelete/<uuid:pk>/', views.reply_delete, name='reply-delete'),
+    path('commentvote/<uuid:pk>/', comment_vote, name='comment-vote'),
 ]

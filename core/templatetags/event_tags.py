@@ -30,3 +30,8 @@ def format_comment_date(value):
             return f"{hours}h ago" if hours != 1 else "1h ago"
 
     return value.strftime("%b %d %Y")
+
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(str(key))
