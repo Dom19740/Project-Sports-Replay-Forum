@@ -14,9 +14,12 @@ from django.contrib.auth import get_user_model, login
 from django.urls import reverse
 from django.core.paginator import Paginator
 from django.core.mail import BadHeaderError
+from django.db.models import Count
 from .tokens import account_activation_token
 from core.models import Event
 from core.views import sports
+from gamify.models import Badge, UserBadge, UserProfile
+from gamify.levels import level_info
 
 
 def registration_view(request):
@@ -121,21 +124,46 @@ def logout_view(request):
     return redirect('home')
 
 
+_RARITY_COLOR = {
+    1: 'text-secondary',   # Common
+    2: 'text-success',     # Uncommon
+    3: 'text-info',        # Rare
+    4: 'text-warning',     # Epic
+    5: 'text-danger',      # Legendary
+}
+
+
 @login_required
 def profile_view(request):
     user = request.user
-    rated_events = Event.objects.filter(rating__voters=user)
+    User = get_user_model()
 
-    paginator = Paginator(rated_events, 5)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    # Gamification
+    profile, _ = UserProfile.objects.get_or_create(user=user)
+    xp_info = level_info(profile)
+
+    total_users = User.objects.filter(is_active=True).count()
+    earned_ids = set(UserBadge.objects.filter(user=user).values_list('badge_id', flat=True))
+    all_badges = Badge.objects.annotate(holder_count=Count('holders')).order_by('rarity_threshold', 'name')
+
+    badge_data = [
+        {
+            'badge': b,
+            'earned': b.id in earned_ids,
+            'rarity_pct': round(b.holder_count * 100 / total_users) if total_users else 0,
+            'rarity_color': _RARITY_COLOR.get(b.rarity_threshold, 'text-secondary'),
+        }
+        for b in all_badges
+    ]
 
     context = {
         'user_form': UserUpdateForm(instance=user),
         'email_form': EmailUpdateForm(instance=user),
         'password_form': CustomPasswordChangeForm(user=user),
         'delete_form': DeleteAccountForm(),
-        'page_obj': page_obj,
+        'xp_info': xp_info,
+        'profile': profile,
+        'badge_data': badge_data,
     }
 
     return render(request, 'users/profile.html', context)

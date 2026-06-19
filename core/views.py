@@ -10,6 +10,9 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Q
 from .models import Competition, Event, Rating, Comment, Reply, CommentVote
+from gamify.services import award_xp
+from gamify.badges import check_badges
+from gamify.notifications import queue_notification
 from users.forms import CreateCommentForm, CreateReplyForm
 from datetime import timedelta
 from pyexpat.errors import messages
@@ -241,6 +244,11 @@ def vote(request, event_id):
 
             rating.save()
 
+            if request.user.is_authenticated:
+                xp_result = award_xp(request.user, 'event_rated', event)
+                new_badges = check_badges(request.user)
+                queue_notification(request, xp_result, new_badges)
+
             response = redirect('core:event', event_id=event_id)
             response.set_cookie(f'voted_{event_id}', 'true', max_age=365*24*60*60)
             return response
@@ -266,6 +274,15 @@ def vote(request, event_id):
                         rating.dislikes += 1
 
                     rating.save()
+
+                    if request.user.is_authenticated:
+                        xp_result = award_xp(request.user, 'event_liked', event)
+                        if like_type == 'liked':
+                            for voter in rating.voters.exclude(id=request.user.id):
+                                award_xp(voter, 'rating_liked', event)
+                        new_badges = check_badges(request.user)
+                        queue_notification(request, xp_result, new_badges)
+
                     response = redirect('core:event', event_id=event_id)
                     response.set_cookie(f'liked_{event_id}', like_type, max_age=365*24*60*60)
                     return response
@@ -347,7 +364,10 @@ def comment_sent(request, pk):
             comment.event = event
             comment.author = request.user
             comment.save()
-    
+            xp_result = award_xp(request.user, 'comment_posted', comment)
+            new_badges = check_badges(request.user)
+            queue_notification(request, xp_result, new_badges)
+
     return redirect('core:event', event_id=event.id)
 
 
@@ -409,6 +429,16 @@ def comment_vote(request, pk):
     else:
         CommentVote.objects.create(user=request.user, comment=comment, vote=vote_type)
         user_vote = vote_type
+
+    # Award XP to the comment author when they receive a new like.
+    # Only fires when a like lands (not on toggle-off, not when switching to dislike).
+    if (
+        user_vote == CommentVote.LIKE
+        and comment.author
+        and comment.author != request.user
+    ):
+        award_xp(comment.author, 'comment_liked', comment)
+        check_badges(comment.author)
 
     likes = comment.votes.filter(vote=CommentVote.LIKE).count()
     dislikes = comment.votes.filter(vote=CommentVote.DISLIKE).count()

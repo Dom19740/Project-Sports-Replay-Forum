@@ -123,6 +123,47 @@
 <!-- Floating Button -->
 <a href="https://tally.so/r/wvxZ5g" target="_blank" class="btn-feedback" title="Give Feedback">Give Feedback</a>
 
+{# ── Gamification toast ────────────────────────────────────────────────────── #}
+<div class="gamify-toast-container position-fixed bottom-0 end-0 p-3" style="z-index:1100;">
+    <div id="gamifyToast" class="toast gamify-toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4500">
+        <div class="toast-header gamify-toast-header">
+            <i class="fa-solid fa-bolt me-2"></i>
+            <strong class="me-auto" id="gamifyToastTitle">XP Earned</strong>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" id="gamifyToastBody"></div>
+    </div>
+</div>
+
+{% if gamify_notification %}
+{{ gamify_notification|json_script:"gamify-notif-data" }}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var raw = document.getElementById('gamify-notif-data');
+    if (!raw) return;
+    var data = JSON.parse(raw.textContent);
+    if (!data || !data.xp) return;
+
+    var lines = [];
+    if (data.leveled_up) {
+        document.getElementById('gamifyToastTitle').textContent = 'Level Up!';
+        lines.push('<i class="fa-solid fa-arrow-up me-1 text-warning"></i>Now Level ' + data.new_level + ' — ' + data.new_title);
+        lines.push('+' + data.xp + ' XP this action');
+    } else {
+        lines.push('+' + data.xp + ' XP');
+    }
+    if (data.badges && data.badges.length) {
+        data.badges.forEach(function (b) {
+            lines.push('<i class="' + b.icon + ' me-1"></i>Badge unlocked: <strong>' + b.name + '</strong>');
+        });
+    }
+
+    document.getElementById('gamifyToastBody').innerHTML = lines.join('<br>');
+    new bootstrap.Toast(document.getElementById('gamifyToast')).show();
+});
+</script>
+{% endif %}
+
 
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>

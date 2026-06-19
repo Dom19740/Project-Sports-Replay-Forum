@@ -9,14 +9,107 @@
 <h6 class='main-header'>{{ user.username|title }}'s Profile</h6>
 
 
+{# ── Level & XP ──────────────────────────────────────────────────────────── #}
 <div class='main-container-style'>
+    <p class="inside-header">Your Progress</p>
 
+    <div class="d-flex align-items-center gap-3 mb-3">
+        <div class="gamify-level-circle">{{ xp_info.level }}</div>
+
+        <div class="flex-grow-1">
+            <div class="d-flex justify-content-between align-items-baseline mb-1">
+                <span class="fw-semibold">{{ xp_info.title }}</span>
+                {% if xp_info.xp_next %}
+                    <span class="text-muted small">{{ xp_info.total_xp|floatformat:0 }} / {{ xp_info.xp_next }} XP</span>
+                {% else %}
+                    <span class="text-muted small">{{ xp_info.total_xp }} XP &mdash; Max Level</span>
+                {% endif %}
+            </div>
+
+            <div class="progress" style="height: 8px;">
+                <div class="progress-bar gamify-xp-bar"
+                     role="progressbar"
+                     style="width: {{ xp_info.progress_pct }}%;"
+                     aria-valuenow="{{ xp_info.progress_pct }}"
+                     aria-valuemin="0"
+                     aria-valuemax="100">
+                </div>
+            </div>
+
+            {% if xp_info.xp_next %}
+                <div class="text-muted mt-1" style="font-size:0.7rem;">
+                    {{ xp_info.xp_needed }} XP to Level {{ xp_info.level|add:1 }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {# ── Streaks ─────────────────────────────────────────────────────────── #}
+    <div class="d-flex gap-4 mt-2">
+        <div>
+            <i class="fa-solid fa-fire text-warning"></i>
+            <strong>{{ profile.current_streak }}</strong>
+            <span class="text-muted small">day streak</span>
+        </div>
+        <div>
+            <i class="fa-solid fa-fire text-secondary"></i>
+            <strong>{{ profile.longest_streak }}</strong>
+            <span class="text-muted small">longest streak</span>
+        </div>
+    </div>
+</div>
+
+
+{# ── Badges ──────────────────────────────────────────────────────────────── #}
+<div class='main-container-style'>
+    <p class="inside-header">
+        Badges
+        <span class="text-muted small fw-normal ms-2">
+            {{ badge_data|length }} available
+        </span>
+    </p>
+
+    <div class="row g-2">
+        {% for entry in badge_data %}
+        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+            <div class="gamify-badge-card {% if entry.earned %}earned{% else %}locked{% endif %}">
+
+                <span class="gamify-badge-icon {{ entry.rarity_color }}">
+                    {% if entry.earned %}
+                        <i class="{{ entry.badge.icon }}"></i>
+                    {% else %}
+                        <i class="fa-solid fa-lock"></i>
+                    {% endif %}
+                </span>
+
+                <div class="gamify-badge-name">{{ entry.badge.name }}</div>
+
+                <div class="gamify-badge-rarity {{ entry.rarity_color }}">
+                    {{ entry.badge.get_rarity_threshold_display }}
+                </div>
+
+                <div class="gamify-badge-meta">
+                    {{ entry.badge.description }}
+                    <br>
+                    <span class="text-muted">{{ entry.rarity_pct }}% of users</span>
+                </div>
+
+            </div>
+        </div>
+        {% empty %}
+            <p class="text-muted small">No badges available yet.</p>
+        {% endfor %}
+    </div>
+</div>
+
+
+{# ── Account settings ────────────────────────────────────────────────────── #}
+<div class='main-container-style'>
     <p>Update Your Details</p>
 
     <div class="form-field">
         <form method="POST" action="{% url 'users:update_username' %}" class="form-group">
             {% csrf_token %}
-
             {{ user_form|crispy }}
             <button type="submit" class="btn btn-primary">Update Username</button>
         </form>
@@ -29,26 +122,20 @@
             <button type="submit" class="btn btn-primary">Update Email</button>
         </form>
     </div>
-    
 </div>
 
 <div class='main-container-style'>
-
     <p>Change Password</p>
-
     <div class="form-field">
         <form method="POST" action="{% url 'users:change_password' %}">
             {% csrf_token %}
-            
             {{ password_form|crispy }}
             <button type="submit" class="btn btn-primary">Change Password</button>
         </form>
     </div>
-
 </div>
 
 <div class='main-container-style'>
-    
     <p>Delete Account</p>
     <div class="form-field">
         <form method="POST" action="{% url 'users:delete_account' %}">
@@ -57,6 +144,6 @@
             <button type="submit" class="btn btn-danger">Delete Account</button>
         </form>
     </div>
-    
 </div>
+
 {% endblock %}

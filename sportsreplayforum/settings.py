@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'core.apps.CoreConfig',
     'users.apps.UsersConfig',
+    'gamify.apps.GamifyConfig',
 
     # Extensions - installed with requirements.txt
     'django_extensions', 
@@ -112,6 +113,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.sports_processor',
+                'gamify.context_processors.gamify_notification',
             ],
         },
     },

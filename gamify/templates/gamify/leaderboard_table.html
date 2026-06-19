@@ -1,0 +1,46 @@
+{% if rows %}
+<div class="table-responsive">
+    <table class="table table-dark table-hover align-middle leaderboard-table mb-0">
+        <thead>
+            <tr>
+                <th style="width:3rem;">#</th>
+                <th>Player</th>
+                <th class="text-center" style="width:8rem;">Level</th>
+                <th class="text-end" style="width:7rem;">{{ label|title }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr {% if user.is_authenticated and row.username == user.username %}class="leaderboard-you"{% endif %}>
+                <td class="leaderboard-rank">
+                    {% if row.rank == 1 %}
+                        <i class="fa-solid fa-trophy text-warning"></i>
+                    {% elif row.rank == 2 %}
+                        <i class="fa-solid fa-trophy" style="color:#adb5bd;"></i>
+                    {% elif row.rank == 3 %}
+                        <i class="fa-solid fa-trophy" style="color:#cd7f32;"></i>
+                    {% else %}
+                        {{ row.rank }}
+                    {% endif %}
+                </td>
+                <td>
+                    <span class="fw-semibold">{{ row.username }}</span>
+                    {% if user.is_authenticated and row.username == user.username %}
+                        <span class="badge leaderboard-you-badge ms-1">You</span>
+                    {% endif %}
+                </td>
+                <td class="text-center">
+                    <span class="leaderboard-level-pill">{{ row.level }}</span>
+                    <span class="text-muted small ms-1">{{ row.title }}</span>
+                </td>
+                <td class="text-end fw-semibold">
+                    {{ row.xp }} <span class="text-muted fw-normal small">XP</span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="text-muted text-center py-4 mb-0">No activity recorded yet. Be the first!</p>
+{% endif %}

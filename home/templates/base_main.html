@@ -13,7 +13,7 @@
         </a>
 
         <!-- <span class="navbar-text">TEST</span>  -->
-        
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,10 +43,13 @@
                     </li>
                 {% endif %}
                 <li class="nav-item">
+                    <a class="nav-link" title="Leaderboard" href="{% url 'gamify:leaderboard' %}">Leaderboard</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" title="About" href="{% url 'about' %}">About</a>
                 </li>
                 {% include 'core/search.html' %}
-            
+
             </ul>
         </div>
     </div>
