@@ -1,11 +1,11 @@
 import math
 
-MAX_LEVEL = 50
+MAX_LEVEL = 25
 
 # 7 titles spread evenly across MAX_LEVEL using integer bucketing.
 # Breakpoints (level where each title starts):
-#   Rookie 1, Fan 9, Regular 16, Contender 23,
-#   All-Star 30, Champion 37, Legend 44
+#   Rookie 1, Fan 5, Regular 9, Contender 12,
+#   All-Star 16, Champion 19, Legend 23
 TITLES = ['Rookie', 'Fan', 'Regular', 'Contender', 'All-Star', 'Champion', 'Legend']
 
 
@@ -13,7 +13,7 @@ def xp_for_level(n):
     """Total cumulative XP required to reach level n. Level 1 costs 0 XP."""
     if n <= 1:
         return 0
-    return int(100 * (n ** 1.5))
+    return int(9 * (n ** 1.5))
 
 
 def compute_level(total_xp):

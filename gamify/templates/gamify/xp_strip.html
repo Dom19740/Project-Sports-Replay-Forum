@@ -1,0 +1,32 @@
+{% if user.is_authenticated and gamify_strip %}
+<a href="{% url 'users:profile' %}" class="xp-strip mx-3">
+
+    {# Level circle #}
+    <div class="xp-strip-level">{{ gamify_strip.level }}</div>
+
+    {# Title + bar #}
+    <div class="xp-strip-bar-wrap">
+        <div class="xp-strip-label">
+            <span class="xp-strip-title">{{ gamify_strip.title }}</span>
+            <span class="xp-strip-xp">
+                {% if gamify_strip.xp_next %}
+                    {{ gamify_strip.total_xp }} / {{ gamify_strip.xp_next }} XP
+                {% else %}
+                    {{ gamify_strip.total_xp }} XP &mdash; Max
+                {% endif %}
+            </span>
+        </div>
+        <div class="xp-strip-track">
+            <div class="xp-strip-fill" style="width:{{ gamify_strip.progress_pct }}%;"></div>
+        </div>
+    </div>
+
+    {# Last badge #}
+    {% if gamify_strip.last_badge %}
+    <div class="xp-strip-badge" title="{{ gamify_strip.last_badge.name }}">
+        <i class="{{ gamify_strip.last_badge.icon }}"></i>
+    </div>
+    {% endif %}
+
+</a>
+{% endif %}

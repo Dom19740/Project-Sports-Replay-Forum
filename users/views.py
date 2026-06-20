@@ -164,6 +164,7 @@ def profile_view(request):
         'xp_info': xp_info,
         'profile': profile,
         'badge_data': badge_data,
+        'earned_badge_count': len(earned_ids),
     }
 
     return render(request, 'users/profile.html', context)
