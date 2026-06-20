@@ -77,8 +77,13 @@ INSTALLED_APPS = [
     'django_extensions', 
     'crispy_forms',  
     'crispy_bootstrap5',  
-    'rest_framework', 
+    'rest_framework',
+    'airatings.apps.AiratingsConfig',
 ]
+
+# AI provider settings (override in .env)
+AI_PROVIDER = os.getenv('AI_PROVIDER', 'gemini')
+AI_MODEL = os.getenv('AI_MODEL', 'gemini-2.5-flash')
 
 SITE_ID = 1
 
