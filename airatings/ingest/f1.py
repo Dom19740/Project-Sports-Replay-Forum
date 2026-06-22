@@ -59,6 +59,20 @@ def _is_dnf(status: str) -> bool:
 
 
 # ---------------------------------------------------------------------------
+# Name matching helpers
+# ---------------------------------------------------------------------------
+
+# Words stripped before comparing location tokens
+_GENERIC = {"grand", "prix", "circuit", "de", "the", "race", "gp", "international", "park"}
+
+
+def _location_tokens(name: str) -> set[str]:
+    """Extract meaningful location words from a race/circuit name."""
+    tokens = re.split(r"[\s\-\/]+", name.lower())
+    return {t for t in tokens if t and t not in _GENERIC and len(t) > 2}
+
+
+# ---------------------------------------------------------------------------
 # Adapter
 # ---------------------------------------------------------------------------
 
@@ -70,10 +84,22 @@ class F1DataSource(EventDataSource):
             return None
         races = data.get("MRData", {}).get("RaceTable", {}).get("Races", [])
         comp_lower = competition_name.lower()
+        comp_tokens = _location_tokens(competition_name)
+
         for race in races:
-            ergast_name = race.get("raceName", "").lower()
+            ergast_name  = race.get("raceName", "").lower()
+            circuit_name = race.get("Circuit", {}).get("circuitName", "").lower()
+
+            # 1. Direct substring match (handles identical or contained names)
             if ergast_name in comp_lower or comp_lower in ergast_name:
                 return int(race["round"])
+
+            # 2. Location-token overlap across race name + circuit name.
+            #    e.g. "Barcelona-Catalunya GP" vs "Barcelona GP" / "Circuit de Barcelona-Catalunya"
+            ergast_tokens = _location_tokens(ergast_name) | _location_tokens(circuit_name)
+            if comp_tokens & ergast_tokens:
+                return int(race["round"])
+
         logger.warning("F1: no Ergast round matched '%s' %s", competition_name, year)
         return None
 
