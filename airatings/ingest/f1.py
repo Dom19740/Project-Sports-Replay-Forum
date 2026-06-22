@@ -1,8 +1,11 @@
 import re
 import logging
+import datetime
 import requests
+from django.conf import settings
 from django.core.cache import cache
 from .base import EventDataSource
+from .reports import fetch_matching_reports
 
 logger = logging.getLogger(__name__)
 
@@ -271,3 +274,28 @@ class F1DataSource(EventDataSource):
         dnfs = [r for r in results if _is_dnf(r.get("status", ""))]
         stats["dnf_count"] = len(dnfs)
         stats["classified_finishers"] = len(results)
+
+    # ------------------------------------------------------------------
+    # Reports
+    # ------------------------------------------------------------------
+
+    def get_reports(self, event) -> list[str]:
+        comp_name = event.event_list.name  # e.g. "Monaco Grand Prix"
+
+        # Extract the location word(s) before "Grand Prix" as a focused keyword.
+        # Falls back to the full competition name if the pattern doesn't match.
+        match = re.match(r"^(.+?)\s+Grand Prix", comp_name, re.IGNORECASE)
+        location = match.group(1).strip() if match else comp_name
+
+        # Race weekend window: Thursday (3 days before) through Monday (1 day after)
+        race_dt = event.date_time.replace(tzinfo=datetime.timezone.utc)
+        since = race_dt - datetime.timedelta(days=3)
+        until = race_dt + datetime.timedelta(days=1)
+
+        feeds = getattr(settings, "F1_RSS_FEEDS", [])
+        return fetch_matching_reports(
+            feed_urls=feeds,
+            keywords=[location, "Grand Prix"],
+            since=since,
+            until=until,
+        )

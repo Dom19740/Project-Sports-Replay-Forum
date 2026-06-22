@@ -1,8 +1,11 @@
 import os
 import logging
+import datetime
 import requests
+from django.conf import settings
 from django.core.cache import cache
 from .base import EventDataSource
+from .reports import fetch_matching_reports
 
 logger = logging.getLogger(__name__)
 
@@ -212,3 +215,23 @@ class FootballDataSource(EventDataSource):
         )
 
         return stats
+
+    def get_reports(self, event) -> list[str]:
+        event_data = _sportsdb_fetch("lookupevent.php", event.idEvent)
+        raw = (event_data or {}).get("events", [None])[0] or {}
+        home_team = raw.get("strHomeTeam", "")
+        away_team = raw.get("strAwayTeam", "")
+        if not home_team or not away_team:
+            return []
+
+        day = event.date_time.replace(tzinfo=datetime.timezone.utc)
+        since = day - datetime.timedelta(days=1)
+        until = day + datetime.timedelta(days=1)
+
+        feeds = getattr(settings, "FOOTBALL_RSS_FEEDS", [])
+        return fetch_matching_reports(
+            feed_urls=feeds,
+            keywords=[home_team, away_team],
+            since=since,
+            until=until,
+        )

@@ -85,6 +85,19 @@ INSTALLED_APPS = [
 AI_PROVIDER = os.getenv('AI_PROVIDER', 'gemini')
 AI_MODEL = os.getenv('AI_MODEL', 'gemini-2.5-flash')
 
+# RSS feeds used by the AI ratings report layer (private LLM context — never shown to users)
+FOOTBALL_RSS_FEEDS = [
+    "https://feeds.bbci.co.uk/sport/football/rss.xml",
+    "https://www.theguardian.com/football/rss",
+    "https://www.skysports.com/rss/12040",
+]
+
+F1_RSS_FEEDS = [
+    "https://feeds.bbci.co.uk/sport/formula1/rss.xml",
+    "https://www.motorsport.com/rss/f1/news/",
+    "https://www.theguardian.com/sport/formulaone/rss",
+]
+
 SITE_ID = 1
 
 # When we get to tagging
