@@ -53,7 +53,7 @@ def _quali_time_to_secs(t: str) -> float | None:
 
 
 def _is_dnf(status: str) -> bool:
-    if not status or status == "Finished":
+    if not status or status == "Finished" or status == "Lapped":
         return False
     return not bool(re.match(r"^\+\d+ Laps?$", status))
 
@@ -103,17 +103,19 @@ class F1DataSource(EventDataSource):
         logger.warning("F1: no Ergast round matched '%s' %s", competition_name, year)
         return None
 
-    def _championship_gap(self, year: int, round_num: int) -> float | None:
-        """Points gap between P1 and P2 in driver standings BEFORE this round."""
+    def _pre_race_standings(self, year: int, round_num: int) -> list:
+        """Driver standings before this round (empty list if unavailable)."""
         if round_num <= 1:
-            return None
+            return []
         data = _jolpica_get(f"/{year}/{round_num - 1}/driverStandings.json")
         if not data:
-            return None
+            return []
         lists = data.get("MRData", {}).get("StandingsTable", {}).get("StandingsLists", [])
-        if not lists:
-            return None
-        standings = lists[0].get("DriverStandings", [])
+        return lists[0].get("DriverStandings", []) if lists else []
+
+    def _championship_gap(self, year: int, round_num: int) -> float | None:
+        """Points gap between P1 and P2 in driver standings BEFORE this round."""
+        standings = self._pre_race_standings(year, round_num)
         if len(standings) < 2:
             return None
         try:
@@ -191,19 +193,70 @@ class F1DataSource(EventDataSource):
                 except ValueError:
                     pass
 
-        # DNFs and lapped cars
-        dnf_reasons, lapped = [], 0
+        # Total laps completed by the winner (authoritative race distance)
+        total_laps = int(results[0].get("laps", 0)) if results else 0
+        stats["total_laps"] = total_laps
+
+        # DNFs and lapped cars — with retirement lap timing
+        dnf_details, lapped = [], 0
         for r in results:
             status = r.get("status", "")
             if _is_dnf(status):
-                dnf_reasons.append(status)
-            elif re.match(r"^\+\d+ Laps?$", status):
+                laps_done = int(r.get("laps", 0))
+                pct = round(laps_done / total_laps, 3) if total_laps else None
+                dnf_details.append({
+                    "driver": f"{r['Driver']['givenName']} {r['Driver']['familyName']}",
+                    "lap": laps_done,
+                    "race_pct": pct,
+                    "status": status,
+                })
+            elif status == "Lapped" or re.match(r"^\+\d+ Laps?$", status):
                 lapped += 1
 
-        stats["dnf_count"] = len(dnf_reasons)
-        stats["dnf_reasons"] = sorted(set(dnf_reasons))
+        stats["dnf_count"] = len(dnf_details)
+        stats["dnf_details"] = dnf_details
+        # Retirements in the final 20% of race distance — high entertainment/tension impact
+        stats["late_retirements"] = [d for d in dnf_details if (d["race_pct"] or 0) >= 0.80]
         stats["lapped_count"] = lapped
         stats["classified_finishers"] = len(results)
+
+        # Championship leader context
+        standings = self._pre_race_standings(year, round_num)
+        if standings:
+            leader_id = standings[0].get("Driver", {}).get("driverId", "")
+            leader_dnf = next(
+                (d for d in dnf_details
+                 if any(leader_id in r["Driver"]["driverId"]
+                        for r in results
+                        if r["Driver"]["familyName"] in d["driver"])),
+                None,
+            )
+            # Simpler: cross-reference by driverId directly
+            leader_dnf_entry = next(
+                (d for d in dnf_details
+                 if leader_id in d["driver"].lower().replace(" ", "_")
+                 or leader_id in d["driver"].lower()),
+                None,
+            )
+            # Most reliable: look up by driverId in raw results
+            leader_result = next(
+                (r for r in results if r["Driver"]["driverId"] == leader_id),
+                None,
+            )
+            if leader_result and _is_dnf(leader_result.get("status", "")):
+                laps_done = int(leader_result.get("laps", 0))
+                pct = round(laps_done / total_laps, 3) if total_laps else None
+                stats["championship_leader_dnf"] = True
+                stats["championship_leader_dnf_lap"] = laps_done
+                stats["championship_leader_dnf_race_pct"] = pct
+            else:
+                stats["championship_leader_dnf"] = False if leader_result else None
+                stats["championship_leader_dnf_lap"] = None
+                stats["championship_leader_dnf_race_pct"] = None
+        else:
+            stats["championship_leader_dnf"] = None
+            stats["championship_leader_dnf_lap"] = None
+            stats["championship_leader_dnf_race_pct"] = None
 
         # Gross position changes — proxy for overtaking
         changes = 0

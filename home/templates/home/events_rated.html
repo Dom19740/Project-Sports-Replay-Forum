@@ -2,7 +2,7 @@
 
 <div >
     <h6 class="inside-header">
-        <span>Latest Rated Events</span>
+        <span>Latest User Rated</span>
         <i class="fa-solid fa-arrow-down-wide-short"></i>
     </h6>
     
@@ -18,6 +18,7 @@
             {{ event.event.event_type }}
         {% endif %}
         {% if event.event.rating.average_stars >= 4 %}<img src="{% static 'img/logo_flame_small.png' %}" class="rating-pill-icon" alt="Hot">{% elif event.event.rating.average_stars >= 2 %}<img src="{% static 'img/logo_mid_small.png' %}" class="rating-pill-icon" alt="Mid">{% elif event.event.rating.average_stars %}<img src="{% static 'img/logo_cold_small.png' %}" class="rating-pill-icon" alt="Not">{% endif %}
+        {% with ai=event.event.ai_pipeline %}{% if ai and ai.status != 'flagged' %}{% if ai.verdict == 'hot_watch' %}<img src="{% static 'img/logo_flame_small_ai.png' %}" class="rating-pill-icon" alt="AI Hot">{% elif ai.verdict == 'mid_temp' %}<img src="{% static 'img/logo_mid_small_ai.png' %}" class="rating-pill-icon" alt="AI Mid">{% else %}<img src="{% static 'img/logo_cold_small_ai.png' %}" class="rating-pill-icon" alt="AI Not">{% endif %}{% endif %}{% endwith %}
     </a>
         {% endfor %}
     </div>

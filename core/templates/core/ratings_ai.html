@@ -1,20 +1,28 @@
 {% load static %}
 
 <h6>AI Rating</h6>
-{% if not event.ai_review %}
-    <p>AI ratings coming soon.</p>
-{% else %}
-    {% if event.rating.percentage >= 66 %}
-        <img src="{% static 'img/logo_flame_large.png' %}" alt="HOT WATCH" class="rating-logo"><h3>HOT WATCH!</h3>
+{% if ai_pipeline %}
+    {% if ai_pipeline.verdict == "hot_watch" %}
+        <img src="{% static 'img/logo_flame_small_ai.png' %}" alt="HOT WATCH" class="rating-logo"><h3>HOT WATCH!</h3>
         <h6>Watch the Full Replay</h6>
-    {% elif event.rating.percentage >= 33 %}
-        <img src="{% static 'img/logo_mid.png' %}" alt="MID TEMP" class="rating-logo"><h3>MID TEMP!</h3>
+    {% elif ai_pipeline.verdict == "mid_temp" %}
+        <img src="{% static 'img/logo_mid_small_ai.png' %}" alt="MID TEMP" class="rating-logo"><h3>MID TEMP!</h3>
         <h6>Watch the Highlights</h6>
     {% else %}
-        <img src="{% static 'img/logo_cold.png' %}" alt="NOT WATCH" class="rating-logo"><h3>NOT WATCH!</h3>
+        <img src="{% static 'img/logo_cold_small_ai.png' %}" alt="NOT WATCH" class="rating-logo"><h3>NOT WATCH!</h3>
         <h6>Check Out the Results</h6>
     {% endif %}
 
-    <p class="ai-review">{{ event.ai_review }}</p>
-    <p>Rated {{ event.ai_rating }}% Hot.</p>
+    <p>
+        {% if ai_pipeline.stars == 5 %}<span class="ai-stars ai-stars-5">★★★★★</span>
+        {% elif ai_pipeline.stars == 4 %}<span class="ai-stars ai-stars-4">★★★★☆</span>
+        {% elif ai_pipeline.stars == 3 %}<span class="ai-stars ai-stars-3">★★★☆☆</span>
+        {% elif ai_pipeline.stars == 2 %}<span class="ai-stars ai-stars-2">★★☆☆☆</span>
+        {% else %}<span class="ai-stars ai-stars-1">★☆☆☆☆</span>{% endif %}
+        <small>AI Rating</small>
+    </p>
+
+    <p class="ai-blurb">{{ ai_pipeline.blurb }}</p>
+{% else %}
+    <p>AI ratings coming soon.</p>
 {% endif %}

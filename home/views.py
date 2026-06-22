@@ -15,16 +15,20 @@ class HomeView(View):
         tomorrow = today + timedelta(days=1)
         last_week = now - timedelta(days=7)
 
-        recent_ratings = Rating.objects.all().order_by('-id')[:10]
+        recent_ratings = (
+            Rating.objects
+            .select_related('event__event_list', 'event__ai_pipeline')
+            .order_by('-id')[:10]
+        )
         recent_voted_events = []
 
         for rating in recent_ratings:
             event = rating.event
-            league = event.event_list.league  # Get the league for this event
+            league = event.event_list.league
             recent_voted_events.append({
                 'event': event,
                 'league': league,
-        })
+            })
             
         todays_events = Event.objects.filter(date_time__range=(today, tomorrow)).order_by('date_time')
         recent_events = Event.objects.filter(date_time__range=(last_week, now)).order_by('-date_time')

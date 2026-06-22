@@ -179,7 +179,7 @@ class PipelineError(Exception):
 # Main pipeline
 # ---------------------------------------------------------------------------
 
-def run_pipeline(event) -> AIRating:
+def run_pipeline(event, force: bool = False) -> AIRating:
     """
     Run the full AI rating pipeline for one event.
 
@@ -192,22 +192,23 @@ def run_pipeline(event) -> AIRating:
     Saves result as an AIRating row.
 
     Idempotency:
-        - Already-published ratings are never overwritten.
-        - Pending / flagged ratings are re-processed (allows retries after fixes).
+        - Already-published ratings are skipped unless force=True.
+        - force=True re-runs the full pipeline regardless of existing status.
 
     Returns the AIRating instance.
     Raises PipelineError if any non-recoverable stage fails.
     """
     # --- Idempotency guard -----------------------------------------------
-    try:
-        existing = AIRating.objects.get(event=event)
-        if existing.status == AIRating.STATUS_PUBLISHED:
-            logger.info(
-                "pipeline: event pk=%s already published — skipping", event.pk
-            )
-            return existing
-    except AIRating.DoesNotExist:
-        pass
+    if not force:
+        try:
+            existing = AIRating.objects.get(event=event)
+            if existing.status == AIRating.STATUS_PUBLISHED:
+                logger.info(
+                    "pipeline: event pk=%s already published — skipping", event.pk
+                )
+                return existing
+        except AIRating.DoesNotExist:
+            pass
 
     logger.info("pipeline: starting for event pk=%s (%s)", event.pk, event)
 
@@ -247,7 +248,7 @@ def run_pipeline(event) -> AIRating:
     # --- 4. Stage two + guard (LLM) ----------------------------------------
     blurb, is_safe, flag_reasons = run_with_guard(signals, verdict, event)
 
-    status = AIRating.STATUS_FLAGGED if not is_safe else AIRating.STATUS_PENDING
+    status = AIRating.STATUS_FLAGGED if not is_safe else AIRating.STATUS_PUBLISHED
 
     # --- 5. Persist -------------------------------------------------------
     ai_rating, created = AIRating.objects.update_or_create(

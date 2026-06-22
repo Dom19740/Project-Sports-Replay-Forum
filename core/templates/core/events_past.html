@@ -5,7 +5,7 @@
     {% for event in events_past %}
       <li>
         <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-light rounded-pill">
-            {{ event.event_type|title }}{% if event.rating.average_stars >= 4 %} <img src="{% static 'img/logo_flame_large.png' %}" class="rating-pill-icon" alt="Hot">{% elif event.rating.average_stars >= 2 %} <img src="{% static 'img/logo_mid.png' %}" class="rating-pill-icon" alt="Mid">{% elif event.rating.average_stars %} <img src="{% static 'img/logo_cold.png' %}" class="rating-pill-icon" alt="Not">{% endif %}
+            {{ event.event_type|title }}{% if event.rating.average_stars >= 4 %} <img src="{% static 'img/logo_flame_large.png' %}" class="rating-pill-icon" alt="Hot">{% elif event.rating.average_stars >= 2 %} <img src="{% static 'img/logo_mid.png' %}" class="rating-pill-icon" alt="Mid">{% elif event.rating.average_stars %} <img src="{% static 'img/logo_cold.png' %}" class="rating-pill-icon" alt="Not">{% endif %}{% with ai=event.ai_pipeline %}{% if ai and ai.status != 'flagged' %}{% if ai.verdict == 'hot_watch' %} <img src="{% static 'img/logo_flame_small_ai.png' %}" class="rating-pill-icon" alt="AI Hot">{% elif ai.verdict == 'mid_temp' %} <img src="{% static 'img/logo_mid_small_ai.png' %}" class="rating-pill-icon" alt="AI Mid">{% else %} <img src="{% static 'img/logo_cold_small_ai.png' %}" class="rating-pill-icon" alt="AI Not">{% endif %}{% endif %}{% endwith %}
         </a>
       </li>
     {% endfor %}

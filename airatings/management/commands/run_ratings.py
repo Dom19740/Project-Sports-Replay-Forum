@@ -99,7 +99,7 @@ class Command(BaseCommand):
             # --- Run pipeline ---------------------------------------------
             self.stdout.write(f"  [{checked}/{total}] Processing: {event}")
             try:
-                ai_rating = run_pipeline(event)
+                ai_rating = run_pipeline(event, force=force)
                 processed += 1
 
                 status_style = (

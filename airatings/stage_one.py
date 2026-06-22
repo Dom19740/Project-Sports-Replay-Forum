@@ -66,7 +66,24 @@ excitement (anchored to scoring density for football; action density for F1/moto
     0-2 total goals → excitement is typically 1-3 (adjust upward for high xg/shots)
   Motorsport: weight DNFs, safety cars, on-track position changes, and wet conditions heavily.
 
-competitiveness (reflects actual on-pitch closeness — NOT team reputation or pre-match billing):
+F1/Motorsport — late_tension and had_late_decisive_moment:
+  The stats include a "late_retirements" list: retirements that occurred in the final 20% of race
+  distance, each with "race_pct" (e.g. 0.924 = 92.4% race distance).
+  "championship_leader_dnf_race_pct" gives the exact moment the points leader retired.
+
+  Apply these rules without exception:
+    late_retirements is non-empty               → had_late_decisive_moment MUST be True
+                                                   late_tension MUST be ≥ 4
+    championship_leader_dnf_race_pct ≥ 0.80    → drama MUST be ≥ 4
+                                                   This is a defining championship moment.
+    championship_leader_dnf_race_pct ≥ 0.90    → drama MUST be 5
+                                                   A leader retiring in the final 10% is
+                                                   the highest narrative impact possible.
+    winning_margin_secs alone does NOT determine late_tension:
+      A dominant winner with a large gap can still have high late_tension if retirements,
+      safety cars, or battles behind occurred in the final laps.
+
+competitiveness (reflects actual on-track closeness — NOT team reputation or pre-match billing):
   Final margin 0 (draw)   → competitiveness 4-5
   Final margin 1           → competitiveness 3-4
   Final margin 2-3         → competitiveness 2-3
@@ -74,10 +91,10 @@ competitiveness (reflects actual on-pitch closeness — NOT team reputation or p
   A 7-1 result is NOT competitive (score 1-2) even if both teams are well-known.
   A 0-0 draw with high xg IS competitive (score 4-5) even between unfancied teams.
 
-CRITICAL — team bias is forbidden:
-  Do NOT adjust any score based on team names, country size, FIFA ranking, or historical prestige.
-  Do NOT inflate scores because the match is a "marquee" fixture or involves famous nations.
-  Rate only the 90 minutes (or race duration) that actually happened.\
+CRITICAL — team/driver bias is forbidden:
+  Do NOT adjust any score based on team names, driver fame, nationality, or historical prestige.
+  Do NOT inflate scores because the match is a "marquee" fixture or involves famous competitors.
+  Rate only what actually happened during the event.\
 """
 
 

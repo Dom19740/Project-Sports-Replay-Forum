@@ -10,6 +10,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Q
 from .models import Competition, Event, Rating, Comment, Reply, CommentVote
+from airatings.models import AIRating
 from gamify.services import award_xp
 from gamify.badges import check_badges
 from gamify.notifications import queue_notification
@@ -111,7 +112,7 @@ def competition_schedule(request, league):
 
 def event_list(request, competition_id):
     competition = get_object_or_404(Competition, id=competition_id)
-    events = Event.objects.filter(event_list=competition).order_by('-date_time')
+    events = Event.objects.select_related('ai_pipeline').filter(event_list=competition).order_by('-date_time')
 
     events_upcoming = []
     events_past = []
@@ -149,6 +150,11 @@ def event(request, event_id):
     poster = event.poster
     ai_review = event.ai_review
     ai_rating = event.ai_rating
+    try:
+        _pipeline = event.ai_pipeline
+        ai_pipeline = _pipeline if _pipeline.status != AIRating.STATUS_FLAGGED else None
+    except Exception:
+        ai_pipeline = None
     comments = event.comments.prefetch_related('replies').annotate(
         like_count=Count('votes', filter=Q(votes__vote='like')),
         dislike_count=Count('votes', filter=Q(votes__vote='dislike')),
@@ -188,6 +194,7 @@ def event(request, event_id):
         'poster': poster,
         'ai_review': ai_review,
         'ai_rating': ai_rating,
+        'ai_pipeline': ai_pipeline,
         'comments': comments,
         'commentform': commentform,
         'replyform': replyform,
