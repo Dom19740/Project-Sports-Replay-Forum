@@ -348,7 +348,8 @@ label {
 .events-scroll::-webkit-scrollbar-thumb { background: var(--dark-purple); border-radius: 3px; }
 .events-scroll::-webkit-scrollbar-track { background: #1a1a1a; }
 
-.event-icon { width: 17px; height: 18px; margin-right: 5px; padding-bottom: 1px; }
+.event-icon { width: 17px; height: 18px; margin-right: 5px; }
+.rating-pill-icon { width: 22px; height: 25px; margin-left: 8px; }
 
 .fa-arrow-down-wide-short { margin-left: 10px; font-size: 16px; }
 

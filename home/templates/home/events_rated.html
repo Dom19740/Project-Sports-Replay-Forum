@@ -17,7 +17,7 @@
         {% else %}
             {{ event.event.event_type }}
         {% endif %}
-        - {{ event.event.rating.percentage|floatformat:0 }}% Hot
+        {% if event.event.rating.average_stars >= 4 %}<img src="{% static 'img/logo_flame_small.png' %}" class="rating-pill-icon" alt="Hot">{% elif event.event.rating.average_stars >= 2 %}<img src="{% static 'img/logo_mid_small.png' %}" class="rating-pill-icon" alt="Mid">{% elif event.event.rating.average_stars %}<img src="{% static 'img/logo_cold_small.png' %}" class="rating-pill-icon" alt="Not">{% endif %}
     </a>
         {% endfor %}
     </div>

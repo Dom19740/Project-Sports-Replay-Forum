@@ -1,3 +1,4 @@
+{% load static %}
 <div class="events-list">
   <h6 class="inside-header">Recent</h6>
 
@@ -5,7 +6,7 @@
     {% for event in past_events %}
     <li>
       <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-light rounded-pill">
-        {{ event.event_type }} - {{ event.date_time|date:"d M" }}{% if event.rating.average_stars %} - {{ event.rating.average_stars }} ⭐ {{ event.rating.star_label }}{% endif %}
+        {{ event.event_type }} - {{ event.date_time|date:"d M" }}{% if event.rating.average_stars >= 4 %} <img src="{% static 'img/logo_flame_large.png' %}" class="rating-pill-icon" alt="Hot">{% elif event.rating.average_stars >= 2 %} <img src="{% static 'img/logo_mid.png' %}" class="rating-pill-icon" alt="Mid">{% elif event.rating.average_stars %} <img src="{% static 'img/logo_cold.png' %}" class="rating-pill-icon" alt="Not">{% endif %}
       </a>
     </li>
     {% empty %}
@@ -22,7 +23,7 @@
         {% else %}
           Matchday {{ competition.name }}
         {% endif %}
-        {% if competition.main_rating %} - {{ competition.main_rating }} ⭐ {{ competition.main_rating_label }}{% endif %}
+        {% if competition.main_rating >= 4 %} <img src="{% static 'img/logo_flame_large.png' %}" class="rating-pill-icon" alt="Hot">{% elif competition.main_rating >= 2 %} <img src="{% static 'img/logo_mid.png' %}" class="rating-pill-icon" alt="Mid">{% elif competition.main_rating %} <img src="{% static 'img/logo_cold.png' %}" class="rating-pill-icon" alt="Not">{% endif %}
       </a>
     </li>
     {% empty %}
