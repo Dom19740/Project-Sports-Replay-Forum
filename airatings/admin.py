@@ -1,5 +1,23 @@
 from django.contrib import admin
-from .models import EventSignals
+from .models import AIRating, EventSignals
+
+
+@admin.register(AIRating)
+class AIRatingAdmin(admin.ModelAdmin):
+    list_display  = ("event", "stars", "verdict", "status", "created_at")
+    list_filter   = ("status", "verdict", "stars")
+    search_fields = ("event__event_list__name", "event__event_type")
+    readonly_fields = (
+        "event", "stars", "verdict", "blurb",
+        "rationale_internal", "flag_reasons", "created_at", "updated_at",
+    )
+    fields = (
+        "event", "status",
+        "stars", "verdict", "blurb",
+        "rationale_internal", "flag_reasons",
+        "created_at", "updated_at",
+    )
+    # status is the only writable field — human approval gate for Phase 8
 
 
 @admin.register(EventSignals)

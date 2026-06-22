@@ -1,0 +1,5510 @@
+DJANGO_ENV is set to: local
+Database name being used: testsportsforum
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.004Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "22",
+    "object_repr": "Abu Dhabi Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.004Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "21",
+    "object_repr": "Qatar Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.004Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "20",
+    "object_repr": "Las Vegas Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.004Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "19",
+    "object_repr": "São Paulo Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.004Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "18",
+    "object_repr": "Mexico City Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.004Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "17",
+    "object_repr": "United States Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.004Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "16",
+    "object_repr": "Singapore Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.004Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "15",
+    "object_repr": "Azerbaijan Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "14",
+    "object_repr": "Spanish Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "13",
+    "object_repr": "Italian Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "12",
+    "object_repr": "Dutch Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "11",
+    "object_repr": "Hungarian Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "10",
+    "object_repr": "Belgian Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "9",
+    "object_repr": "British Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "8",
+    "object_repr": "Austrian Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "7",
+    "object_repr": "Barcelona-Catalunya Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "6",
+    "object_repr": "Monaco Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "Canadian Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "Miami Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "Japanese Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Chinese Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-06-17T05:29:28.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Australian Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.543Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "103",
+    "object_repr": "Valencia GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.543Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "102",
+    "object_repr": "Valencia Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.543Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "101",
+    "object_repr": "Portugal GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.543Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "100",
+    "object_repr": "Portugal Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.543Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "99",
+    "object_repr": "Qatar GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.543Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "98",
+    "object_repr": "Qatar Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.543Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "97",
+    "object_repr": "Malaysia GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.543Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "96",
+    "object_repr": "Malaysia Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.543Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "95",
+    "object_repr": "Australia GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.543Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "94",
+    "object_repr": "Australia Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "93",
+    "object_repr": "Indonesia GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "92",
+    "object_repr": "Indonesia Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "91",
+    "object_repr": "Japan GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "90",
+    "object_repr": "Japan Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "89",
+    "object_repr": "Austria GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "88",
+    "object_repr": "Austria Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "87",
+    "object_repr": "San Marino GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "86",
+    "object_repr": "San Marino Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "85",
+    "object_repr": "Aragón GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "84",
+    "object_repr": "Aragón Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "83",
+    "object_repr": "Great Britain GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "82",
+    "object_repr": "United Kingdom Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "81",
+    "object_repr": "Germany  GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "80",
+    "object_repr": "Germany Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "79",
+    "object_repr": "Netherlands GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "78",
+    "object_repr": "Netherlands Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "77",
+    "object_repr": "Czechia GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "76",
+    "object_repr": "Czechia Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "75",
+    "object_repr": "Hungary GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "74",
+    "object_repr": "Hungary Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "73",
+    "object_repr": "Italy GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "72",
+    "object_repr": "Italy Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "71",
+    "object_repr": "Catalonia GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 56,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "70",
+    "object_repr": "Catalonia Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 57,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "69",
+    "object_repr": "France GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 58,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "68",
+    "object_repr": "France Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 59,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "67",
+    "object_repr": "Spain GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 60,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "66",
+    "object_repr": "Spain Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 61,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "65",
+    "object_repr": "USA GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 62,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "64",
+    "object_repr": "USA Qualifying 2",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 63,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "63",
+    "object_repr": "USA Qualifying 1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 64,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "62",
+    "object_repr": "USA Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 65,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "61",
+    "object_repr": "Brazil GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 66,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "60",
+    "object_repr": "Brazil Qualifying 2",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 67,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "59",
+    "object_repr": "Brazil Qualifying 1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 68,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "58",
+    "object_repr": "Brazil Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 69,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "57",
+    "object_repr": "Thailand GP",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 70,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "56",
+    "object_repr": "Thailand Qualifying 2",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 71,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "55",
+    "object_repr": "Thailand Qualifying 1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 72,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "54",
+    "object_repr": "Thailand Sprint Race",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 73,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "53",
+    "object_repr": "Buriram Test 2",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 74,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "52",
+    "object_repr": "Buriram Test 1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 75,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "51",
+    "object_repr": "Sepang Test 3",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 76,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "50",
+    "object_repr": "Sepang Test 2",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 77,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "49",
+    "object_repr": "Sepang Test 1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 78,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "48",
+    "object_repr": "Shakedown Test 3",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 79,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "47",
+    "object_repr": "Shakedown Test 2",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 80,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "46",
+    "object_repr": "Shakedown Test 1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 81,
+  "fields": {
+    "action_time": "2026-06-17T05:43:00.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "45",
+    "object_repr": "Valencia Test",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 82,
+  "fields": {
+    "action_time": "2026-06-17T06:20:58.400Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "184",
+    "object_repr": "Sun 24 May",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 83,
+  "fields": {
+    "action_time": "2026-06-17T06:20:58.400Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "183",
+    "object_repr": "Tue 19 May",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 84,
+  "fields": {
+    "action_time": "2026-06-17T06:20:58.400Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "182",
+    "object_repr": "Mon 18 May",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 85,
+  "fields": {
+    "action_time": "2026-06-17T06:21:08.018Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "187",
+    "object_repr": "Mon 25 May",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 86,
+  "fields": {
+    "action_time": "2026-06-17T06:21:08.019Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "186",
+    "object_repr": "Thu 21 May",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 87,
+  "fields": {
+    "action_time": "2026-06-17T06:21:14.739Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "181",
+    "object_repr": "Sat 30 May",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 88,
+  "fields": {
+    "action_time": "2026-06-17T06:21:20.134Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "185",
+    "object_repr": "Wed 20 May",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 89,
+  "fields": {
+    "action_time": "2026-06-17T06:37:27.486Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "3",
+    "object_repr": "Iran vs New Zealand - Tue 16 Jun",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 90,
+  "fields": {
+    "action_time": "2026-06-19T03:55:06.262Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "2",
+    "object_repr": "Happy",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Active\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 91,
+  "fields": {
+    "action_time": "2026-06-19T04:18:43.328Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "5",
+    "object_repr": "Spain vs Cape Verde - Mon 15 Jun",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 92,
+  "fields": {
+    "action_time": "2026-06-19T04:18:43.328Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "4",
+    "object_repr": "France vs Senegal - Tue 16 Jun",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 93,
+  "fields": {
+    "action_time": "2026-06-19T04:18:43.328Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "Qualifying - Barcelona-Catalunya Grand Prix",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add site",
+    "content_type": 7,
+    "codename": "add_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change site",
+    "content_type": 7,
+    "codename": "change_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete site",
+    "content_type": 7,
+    "codename": "delete_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view site",
+    "content_type": 7,
+    "codename": "view_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add competition",
+    "content_type": 8,
+    "codename": "add_competition"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change competition",
+    "content_type": 8,
+    "codename": "change_competition"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete competition",
+    "content_type": 8,
+    "codename": "delete_competition"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view competition",
+    "content_type": 8,
+    "codename": "view_competition"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add event",
+    "content_type": 9,
+    "codename": "add_event"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change event",
+    "content_type": 9,
+    "codename": "change_event"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete event",
+    "content_type": 9,
+    "codename": "delete_event"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view event",
+    "content_type": 9,
+    "codename": "view_event"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add comment",
+    "content_type": 10,
+    "codename": "add_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change comment",
+    "content_type": 10,
+    "codename": "change_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete comment",
+    "content_type": 10,
+    "codename": "delete_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view comment",
+    "content_type": 10,
+    "codename": "view_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add rating",
+    "content_type": 11,
+    "codename": "add_rating"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change rating",
+    "content_type": 11,
+    "codename": "change_rating"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete rating",
+    "content_type": 11,
+    "codename": "delete_rating"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view rating",
+    "content_type": 11,
+    "codename": "view_rating"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add reply",
+    "content_type": 12,
+    "codename": "add_reply"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change reply",
+    "content_type": 12,
+    "codename": "change_reply"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete reply",
+    "content_type": 12,
+    "codename": "delete_reply"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view reply",
+    "content_type": 12,
+    "codename": "view_reply"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add comment vote",
+    "content_type": 13,
+    "codename": "add_commentvote"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change comment vote",
+    "content_type": 13,
+    "codename": "change_commentvote"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete comment vote",
+    "content_type": 13,
+    "codename": "delete_commentvote"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view comment vote",
+    "content_type": 13,
+    "codename": "view_commentvote"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 53,
+  "fields": {
+    "name": "Can add xp event",
+    "content_type": 14,
+    "codename": "add_xpevent"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 54,
+  "fields": {
+    "name": "Can change xp event",
+    "content_type": 14,
+    "codename": "change_xpevent"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 55,
+  "fields": {
+    "name": "Can delete xp event",
+    "content_type": 14,
+    "codename": "delete_xpevent"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 56,
+  "fields": {
+    "name": "Can view xp event",
+    "content_type": 14,
+    "codename": "view_xpevent"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 57,
+  "fields": {
+    "name": "Can add user profile",
+    "content_type": 15,
+    "codename": "add_userprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 58,
+  "fields": {
+    "name": "Can change user profile",
+    "content_type": 15,
+    "codename": "change_userprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 59,
+  "fields": {
+    "name": "Can delete user profile",
+    "content_type": 15,
+    "codename": "delete_userprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 60,
+  "fields": {
+    "name": "Can view user profile",
+    "content_type": 15,
+    "codename": "view_userprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 61,
+  "fields": {
+    "name": "Can add user badge",
+    "content_type": 16,
+    "codename": "add_userbadge"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 62,
+  "fields": {
+    "name": "Can change user badge",
+    "content_type": 16,
+    "codename": "change_userbadge"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 63,
+  "fields": {
+    "name": "Can delete user badge",
+    "content_type": 16,
+    "codename": "delete_userbadge"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 64,
+  "fields": {
+    "name": "Can view user badge",
+    "content_type": 16,
+    "codename": "view_userbadge"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 65,
+  "fields": {
+    "name": "Can add badge",
+    "content_type": 17,
+    "codename": "add_badge"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 66,
+  "fields": {
+    "name": "Can change badge",
+    "content_type": 17,
+    "codename": "change_badge"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 67,
+  "fields": {
+    "name": "Can delete badge",
+    "content_type": 17,
+    "codename": "delete_badge"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 68,
+  "fields": {
+    "name": "Can view badge",
+    "content_type": 17,
+    "codename": "view_badge"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 69,
+  "fields": {
+    "name": "Can add ⚠ Event Signals [INTERNAL]",
+    "content_type": 18,
+    "codename": "add_eventsignals"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 70,
+  "fields": {
+    "name": "Can change ⚠ Event Signals [INTERNAL]",
+    "content_type": 18,
+    "codename": "change_eventsignals"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 71,
+  "fields": {
+    "name": "Can delete ⚠ Event Signals [INTERNAL]",
+    "content_type": 18,
+    "codename": "delete_eventsignals"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 72,
+  "fields": {
+    "name": "Can view ⚠ Event Signals [INTERNAL]",
+    "content_type": 18,
+    "codename": "view_eventsignals"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$qPjIC2rMF0ckdFQMrQwd5u$vKjuh1RoJpZmds0Ijf5/b/nQ8Va5JYTYhBtPDA7JhpU=",
+    "last_login": "2026-06-19T04:18:30.235Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-06-17T05:29:09.855Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$5BzQwbczSXHUqNMt7uNL9o$g9mbotQm/MAr3ssQ4qxQl9ZQ1/7wOIbCtjqCit+YnX0=",
+    "last_login": "2026-06-19T04:53:11.238Z",
+    "is_superuser": false,
+    "username": "Happy",
+    "first_name": "",
+    "last_name": "",
+    "email": "happymunkeestudio@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-06-19T03:54:00Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "sites",
+    "model": "site"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "core",
+    "model": "competition"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "core",
+    "model": "event"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "core",
+    "model": "comment"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "core",
+    "model": "rating"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "core",
+    "model": "reply"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 13,
+  "fields": {
+    "app_label": "core",
+    "model": "commentvote"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 14,
+  "fields": {
+    "app_label": "gamify",
+    "model": "xpevent"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 15,
+  "fields": {
+    "app_label": "gamify",
+    "model": "userprofile"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 16,
+  "fields": {
+    "app_label": "gamify",
+    "model": "userbadge"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 17,
+  "fields": {
+    "app_label": "gamify",
+    "model": "badge"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 18,
+  "fields": {
+    "app_label": "airatings",
+    "model": "eventsignals"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "97srt3rmyam17dw5hux8mxqisrxafcpu",
+  "fields": {
+    "session_data": ".eJxVjD0LwjAURf9LZilN0jSpo-AoTs7l5uWFBNsU-jGJ_90WHHS893DOS_TY1tRvC899DuIspDj9fh705HKAYy7VQbismbDmqVTXEXm4z4-dFYx8mwIPl6_y10lY0h4JUOSkdZKjDV3XhGB9R7CRIhBJ17pxWisbDRtH3KqaEVsjtZHwCizeHxwIPBM:1waQgY:s6S2zw-rtyFGzNnwqRyvnLmg3qvqhMAUgYfvj2WyCo8",
+    "expire_date": "2026-07-03T04:18:30.240Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "dhtzmrpt9a7vu1m1gqzyqwf6unwa594j",
+  "fields": {
+    "session_data": ".eJxVjD0LwjAURf9LZilN0jSpo-AoTs7l5uWFBNsU-jGJ_90WHHS893DOS_TY1tRvC899DuIspDj9fh705HKAYy7VQbismbDmqVTXEXm4z4-dFYx8mwIPl6_y10lY0h4JUOSkdZKjDV3XhGB9R7CRIhBJ17pxWisbDRtH3KqaEVsjtZHwCizeHxwIPBM:1wbYRn:Jx2gFAv9P97N37QLqMe--px-1sRyjjUG3xSlLOy2cRA",
+    "expire_date": "2026-07-06T06:47:55.872Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "gcroy5kgz531574odavc7ny0jfkmkse5",
+  "fields": {
+    "session_data": ".eJxVjDsLwjAYRf9LZikmTfNwFDqKk3O4X_KVBtsU-pjE_24LDjreezjnJQK2tQ_bwnPISVyEEqffjxCfXA5wzKU6CJc1R6x5KlU7Ig_3-bGzgpFvU-Lh-lX-Oj2Wfo8Q3Nk0nZcKrjPKSWmYrGFNVhoJ68EM1IiUahU1ddDE0TbKNd5Fr8X7AwBpO7M:1waRJB:fHgpu055o9Grqm7lFCSPdtxemID1CKa7CopYJnnUmLE",
+    "expire_date": "2026-07-03T04:58:25.720Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ja6vgu9yc5cf79cww3likd5rboln1sa8",
+  "fields": {
+    "session_data": ".eJxVjD0LwjAURf9LZilN0jSpo-AoTs7l5uWFBNsU-jGJ_90WHHS893DOS_TY1tRvC899DuIspDj9fh705HKAYy7VQbismbDmqVTXEXm4z4-dFYx8mwIPl6_y10lY0h4JUOSkdZKjDV3XhGB9R7CRIhBJ17pxWisbDRtH3KqaEVsjtZHwCizeHxwIPBM:1wbYOQ:QTvSejzvLwiyeB-in8Kd4YqjB5oAvVm_TcLXyLrcQys",
+    "expire_date": "2026-07-06T06:44:26.278Z"
+  }
+},
+{
+  "model": "sites.site",
+  "pk": 1,
+  "fields": {
+    "domain": "example.com",
+    "name": "example.com"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 28,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Monaco Grand Prix",
+    "date": "2026-06-07",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/lo5pbl1774920142.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 29,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Barcelona-Catalunya Grand Prix",
+    "date": "2026-06-14",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/hu0z3p1774920193.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 30,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Austrian Grand Prix",
+    "date": "2026-06-28",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/zes7j31774920243.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 31,
+  "fields": {
+    "league": "Formula 1",
+    "name": "British Grand Prix",
+    "date": "2026-07-05",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/7mtn151774920294.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 32,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Belgian Grand Prix",
+    "date": "2026-07-19",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/uq6a2q1774920344.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 33,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Hungarian Grand Prix",
+    "date": "2026-07-26",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/is7ve51774920395.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 34,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Dutch Grand Prix",
+    "date": "2026-08-23",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/c1iwkh1774920445.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 35,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Italian Grand Prix",
+    "date": "2026-09-06",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/01hz9a1774920494.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 36,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Spanish Grand Prix",
+    "date": "2026-09-13",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/4x4h6i1774920547.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 37,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Azerbaijan Grand Prix",
+    "date": "2026-09-26",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/9bj9sw1774920597.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 38,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Singapore Grand Prix",
+    "date": "2026-10-11",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/uvf6hp1774920651.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 39,
+  "fields": {
+    "league": "Formula 1",
+    "name": "United States Grand Prix",
+    "date": "2026-10-25",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/ezgmqx1774920701.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 40,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Mexico City Grand Prix",
+    "date": "2026-11-01",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/d7apd81774920754.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 41,
+  "fields": {
+    "league": "Formula 1",
+    "name": "São Paulo Grand Prix",
+    "date": "2026-11-08",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/vbmfkr1774920804.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 42,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Las Vegas Grand Prix",
+    "date": "2026-11-22",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/emrl9x1774920858.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 43,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Qatar Grand Prix",
+    "date": "2026-11-29",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/g0v9z81774920908.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 44,
+  "fields": {
+    "league": "Formula 1",
+    "name": "Abu Dhabi Grand Prix",
+    "date": "2026-12-06",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/v1k4c21774920958.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/g8cofl1513623681.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 134,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Hungary GP",
+    "date": "2026-06-07",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/81qifs1759507805.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 136,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Czechia GP",
+    "date": "2026-06-21",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/j0axtf1759507901.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 138,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Netherlands GP",
+    "date": "2026-06-28",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/02z5f71759508270.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 140,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Germany  GP",
+    "date": "2026-07-12",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/qrxpqu1441138872.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 142,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Great Britain GP",
+    "date": "2026-08-09",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/xh5ug11759845013.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 144,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Aragón GP",
+    "date": "2026-08-30",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/7hqdse1759845201.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 146,
+  "fields": {
+    "league": "MotoGP",
+    "name": "San Marino GP",
+    "date": "2026-09-13",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/qfgq9k1759845535.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 148,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Austria GP",
+    "date": "2026-09-20",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/qbmst31759845746.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 150,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Japan GP",
+    "date": "2026-10-04",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/urg5891759847727.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 152,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Indonesia GP",
+    "date": "2026-10-11",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/szsx7g1759847877.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 154,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Australia GP",
+    "date": "2026-10-25",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/uvz6cm1759848054.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 156,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Malaysia GP",
+    "date": "2026-11-01",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/m4pnbs1759848273.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 158,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Qatar GP",
+    "date": "2026-11-08",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/otk61w1759505017.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 160,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Portugal GP",
+    "date": "2026-11-15",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/jycowi1759848437.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 162,
+  "fields": {
+    "league": "MotoGP",
+    "name": "Valencia GP",
+    "date": "2026-11-22",
+    "banner": "https://r2.thesportsdb.com/images/media/event/banner/6eg0711759848564.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/gg3c201768486075.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 163,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Thu 11 Jun",
+    "date": "2026-06-11",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 164,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Fri 12 Jun",
+    "date": "2026-06-12",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 165,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Sat 13 Jun",
+    "date": "2026-06-13",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 166,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Sun 14 Jun",
+    "date": "2026-06-14",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 167,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Mon 15 Jun",
+    "date": "2026-06-15",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 168,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Tue 16 Jun",
+    "date": "2026-06-16",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 169,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Wed 17 Jun",
+    "date": "2026-06-17",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 170,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Thu 18 Jun",
+    "date": "2026-06-18",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 171,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Fri 19 Jun",
+    "date": "2026-06-19",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 172,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Sat 20 Jun",
+    "date": "2026-06-20",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 173,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Sun 21 Jun",
+    "date": "2026-06-21",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 174,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Mon 22 Jun",
+    "date": "2026-06-22",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 175,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Tue 23 Jun",
+    "date": "2026-06-23",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 176,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Wed 24 Jun",
+    "date": "2026-06-24",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 177,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Thu 25 Jun",
+    "date": "2026-06-25",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 178,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Fri 26 Jun",
+    "date": "2026-06-26",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 179,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Sat 27 Jun",
+    "date": "2026-06-27",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.competition",
+  "pk": 180,
+  "fields": {
+    "league": "FIFA World Cup",
+    "name": "Sun 28 Jun",
+    "date": "2026-06-28",
+    "banner": "https://r2.thesportsdb.com/images/media/league/banner/vyyxxp1424009412.jpg",
+    "badge": "https://r2.thesportsdb.com/images/media/league/badge/e7er5g1696521789.png"
+  }
+},
+{
+  "model": "core.event",
+  "pk": 62,
+  "fields": {
+    "event_list": 28,
+    "event_type": "Race",
+    "date_time": "2026-06-07T13:00:00Z",
+    "idEvent": "2408146",
+    "video_id": "https://www.youtube.com/watch?v=ipOT9ruRobc",
+    "is_finished": true,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/h8lihi1774920139.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 63,
+  "fields": {
+    "event_list": 29,
+    "event_type": "Race",
+    "date_time": "2026-06-14T13:00:00Z",
+    "idEvent": "2408151",
+    "video_id": "https://www.youtube.com/watch?v=Ey8j_BlLvFM",
+    "is_finished": true,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/z95co71774920190.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 64,
+  "fields": {
+    "event_list": 30,
+    "event_type": "Race",
+    "date_time": "2026-06-28T13:00:00Z",
+    "idEvent": "2408161",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/01q2vk1774920240.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 65,
+  "fields": {
+    "event_list": 31,
+    "event_type": "Race",
+    "date_time": "2026-07-05T14:00:00Z",
+    "idEvent": "2408166",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/vfuq6i1774920291.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 66,
+  "fields": {
+    "event_list": 32,
+    "event_type": "Race",
+    "date_time": "2026-07-19T13:00:00Z",
+    "idEvent": "2408171",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/33o2a71774920341.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 67,
+  "fields": {
+    "event_list": 33,
+    "event_type": "Race",
+    "date_time": "2026-07-26T13:00:00Z",
+    "idEvent": "2408176",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/xldkhf1774920392.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 68,
+  "fields": {
+    "event_list": 34,
+    "event_type": "Race",
+    "date_time": "2026-08-23T13:00:00Z",
+    "idEvent": "2408181",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/jzj7wk1774920442.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 69,
+  "fields": {
+    "event_list": 35,
+    "event_type": "Race",
+    "date_time": "2026-09-06T13:00:00Z",
+    "idEvent": "2408186",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/2nqfr11774920492.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 70,
+  "fields": {
+    "event_list": 36,
+    "event_type": "Race",
+    "date_time": "2026-09-13T13:00:00Z",
+    "idEvent": "2408914",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/2p2wk61774920545.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 71,
+  "fields": {
+    "event_list": 37,
+    "event_type": "Race",
+    "date_time": "2026-09-26T11:00:00Z",
+    "idEvent": "2408191",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/8ndxfr1774920595.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 72,
+  "fields": {
+    "event_list": 38,
+    "event_type": "Race",
+    "date_time": "2026-10-11T12:00:00Z",
+    "idEvent": "2408196",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/nra03o1774920648.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 73,
+  "fields": {
+    "event_list": 39,
+    "event_type": "Race",
+    "date_time": "2026-10-25T20:00:00Z",
+    "idEvent": "2408201",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/kbs1ii1774920698.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 74,
+  "fields": {
+    "event_list": 40,
+    "event_type": "Race",
+    "date_time": "2026-11-01T20:00:00Z",
+    "idEvent": "2408206",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/xbcb4k1774920751.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 75,
+  "fields": {
+    "event_list": 41,
+    "event_type": "Race",
+    "date_time": "2026-11-08T17:00:00Z",
+    "idEvent": "2408211",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/l1dnq41774920802.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 76,
+  "fields": {
+    "event_list": 42,
+    "event_type": "Race",
+    "date_time": "2026-11-22T04:00:00Z",
+    "idEvent": "2408216",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/ceg6ue1774920855.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 77,
+  "fields": {
+    "event_list": 43,
+    "event_type": "Race",
+    "date_time": "2026-11-29T16:00:00Z",
+    "idEvent": "2408221",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/xgdugs1774920905.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 78,
+  "fields": {
+    "event_list": 44,
+    "event_type": "Race",
+    "date_time": "2026-12-06T13:00:00Z",
+    "idEvent": "2408226",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/6y5gau1774920955.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 90,
+  "fields": {
+    "event_list": 28,
+    "event_type": "Qualifying",
+    "date_time": "2026-06-06T14:00:00Z",
+    "idEvent": "2408145",
+    "video_id": "https://www.youtube.com/watch?v=xmk0j-HdgwY",
+    "is_finished": true,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/rpbpwf1774920129.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 91,
+  "fields": {
+    "event_list": 29,
+    "event_type": "Qualifying",
+    "date_time": "2026-06-13T14:00:00Z",
+    "idEvent": "2408150",
+    "video_id": "https://www.youtube.com/watch?v=Q2fMM4H9bWY",
+    "is_finished": true,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/ltz49n1774920180.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 92,
+  "fields": {
+    "event_list": 30,
+    "event_type": "Qualifying",
+    "date_time": "2026-06-27T14:00:00Z",
+    "idEvent": "2408160",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/ni75b71774920230.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 93,
+  "fields": {
+    "event_list": 31,
+    "event_type": "Qualifying",
+    "date_time": "2026-07-03T15:30:00Z",
+    "idEvent": "2408163",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/7mts9n1774920260.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 94,
+  "fields": {
+    "event_list": 31,
+    "event_type": "Sprint",
+    "date_time": "2026-07-04T11:00:00Z",
+    "idEvent": "2408164",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/zu42yz1774920271.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 95,
+  "fields": {
+    "event_list": 31,
+    "event_type": "Qualifying",
+    "date_time": "2026-07-04T15:00:00Z",
+    "idEvent": "2408165",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/tmhk3v1774920281.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 96,
+  "fields": {
+    "event_list": 32,
+    "event_type": "Qualifying",
+    "date_time": "2026-07-18T14:00:00Z",
+    "idEvent": "2408170",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/oi4l411774920331.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 97,
+  "fields": {
+    "event_list": 33,
+    "event_type": "Qualifying",
+    "date_time": "2026-07-25T14:00:00Z",
+    "idEvent": "2408175",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/vjz7351774920382.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 98,
+  "fields": {
+    "event_list": 34,
+    "event_type": "Qualifying",
+    "date_time": "2026-08-21T14:30:00Z",
+    "idEvent": "2408178",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/hc17d41774920412.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 99,
+  "fields": {
+    "event_list": 34,
+    "event_type": "Sprint",
+    "date_time": "2026-08-22T10:00:00Z",
+    "idEvent": "2408179",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/d06vj21774920422.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 100,
+  "fields": {
+    "event_list": 34,
+    "event_type": "Qualifying",
+    "date_time": "2026-08-22T14:00:00Z",
+    "idEvent": "2408180",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/y5qy2s1774920432.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 101,
+  "fields": {
+    "event_list": 35,
+    "event_type": "Qualifying",
+    "date_time": "2026-09-05T14:00:00Z",
+    "idEvent": "2408185",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/6aa9i41774920482.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 102,
+  "fields": {
+    "event_list": 36,
+    "event_type": "Qualifying",
+    "date_time": "2026-09-12T14:00:00Z",
+    "idEvent": "2408918",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/9unrjv1774920535.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 103,
+  "fields": {
+    "event_list": 37,
+    "event_type": "Qualifying",
+    "date_time": "2026-09-25T12:00:00Z",
+    "idEvent": "2408190",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/qq8rfk1774920585.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 104,
+  "fields": {
+    "event_list": 38,
+    "event_type": "Qualifying",
+    "date_time": "2026-10-09T12:30:00Z",
+    "idEvent": "2408193",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/1l635m1774920617.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 105,
+  "fields": {
+    "event_list": 38,
+    "event_type": "Sprint",
+    "date_time": "2026-10-10T09:00:00Z",
+    "idEvent": "2408194",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/waxltr1774920628.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 106,
+  "fields": {
+    "event_list": 38,
+    "event_type": "Qualifying",
+    "date_time": "2026-10-10T13:00:00Z",
+    "idEvent": "2408195",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/a0raqf1774920638.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 107,
+  "fields": {
+    "event_list": 39,
+    "event_type": "Qualifying",
+    "date_time": "2026-10-24T21:00:00Z",
+    "idEvent": "2408200",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/to5vbl1774920688.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 108,
+  "fields": {
+    "event_list": 40,
+    "event_type": "Qualifying",
+    "date_time": "2026-10-31T21:00:00Z",
+    "idEvent": "2408205",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/4iyvy41774920741.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 109,
+  "fields": {
+    "event_list": 41,
+    "event_type": "Qualifying",
+    "date_time": "2026-11-07T18:00:00Z",
+    "idEvent": "2408210",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/1euavb1774920792.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 110,
+  "fields": {
+    "event_list": 42,
+    "event_type": "Qualifying",
+    "date_time": "2026-11-21T04:00:00Z",
+    "idEvent": "2408215",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/n381ab1774920842.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 111,
+  "fields": {
+    "event_list": 43,
+    "event_type": "Qualifying",
+    "date_time": "2026-11-28T18:00:00Z",
+    "idEvent": "2408220",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/xahxvi1774920895.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 112,
+  "fields": {
+    "event_list": 44,
+    "event_type": "Qualifying",
+    "date_time": "2026-12-05T14:00:00Z",
+    "idEvent": "2408225",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/hkj4zk1774920945.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 202,
+  "fields": {
+    "event_list": 134,
+    "event_type": "Race",
+    "date_time": "2026-06-07T12:00:00Z",
+    "idEvent": "2366146",
+    "video_id": "https://www.youtube.com/watch?v=FfhJDeOqMog",
+    "is_finished": true,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/g88z6u1759507556.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 204,
+  "fields": {
+    "event_list": 136,
+    "event_type": "Race",
+    "date_time": "2026-06-21T00:00:00Z",
+    "idEvent": "2366148",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/795ix01759507881.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 206,
+  "fields": {
+    "event_list": 138,
+    "event_type": "Race",
+    "date_time": "2026-06-28T00:00:00Z",
+    "idEvent": "2366150",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/ob5u7t1759508254.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 208,
+  "fields": {
+    "event_list": 140,
+    "event_type": "Race",
+    "date_time": "2026-07-12T00:00:00Z",
+    "idEvent": "2368484",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/1h8ro21759842418.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 210,
+  "fields": {
+    "event_list": 142,
+    "event_type": "Race",
+    "date_time": "2026-08-09T00:00:00Z",
+    "idEvent": "2368486",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/tznxdy1759844997.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 212,
+  "fields": {
+    "event_list": 144,
+    "event_type": "Race",
+    "date_time": "2026-08-30T00:00:00Z",
+    "idEvent": "2368488",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/t7uxre1759845183.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 214,
+  "fields": {
+    "event_list": 146,
+    "event_type": "Race",
+    "date_time": "2026-09-13T00:00:00Z",
+    "idEvent": "2368490",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/y0dmit1759845423.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 216,
+  "fields": {
+    "event_list": 148,
+    "event_type": "Race",
+    "date_time": "2026-09-20T00:00:00Z",
+    "idEvent": "2368493",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/ddwuh81759845645.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 218,
+  "fields": {
+    "event_list": 150,
+    "event_type": "Race",
+    "date_time": "2026-10-04T00:00:00Z",
+    "idEvent": "2368495",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/32tx101759847627.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 220,
+  "fields": {
+    "event_list": 152,
+    "event_type": "Race",
+    "date_time": "2026-10-11T00:00:00Z",
+    "idEvent": "2368497",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/sbwlx91759847863.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 222,
+  "fields": {
+    "event_list": 154,
+    "event_type": "Race",
+    "date_time": "2026-10-25T00:00:00Z",
+    "idEvent": "2368499",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/4ppka91759848041.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 224,
+  "fields": {
+    "event_list": 156,
+    "event_type": "Race",
+    "date_time": "2026-11-01T00:00:00Z",
+    "idEvent": "2368501",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/if0ifc1759848260.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 226,
+  "fields": {
+    "event_list": 158,
+    "event_type": "Race",
+    "date_time": "2026-11-08T00:00:00Z",
+    "idEvent": "2366135",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/8abzs41759504993.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 228,
+  "fields": {
+    "event_list": 160,
+    "event_type": "Race",
+    "date_time": "2026-11-15T00:00:00Z",
+    "idEvent": "2368505",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/z83yg01759848415.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 230,
+  "fields": {
+    "event_list": 162,
+    "event_type": "Race",
+    "date_time": "2026-11-22T00:00:00Z",
+    "idEvent": "2368507",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/0bcgpe1759848547.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 244,
+  "fields": {
+    "event_list": 134,
+    "event_type": "Sprint Race",
+    "date_time": "2026-06-06T13:00:00Z",
+    "idEvent": "2366145",
+    "video_id": "https://www.youtube.com/watch?v=HFkctIBwk5A",
+    "is_finished": true,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/hnvtgr1759507509.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 245,
+  "fields": {
+    "event_list": 136,
+    "event_type": "Sprint Race",
+    "date_time": "2026-06-20T00:00:00Z",
+    "idEvent": "2366147",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/7lxai61759507839.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 246,
+  "fields": {
+    "event_list": 138,
+    "event_type": "Sprint Race",
+    "date_time": "2026-06-27T00:00:00Z",
+    "idEvent": "2366149",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/wg28k01759508157.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 247,
+  "fields": {
+    "event_list": 140,
+    "event_type": "Sprint Race",
+    "date_time": "2026-07-11T00:00:00Z",
+    "idEvent": "2368477",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/w6u0ba1759842370.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 248,
+  "fields": {
+    "event_list": 144,
+    "event_type": "Sprint Race",
+    "date_time": "2026-08-29T00:00:00Z",
+    "idEvent": "2368487",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/gfgz3p1759845095.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 249,
+  "fields": {
+    "event_list": 146,
+    "event_type": "Sprint Race",
+    "date_time": "2026-09-12T00:00:00Z",
+    "idEvent": "2368489",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/o26r7s1759845356.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 250,
+  "fields": {
+    "event_list": 148,
+    "event_type": "Sprint Race",
+    "date_time": "2026-09-19T00:00:00Z",
+    "idEvent": "2368491",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/6sh4hy1759845605.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 251,
+  "fields": {
+    "event_list": 150,
+    "event_type": "Sprint Race",
+    "date_time": "2026-10-03T00:00:00Z",
+    "idEvent": "2368494",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/eb920u1759847579.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 252,
+  "fields": {
+    "event_list": 152,
+    "event_type": "Sprint Race",
+    "date_time": "2026-10-10T00:00:00Z",
+    "idEvent": "2368496",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/tf5ds41759847821.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 253,
+  "fields": {
+    "event_list": 154,
+    "event_type": "Sprint Race",
+    "date_time": "2026-10-24T00:00:00Z",
+    "idEvent": "2368498",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/uwn8ob1759848008.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 254,
+  "fields": {
+    "event_list": 156,
+    "event_type": "Sprint Race",
+    "date_time": "2026-10-31T00:00:00Z",
+    "idEvent": "2368500",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/7bwtc01759848221.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 255,
+  "fields": {
+    "event_list": 158,
+    "event_type": "Sprint Race",
+    "date_time": "2026-11-07T00:00:00Z",
+    "idEvent": "2366134",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/vl1nlu1759504910.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 256,
+  "fields": {
+    "event_list": 160,
+    "event_type": "Sprint Race",
+    "date_time": "2026-11-14T00:00:00Z",
+    "idEvent": "2368503",
+    "video_id": null,
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/idmkx91759848377.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 257,
+  "fields": {
+    "event_list": 162,
+    "event_type": "Sprint Race",
+    "date_time": "2026-11-21T00:00:00Z",
+    "idEvent": "2368506",
+    "video_id": null,
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/3fr05o1759848507.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 258,
+  "fields": {
+    "event_list": 163,
+    "event_type": "Mexico vs South Africa",
+    "date_time": "2026-06-11T19:00:00Z",
+    "idEvent": "2391728",
+    "video_id": "https://www.youtube.com/watch?v=PmevGCkUtM8",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/dzhwsf1775058317.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 259,
+  "fields": {
+    "event_list": 164,
+    "event_type": "South Korea vs Czech Republic",
+    "date_time": "2026-06-12T02:00:00Z",
+    "idEvent": "2461103",
+    "video_id": "https://www.youtube.com/watch?v=6k18EJY8zIc",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/7ogw2s1775058371.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 260,
+  "fields": {
+    "event_list": 164,
+    "event_type": "Canada vs Bosnia-Herzegovina",
+    "date_time": "2026-06-12T19:00:00Z",
+    "idEvent": "2461104",
+    "video_id": "https://www.youtube.com/watch?v=w-_rY5morQY",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/nsv3mc1775058372.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 261,
+  "fields": {
+    "event_list": 165,
+    "event_type": "USA vs Paraguay",
+    "date_time": "2026-06-13T01:00:00Z",
+    "idEvent": "2391729",
+    "video_id": "https://www.youtube.com/watch?v=0PVo3bk-TMk",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/85q3wy1781599997.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 262,
+  "fields": {
+    "event_list": 165,
+    "event_type": "Brazil vs Morocco",
+    "date_time": "2026-06-13T22:00:00Z",
+    "idEvent": "2391730",
+    "video_id": "https://www.youtube.com/watch?v=ECnK7UzAjIs",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/mau34u1775058318.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 263,
+  "fields": {
+    "event_list": 165,
+    "event_type": "Qatar vs Switzerland",
+    "date_time": "2026-06-13T19:00:00Z",
+    "idEvent": "2391732",
+    "video_id": "https://www.youtube.com/watch?v=KVz43-eddIQ",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/lyg37t1781599998.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 264,
+  "fields": {
+    "event_list": 166,
+    "event_type": "Haiti vs Scotland",
+    "date_time": "2026-06-14T01:00:00Z",
+    "idEvent": "2391731",
+    "video_id": "https://www.youtube.com/watch?v=TcCufmPCsu4",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/24pszh1775058320.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 265,
+  "fields": {
+    "event_list": 166,
+    "event_type": "Germany vs Curaçao",
+    "date_time": "2026-06-14T17:00:00Z",
+    "idEvent": "2391733",
+    "video_id": "https://www.youtube.com/watch?v=B6-Z5ul2ccQ",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/c58bxh1775058322.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 266,
+  "fields": {
+    "event_list": 166,
+    "event_type": "Ivory Coast vs Ecuador",
+    "date_time": "2026-06-14T23:00:00Z",
+    "idEvent": "2391734",
+    "video_id": "https://www.youtube.com/watch?v=84xvEwRc0iQ",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/61g7b91775058323.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 267,
+  "fields": {
+    "event_list": 166,
+    "event_type": "Netherlands vs Japan",
+    "date_time": "2026-06-14T20:00:00Z",
+    "idEvent": "2391735",
+    "video_id": "https://www.youtube.com/watch?v=r8SvHZxALQs",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/8rj5lv1775058324.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 268,
+  "fields": {
+    "event_list": 166,
+    "event_type": "Australia vs Turkey",
+    "date_time": "2026-06-14T04:00:00Z",
+    "idEvent": "2461105",
+    "video_id": "https://www.youtube.com/watch?v=5eqzEDe8wHs",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/kgoj1q1775058373.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 269,
+  "fields": {
+    "event_list": 167,
+    "event_type": "Belgium vs Egypt",
+    "date_time": "2026-06-15T19:00:00Z",
+    "idEvent": "2391736",
+    "video_id": "https://www.youtube.com/watch?v=ff1FKexIihA",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/uejz5h1775058325.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 270,
+  "fields": {
+    "event_list": 167,
+    "event_type": "Saudi Arabia vs Uruguay",
+    "date_time": "2026-06-15T22:00:00Z",
+    "idEvent": "2391738",
+    "video_id": "https://www.youtube.com/watch?v=fRuj2TLu4W0",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/zhbzh41775058327.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 271,
+  "fields": {
+    "event_list": 167,
+    "event_type": "Spain vs Cape Verde",
+    "date_time": "2026-06-15T16:00:00Z",
+    "idEvent": "2391739",
+    "video_id": "https://www.youtube.com/watch?v=-Vv4UnfvnEQ",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/xi9bqn1775058328.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 272,
+  "fields": {
+    "event_list": 167,
+    "event_type": "Sweden vs Tunisia",
+    "date_time": "2026-06-15T02:00:00Z",
+    "idEvent": "2461106",
+    "video_id": "https://www.youtube.com/watch?v=MM5hUuEzH3g",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/hja0ne1775058374.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 273,
+  "fields": {
+    "event_list": 168,
+    "event_type": "Iran vs New Zealand",
+    "date_time": "2026-06-16T01:00:00Z",
+    "idEvent": "2391737",
+    "video_id": "https://www.youtube.com/watch?v=hCpD7O-Iy7Y",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/y5bjck1781599999.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 274,
+  "fields": {
+    "event_list": 168,
+    "event_type": "France vs Senegal",
+    "date_time": "2026-06-16T19:00:00Z",
+    "idEvent": "2391742",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/73gvui1775058331.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 275,
+  "fields": {
+    "event_list": 168,
+    "event_type": "Iraq vs Norway",
+    "date_time": "2026-06-16T22:00:00Z",
+    "idEvent": "2461107",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/xbh5yw1775058375.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 276,
+  "fields": {
+    "event_list": 169,
+    "event_type": "Argentina vs Algeria",
+    "date_time": "2026-06-17T01:00:00Z",
+    "idEvent": "2391740",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/brfljg1781600000.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 277,
+  "fields": {
+    "event_list": 169,
+    "event_type": "Austria vs Jordan",
+    "date_time": "2026-06-17T04:00:00Z",
+    "idEvent": "2391741",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/p0v3zk1781600000.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 278,
+  "fields": {
+    "event_list": 169,
+    "event_type": "England vs Croatia",
+    "date_time": "2026-06-17T20:00:00Z",
+    "idEvent": "2391743",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/cfi1ep1775058332.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 279,
+  "fields": {
+    "event_list": 169,
+    "event_type": "Ghana vs Panama",
+    "date_time": "2026-06-17T23:00:00Z",
+    "idEvent": "2391744",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/qq0ayn1775058333.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 280,
+  "fields": {
+    "event_list": 169,
+    "event_type": "Portugal vs DR Congo",
+    "date_time": "2026-06-17T17:00:00Z",
+    "idEvent": "2461108",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/cjjkg21775058376.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 281,
+  "fields": {
+    "event_list": 170,
+    "event_type": "Uzbekistan vs Colombia",
+    "date_time": "2026-06-18T02:00:00Z",
+    "idEvent": "2391745",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/s0getc1775058334.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 282,
+  "fields": {
+    "event_list": 170,
+    "event_type": "Canada vs Qatar",
+    "date_time": "2026-06-18T22:00:00Z",
+    "idEvent": "2391746",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/vcjp4j1775058335.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 283,
+  "fields": {
+    "event_list": 170,
+    "event_type": "Czech Republic vs South Africa",
+    "date_time": "2026-06-18T16:00:00Z",
+    "idEvent": "2461109",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/x3ynsy1775058377.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 284,
+  "fields": {
+    "event_list": 170,
+    "event_type": "Switzerland vs Bosnia-Herzegovina",
+    "date_time": "2026-06-18T19:00:00Z",
+    "idEvent": "2461110",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/ifij8n1781600006.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 285,
+  "fields": {
+    "event_list": 171,
+    "event_type": "Mexico vs South Korea",
+    "date_time": "2026-06-19T01:00:00Z",
+    "idEvent": "2391747",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/r0l9hp1775058336.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 286,
+  "fields": {
+    "event_list": 171,
+    "event_type": "Scotland vs Morocco",
+    "date_time": "2026-06-19T22:00:00Z",
+    "idEvent": "2391749",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/h9f6ho1775058338.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 287,
+  "fields": {
+    "event_list": 171,
+    "event_type": "USA vs Australia",
+    "date_time": "2026-06-19T19:00:00Z",
+    "idEvent": "2391750",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/jsz07z1775058339.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 288,
+  "fields": {
+    "event_list": 172,
+    "event_type": "Brazil vs Haiti",
+    "date_time": "2026-06-20T00:30:00Z",
+    "idEvent": "2391748",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/cbpzq61775058337.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 289,
+  "fields": {
+    "event_list": 172,
+    "event_type": "Germany vs Ivory Coast",
+    "date_time": "2026-06-20T20:00:00Z",
+    "idEvent": "2391752",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/jzc7kq1775058341.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 290,
+  "fields": {
+    "event_list": 172,
+    "event_type": "Turkey vs Paraguay",
+    "date_time": "2026-06-20T03:00:00Z",
+    "idEvent": "2461111",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/qvkiqg1781600007.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 291,
+  "fields": {
+    "event_list": 172,
+    "event_type": "Netherlands vs Sweden",
+    "date_time": "2026-06-20T17:00:00Z",
+    "idEvent": "2461112",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/x1073h1775058380.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 292,
+  "fields": {
+    "event_list": 173,
+    "event_type": "Ecuador vs Curaçao",
+    "date_time": "2026-06-21T00:00:00Z",
+    "idEvent": "2391751",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/upmmfc1781600001.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 293,
+  "fields": {
+    "event_list": 173,
+    "event_type": "Tunisia vs Japan",
+    "date_time": "2026-06-21T04:00:00Z",
+    "idEvent": "2391753",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/y5fihn1775058342.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 294,
+  "fields": {
+    "event_list": 173,
+    "event_type": "Belgium vs Iran",
+    "date_time": "2026-06-21T19:00:00Z",
+    "idEvent": "2391754",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/vpptny1781600002.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 295,
+  "fields": {
+    "event_list": 173,
+    "event_type": "Spain vs Saudi Arabia",
+    "date_time": "2026-06-21T16:00:00Z",
+    "idEvent": "2391756",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/kv7yiz1775058345.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 296,
+  "fields": {
+    "event_list": 173,
+    "event_type": "Uruguay vs Cape Verde",
+    "date_time": "2026-06-21T22:00:00Z",
+    "idEvent": "2391757",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/ga832m1775058346.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 297,
+  "fields": {
+    "event_list": 174,
+    "event_type": "New Zealand vs Egypt",
+    "date_time": "2026-06-22T01:00:00Z",
+    "idEvent": "2391755",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/zxmks31775058344.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 298,
+  "fields": {
+    "event_list": 174,
+    "event_type": "Argentina vs Austria",
+    "date_time": "2026-06-22T17:00:00Z",
+    "idEvent": "2391758",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/ho62ce1775058347.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 299,
+  "fields": {
+    "event_list": 174,
+    "event_type": "France vs Iraq",
+    "date_time": "2026-06-22T21:00:00Z",
+    "idEvent": "2461113",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/2t7p3w1775058381.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 300,
+  "fields": {
+    "event_list": 175,
+    "event_type": "Jordan vs Algeria",
+    "date_time": "2026-06-23T03:00:00Z",
+    "idEvent": "2391759",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/edw5hi1781600003.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 301,
+  "fields": {
+    "event_list": 175,
+    "event_type": "Norway vs Senegal",
+    "date_time": "2026-06-23T00:00:00Z",
+    "idEvent": "2391760",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/3azkme1775058349.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 302,
+  "fields": {
+    "event_list": 175,
+    "event_type": "England vs Ghana",
+    "date_time": "2026-06-23T20:00:00Z",
+    "idEvent": "2391761",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/e5dedu1775058350.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 303,
+  "fields": {
+    "event_list": 175,
+    "event_type": "Panama vs Croatia",
+    "date_time": "2026-06-23T23:00:00Z",
+    "idEvent": "2391762",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/72bcb41775058351.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 304,
+  "fields": {
+    "event_list": 175,
+    "event_type": "Portugal vs Uzbekistan",
+    "date_time": "2026-06-23T17:00:00Z",
+    "idEvent": "2391763",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/kdr7qh1775058352.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 305,
+  "fields": {
+    "event_list": 176,
+    "event_type": "Morocco vs Haiti",
+    "date_time": "2026-06-24T22:00:00Z",
+    "idEvent": "2391764",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/99fxp31775058353.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 306,
+  "fields": {
+    "event_list": 176,
+    "event_type": "Scotland vs Brazil",
+    "date_time": "2026-06-24T22:00:00Z",
+    "idEvent": "2391765",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/ipcah51775058354.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 307,
+  "fields": {
+    "event_list": 176,
+    "event_type": "Switzerland vs Canada",
+    "date_time": "2026-06-24T19:00:00Z",
+    "idEvent": "2391767",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/t2wxux1775058356.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 308,
+  "fields": {
+    "event_list": 176,
+    "event_type": "Colombia vs DR Congo",
+    "date_time": "2026-06-24T02:00:00Z",
+    "idEvent": "2461114",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/o44l951775058382.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 309,
+  "fields": {
+    "event_list": 176,
+    "event_type": "Bosnia-Herzegovina vs Qatar",
+    "date_time": "2026-06-24T19:00:00Z",
+    "idEvent": "2461115",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/me4ksq1775058383.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 310,
+  "fields": {
+    "event_list": 177,
+    "event_type": "South Africa vs South Korea",
+    "date_time": "2026-06-25T01:00:00Z",
+    "idEvent": "2391766",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/apzr651775058355.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 311,
+  "fields": {
+    "event_list": 177,
+    "event_type": "Curaçao vs Ivory Coast",
+    "date_time": "2026-06-25T20:00:00Z",
+    "idEvent": "2391768",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/2i6gsa1775058357.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 312,
+  "fields": {
+    "event_list": 177,
+    "event_type": "Ecuador vs Germany",
+    "date_time": "2026-06-25T20:00:00Z",
+    "idEvent": "2391769",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/bgspfq1775058358.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 313,
+  "fields": {
+    "event_list": 177,
+    "event_type": "Tunisia vs Netherlands",
+    "date_time": "2026-06-25T23:00:00Z",
+    "idEvent": "2391771",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/ehmyj71781600005.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 314,
+  "fields": {
+    "event_list": 177,
+    "event_type": "Czech Republic vs Mexico",
+    "date_time": "2026-06-25T01:00:00Z",
+    "idEvent": "2461116",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/70pe2h1775058384.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 315,
+  "fields": {
+    "event_list": 177,
+    "event_type": "Japan vs Sweden",
+    "date_time": "2026-06-25T23:00:00Z",
+    "idEvent": "2461117",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/4no2lo1775058385.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 316,
+  "fields": {
+    "event_list": 178,
+    "event_type": "Paraguay vs Australia",
+    "date_time": "2026-06-26T02:00:00Z",
+    "idEvent": "2391770",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/sqvb9x1781600004.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 317,
+  "fields": {
+    "event_list": 178,
+    "event_type": "Norway vs France",
+    "date_time": "2026-06-26T19:00:00Z",
+    "idEvent": "2391775",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/g2uph61775058364.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 318,
+  "fields": {
+    "event_list": 178,
+    "event_type": "Turkey vs USA",
+    "date_time": "2026-06-26T02:00:00Z",
+    "idEvent": "2461118",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/df1tnu1781600008.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 319,
+  "fields": {
+    "event_list": 178,
+    "event_type": "Senegal vs Iraq",
+    "date_time": "2026-06-26T19:00:00Z",
+    "idEvent": "2461119",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/duwfkg1775058387.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 320,
+  "fields": {
+    "event_list": 179,
+    "event_type": "Cape Verde vs Saudi Arabia",
+    "date_time": "2026-06-27T00:00:00Z",
+    "idEvent": "2391772",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/fchnmj1775058361.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 321,
+  "fields": {
+    "event_list": 179,
+    "event_type": "Egypt vs Iran",
+    "date_time": "2026-06-27T03:00:00Z",
+    "idEvent": "2391773",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/yane951775058362.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 322,
+  "fields": {
+    "event_list": 179,
+    "event_type": "New Zealand vs Belgium",
+    "date_time": "2026-06-27T03:00:00Z",
+    "idEvent": "2391774",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/162w8r1775058363.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 323,
+  "fields": {
+    "event_list": 179,
+    "event_type": "Uruguay vs Spain",
+    "date_time": "2026-06-27T00:00:00Z",
+    "idEvent": "2391776",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/b2zc0v1775058365.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 324,
+  "fields": {
+    "event_list": 179,
+    "event_type": "Colombia vs Portugal",
+    "date_time": "2026-06-27T23:30:00Z",
+    "idEvent": "2391778",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/u6lsyr1775058367.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 325,
+  "fields": {
+    "event_list": 179,
+    "event_type": "Croatia vs Ghana",
+    "date_time": "2026-06-27T21:00:00Z",
+    "idEvent": "2391779",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/fwxopf1775058368.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 326,
+  "fields": {
+    "event_list": 179,
+    "event_type": "Panama vs England",
+    "date_time": "2026-06-27T21:00:00Z",
+    "idEvent": "2391781",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/enrwox1775058370.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 327,
+  "fields": {
+    "event_list": 179,
+    "event_type": "DR Congo vs Uzbekistan",
+    "date_time": "2026-06-27T23:30:00Z",
+    "idEvent": "2461120",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/pibln91775058388.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 328,
+  "fields": {
+    "event_list": 180,
+    "event_type": "Algeria vs Austria",
+    "date_time": "2026-06-28T02:00:00Z",
+    "idEvent": "2391777",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://www.thesportsdb.com/images/media/event/thumb/9uiib51781600005.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.event",
+  "pk": 329,
+  "fields": {
+    "event_list": 180,
+    "event_type": "Jordan vs Argentina",
+    "date_time": "2026-06-28T02:00:00Z",
+    "idEvent": "2391780",
+    "video_id": "",
+    "is_finished": false,
+    "poster": "https://r2.thesportsdb.com/images/media/event/thumb/aejlsx1775058369.jpg",
+    "ai_review": "",
+    "ai_rating": ""
+  }
+},
+{
+  "model": "core.rating",
+  "pk": 2,
+  "fields": {
+    "event": 63,
+    "five_stars": 1,
+    "four_stars": 0,
+    "three_stars": 0,
+    "two_stars": 0,
+    "one_star": 0,
+    "percentage": 100.0,
+    "likes": 0,
+    "dislikes": 0,
+    "voters": []
+  }
+},
+{
+  "model": "core.rating",
+  "pk": 6,
+  "fields": {
+    "event": 275,
+    "five_stars": 0,
+    "four_stars": 1,
+    "three_stars": 0,
+    "two_stars": 0,
+    "one_star": 0,
+    "percentage": 80.0,
+    "likes": 0,
+    "dislikes": 1,
+    "voters": []
+  }
+},
+{
+  "model": "core.rating",
+  "pk": 7,
+  "fields": {
+    "event": 62,
+    "five_stars": 0,
+    "four_stars": 0,
+    "three_stars": 0,
+    "two_stars": 0,
+    "one_star": 0,
+    "percentage": 0.0,
+    "likes": 0,
+    "dislikes": 0,
+    "voters": [
+      1
+    ]
+  }
+},
+{
+  "model": "core.rating",
+  "pk": 8,
+  "fields": {
+    "event": 274,
+    "five_stars": 1,
+    "four_stars": 0,
+    "three_stars": 0,
+    "two_stars": 0,
+    "one_star": 0,
+    "percentage": 100.0,
+    "likes": 0,
+    "dislikes": 0,
+    "voters": []
+  }
+},
+{
+  "model": "core.rating",
+  "pk": 9,
+  "fields": {
+    "event": 285,
+    "five_stars": 1,
+    "four_stars": 0,
+    "three_stars": 0,
+    "two_stars": 0,
+    "one_star": 0,
+    "percentage": 100.0,
+    "likes": 1,
+    "dislikes": 0,
+    "voters": []
+  }
+},
+{
+  "model": "core.rating",
+  "pk": 10,
+  "fields": {
+    "event": 282,
+    "five_stars": 1,
+    "four_stars": 0,
+    "three_stars": 0,
+    "two_stars": 0,
+    "one_star": 0,
+    "percentage": 100.0,
+    "likes": 0,
+    "dislikes": 0,
+    "voters": []
+  }
+},
+{
+  "model": "core.rating",
+  "pk": 11,
+  "fields": {
+    "event": 284,
+    "five_stars": 1,
+    "four_stars": 0,
+    "three_stars": 0,
+    "two_stars": 0,
+    "one_star": 0,
+    "percentage": 100.0,
+    "likes": 0,
+    "dislikes": 0,
+    "voters": []
+  }
+},
+{
+  "model": "core.rating",
+  "pk": 12,
+  "fields": {
+    "event": 283,
+    "five_stars": 1,
+    "four_stars": 0,
+    "three_stars": 0,
+    "two_stars": 0,
+    "one_star": 0,
+    "percentage": 100.0,
+    "likes": 1,
+    "dislikes": 0,
+    "voters": []
+  }
+},
+{
+  "model": "core.rating",
+  "pk": 13,
+  "fields": {
+    "event": 245,
+    "five_stars": 1,
+    "four_stars": 0,
+    "three_stars": 0,
+    "two_stars": 0,
+    "one_star": 0,
+    "percentage": 100.0,
+    "likes": 0,
+    "dislikes": 0,
+    "voters": []
+  }
+},
+{
+  "model": "core.rating",
+  "pk": 14,
+  "fields": {
+    "event": 204,
+    "five_stars": 0,
+    "four_stars": 0,
+    "three_stars": 1,
+    "two_stars": 0,
+    "one_star": 0,
+    "percentage": 60.0,
+    "likes": 0,
+    "dislikes": 0,
+    "voters": []
+  }
+},
+{
+  "model": "core.rating",
+  "pk": 15,
+  "fields": {
+    "event": 297,
+    "five_stars": 0,
+    "four_stars": 0,
+    "three_stars": 0,
+    "two_stars": 1,
+    "one_star": 2,
+    "percentage": 26.666666666666668,
+    "likes": 0,
+    "dislikes": 0,
+    "voters": []
+  }
+},
+{
+  "model": "core.rating",
+  "pk": 16,
+  "fields": {
+    "event": 296,
+    "five_stars": 0,
+    "four_stars": 1,
+    "three_stars": 0,
+    "two_stars": 0,
+    "one_star": 0,
+    "percentage": 80.0,
+    "likes": 0,
+    "dislikes": 0,
+    "voters": []
+  }
+},
+{
+  "model": "core.comment",
+  "pk": "d30631ba-602b-4b0d-aa8d-509c879ea516",
+  "fields": {
+    "author": 1,
+    "event": 275,
+    "body": "Nice",
+    "created": "2026-06-19T03:56:25.062Z"
+  }
+},
+{
+  "model": "core.comment",
+  "pk": "f9499a88-30b1-48f3-84ce-d8440f494117",
+  "fields": {
+    "author": 1,
+    "event": 63,
+    "body": "Amazing race!! Best of the year",
+    "created": "2026-06-17T05:43:55.698Z"
+  }
+},
+{
+  "model": "gamify.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "total_xp": 55,
+    "current_level": 3,
+    "current_streak": 1,
+    "longest_streak": 2,
+    "last_active_date": "2026-06-22"
+  }
+},
+{
+  "model": "gamify.userprofile",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "total_xp": 38,
+    "current_level": 1,
+    "current_streak": 1,
+    "longest_streak": 1,
+    "last_active_date": "2026-06-19"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 64,
+  "fields": {
+    "user": 2,
+    "action_type": "event_rated",
+    "amount": 5,
+    "related_event": 259,
+    "related_comment": null,
+    "created": "2026-06-19T04:41:53.963Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 65,
+  "fields": {
+    "user": 2,
+    "action_type": "daily_bonus",
+    "amount": 5,
+    "related_event": 259,
+    "related_comment": null,
+    "created": "2026-06-19T04:41:53.963Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 66,
+  "fields": {
+    "user": 2,
+    "action_type": "comment_posted",
+    "amount": 4,
+    "related_event": 259,
+    "related_comment": null,
+    "created": "2026-06-19T04:41:53.969Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 67,
+  "fields": {
+    "user": 2,
+    "action_type": "event_liked",
+    "amount": 1,
+    "related_event": 260,
+    "related_comment": null,
+    "created": "2026-06-19T04:41:53.975Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 68,
+  "fields": {
+    "user": 2,
+    "action_type": "event_rated",
+    "amount": 5,
+    "related_event": 260,
+    "related_comment": null,
+    "created": "2026-06-19T04:41:53.980Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 69,
+  "fields": {
+    "user": 1,
+    "action_type": "event_rated",
+    "amount": 5,
+    "related_event": 259,
+    "related_comment": null,
+    "created": "2026-06-19T04:41:53.986Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 70,
+  "fields": {
+    "user": 1,
+    "action_type": "daily_bonus",
+    "amount": 5,
+    "related_event": 259,
+    "related_comment": null,
+    "created": "2026-06-19T04:41:53.986Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 71,
+  "fields": {
+    "user": 1,
+    "action_type": "comment_posted",
+    "amount": 4,
+    "related_event": 259,
+    "related_comment": null,
+    "created": "2026-06-19T04:41:53.993Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 72,
+  "fields": {
+    "user": 2,
+    "action_type": "event_rated",
+    "amount": 5,
+    "related_event": 274,
+    "related_comment": null,
+    "created": "2026-06-19T04:53:58.138Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 73,
+  "fields": {
+    "user": 2,
+    "action_type": "event_rated",
+    "amount": 5,
+    "related_event": 285,
+    "related_comment": null,
+    "created": "2026-06-19T04:54:18.073Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 74,
+  "fields": {
+    "user": 2,
+    "action_type": "event_rated",
+    "amount": 5,
+    "related_event": 282,
+    "related_comment": null,
+    "created": "2026-06-19T04:54:35.967Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 75,
+  "fields": {
+    "user": 2,
+    "action_type": "event_liked",
+    "amount": 1,
+    "related_event": 285,
+    "related_comment": null,
+    "created": "2026-06-19T04:54:45.794Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 76,
+  "fields": {
+    "user": 2,
+    "action_type": "event_rated",
+    "amount": 2,
+    "related_event": 284,
+    "related_comment": null,
+    "created": "2026-06-19T04:58:25.669Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 77,
+  "fields": {
+    "user": 1,
+    "action_type": "event_rated",
+    "amount": 5,
+    "related_event": 283,
+    "related_comment": null,
+    "created": "2026-06-19T05:30:28.133Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 78,
+  "fields": {
+    "user": 1,
+    "action_type": "event_liked",
+    "amount": 1,
+    "related_event": 283,
+    "related_comment": null,
+    "created": "2026-06-19T05:30:31.928Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 79,
+  "fields": {
+    "user": 1,
+    "action_type": "event_rated",
+    "amount": 5,
+    "related_event": 245,
+    "related_comment": null,
+    "created": "2026-06-20T04:01:37.704Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 80,
+  "fields": {
+    "user": 1,
+    "action_type": "daily_bonus",
+    "amount": 5,
+    "related_event": 245,
+    "related_comment": null,
+    "created": "2026-06-20T04:01:37.704Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 81,
+  "fields": {
+    "user": 1,
+    "action_type": "event_rated",
+    "amount": 5,
+    "related_event": 204,
+    "related_comment": null,
+    "created": "2026-06-22T06:40:53.566Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 82,
+  "fields": {
+    "user": 1,
+    "action_type": "daily_bonus",
+    "amount": 5,
+    "related_event": 204,
+    "related_comment": null,
+    "created": "2026-06-22T06:40:53.566Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 83,
+  "fields": {
+    "user": 1,
+    "action_type": "event_rated",
+    "amount": 5,
+    "related_event": 297,
+    "related_comment": null,
+    "created": "2026-06-22T06:43:23.750Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 84,
+  "fields": {
+    "user": 1,
+    "action_type": "event_rated",
+    "amount": 5,
+    "related_event": 297,
+    "related_comment": null,
+    "created": "2026-06-22T06:44:26.148Z"
+  }
+},
+{
+  "model": "gamify.xpevent",
+  "pk": 85,
+  "fields": {
+    "user": 1,
+    "action_type": "event_rated",
+    "amount": 5,
+    "related_event": 296,
+    "related_comment": null,
+    "created": "2026-06-22T06:47:55.813Z"
+  }
+},
+{
+  "model": "gamify.badge",
+  "pk": 1,
+  "fields": {
+    "slug": "first-rating",
+    "name": "First Rating",
+    "description": "Submitted your very first event rating.",
+    "icon": "fa-solid fa-star",
+    "rarity_threshold": 1
+  }
+},
+{
+  "model": "gamify.badge",
+  "pk": 2,
+  "fields": {
+    "slug": "quick-take",
+    "name": "Quick Take",
+    "description": "Rated an event within 1 hour of it finishing.",
+    "icon": "fa-solid fa-bolt",
+    "rarity_threshold": 2
+  }
+},
+{
+  "model": "gamify.badge",
+  "pk": 3,
+  "fields": {
+    "slug": "hot-streak-7",
+    "name": "Hot Streak 7",
+    "description": "Engaged on the site for 7 consecutive days.",
+    "icon": "fa-solid fa-fire",
+    "rarity_threshold": 2
+  }
+},
+{
+  "model": "gamify.badge",
+  "pk": 4,
+  "fields": {
+    "slug": "hot-streak-30",
+    "name": "Hot Streak 30",
+    "description": "Maintained an activity streak for 30 days in a row.",
+    "icon": "fa-solid fa-fire-flame-curved",
+    "rarity_threshold": 4
+  }
+},
+{
+  "model": "gamify.badge",
+  "pk": 5,
+  "fields": {
+    "slug": "multi-sport-fan",
+    "name": "Multi-Sport Fan",
+    "description": "Rated events across 3 or more different competitions.",
+    "icon": "fa-solid fa-globe",
+    "rarity_threshold": 2
+  }
+},
+{
+  "model": "gamify.badge",
+  "pk": 6,
+  "fields": {
+    "slug": "full-weekend",
+    "name": "Full Weekend",
+    "description": "Rated every session of a single GP or race weekend.",
+    "icon": "fa-solid fa-calendar-check",
+    "rarity_threshold": 3
+  }
+},
+{
+  "model": "gamify.badge",
+  "pk": 7,
+  "fields": {
+    "slug": "tournament-completionist",
+    "name": "Tournament Completionist",
+    "description": "Rated every match in a round of a World Cup or Champions League.",
+    "icon": "fa-solid fa-trophy",
+    "rarity_threshold": 4
+  }
+},
+{
+  "model": "gamify.badge",
+  "pk": 8,
+  "fields": {
+    "slug": "crowd-pleaser",
+    "name": "Crowd Pleaser",
+    "description": "Received 50 or more likes across all your event ratings.",
+    "icon": "fa-solid fa-heart",
+    "rarity_threshold": 3
+  }
+},
+{
+  "model": "gamify.badge",
+  "pk": 9,
+  "fields": {
+    "slug": "commentator",
+    "name": "Commentator",
+    "description": "Posted 25 or more comments.",
+    "icon": "fa-solid fa-comments",
+    "rarity_threshold": 2
+  }
+},
+{
+  "model": "gamify.badge",
+  "pk": 10,
+  "fields": {
+    "slug": "trusted-voice",
+    "name": "Trusted Voice",
+    "description": "Gave ratings within 10% of community consensus at least 10 times.",
+    "icon": "fa-solid fa-check-double",
+    "rarity_threshold": 3
+  }
+},
+{
+  "model": "gamify.badge",
+  "pk": 11,
+  "fields": {
+    "slug": "contrarian",
+    "name": "Contrarian",
+    "description": "Earned 10+ likes on a rating that went against the majority.",
+    "icon": "fa-solid fa-arrows-left-right",
+    "rarity_threshold": 4
+  }
+},
+{
+  "model": "gamify.userbadge",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "badge": 1,
+    "earned_at": "2026-06-19T04:39:04.533Z"
+  }
+},
+{
+  "model": "gamify.userbadge",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "badge": 9,
+    "earned_at": "2026-06-19T04:39:04.748Z"
+  }
+},
+{
+  "model": "gamify.userbadge",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "badge": 2,
+    "earned_at": "2026-06-19T04:39:04.949Z"
+  }
+},
+{
+  "model": "airatings.eventsignals",
+  "pk": 1,
+  "fields": {
+    "event": 297,
+    "signals": {
+      "drama": 4,
+      "excitement": 4,
+      "controversy": 0,
+      "late_tension": 2,
+      "lead_changes": 2,
+      "competitiveness": 3,
+      "one_line_internal_note": "Egypt achieved a historic 3-1 comeback win against New Zealand, with Salah starring, though the final score was settled before late tension built.",
+      "had_late_decisive_moment": false
+    },
+    "created_at": "2026-06-22T05:04:42.136Z",
+    "updated_at": "2026-06-22T05:04:42.136Z"
+  }
+},
+{
+  "model": "airatings.eventsignals",
+  "pk": 2,
+  "fields": {
+    "event": 62,
+    "signals": {
+      "drama": 4,
+      "excitement": 3,
+      "controversy": 2,
+      "late_tension": 4,
+      "lead_changes": 0,
+      "competitiveness": 2,
+      "one_line_internal_note": "Andrea Kimi Antonelli (Mercedes) dominated the Monaco GP from pole; Charles Leclerc (Ferrari) crashed out from a podium position late due to brake failure, calling it 'borderline dangerous'.",
+      "had_late_decisive_moment": true
+    },
+    "created_at": "2026-06-22T05:05:14.972Z",
+    "updated_at": "2026-06-22T05:05:14.972Z"
+  }
+},
+{
+  "model": "airatings.eventsignals",
+  "pk": 3,
+  "fields": {
+    "event": 63,
+    "signals": {
+      "drama": 5,
+      "excitement": 5,
+      "controversy": 0,
+      "late_tension": 4,
+      "lead_changes": 2,
+      "competitiveness": 4,
+      "one_line_internal_note": "Lewis Hamilton secured his first Ferrari win via a decisive three-stop strategy, ending a long drought, while championship leader Kimi Antonelli retired after taking second.",
+      "had_late_decisive_moment": true
+    },
+    "created_at": "2026-06-22T05:08:46.643Z",
+    "updated_at": "2026-06-22T05:08:46.643Z"
+  }
+},
+{
+  "model": "airatings.eventsignals",
+  "pk": 4,
+  "fields": {
+    "event": 283,
+    "signals": {
+      "drama": 4,
+      "excitement": 4,
+      "controversy": 1,
+      "late_tension": 5,
+      "lead_changes": 0,
+      "competitiveness": 5,
+      "one_line_internal_note": "1-1 draw with a late South Africa equalizer (penalty) for a comeback point after Czech Republic took an early lead.",
+      "had_late_decisive_moment": true
+    },
+    "created_at": "2026-06-22T05:13:35.000Z",
+    "updated_at": "2026-06-22T05:13:35.000Z"
+  }
+},
+{
+  "model": "airatings.eventsignals",
+  "pk": 5,
+  "fields": {
+    "event": 271,
+    "signals": {
+      "drama": 5,
+      "excitement": 5,
+      "controversy": 0,
+      "late_tension": 5,
+      "lead_changes": 0,
+      "competitiveness": 5,
+      "one_line_internal_note": "Cape Verde secured a heroic 0-0 draw against heavily favored Spain, holding on defensively despite Spain's overwhelming shot and possession advantage.",
+      "had_late_decisive_moment": true
+    },
+    "created_at": "2026-06-22T05:35:03.280Z",
+    "updated_at": "2026-06-22T05:35:03.280Z"
+  }
+},
+{
+  "model": "airatings.eventsignals",
+  "pk": 6,
+  "fields": {
+    "event": 263,
+    "signals": {
+      "drama": 5,
+      "excitement": 5,
+      "controversy": 0,
+      "late_tension": 5,
+      "lead_changes": 0,
+      "competitiveness": 4,
+      "one_line_internal_note": "Qatar secures a dramatic 1-1 draw against Switzerland with a 90th-minute equalizer, despite being statistically outplayed, marking a significant comeback.",
+      "had_late_decisive_moment": true
+    },
+    "created_at": "2026-06-22T05:36:28.062Z",
+    "updated_at": "2026-06-22T05:36:28.062Z"
+  }
+}
+]
