@@ -39,6 +39,22 @@ class Rating(models.Model):
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
 
+    @property
+    def average_stars(self):
+        total = self.five_stars + self.four_stars + self.three_stars + self.two_stars + self.one_star
+        if total == 0:
+            return 0
+        return round((5 * self.five_stars + 4 * self.four_stars + 3 * self.three_stars + 2 * self.two_stars + self.one_star) / total)
+
+    @property
+    def star_label(self):
+        avg = self.average_stars
+        if avg >= 4:
+            return 'Hot'
+        elif avg >= 2:
+            return 'Mid'
+        return 'Not'
+
     def __str__(self):
         return f"{self.event.event_type} - {self.event.event_list.name}"
 

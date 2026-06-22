@@ -2,11 +2,11 @@ from django.core.management.base import BaseCommand, CommandError
 from core.models import Event
 from airatings.models import EventSignals
 from airatings.verdict import map_to_verdict
-from airatings.stage_two import write_blurb
+from airatings.guard import run_with_guard
 
 
 class Command(BaseCommand):
-    help = 'Generate a spoiler-free blurb for one event (stage two)'
+    help = 'Generate a spoiler-free blurb for one event (stage two + guard)'
 
     def add_arguments(self, parser):
         parser.add_argument('event_id', type=int, help='DB primary key of the Event')
@@ -29,13 +29,15 @@ class Command(BaseCommand):
         self.stdout.write(
             f"\nEvent #{event.pk}: {event}\n"
             f"  Verdict: {verdict['stars']}★  {verdict['verdict']}\n"
-            f"  Rationale: {verdict['rationale_internal']}\n"
+            f"  {verdict['rationale_internal']}\n"
         )
 
-        self.stdout.write("Calling LLM (stage two)...")
-        try:
-            blurb = write_blurb(es.signals, verdict)
-        except RuntimeError as exc:
-            raise CommandError(str(exc))
+        self.stdout.write("Generating blurb (stage two + guard)...")
+        blurb, is_safe, reasons = run_with_guard(es.signals, verdict, event)
 
-        self.stdout.write(self.style.SUCCESS(f"\nBlurb:\n  {blurb}\n"))
+        if is_safe:
+            self.stdout.write(self.style.SUCCESS(f"\nBlurb [SAFE]:\n  {blurb}\n"))
+        else:
+            self.stdout.write(self.style.ERROR("\n⚠  MANUAL REVIEW REQUIRED"))
+            self.stdout.write(f"  Reasons: {'; '.join(reasons)}")
+            self.stdout.write(f"\nBlurb [UNSAFE — do not publish]:\n  {blurb}\n")

@@ -1,4 +1,8 @@
+from unittest.mock import MagicMock, patch
+
 from django.test import SimpleTestCase
+
+from airatings.guard import check_blurb
 from airatings.verdict import map_to_verdict
 
 
@@ -113,3 +117,117 @@ class VerdictTests(SimpleTestCase):
         })
         self.assertIsInstance(result["rationale_internal"], str)
         self.assertGreater(len(result["rationale_internal"]), 10)
+
+
+# ---------------------------------------------------------------------------
+# Guard tests
+# ---------------------------------------------------------------------------
+
+class GuardTests(SimpleTestCase):
+    """Unit tests for check_blurb() in airatings/guard.py."""
+
+    def _mock_event(
+        self,
+        event_type: str = "Spain vs Cape Verde",
+        league: str = "FIFA World Cup",
+        comp_name: str = "FIFA World Cup",
+    ) -> MagicMock:
+        event = MagicMock()
+        event.pk = 271
+        event.idEvent = "2391739"
+        event.event_type = event_type
+        event.event_list.name = comp_name
+        event.event_list.league = league
+        event.date_time.year = 2026
+        return event
+
+    # --- Pattern tests (name extraction bypassed) ---
+
+    @patch("airatings.guard._build_banned_names", return_value=set())
+    def test_clean_blurb_passes(self, _):
+        is_safe, reasons = check_blurb(
+            "An intense and gripping contest that kept viewers on edge throughout.",
+            self._mock_event(),
+        )
+        self.assertTrue(is_safe)
+        self.assertEqual(reasons, [])
+
+    @patch("airatings.guard._build_banned_names", return_value=set())
+    def test_result_verb_caught(self, _):
+        is_safe, reasons = check_blurb(
+            "One side won convincingly in an enthralling affair.",
+            self._mock_event(),
+        )
+        self.assertFalse(is_safe)
+        self.assertTrue(any("won" in r for r in reasons))
+
+    @patch("airatings.guard._build_banned_names", return_value=set())
+    def test_digit_scoreline_caught(self, _):
+        is_safe, reasons = check_blurb(
+            "The final margin was a comfortable 3-1.",
+            self._mock_event(),
+        )
+        self.assertFalse(is_safe)
+        self.assertTrue(any("digit scoreline" in r for r in reasons))
+
+    @patch("airatings.guard._build_banned_names", return_value=set())
+    def test_written_score_caught(self, _):
+        is_safe, reasons = check_blurb(
+            "Two goals in quick succession changed the complexion entirely.",
+            self._mock_event(),
+        )
+        self.assertFalse(is_safe)
+        self.assertTrue(any("written score" in r for r in reasons))
+
+    @patch("airatings.guard._build_banned_names", return_value=set())
+    def test_banned_phrase_caught(self, _):
+        is_safe, reasons = check_blurb(
+            "One side took the lead early and never looked back.",
+            self._mock_event(),
+        )
+        self.assertFalse(is_safe)
+        self.assertTrue(any("banned phrase" in r for r in reasons))
+
+    # --- Name detection ---
+
+    def test_team_name_caught(self):
+        banned = {"spain", "cape verde", "cape", "verde"}
+        with patch("airatings.guard._build_banned_names", return_value=banned):
+            is_safe, reasons = check_blurb(
+                "Spain looked dominant in an absorbing contest.",
+                self._mock_event(),
+            )
+        self.assertFalse(is_safe)
+        self.assertTrue(any("spain" in r for r in reasons))
+
+    def test_player_name_caught(self):
+        banned = {"williams", "spain", "cape", "verde", "cape verde"}
+        with patch("airatings.guard._build_banned_names", return_value=banned):
+            is_safe, reasons = check_blurb(
+                "Williams was the standout performer in a tense encounter.",
+                self._mock_event(),
+            )
+        self.assertFalse(is_safe)
+        self.assertTrue(any("williams" in r for r in reasons))
+
+    # --- Deliberately leaky blurb (all categories at once) ---
+
+    def test_maximally_leaky_blurb_caught(self):
+        """A blurb stuffed with every leak type must raise multiple reasons."""
+        banned = {"spain", "verde", "cape", "cape verde"}
+        leaky = (
+            "Spain beat Cape Verde 3-1 — two goals sealed it. "
+            "Spain won after they took the lead with a comeback."
+        )
+        with patch("airatings.guard._build_banned_names", return_value=banned):
+            is_safe, reasons = check_blurb(leaky, self._mock_event())
+
+        self.assertFalse(is_safe)
+        categories = {r.split(":")[0] for r in reasons}
+        # Must catch: result verb, digit scoreline, written score, banned phrase, named entity
+        self.assertIn("result verb",    categories)
+        self.assertIn("digit scoreline", categories)
+        self.assertIn("written score",  categories)
+        self.assertIn("banned phrase",  categories)
+        self.assertIn("named entity",   categories)
+        self.assertGreaterEqual(len(reasons), 5)

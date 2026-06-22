@@ -4,7 +4,7 @@
     {% for event in events_past %}
       <li>
         <a href="{% url 'core:event' event.id %}" class="btn-pill btn-pill-light rounded-pill">
-            {{ event.event_type|title }}{% if event.rating.percentage %} - {{ event.rating.percentage|floatformat:0 }}% HOT{% endif %}
+            {{ event.event_type|title }}{% if event.rating.average_stars %} - {{ event.rating.average_stars }} ⭐ {{ event.rating.star_label }}{% endif %}
         </a>
       </li>
     {% endfor %}
