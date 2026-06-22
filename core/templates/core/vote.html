@@ -6,19 +6,19 @@
         <form method="post" action="{% url 'core:vote' event.id %}" class="vote mt-2">
             {% csrf_token %}
             <input type="radio" name="stars" id="stars5" value="5" required>
-            <label for="stars5"><i class="fa-solid fa-star star-icon"></i> 5 stars &mdash; Hot Watch!</label>
+            <label for="stars5"><i class="fa-solid fa-star star-icon"></i> 5 stars - Hot Watch!</label>
 
             <input type="radio" name="stars" id="stars4" value="4">
             <label for="stars4"><i class="fa-solid fa-star star-icon"></i> 4 stars</label>
 
             <input type="radio" name="stars" id="stars3" value="3">
-            <label for="stars3"><i class="fa-solid fa-star star-icon"></i> 3 stars &mdash; Mid Temp!</label>
+            <label for="stars3"><i class="fa-solid fa-star star-icon"></i> 3 stars - Mid Temp!</label>
 
             <input type="radio" name="stars" id="stars2" value="2">
             <label for="stars2"><i class="fa-solid fa-star star-icon"></i> 2 stars</label>
 
             <input type="radio" name="stars" id="stars1" value="1">
-            <label for="stars1"><i class="fa-solid fa-star star-icon"></i> 1 star &mdash; Not Watch!</label>
+            <label for="stars1"><i class="fa-solid fa-star star-icon"></i> 1 star - Not Watch!</label>
 
             <button type="submit" class="btn btn-primary text-white mt-3 w-100">Submit Rating</button>
         </form>

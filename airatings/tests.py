@@ -3,6 +3,7 @@ from unittest.mock import MagicMock, patch
 from django.test import SimpleTestCase
 
 from airatings.guard import check_blurb
+from airatings.pipeline import _apply_stat_corrections, _apply_verdict_corrections
 from airatings.verdict import map_to_verdict
 
 
@@ -231,3 +232,162 @@ class GuardTests(SimpleTestCase):
         self.assertIn("banned phrase",  categories)
         self.assertIn("named entity",   categories)
         self.assertGreaterEqual(len(reasons), 5)
+
+
+# ---------------------------------------------------------------------------
+# Stat correction tests
+# ---------------------------------------------------------------------------
+
+class StatCorrectionTests(SimpleTestCase):
+    """Unit tests for _apply_stat_corrections() in airatings/pipeline.py."""
+
+    def _signals(self, excitement: int = 1) -> dict:
+        return {
+            "excitement": excitement, "drama": 3, "competitiveness": 2,
+            "late_tension": 2, "controversy": 0,
+            "lead_changes": 0, "had_late_decisive_moment": False,
+        }
+
+    def test_7_goals_floors_excitement_to_5(self):
+        """Germany 7-1 scenario — must never score 1★."""
+        result = _apply_stat_corrections(
+            self._signals(excitement=1),
+            {"sport": "football", "total_goals": 7},
+        )
+        self.assertEqual(result["excitement"], 5)
+
+    def test_5_goals_floors_excitement_to_4(self):
+        """Sweden 5-1 scenario — must not score below 4 on excitement."""
+        result = _apply_stat_corrections(
+            self._signals(excitement=2),
+            {"sport": "football", "total_goals": 5},
+        )
+        self.assertEqual(result["excitement"], 4)
+
+    def test_4_goals_floors_excitement_to_3(self):
+        """Japan 4-0 / Spain 4-0 scenario — 4 goals must not produce exc < 3."""
+        result = _apply_stat_corrections(
+            self._signals(excitement=1),
+            {"sport": "football", "total_goals": 4},
+        )
+        self.assertEqual(result["excitement"], 3)
+
+    def test_floor_does_not_lower_existing_high_score(self):
+        """If LLM already gave a higher score, the floor must not reduce it."""
+        result = _apply_stat_corrections(
+            self._signals(excitement=5),
+            {"sport": "football", "total_goals": 5},
+        )
+        self.assertEqual(result["excitement"], 5)
+
+    def test_low_goals_leaves_excitement_unchanged(self):
+        """A 1-1 draw should not be corrected — the LLM judgment stands."""
+        result = _apply_stat_corrections(
+            self._signals(excitement=3),
+            {"sport": "football", "total_goals": 2},
+        )
+        self.assertEqual(result["excitement"], 3)
+
+    def test_non_football_sport_is_unchanged(self):
+        """F1 stats go through stage one only — no stat correction applied."""
+        result = _apply_stat_corrections(
+            self._signals(excitement=1),
+            {"sport": "f1", "dnf_count": 5},
+        )
+        self.assertEqual(result["excitement"], 1)
+
+    def test_missing_total_goals_leaves_excitement_unchanged(self):
+        """If total_goals is absent (incomplete stats), no correction is applied."""
+        result = _apply_stat_corrections(
+            self._signals(excitement=1),
+            {"sport": "football"},
+        )
+        self.assertEqual(result["excitement"], 1)
+
+
+# ---------------------------------------------------------------------------
+# Verdict correction tests
+# ---------------------------------------------------------------------------
+
+class VerdictCorrectionTests(SimpleTestCase):
+    """Unit tests for _apply_verdict_corrections() in airatings/pipeline.py."""
+
+    def _verdict(self, stars: int) -> dict:
+        verdicts = {5: "hot_watch", 4: "hot_watch", 3: "mid_temp", 2: "mid_temp", 1: "not_watch"}
+        return {
+            "stars": stars,
+            "verdict": verdicts[stars],
+            "rationale_internal": f"base=test → {stars}★",
+        }
+
+    def test_7_goals_raises_3star_to_4star_hot_watch(self):
+        """Germany 7-1 scenario: 3★ mid_temp → 4★ hot_watch."""
+        result = _apply_verdict_corrections(
+            self._verdict(3),
+            {"sport": "football", "total_goals": 7},
+        )
+        self.assertEqual(result["stars"], 4)
+        self.assertEqual(result["verdict"], "hot_watch")
+        self.assertIn("verdict_correction", result["rationale_internal"])
+
+    def test_7_goals_raises_2star_to_4star_hot_watch(self):
+        """High goal count overrides a very low formula score."""
+        result = _apply_verdict_corrections(
+            self._verdict(2),
+            {"sport": "football", "total_goals": 8},
+        )
+        self.assertEqual(result["stars"], 4)
+        self.assertEqual(result["verdict"], "hot_watch")
+
+    def test_5_goals_raises_2star_to_3star_mid_temp(self):
+        """Sweden 5-1 scenario: 2★ mid_temp → 3★ mid_temp (no longer skippable)."""
+        result = _apply_verdict_corrections(
+            self._verdict(2),
+            {"sport": "football", "total_goals": 5},
+        )
+        self.assertEqual(result["stars"], 3)
+        self.assertEqual(result["verdict"], "mid_temp")
+
+    def test_4_goals_raises_1star_to_2star_mid_temp(self):
+        """Japan 4-0 / Spain 4-0 scenario: 1★ not_watch → 2★ mid_temp."""
+        result = _apply_verdict_corrections(
+            self._verdict(1),
+            {"sport": "football", "total_goals": 4},
+        )
+        self.assertEqual(result["stars"], 2)
+        self.assertEqual(result["verdict"], "mid_temp")
+        self.assertIn("verdict_correction", result["rationale_internal"])
+
+    def test_floor_does_not_lower_existing_high_star(self):
+        """A 5★ result on a 7-goal game must not be reduced."""
+        result = _apply_verdict_corrections(
+            self._verdict(5),
+            {"sport": "football", "total_goals": 7},
+        )
+        self.assertEqual(result["stars"], 5)
+        self.assertEqual(result["verdict"], "hot_watch")
+
+    def test_low_goals_leaves_verdict_unchanged(self):
+        """A 2-goal game below all thresholds is not touched."""
+        result = _apply_verdict_corrections(
+            self._verdict(2),
+            {"sport": "football", "total_goals": 2},
+        )
+        self.assertEqual(result["stars"], 2)
+        self.assertEqual(result["verdict"], "mid_temp")
+
+    def test_non_football_sport_is_unchanged(self):
+        """F1 verdicts are never corrected by goal count."""
+        result = _apply_verdict_corrections(
+            self._verdict(1),
+            {"sport": "f1", "total_goals": 10},
+        )
+        self.assertEqual(result["stars"], 1)
+
+    def test_missing_total_goals_leaves_verdict_unchanged(self):
+        """Absent total_goals applies no correction."""
+        result = _apply_verdict_corrections(
+            self._verdict(2),
+            {"sport": "football"},
+        )
+        self.assertEqual(result["stars"], 2)

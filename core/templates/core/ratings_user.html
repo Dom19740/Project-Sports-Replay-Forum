@@ -5,13 +5,13 @@
     <p>Be the first to rate this event.</p>
 {% else %}
     {% if event.rating.average_stars >= 4 %}
-        <img src="{% static 'img/logo_flame_large.png' %}" alt="HOT WATCH" class="rating-logo"><h3>HOT WATCH!</h3>
+        <img src="{% static 'img/logo_flame_small.png' %}" alt="HOT WATCH" class="rating-logo"><h3>HOT WATCH!</h3>
         <h6>Watch the Full Replay</h6>
     {% elif event.rating.average_stars >= 2 %}
-        <img src="{% static 'img/logo_mid.png' %}" alt="MID TEMP" class="rating-logo"><h3>MID TEMP!</h3>
+        <img src="{% static 'img/logo_mid_small.png' %}" alt="MID TEMP" class="rating-logo"><h3>MID TEMP!</h3>
         <h6>Watch the Highlights</h6>
     {% else %}
-        <img src="{% static 'img/logo_cold.png' %}" alt="NOT WATCH" class="rating-logo"><h3>NOT WATCH!</h3>
+        <img src="{% static 'img/logo_cold_small.png' %}" alt="NOT WATCH" class="rating-logo"><h3>NOT WATCH!</h3>
         <h6>Check Out the Results</h6>
     {% endif %}
 
@@ -51,7 +51,7 @@
         const chart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ['5 stars', '4 stars', '3 stars', '2 stars', '1 star'],
+                labels: [' 5 ⭐', ' 4 ⭐', ' 3 ⭐', ' 2 ⭐', ' 1 ⭐'],
                 datasets: [{
                     data: [fiveStars, fourStars, threeStars, twoStars, oneStar],
                     backgroundColor: [

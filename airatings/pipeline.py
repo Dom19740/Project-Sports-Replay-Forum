@@ -4,7 +4,14 @@ from airatings.guard import run_with_guard
 from airatings.ingest.dispatch import get_source_for_event
 from airatings.models import AIRating, EventSignals
 from airatings.stage_one import extract_signals
-from airatings.verdict import map_to_verdict
+from airatings.verdict import (
+    HOT_WATCH_MIN_STARS,
+    MID_TEMP_MIN_STARS,
+    VERDICT_HOT,
+    VERDICT_MID,
+    VERDICT_NOT,
+    map_to_verdict,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -59,6 +66,105 @@ def is_event_finished(event) -> bool:
 
     # Unknown league — fall back to the event's own flag
     return bool(getattr(event, "is_finished", False))
+
+
+# ---------------------------------------------------------------------------
+# Stat-based signal corrections (deterministic safety net)
+# ---------------------------------------------------------------------------
+
+# Goal-count floors for football: a high-scoring game is inherently entertaining
+# regardless of how competitive it was. The LLM can underestimate excitement
+# for dominant goal-fests — these floors prevent that.
+_GOAL_EXCITEMENT_FLOORS = (
+    (7, 5),  # 7+ goals → excitement must be at least 5
+    (5, 4),  # 5-6 goals → excitement must be at least 4
+    (4, 3),  # 4 goals → excitement must be at least 3
+)
+
+
+def _stars_to_verdict(stars: int) -> str:
+    if stars >= HOT_WATCH_MIN_STARS:
+        return VERDICT_HOT
+    if stars >= MID_TEMP_MIN_STARS:
+        return VERDICT_MID
+    return VERDICT_NOT
+
+
+def _apply_stat_corrections(signals: dict, stats: dict) -> dict:
+    """
+    Apply deterministic corrections to LLM-generated signals based on hard stats.
+
+    This is a one-way floor, not a ceiling — it can only raise excitement for
+    high-scoring matches. It never lowers signals; the improved Stage One prompt
+    handles over-inflation.
+
+    Currently handles football only (total_goals field).
+    """
+    sport = stats.get("sport", "")
+    if sport != "football":
+        return signals
+
+    total_goals = int(stats.get("total_goals") or 0)
+    current_excitement = signals.get("excitement", 1)
+
+    for goal_threshold, excitement_floor in _GOAL_EXCITEMENT_FLOORS:
+        if total_goals >= goal_threshold and current_excitement < excitement_floor:
+            corrected = dict(signals)
+            corrected["excitement"] = excitement_floor
+            logger.info(
+                "stat_correction: excitement raised %d→%d (total_goals=%d ≥ %d)",
+                current_excitement, excitement_floor, total_goals, goal_threshold,
+            )
+            return corrected
+
+    return signals
+
+
+# Goal-count floors at the verdict level: a high-scoring game deserves a
+# minimum star rating regardless of how one-sided it was. A 7-1 thrashing
+# is entertaining as a goal-fest even if drama/competitiveness are low.
+_GOAL_STAR_FLOORS = (
+    (7, 4),  # 7+ goals → at least 4★ (HOT WATCH)
+    (5, 3),  # 5-6 goals → at least 3★ (MID TEMP)
+    (4, 2),  # 4 goals → at least 2★ — a 4-goal game is never NOT WATCH
+)
+
+
+def _apply_verdict_corrections(verdict: dict, stats: dict) -> dict:
+    """
+    Apply deterministic star-level floors based on goal count.
+
+    Parallel to _apply_stat_corrections but operates on the verdict dict
+    after map_to_verdict(). One-way floor only — never lowers stars.
+    Football only.
+    """
+    sport = stats.get("sport", "")
+    if sport != "football":
+        return verdict
+
+    total_goals = int(stats.get("total_goals") or 0)
+    current_stars = verdict["stars"]
+
+    for goal_threshold, star_floor in _GOAL_STAR_FLOORS:
+        if total_goals >= goal_threshold and current_stars < star_floor:
+            new_verdict = _stars_to_verdict(star_floor)
+            corrected = dict(verdict)
+            corrected["stars"] = star_floor
+            corrected["verdict"] = new_verdict
+            corrected["rationale_internal"] = (
+                verdict["rationale_internal"]
+                + f" | verdict_correction: stars raised {current_stars}★→{star_floor}★"
+                f" (total_goals={total_goals} ≥ {goal_threshold})"
+            )
+            logger.info(
+                "verdict_correction: stars raised %d★→%d★ %s→%s (total_goals=%d ≥ %d)",
+                current_stars, star_floor,
+                verdict["verdict"], new_verdict,
+                total_goals, goal_threshold,
+            )
+            return corrected
+
+    return verdict
 
 
 # ---------------------------------------------------------------------------
@@ -126,6 +232,9 @@ def run_pipeline(event) -> AIRating:
     except RuntimeError as exc:
         raise PipelineError(f"Stage one failed: {exc}") from exc
 
+    # --- 2b. Stat corrections (deterministic safety net) ------------------
+    signals = _apply_stat_corrections(signals, stats)
+
     EventSignals.objects.update_or_create(
         event=event,
         defaults={"signals": signals},
@@ -133,6 +242,7 @@ def run_pipeline(event) -> AIRating:
 
     # --- 3. Verdict (deterministic) ---------------------------------------
     verdict = map_to_verdict(signals)
+    verdict = _apply_verdict_corrections(verdict, stats)
 
     # --- 4. Stage two + guard (LLM) ----------------------------------------
     blurb, is_safe, flag_reasons = run_with_guard(signals, verdict, event)
