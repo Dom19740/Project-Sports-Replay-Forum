@@ -30,7 +30,7 @@ SCORE_MAX = 5.0
 STARS_THRESHOLDS = [
     (4.5, 5),
     (3.5, 4),
-    (2.5, 3),
+    (2.2, 3),  # lowered from 2.5 — keeps average matches comfortably in mid_temp
     (1.5, 2),
     (0.0, 1),
 ]
@@ -44,28 +44,36 @@ VERDICT_MID = "mid_temp"
 VERDICT_NOT = "not_watch"
 
 HOT_WATCH_MIN_STARS = 4  # 4★ and 5★ → hot_watch
-MID_TEMP_MIN_STARS  = 3  # 3★       → mid_temp
-                          # 1-2★     → not_watch
+MID_TEMP_MIN_STARS  = 2  # 2★ and 3★ → mid_temp
+                          # 1★        → not_watch
 
 
 # ---------------------------------------------------------------------------
 # Public interface
 # ---------------------------------------------------------------------------
 
-def map_to_verdict(signals: dict) -> dict:
+def map_to_verdict(signals: dict, debug: bool = False) -> dict:
     """
     Deterministic, LLM-free mapping from stage-one signals to a user verdict.
+
+    Args:
+        signals: stage-one signal dict
+        debug:   if True, prints the full score breakdown to stdout
 
     Returns:
         stars (int 1-5), verdict (str), rationale_internal (str)
     """
     # --- Weighted base score (scale: 1–5) --------------------------------
-    base = (
-        signals.get("excitement",      1) * W_EXCITEMENT      +
-        signals.get("drama",           1) * W_DRAMA           +
-        signals.get("late_tension",    1) * W_LATE_TENSION    +
-        signals.get("competitiveness", 1) * W_COMPETITIVENESS
-    )
+    exc  = signals.get("excitement",      1)
+    dra  = signals.get("drama",           1)
+    lat  = signals.get("late_tension",    1)
+    comp = signals.get("competitiveness", 1)
+
+    exc_contrib  = exc  * W_EXCITEMENT
+    dra_contrib  = dra  * W_DRAMA
+    lat_contrib  = lat  * W_LATE_TENSION
+    comp_contrib = comp * W_COMPETITIVENESS
+    base = exc_contrib + dra_contrib + lat_contrib + comp_contrib
 
     # --- Bonuses ----------------------------------------------------------
     bonus_breakdown: list[str] = []
@@ -90,6 +98,18 @@ def map_to_verdict(signals: dict) -> dict:
     # --- Final score ------------------------------------------------------
     raw_score = base + bonus
     score = max(SCORE_MIN, min(SCORE_MAX, raw_score))
+
+    if debug:
+        print(f"  excitement:      {exc} × {W_EXCITEMENT}  = {exc_contrib:.3f}")
+        print(f"  drama:           {dra} × {W_DRAMA}  = {dra_contrib:.3f}")
+        print(f"  late_tension:    {lat} × {W_LATE_TENSION}  = {lat_contrib:.3f}")
+        print(f"  competitiveness: {comp} × {W_COMPETITIVENESS}  = {comp_contrib:.3f}")
+        print(f"  ─────────────────────────────────────")
+        print(f"  base score:      {base:.3f}")
+        bonus_str_dbg = ", ".join(bonus_breakdown) if bonus_breakdown else "none"
+        print(f"  bonuses:         +{bonus:.3f}  [{bonus_str_dbg}]")
+        print(f"  raw total:       {raw_score:.3f}")
+        print(f"  clamped score:   {score:.3f}  (bounds [{SCORE_MIN}, {SCORE_MAX}])")
 
     # --- Stars ------------------------------------------------------------
     stars = 1
