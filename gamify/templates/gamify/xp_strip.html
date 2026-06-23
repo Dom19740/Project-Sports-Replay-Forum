@@ -1,3 +1,4 @@
+{% load static %}
 {% if user.is_authenticated and gamify_strip %}
 <a href="{% url 'users:profile' %}" class="xp-strip">
 
@@ -28,5 +29,11 @@
     </div>
     {% endif %}
 
+</a>
+{% else %}
+<a href="{% url 'users:register' %}" class="xp-strip xp-strip-guest">
+    <i class="fa-solid fa-bolt xp-strip-guest-bolt"></i>
+    <span class="xp-strip-guest-text">Register to track your rating progress</span>
+    <i class="fa-solid fa-bolt xp-strip-guest-bolt"></i>
 </a>
 {% endif %}

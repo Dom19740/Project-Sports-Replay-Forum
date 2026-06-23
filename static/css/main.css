@@ -47,7 +47,7 @@ h6 { font-size: 0.875rem; font-weight: 600; margin-bottom: 14px;}
 
 .main-header {
     margin: 18px 10px 14px;
-    font-size: 0.72rem;
+    font-size: 1rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -506,6 +506,20 @@ a i:hover { color: var(--light-purple); }
     background: rgba(79,55,156,0.06);
     color: inherit;
 }
+.xp-strip-guest { justify-content: center; gap: 10px; }
+.xp-strip-guest-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.04em;
+}
+.xp-strip-guest-bolt {
+    font-size: 0.9rem;
+    color: var(--dark-purple);
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+.xp-strip-guest:hover .xp-strip-guest-bolt { color: var(--five-star-pink); }
 
 .xp-strip-level {
     width: 38px;

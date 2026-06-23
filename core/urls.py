@@ -14,6 +14,7 @@ urlpatterns = [
     path('run-football-populate/', lambda request: run_populate(request, 'populate_football', 'Football data populated successfully'), name='run_populate_football'),
     path('run-us-populate/', lambda request: run_populate(request, 'populate_us', 'US sport data populated successfully'), name='run_populate_us'),
     path('run-cleanup/', lambda request: run_populate(request, 'cleanup_events', 'Old events cleaned up successfully'), name='run_cleanup'),
+    path('run-ratings/', lambda request: run_populate(request, 'run_ratings', 'AI ratings run successfully'), name='run_ratings'),
     path('commentsent/<pk>', comment_sent, name='comment-sent'),
     path('replysent/<pk>/', reply_sent, name='reply-sent'),
     path('commentdelete/<uuid:pk>/', views.comment_delete, name='comment-delete'),
