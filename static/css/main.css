@@ -403,7 +403,7 @@ h3, .rating-logo { display: inline; vertical-align: middle; }
 .ai-stars-3 { color: var(--three-star-orange); }
 .ai-stars-2 { color: var(--two-star-ocean); }
 .ai-stars-1 { color: var(--one-star-ice); }
-.ai-blurb { font-size: 0.85rem; color: var(--muted); font-style: italic; margin-top: 10px; line-height: 1.5; }
+.ai-blurb { font-size: 0.85rem; color: var(--muted); margin-top: 10px; line-height: 1.5; }
 
 /* play video */
 .image-wrapper { position: relative; }
