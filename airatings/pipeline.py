@@ -48,6 +48,16 @@ def is_event_finished(event) -> bool:
             return finished
         except Exception as exc:
             logger.warning("pipeline: status check failed for event pk=%s: %s", event.pk, exc)
+            # If the API is rate-limiting us, fall back to time-based check:
+            # if kickoff was 4+ hours ago the match is almost certainly over.
+            from django.utils import timezone as _tz
+            hours_since = (_tz.now() - event.date_time).total_seconds() / 3600
+            if hours_since >= 4:
+                logger.info(
+                    "pipeline: assuming finished for event pk=%s (%.1fh since kickoff, API unavailable)",
+                    event.pk, hours_since,
+                )
+                return True
             return False
 
     if league in _F1_LEAGUES:
