@@ -12,6 +12,7 @@ click-repl==0.3.0
 crispy-bootstrap5==2024.10
 cryptography==44.0.1
 defusedxml==0.8.0rc2
+feedparser==6.0.12
 dj-database-url==2.3.0
 Django==5.1.7
 django-appconf==1.0.6
