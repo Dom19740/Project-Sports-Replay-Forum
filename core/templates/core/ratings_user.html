@@ -15,7 +15,11 @@
         <h6>Check Out the Results</h6>
     {% endif %}
 
-    <p>Average {{ event.rating.average_stars }} ⭐ from {{ total_votes }} votes</p>
+    <p>{% if event.rating.average_stars == 5 %}<span class="ai-stars ai-stars-5">★★★★★</span>
+    {% elif event.rating.average_stars == 4 %}<span class="ai-stars ai-stars-4">★★★★☆</span>
+    {% elif event.rating.average_stars == 3 %}<span class="ai-stars ai-stars-3">★★★☆☆</span>
+    {% elif event.rating.average_stars == 2 %}<span class="ai-stars ai-stars-2">★★☆☆☆</span>
+    {% else %}<span class="ai-stars ai-stars-1">★☆☆☆☆</span>{% endif %} from {{ total_votes }} votes</p>
     
     <div class="chart-container">
         <canvas id="ratingChart" width="250" height="200"></canvas>
@@ -51,7 +55,7 @@
         const chart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: [' 5 ⭐', ' 4 ⭐', ' 3 ⭐', ' 2 ⭐', ' 1 ⭐'],
+                labels: [' 5 ☆', ' 4 ☆', ' 3 ☆', ' 2 ☆', ' 1 ☆'],
                 datasets: [{
                     data: [fiveStars, fourStars, threeStars, twoStars, oneStar],
                     backgroundColor: [

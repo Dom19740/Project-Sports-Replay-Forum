@@ -313,7 +313,10 @@ label {
     color: #fff;
     font-weight: 600;
 }
-.vote label .star-icon { color: var(--three-star-orange); font-size: 0.85rem; }
+.vote label .ai-stars { font-size: 0.95rem; letter-spacing: 0; }
+.vote-verdict-icon { width: 22px; height: auto; vertical-align: middle; }
+.vote-verdict { font-size: 1rem; font-weight: 700; color: #fff; }
+.vote-stars-count { font-size: 0.8rem; color: #888; }
 
 /* ─── Home ──────────────────────────────────────────────────────────────────── */
 .badge-container {
