@@ -43,7 +43,7 @@ a {
 a:hover { color: var(--one-star-ice); }
 
 h1, h2, h3, h4, h5 { font-weight: 700; }
-h6 { font-size: 0.875rem; font-weight: 600; }
+h6 { font-size: 0.875rem; font-weight: 600; margin-bottom: 14px;}
 
 .main-header {
     margin: 18px 10px 14px;
@@ -274,7 +274,24 @@ label {
     background-color: var(--dark-purple);
     border-color: var(--dark-purple);
 }
-.form-check-label { font-size: 0.875rem; color: #ccc; }
+.form-check-label { font-size: 0.875rem; color: #ccc; margin-left: 10px; padding-top: 2px;}
+
+.form-switch .form-check-input {
+    background-color: var(--dark-purple);
+    border-color: var(--dark-purple);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    width: 2.5em;
+    height: 1.25em;
+}
+.form-switch .form-check-input:checked {
+    background-color: var(--five-star-pink);
+    border-color: var(--five-star-pink);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+.form-switch .form-check-input:focus {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    box-shadow: 0 0 0 3px rgba(79,55,156,0.22);
+}
 
 /* ─── Star vote form ────────────────────────────────────────────────────────── */
 .vote { display: flex; flex-direction: column; gap: 6px; }
@@ -353,7 +370,7 @@ label {
 .events-scroll::-webkit-scrollbar-track { background: #1a1a1a; }
 
 .event-icon { width: 17px; height: 18px; margin-right: 5px; }
-.rating-pill-icon { width: 22px; height: 25px; margin-left: 8px; }
+.rating-pill-icon { width: 22px; height: 25px; margin-left: 2px; }
 
 .fa-arrow-down-wide-short { margin-left: 10px; font-size: 16px; }
 
@@ -403,7 +420,7 @@ h3, .rating-logo { display: inline; vertical-align: middle; }
 .ai-stars-3 { color: var(--three-star-orange); }
 .ai-stars-2 { color: var(--two-star-ocean); }
 .ai-stars-1 { color: var(--one-star-ice); }
-.ai-blurb { font-size: 0.85rem; color: var(--muted); margin-top: 10px; line-height: 1.5; }
+.ai-blurb { font-size: 0.85rem; color: var(--muted);  margin-top: 10px; margin-bottom: 28px; line-height: 1.5; }
 
 /* play video */
 .image-wrapper { position: relative; }
@@ -437,7 +454,7 @@ a i:hover { color: var(--light-purple); }
     transform: scale(1.12);
 }
 
-.spoiler-header { margin: 20px 0 12px; }
+.spoiler-header { margin: 50px 0 22px; }
 .spoiler-buttons { display: flex; align-items: left; }
 
 /* ─── Comments ──────────────────────────────────────────────────────────────── */

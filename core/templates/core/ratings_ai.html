@@ -22,7 +22,15 @@
         <span>AI Rating</span>
     </p>
 
-    <p class="ai-blurb">{{ ai_pipeline.blurb }}</p>
+    {% if ai_pipeline.blurb %}
+    <div class="form-check form-switch mt-2">
+        <input class="form-check-input" type="checkbox" id="blurbSwitch">
+        <label class="form-check-label" for="blurbSwitch">Spoiler Free Summary</label>
+    </div>
+    <div class="ai-blurb-container" style="visibility: hidden;">
+        <p class="ai-blurb">{{ ai_pipeline.blurb }}</p>
+    </div>
+    {% endif %}
 {% else %}
     <p>AI ratings coming soon.</p>
 {% endif %}

@@ -77,6 +77,16 @@ if (switchCheckbox1) {
 }
 
 
+// Blurb Switch
+const blurbSwitch = document.getElementById('blurbSwitch');
+const blurbContainer = document.querySelector('.ai-blurb-container');
+
+if (blurbSwitch && blurbContainer) {
+  blurbSwitch.addEventListener('change', () => {
+    blurbContainer.style.visibility = blurbSwitch.checked ? 'visible' : 'hidden';
+  });
+}
+
 // Comments Switch
 const switchCheckbox2 = document.getElementById('commentsSwitchCheckDefault');
 const commentsContainer = document.querySelector('.show-comments-container');
