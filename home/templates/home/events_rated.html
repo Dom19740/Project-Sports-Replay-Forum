@@ -1,26 +1,55 @@
 {% load static %}
 
-<div >
+<div>
     <h6 class="inside-header">
-        <span>Latest User Rated</span>
+        <span class="rated-tab active" data-tab="user">Latest User Rated</span>
+        <span class="rated-tab-divider">|</span>
+        <span class="rated-tab" data-tab="ai">Latest AI Rated</span>
     </h6>
-    
-    <div class="events-list">
+
+    <div class="events-list" id="rated-user">
         {% for event in recent_voted_events %}
         <a href="{% url 'core:event' event.event.id %}" class="btn-pill btn-pill-light rounded-pill">
-        <img src="{% static 'img/sports/icon_'|add:event.league %}.png" alt="{{ event.event_list.league }}" class="event-icon">
+        <img src="{% static 'img/sports/icon_'|add:event.league %}.png" alt="{{ event.league }}" class="event-icon">
         {% if event.league == "Formula 1" %}
             {{ event.event.event_list.name }} {{ event.event.event_type }}
-        {% elif event.league == "MotoGP" or event.league == "NASCAR Cup Series" or event.league == "IndyCar Series"%}
-            {{ event.event.event_list.name }} {{ event.event.event_type }} 
+        {% elif event.league == "MotoGP" or event.league == "NASCAR Cup Series" or event.league == "IndyCar Series" %}
+            {{ event.event.event_list.name }} {{ event.event.event_type }}
         {% else %}
             {{ event.event.event_type }}
         {% endif %}
         {% if event.event.rating.average_stars >= 4 %}<img src="{% static 'img/logo_flame_small.png' %}" class="rating-pill-icon" alt="Hot">{% elif event.event.rating.average_stars >= 2 %}<img src="{% static 'img/logo_mid_small.png' %}" class="rating-pill-icon" alt="Mid">{% elif event.event.rating.average_stars %}<img src="{% static 'img/logo_cold_small.png' %}" class="rating-pill-icon" alt="Not">{% endif %}
         {% with ai=event.event.ai_pipeline %}{% if ai and ai.status != 'flagged' %}{% if ai.verdict == 'hot_watch' %}<img src="{% static 'img/logo_flame_small_ai.png' %}" class="rating-pill-icon" alt="AI Hot">{% elif ai.verdict == 'mid_temp' %}<img src="{% static 'img/logo_mid_small_ai.png' %}" class="rating-pill-icon" alt="AI Mid">{% else %}<img src="{% static 'img/logo_cold_small_ai.png' %}" class="rating-pill-icon" alt="AI Not">{% endif %}{% endif %}{% endwith %}
-    </a>
+        </a>
+        {% endfor %}
+    </div>
+
+    <div class="events-list" id="rated-ai" style="display:none;">
+        {% for event in recent_ai_events %}
+        <a href="{% url 'core:event' event.event.id %}" class="btn-pill btn-pill-light rounded-pill">
+        <img src="{% static 'img/sports/icon_'|add:event.league %}.png" alt="{{ event.league }}" class="event-icon">
+        {% if event.league == "Formula 1" %}
+            {{ event.event.event_list.name }} {{ event.event.event_type }}
+        {% elif event.league == "MotoGP" or event.league == "NASCAR Cup Series" or event.league == "IndyCar Series" %}
+            {{ event.event.event_list.name }} {{ event.event.event_type }}
+        {% else %}
+            {{ event.event.event_type }}
+        {% endif %}
+        {% if event.event.rating.average_stars >= 4 %}<img src="{% static 'img/logo_flame_small.png' %}" class="rating-pill-icon" alt="Hot">{% elif event.event.rating.average_stars >= 2 %}<img src="{% static 'img/logo_mid_small.png' %}" class="rating-pill-icon" alt="Mid">{% elif event.event.rating.average_stars %}<img src="{% static 'img/logo_cold_small.png' %}" class="rating-pill-icon" alt="Not">{% endif %}
+        {% with ai=event.event.ai_pipeline %}{% if ai and ai.status != 'flagged' %}{% if ai.verdict == 'hot_watch' %}<img src="{% static 'img/logo_flame_small_ai.png' %}" class="rating-pill-icon" alt="AI Hot">{% elif ai.verdict == 'mid_temp' %}<img src="{% static 'img/logo_mid_small_ai.png' %}" class="rating-pill-icon" alt="AI Mid">{% else %}<img src="{% static 'img/logo_cold_small_ai.png' %}" class="rating-pill-icon" alt="AI Not">{% endif %}{% endif %}{% endwith %}
+        </a>
         {% endfor %}
     </div>
 </div>
 
-
+<script>
+document.querySelectorAll('.rated-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.rated-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const target = tab.dataset.tab;
+        document.getElementById('rated-user').style.display = target === 'user' ? '' : 'none';
+        document.getElementById('rated-ai').style.display = target === 'ai' ? '' : 'none';
+    });
+});
+</script>

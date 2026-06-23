@@ -5,6 +5,7 @@ from django.utils import timezone
 from datetime import datetime, timedelta
 from django.http import JsonResponse
 from core.models import Event, Rating
+from airatings.models import AIRating
 
 
 class HomeView(View):
@@ -29,13 +30,25 @@ class HomeView(View):
                 'event': event,
                 'league': league,
             })
-            
+
+        recent_ai_ratings = (
+            AIRating.objects
+            .exclude(status='flagged')
+            .select_related('event__event_list', 'event__ai_pipeline')
+            .order_by('-updated_at')[:10]
+        )
+        recent_ai_events = [
+            {'event': r.event, 'league': r.event.event_list.league}
+            for r in recent_ai_ratings
+        ]
+
         todays_events = Event.objects.filter(date_time__range=(today, tomorrow)).order_by('date_time')
         recent_events = Event.objects.filter(date_time__range=(last_week, now)).order_by('-date_time')
         
         context = {
             'installed': settings.INSTALLED_APPS,
             'recent_voted_events': recent_voted_events,
+            'recent_ai_events': recent_ai_events,
             'todays_events': todays_events,
             'recent_events': recent_events,
         }

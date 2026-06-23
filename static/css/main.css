@@ -63,6 +63,15 @@ h6 { font-size: 0.875rem; font-weight: 600; margin-bottom: 14px;}
     padding-bottom: 14px;
 }
 
+.rated-tab {
+    cursor: pointer;
+    color: #888;
+    transition: color 0.15s;
+}
+.rated-tab.active { color: #fff; }
+.rated-tab:hover { color: #ccc; }
+.rated-tab-divider { color: #555; margin: 0 8px; }
+
 .section-label {
     display: block;
     width: fit-content;
