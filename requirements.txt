@@ -49,7 +49,7 @@ six==1.17.0
 social-auth-core==4.5.4
 sqlparse==0.5.3
 thesportsdb==0.1.3
-typing_extensions==4.12.2
+typing_extensions==4.14.0
 tzdata==2025.1
 urllib3==2.3.0
 vine==5.1.0
