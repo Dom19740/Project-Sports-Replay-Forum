@@ -105,7 +105,7 @@ def competition_schedule(request, league):
         context['past_events'] = Event.objects.filter(
             event_list__league='FIFA World Cup',
             date_time__lt=today,
-        ).order_by('-date_time')[:8]
+        ).order_by('-date_time')[:12]
 
     return render(request, 'core/competition_schedule.html', context)
 

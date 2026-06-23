@@ -196,7 +196,7 @@ class FootballDataSource(EventDataSource):
         stats["yellow_cards"] = yellow_cards
 
         penalty_from_timeline = any(
-            "penalty" in g.get("strTimelineDetail", "").lower() for g in goals
+            "penalty" in (g.get("strTimelineDetail") or "").lower() for g in goals
         )
         penalty_from_stats = (parsed.get("Penalty Goals") is not None)
         stats["penalties"] = penalty_from_timeline or penalty_from_stats
