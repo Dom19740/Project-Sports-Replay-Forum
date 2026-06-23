@@ -75,6 +75,11 @@ def competition_schedule(request, league):
             except Exception:
                 competition.main_rating = None
                 competition.main_rating_label = None
+            try:
+                _ai = race_event.ai_pipeline
+                competition.main_ai_verdict = _ai.verdict if _ai.status != 'flagged' else None
+            except Exception:
+                competition.main_ai_verdict = None
 
             if competition.start_date >= today:
                 upcoming_competitions.append(competition)

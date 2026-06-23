@@ -23,7 +23,7 @@
         {% else %}
           Matchday {{ competition.name }}
         {% endif %}
-        {% if competition.main_rating >= 4 %} <img src="{% static 'img/logo_flame_large.png' %}" class="rating-pill-icon" alt="Hot">{% elif competition.main_rating >= 2 %} <img src="{% static 'img/logo_mid.png' %}" class="rating-pill-icon" alt="Mid">{% elif competition.main_rating %} <img src="{% static 'img/logo_cold.png' %}" class="rating-pill-icon" alt="Not">{% endif %}
+        {% if competition.main_rating >= 4 %} <img src="{% static 'img/logo_flame_large.png' %}" class="rating-pill-icon" alt="Hot">{% elif competition.main_rating >= 2 %} <img src="{% static 'img/logo_mid.png' %}" class="rating-pill-icon" alt="Mid">{% elif competition.main_rating %} <img src="{% static 'img/logo_cold.png' %}" class="rating-pill-icon" alt="Not">{% endif %}{% if competition.main_ai_verdict == 'hot_watch' %} <img src="{% static 'img/logo_flame_small_ai.png' %}" class="rating-pill-icon" alt="AI Hot">{% elif competition.main_ai_verdict == 'mid_temp' %} <img src="{% static 'img/logo_mid_small_ai.png' %}" class="rating-pill-icon" alt="AI Mid">{% elif competition.main_ai_verdict %} <img src="{% static 'img/logo_cold_small_ai.png' %}" class="rating-pill-icon" alt="AI Not">{% endif %}
       </a>
     </li>
     {% empty %}
