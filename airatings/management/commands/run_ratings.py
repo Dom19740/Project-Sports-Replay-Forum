@@ -73,8 +73,16 @@ class Command(BaseCommand):
 
         self.stdout.write(f"Checking {total} candidate event(s)...\n")
 
+        UNSUPPORTED_LEAGUES = {"MotoGP"}
+
         for event in candidates:
             checked += 1
+
+            # --- League filter --------------------------------------------
+            if event.event_list.league in UNSUPPORTED_LEAGUES:
+                self.stdout.write(f"  [{checked}/{total}] SKIP (unsupported league '{event.event_list.league}'): {event}")
+                skipped += 1
+                continue
 
             # --- Finished check -------------------------------------------
             # Single-event mode (--event-id) bypasses the API status check
