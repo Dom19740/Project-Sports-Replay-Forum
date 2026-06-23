@@ -525,14 +525,15 @@ a i:hover { color: var(--light-purple); }
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--dark-purple), var(--light-purple));
+    background: var(--one-star-ice);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 700;
-    color: #fff;
+    color: #000;
     flex-shrink: 0;
+    transition: background 0.4s ease;
 }
 
 .xp-strip-bar-wrap {
@@ -568,9 +569,9 @@ a i:hover { color: var(--light-purple); }
 
 .xp-strip-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--dark-purple), var(--light-purple));
+    background: var(--one-star-ice);
     border-radius: 2px;
-    transition: width 0.4s ease;
+    transition: width 0.4s ease, background 0.4s ease;
 }
 
 .xp-strip-badge {

@@ -119,6 +119,45 @@ function scrollToElement(element) {
   element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+// XP strip progress colour
+(function () {
+  const fill  = document.querySelector('.xp-strip-fill');
+  const level = document.querySelector('.xp-strip-level');
+  if (!fill || !level) return;
+
+  const pct = parseFloat(fill.style.width) / 100; // 0–1
+
+  // Star colour stops: ice → ocean → orange → burnt → pink
+  const stops = [
+    [36,  228, 231],  // --one-star-ice
+    [149, 208, 187],  // --two-star-ocean
+    [246, 147, 63],   // --three-star-orange
+    [243, 116, 132],  // --four-star-burnt
+    [238, 53,  185],  // --five-star-pink
+  ];
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function interpolate(stops, t) {
+    const seg = stops.length - 1;
+    const scaled = t * seg;
+    const i = Math.min(Math.floor(scaled), seg - 1);
+    const lt = scaled - i;
+    return stops[i].map((c, idx) => Math.round(lerp(c, stops[i + 1][idx], lt)));
+  }
+
+  // Full gradient spans the whole track — fill just clips how much is visible.
+  // background-size = track width / fill width = 100% / pct of the fill element.
+  const gradient = stops.map(([r,g,b]) => `rgb(${r},${g},${b})`).join(', ');
+  fill.style.background     = `linear-gradient(90deg, ${gradient})`;
+  fill.style.backgroundSize = pct > 0 ? `${(1 / pct) * 100}% 100%` : '100% 100%';
+  fill.style.backgroundPosition = 'left center';
+
+  // Level circle: solid colour at the current progress point
+  const [r, g, b] = interpolate(stops, pct);
+  level.style.background = `rgb(${r},${g},${b})`;
+}());
+
 // Modal Pop up
 document.addEventListener("DOMContentLoaded", function() {
   if (!localStorage.getItem('welcomeModalShown')) {
