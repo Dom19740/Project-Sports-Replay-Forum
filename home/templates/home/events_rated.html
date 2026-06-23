@@ -3,10 +3,9 @@
 <div >
     <h6 class="inside-header">
         <span>Latest User Rated</span>
-        <i class="fa-solid fa-arrow-down-wide-short"></i>
     </h6>
     
-    <div class="events-list events-scroll">
+    <div class="events-list">
         {% for event in recent_voted_events %}
         <a href="{% url 'core:event' event.event.id %}" class="btn-pill btn-pill-light rounded-pill">
         <img src="{% static 'img/sports/icon_'|add:event.league %}.png" alt="{{ event.event_list.league }}" class="event-icon">
