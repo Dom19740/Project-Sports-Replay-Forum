@@ -34,10 +34,23 @@
 
 {% block main_container_left %}
 
-    <div class="sign-container">
+    <h6 class="section-label">Spoiler Zone</h6>
+
+    <div class="sign-container" id="poster-container">
         <img src="{{ poster }}" alt="Poster" class="poster">
     </div>
-    
+
+    {% if video_id %}
+    <div class="sign-container show-video-container" id="video-container" style="display: none;">
+        <div class="image-wrapper" style="width: 100%; overflow: hidden; border-radius: 10px;">
+            <img id="video-thumbnail" src="https://img.youtube.com/vi/{{ video_id }}/maxresdefault.jpg" alt="Event Highlights" style="width: 100%; object-fit: cover; display: block;">
+            <a href="https://www.youtube.com/watch?v={{ video_id }}" target="_blank">
+                <i class="fa-regular fa-circle-play"></i>
+            </a>
+        </div>
+    </div>
+    {% endif %}
+
     {% include 'core/spoiler_zone.html' %}
 
 {% endblock %}

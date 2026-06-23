@@ -1,6 +1,6 @@
 {% load static %}
 
-<h6>AI Rating</h6>
+<h6 class="section-label">AI Rating</h6>
 {% if ai_pipeline %}
     {% if ai_pipeline.verdict == "hot_watch" %}
         <img src="{% static 'img/logo_flame_small_ai.png' %}" alt="HOT WATCH" class="rating-logo"><h3>HOT WATCH!</h3>

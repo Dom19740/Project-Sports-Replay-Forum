@@ -1,6 +1,6 @@
 {% load static %}
 
-<h6>User Rating</h6>
+<h6 class="section-label">User Rating</h6>
 {% if total_votes == 0 %}
     <p>Be the first to rate this event.</p>
 {% else %}
@@ -25,7 +25,7 @@
         <canvas id="ratingChart" width="250" height="200"></canvas>
     </div>
 
-    <form method="post" action="{% url 'core:vote' event.id %}" class="mt-3">
+    <form method="post" action="{% url 'core:vote' event.id %}" class="mt-1">
         {% csrf_token %}
         <div class="btn-group rounded-pill" role="group" aria-label="Like Dislike">
             <button type="submit" name="like" class="btn btn-outline-secondary btn-like">

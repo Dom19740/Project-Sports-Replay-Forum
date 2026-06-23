@@ -47,7 +47,7 @@ h6 { font-size: 0.875rem; font-weight: 600; margin-bottom: 14px;}
 
 .main-header {
     margin: 18px 10px 14px;
-    font-size: 1rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -61,6 +61,21 @@ h6 { font-size: 0.875rem; font-weight: 600; margin-bottom: 14px;}
     letter-spacing: 0.1em;
     color: #ffffff;
     padding-bottom: 14px;
+}
+
+.section-label {
+    display: block;
+    width: fit-content;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ccc;
+    background: #1e1e1e;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 4px 12px;
+    margin-bottom: 14px;
 }
 
 /* ─── Navbar ────────────────────────────────────────────────────────────────── */
@@ -200,7 +215,7 @@ h6 { font-size: 0.875rem; font-weight: 600; margin-bottom: 14px;}
 }
 
 .btn-like {
-    background: #1e1e1e;
+    background: transparent;
     border-color: #2a2a2a;
     color: #ccc;
     border-radius: 8px;
@@ -454,8 +469,14 @@ a i:hover { color: var(--light-purple); }
     transform: scale(1.12);
 }
 
-.spoiler-header { margin: 50px 0 22px; }
-.spoiler-buttons { display: flex; align-items: left; }
+
+.spoiler-switch { margin-top: 14px; }
+.spoiler-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 14px;
+}
 
 /* ─── Comments ──────────────────────────────────────────────────────────────── */
 .comment-login { padding-bottom: 0; }
@@ -529,9 +550,9 @@ a i:hover { color: var(--light-purple); }
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    color: #000;
+    color: #fff;
     flex-shrink: 0;
     transition: background 0.4s ease;
 }

@@ -12,6 +12,7 @@ from django.db.models import Count, Q
 from .models import Competition, Event, Rating, Comment, Reply, CommentVote
 from airatings.models import AIRating
 from gamify.services import award_xp
+from gamify.models import XPEvent
 from gamify.badges import check_badges
 from gamify.notifications import queue_notification
 from users.forms import CreateCommentForm, CreateReplyForm
@@ -290,12 +291,21 @@ def vote(request, event_id):
                     rating.save()
 
                     if request.user.is_authenticated:
-                        xp_result = award_xp(request.user, 'event_liked', event)
+                        already_earned = XPEvent.objects.filter(
+                            user=request.user,
+                            action_type='event_liked',
+                            related_event=event,
+                        ).exists()
+                        if not already_earned:
+                            xp_result = award_xp(request.user, 'event_liked', event)
+                        else:
+                            xp_result = None
                         if like_type == 'liked':
                             for voter in rating.voters.exclude(id=request.user.id):
                                 award_xp(voter, 'rating_liked', event)
                         new_badges = check_badges(request.user)
-                        queue_notification(request, xp_result, new_badges)
+                        if xp_result is not None:
+                            queue_notification(request, xp_result, new_badges)
 
                     response = redirect('core:event', event_id=event_id)
                     response.set_cookie(f'liked_{event_id}', like_type, max_age=365*24*60*60)

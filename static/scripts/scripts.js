@@ -61,19 +61,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Spoiler Switch
+// Spoiler Switch — swaps poster for video thumbnail matched to poster height
 const switchCheckbox1 = document.getElementById('flexSwitchCheckDefault');
-const videoContainer = document.querySelector('.show-video-container');
+const posterContainer = document.getElementById('poster-container');
+const videoContainer  = document.getElementById('video-container');
+const videoThumb      = document.getElementById('video-thumbnail');
+const posterImg       = posterContainer ? posterContainer.querySelector('img') : null;
 
-if (switchCheckbox1) {
+if (switchCheckbox1 && posterContainer && videoContainer && videoThumb && posterImg) {
   switchCheckbox1.addEventListener('change', () => {
-    videoContainer.style.display = switchCheckbox1.checked ? 'block' : 'none';
     if (switchCheckbox1.checked) {
-      scrollToElement(videoContainer);
+      const h = posterImg.offsetHeight;
+      if (h > 0) videoThumb.style.height = h + 'px';
+      posterContainer.style.display = 'none';
+      videoContainer.style.display  = 'flex';
+    } else {
+      posterContainer.style.display = 'flex';
+      videoContainer.style.display  = 'none';
     }
   });
-  } else {
-    console.warn("Element with ID 'flexSwitchCheckDefault' not found.");
 }
 
 

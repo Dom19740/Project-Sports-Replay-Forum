@@ -1,6 +1,6 @@
 {% load event_tags %}
 
-<h6 class="inside-header">Comments <span>{{ event.comments.count }}</span></h6>
+<h6 class="section-label">Comments {{ event.comments.count }}</h6>
 
 {% if not request.user.is_authenticated %}
     <div class="comment-login">

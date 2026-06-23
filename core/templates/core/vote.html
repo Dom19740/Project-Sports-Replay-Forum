@@ -2,7 +2,7 @@
 {% load static %}
 
 <div {% if has_voted %}style="display: none;"{% endif %}>
-    <h6>Rate the Event</h6>
+    <h6 class="section-label">Rate the Event</h6>
     {% if event|is_past and not event|voting_closed %}
         <form method="post" action="{% url 'core:vote' event.id %}" class="vote mt-2">
             {% csrf_token %}
