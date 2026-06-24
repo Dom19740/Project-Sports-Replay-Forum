@@ -19,7 +19,7 @@ from django.db.models import Q, Sum
 
 from django.utils import timezone
 
-from .levels import level_title
+from .levels import level_colors, level_title, level_info, xp_gradient_color
 from .models import UserProfile
 
 
@@ -27,13 +27,21 @@ from .models import UserProfile
 # Internal helpers
 # ---------------------------------------------------------------------------
 
-def _row(rank, username, xp, level):
+def _row(rank, username, xp, level, profile=None):
+    bg, text = level_colors(level)
+    try:
+        pct = level_info(profile)['progress_pct'] if profile else 50
+    except Exception:
+        pct = 50
     return {
-        'rank': rank,
-        'username': username,
-        'xp': xp,
-        'level': level,
-        'title': level_title(level),
+        'rank':        rank,
+        'username':    username,
+        'xp':          xp,
+        'level':       level,
+        'title':       level_title(level),
+        'bg_color':    bg,
+        'text_color':  text,
+        'edge_color':  xp_gradient_color(pct),
     }
 
 
@@ -74,7 +82,7 @@ def global_alltime(limit=50):
         .order_by('-total_xp')[:limit]
     )
     return [
-        _row(rank, p.user.username, p.total_xp, p.current_level)
+        _row(rank, p.user.username, p.total_xp, p.current_level, profile=p)
         for rank, p in enumerate(profiles, start=1)
     ]
 
@@ -99,7 +107,7 @@ def global_period(period, limit=50):
         .order_by('-period_xp')[:limit]
     )
     return [
-        _row(rank, u.username, u.period_xp, _profile_level(u))
+        _row(rank, u.username, u.period_xp, _profile_level(u), profile=getattr(u, 'profile', None))
         for rank, u in enumerate(users, start=1)
     ]
 
@@ -123,7 +131,7 @@ def sport_leaderboard(league, limit=50):
         .order_by('-sport_xp')[:limit]
     )
     return [
-        _row(rank, u.username, u.sport_xp, _profile_level(u))
+        _row(rank, u.username, u.sport_xp, _profile_level(u), profile=getattr(u, 'profile', None))
         for rank, u in enumerate(users, start=1)
     ]
 
@@ -146,6 +154,6 @@ def competition_leaderboard(competition_id, limit=50):
         .order_by('-comp_xp')[:limit]
     )
     return [
-        _row(rank, u.username, u.comp_xp, _profile_level(u))
+        _row(rank, u.username, u.comp_xp, _profile_level(u), profile=getattr(u, 'profile', None))
         for rank, u in enumerate(users, start=1)
     ]

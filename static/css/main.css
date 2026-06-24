@@ -57,7 +57,7 @@ h6 { font-size: 0.875rem; font-weight: 600; margin-bottom: 14px;}
 .inside-header {
     font-size: 0.68rem;
     font-weight: 700;
-    text-transform: uppercase;
+    text-transform: uppercase;xp-strip-level
     letter-spacing: 0.1em;
     color: #ffffff;
     padding-bottom: 14px;
@@ -551,19 +551,44 @@ a i:hover { color: var(--light-purple); }
 }
 .xp-strip-guest:hover .xp-strip-guest-bolt { color: var(--five-star-pink); }
 
-.xp-strip-level {
-    width: 38px;
-    height: 38px;
+.xp-strip-level-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.xp-strip-level-circle {
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background: var(--one-star-ice);
+    border: 2px solid;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.15rem;
+    flex-shrink: 0;
+    transition: border-color 0.4s ease;
+}
+.xp-strip-level-circle i {
+    font-size: 0.95rem !important;
+    transition: color 0.4s ease;
+}
+
+.xp-strip-level-num {
+    font-size: 0.72rem;
     font-weight: 700;
     color: #fff;
-    flex-shrink: 0;
-    transition: background 0.4s ease;
+    line-height: 1.15;
+    white-space: nowrap;
+}
+
+.xp-strip-level-title {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1;
 }
 
 .xp-strip-bar-wrap {
@@ -578,12 +603,6 @@ a i:hover { color: var(--light-purple); }
     margin-bottom: 3px;
 }
 
-.xp-strip-title {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 0.04em;
-}
 
 .xp-strip-xp {
     font-size: 0.65rem;
@@ -599,9 +618,11 @@ a i:hover { color: var(--light-purple); }
 
 .xp-strip-fill {
     height: 100%;
-    background: var(--one-star-ice);
+    background: linear-gradient(to right, #24e4e7, #95d0bb, #f6933f, #f37484, #ee35b9, #FFD700);
+    background-size: calc(100% * 100 / max(1, var(--pct, 1))) 100%;
+    background-position: left center;
     border-radius: 2px;
-    transition: width 0.4s ease, background 0.4s ease;
+    transition: width 0.4s ease;
 }
 
 .xp-strip-badge {
@@ -665,19 +686,18 @@ a i:hover { color: var(--light-purple); }
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--dark-purple), var(--light-purple));
+    background: var(--one-star-ice);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
     font-weight: 700;
     flex-shrink: 0;
-    color: #fff;
-    box-shadow: 0 0 14px rgba(172,63,208,0.3);
+    color: #000;
 }
 
 .gamify-xp-bar {
-    background: linear-gradient(90deg, var(--dark-purple), var(--light-purple));
+    background: var(--one-star-ice);
     border-radius: 4px;
 }
 
@@ -754,10 +774,11 @@ a i:hover { color: var(--light-purple); }
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--dark-purple), var(--light-purple));
+    border: 2px solid;
+    background: transparent;
     font-size: 0.68rem;
     font-weight: 700;
-    color: #fff;
+    flex-shrink: 0;
 }
 
 .leaderboard-you { background: rgba(79,55,156,0.14) !important; }

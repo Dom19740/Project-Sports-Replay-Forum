@@ -2,13 +2,20 @@
 {% if user.is_authenticated and gamify_strip %}
 <a href="{% url 'users:profile' %}" class="xp-strip">
 
-    {# Level circle #}
-    <div class="xp-strip-level">{{ gamify_strip.level }}</div>
+    {# Level badge #}
+    <div class="xp-strip-level-info">
+        <div class="xp-strip-level-circle" style="border-color:{{ gamify_strip.edge_color }};">
+            <i class="fa-solid fa-star" style="color:{{ gamify_strip.edge_color }};"></i>
+        </div>
+        <div>
+            <div class="xp-strip-level-num">Level {{ gamify_strip.level }}</div>
+            <div class="xp-strip-level-title" style="color:{{ gamify_strip.edge_color }};">{{ gamify_strip.title }}</div>
+        </div>
+    </div>
 
-    {# Title + bar #}
+    {# Bar #}
     <div class="xp-strip-bar-wrap">
         <div class="xp-strip-label">
-            <span class="xp-strip-title">{{ gamify_strip.title }}</span>
             <span class="xp-strip-xp">
                 {% if gamify_strip.xp_next %}
                     {{ gamify_strip.total_xp }} / {{ gamify_strip.xp_next }} XP
@@ -18,7 +25,7 @@
             </span>
         </div>
         <div class="xp-strip-track">
-            <div class="xp-strip-fill" style="width:{{ gamify_strip.progress_pct }}%;"></div>
+            <div class="xp-strip-fill" style="width:{{ gamify_strip.progress_pct }}%; --pct:{{ gamify_strip.progress_pct }};"></div>
         </div>
     </div>
 

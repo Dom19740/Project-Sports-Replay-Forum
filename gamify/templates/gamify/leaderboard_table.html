@@ -5,7 +5,7 @@
             <tr>
                 <th style="width:3rem;">#</th>
                 <th>Player</th>
-                <th class="text-center" style="width:8rem;">Level</th>
+                <th style="width:8rem;">Level</th>
                 <th class="text-end" style="width:7rem;">{{ label|title }}</th>
             </tr>
         </thead>
@@ -29,9 +29,11 @@
                         <span class="badge leaderboard-you-badge ms-1">You</span>
                     {% endif %}
                 </td>
-                <td class="text-center">
-                    <span class="leaderboard-level-pill">{{ row.level }}</span>
-                    <span class="text-muted small ms-1">{{ row.title }}</span>
+                <td>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="leaderboard-level-pill" style="border-color:{{ row.edge_color }};color:{{ row.edge_color }};">{{ row.level }}</span>
+                        <span class="small" style="color:{{ row.edge_color }};">{{ row.title }}</span>
+                    </div>
                 </td>
                 <td class="text-end fw-semibold">
                     {{ row.xp }} <span class="text-muted fw-normal small">XP</span>

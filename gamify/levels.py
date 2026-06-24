@@ -1,5 +1,3 @@
-import math
-
 MAX_LEVEL = 25
 
 # 7 titles spread evenly across MAX_LEVEL using integer bucketing.
@@ -7,6 +5,53 @@ MAX_LEVEL = 25
 #   Rookie 1, Fan 5, Regular 9, Contender 12,
 #   All-Star 16, Champion 19, Legend 23
 TITLES = ['Rookie', 'Fan', 'Regular', 'Contender', 'All-Star', 'Champion', 'Legend']
+
+# (min_level, bg_color, text_color) — last matching entry wins.
+_STAGE_COLORS = [
+    (1,  '#888888', '#fff'),   # Rookie
+    (5,  '#24e4e7', '#000'),   # Fan
+    (9,  '#95d0bb', '#000'),   # Regular
+    (12, '#f6933f', '#000'),   # Contender
+    (16, '#f37484', '#fff'),   # All-Star
+    (19, '#ee35b9', '#fff'),   # Champion
+    (23, '#FFD700', '#000'),   # Legend
+]
+
+
+# Gradient stops that the XP bar sweeps through (matches CSS in xp_strip).
+_XP_GRADIENT = [
+    (0,   (0x24, 0xe4, 0xe7)),
+    (20,  (0x95, 0xd0, 0xbb)),
+    (40,  (0xf6, 0x93, 0x3f)),
+    (60,  (0xf3, 0x74, 0x84)),
+    (80,  (0xee, 0x35, 0xb9)),
+    (100, (0xFF, 0xD7, 0x00)),
+]
+
+
+def xp_gradient_color(pct):
+    """Return the hex colour at position pct (0-100) along the XP bar gradient."""
+    pct = max(0, min(100, pct))
+    for i in range(len(_XP_GRADIENT) - 1):
+        p1, c1 = _XP_GRADIENT[i]
+        p2, c2 = _XP_GRADIENT[i + 1]
+        if pct <= p2:
+            t = (pct - p1) / (p2 - p1) if p2 > p1 else 0
+            r = round(c1[0] + (c2[0] - c1[0]) * t)
+            g = round(c1[1] + (c2[1] - c1[1]) * t)
+            b = round(c1[2] + (c2[2] - c1[2]) * t)
+            return f'#{r:02x}{g:02x}{b:02x}'
+    last = _XP_GRADIENT[-1][1]
+    return f'#{last[0]:02x}{last[1]:02x}{last[2]:02x}'
+
+
+def level_colors(level):
+    """Return (bg_color, text_color) for the given level."""
+    bg, text = _STAGE_COLORS[0][1], _STAGE_COLORS[0][2]
+    for threshold, b, t in _STAGE_COLORS:
+        if level >= threshold:
+            bg, text = b, t
+    return bg, text
 
 
 def xp_for_level(n):
@@ -46,6 +91,8 @@ def level_info(profile):
     total_xp = profile.total_xp
     xp_current = xp_for_level(level)
 
+    bg, text = level_colors(level)
+
     if level >= MAX_LEVEL:
         return {
             'level': level,
@@ -55,6 +102,8 @@ def level_info(profile):
             'xp_next': None,
             'xp_needed': 0,
             'progress_pct': 100,
+            'bg_color': bg,
+            'text_color': text,
         }
 
     xp_next = xp_for_level(level + 1)
@@ -70,4 +119,6 @@ def level_info(profile):
         'xp_next': xp_next,
         'xp_needed': xp_next - total_xp,
         'progress_pct': progress_pct,
+        'bg_color': bg,
+        'text_color': text,
     }

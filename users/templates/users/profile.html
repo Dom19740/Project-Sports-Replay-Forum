@@ -16,39 +16,37 @@
     <div class='main-container-style flex-grow-1'>
         <p class="inside-header">Your Progress</p>
 
+        {# XP strip #}
+        {% if gamify_strip %}
         <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="gamify-level-circle">{{ xp_info.level }}</div>
-
-            <div class="flex-grow-1">
-                <div class="d-flex justify-content-between align-items-baseline mb-1">
-                    <span class="fw-semibold">{{ xp_info.title }}</span>
-                    {% if xp_info.xp_next %}
-                        <span class="text-muted small">{{ xp_info.total_xp|floatformat:0 }} / {{ xp_info.xp_next }} XP</span>
-                    {% else %}
-                        <span class="text-muted small">{{ xp_info.total_xp }} XP &mdash; Max Level</span>
-                    {% endif %}
+            <div class="xp-strip-level-info">
+                <div class="xp-strip-level-circle" style="border-color:{{ gamify_strip.edge_color }};">
+                    <i class="fa-solid fa-star" style="color:{{ gamify_strip.edge_color }};"></i>
                 </div>
-
-                <div class="progress" style="height: 8px;">
-                    <div class="progress-bar gamify-xp-bar"
-                         role="progressbar"
-                         style="width: {{ xp_info.progress_pct }}%;"
-                         aria-valuenow="{{ xp_info.progress_pct }}"
-                         aria-valuemin="0"
-                         aria-valuemax="100">
-                    </div>
+                <div>
+                    <div class="xp-strip-level-num">Level {{ gamify_strip.level }}</div>
+                    <div class="xp-strip-level-title" style="color:{{ gamify_strip.edge_color }};">{{ gamify_strip.title }}</div>
                 </div>
-
-                {% if xp_info.xp_next %}
-                    <div class="text-muted mt-1" style="font-size:0.7rem;">
-                        {{ xp_info.xp_needed }} XP to Level {{ xp_info.level|add:1 }}
-                    </div>
-                {% endif %}
+            </div>
+            <div class="xp-strip-bar-wrap">
+                <div class="xp-strip-label">
+                    <span class="xp-strip-xp">
+                        {% if gamify_strip.xp_next %}
+                            {{ gamify_strip.total_xp }} / {{ gamify_strip.xp_next }} XP
+                        {% else %}
+                            {{ gamify_strip.total_xp }} XP &mdash; Max
+                        {% endif %}
+                    </span>
+                </div>
+                <div class="xp-strip-track">
+                    <div class="xp-strip-fill" style="width:{{ gamify_strip.progress_pct }}%; --pct:{{ gamify_strip.progress_pct }};"></div>
+                </div>
             </div>
         </div>
+        {% endif %}
 
         {# Streaks #}
-        <div class="d-flex gap-4 mt-2">
+        <div class="d-flex gap-4">
             <div>
                 <i class="fa-solid fa-fire text-warning"></i>
                 <strong>{{ profile.current_streak }}</strong>
@@ -114,7 +112,7 @@
 
 {# ── Account settings ────────────────────────────────────────────────────── #}
 <div class='main-container-style'>
-    <p>Update Your Details</p>
+    <p class="inside-header">Update Your Details</p>
 
     <div class="form-field">
         <form method="POST" action="{% url 'users:update_username' %}" class="form-group">
@@ -134,7 +132,7 @@
 </div>
 
 <div class='main-container-style'>
-    <p>Change Password</p>
+    <p class="inside-header">Change Password</p>
     <div class="form-field">
         <form method="POST" action="{% url 'users:change_password' %}">
             {% csrf_token %}
@@ -145,7 +143,7 @@
 </div>
 
 <div class='main-container-style'>
-    <p>Delete Account</p>
+    <p class="inside-header">Delete Account</p>
     <div class="form-field">
         <form method="POST" action="{% url 'users:delete_account' %}">
             {% csrf_token %}
