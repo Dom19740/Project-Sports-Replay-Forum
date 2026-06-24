@@ -1,6 +1,7 @@
 # Copyright (c) 2024 dpb creative
 # This code is licensed for non-commercial use only. See LICENSE file for details.
 
+import io
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.urls import reverse
@@ -371,8 +372,9 @@ def run_populate(request, command, success_message):
         return JsonResponse({'status': 'error', 'message': 'Invalid token'}, status=403)
 
     try:
-        call_command(command)
-        return JsonResponse({'status': 'success', 'message': success_message})
+        buf = io.StringIO()
+        call_command(command, stdout=buf)
+        return JsonResponse({'status': 'success', 'message': success_message, 'output': buf.getvalue()})
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)})
 
