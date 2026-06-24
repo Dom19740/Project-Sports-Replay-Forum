@@ -316,6 +316,44 @@ def vote(request, event_id):
     return redirect('core:event', event_id=event_id)
 
 
+def ai_vote(request, event_id):
+    from airatings.models import AIRating
+    event = get_object_or_404(Event, id=event_id)
+
+    if request.method == 'POST':
+        try:
+            ai_rating = event.ai_pipeline
+        except AIRating.DoesNotExist:
+            return redirect('core:event', event_id=event_id)
+
+        like_type = None
+        if 'like' in request.POST:
+            like_type = 'ai_liked'
+        elif 'dislike' in request.POST:
+            like_type = 'ai_disliked'
+
+        if like_type:
+            current = request.COOKIES.get(f'ai_liked_{event_id}')
+            if current != like_type:
+                if current == 'ai_liked':
+                    ai_rating.likes = max(0, ai_rating.likes - 1)
+                elif current == 'ai_disliked':
+                    ai_rating.dislikes = max(0, ai_rating.dislikes - 1)
+
+                if like_type == 'ai_liked':
+                    ai_rating.likes += 1
+                else:
+                    ai_rating.dislikes += 1
+
+                ai_rating.save()
+
+                response = redirect('core:event', event_id=event_id)
+                response.set_cookie(f'ai_liked_{event_id}', like_type, max_age=365*24*60*60)
+                return response
+
+    return redirect('core:event', event_id=event_id)
+
+
 def search(request):
     q = request.GET.get('q')
     if q:

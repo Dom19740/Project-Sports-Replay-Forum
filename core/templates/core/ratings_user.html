@@ -5,13 +5,13 @@
     <p>Be the first to rate this event.</p>
 {% else %}
     {% if event.rating.average_stars >= 4 %}
-        <img src="{% static 'img/logo_flame_small.png' %}" alt="HOT WATCH" class="rating-logo"><h3>HOT WATCH!</h3>
+        <div><img src="{% static 'img/logo_flame_small.png' %}" alt="HOT WATCH" class="rating-logo"><h3>HOT WATCH!</h3></div>
         <h6>Watch the Full Replay</h6>
     {% elif event.rating.average_stars >= 2 %}
-        <img src="{% static 'img/logo_mid_small.png' %}" alt="MID TEMP" class="rating-logo"><h3>MID TEMP!</h3>
+        <div><img src="{% static 'img/logo_mid_small.png' %}" alt="MID TEMP" class="rating-logo"><h3>MID TEMP!</h3></div>
         <h6>Watch the Highlights</h6>
     {% else %}
-        <img src="{% static 'img/logo_cold_small.png' %}" alt="NOT WATCH" class="rating-logo"><h3>NOT WATCH!</h3>
+        <div><img src="{% static 'img/logo_cold_small.png' %}" alt="NOT WATCH" class="rating-logo"><h3>NOT WATCH!</h3></div>
         <h6>Check Out the Results</h6>
     {% endif %}
 
@@ -25,7 +25,7 @@
         <canvas id="ratingChart" width="250" height="200"></canvas>
     </div>
 
-    <form method="post" action="{% url 'core:vote' event.id %}" class="mt-1">
+    <form method="post" action="{% url 'core:vote' event.id %}" class="mt-auto">
         {% csrf_token %}
         <div class="btn-group rounded-pill" role="group" aria-label="Like Dislike">
             <button type="submit" name="like" class="btn btn-outline-secondary btn-like">

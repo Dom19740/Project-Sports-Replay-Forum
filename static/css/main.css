@@ -418,7 +418,7 @@ label {
 }
 
 .sub-container { display: flex; flex-direction: row; }
-.sub-container-left, .sub-container-right { flex: 1; }
+.sub-container-left, .sub-container-right { flex: 1; display: flex; flex-direction: column; }
 
 .flame-logo { max-width: 175px; width: 10%; height: auto; }
 .events-list {
@@ -618,7 +618,7 @@ a i:hover { color: var(--light-purple); }
 
 .xp-strip-fill {
     height: 100%;
-    background: linear-gradient(to right, #24e4e7, #95d0bb, #f6933f, #f37484, #ee35b9, #FFD700);
+    background: linear-gradient(to right, #24e4e7, #95d0bb, #f6933f, #f37484, #ee35b9, #ee35b9);
     background-size: calc(100% * 100 / max(1, var(--pct, 1))) 100%;
     background-position: left center;
     border-radius: 2px;

@@ -26,6 +26,8 @@ class AIRating(models.Model):
     blurb              = models.TextField()
     rationale_internal = models.TextField()
     flag_reasons       = models.JSONField(default=list, blank=True)
+    likes              = models.IntegerField(default=0)
+    dislikes           = models.IntegerField(default=0)
     created_at         = models.DateTimeField(auto_now_add=True)
     updated_at         = models.DateTimeField(auto_now=True)
 

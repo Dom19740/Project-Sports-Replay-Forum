@@ -4,13 +4,13 @@
 <h6 class="section-label">AI Rating</h6>
 {% if ai_pipeline %}
     {% if ai_pipeline.verdict == "hot_watch" %}
-        <img src="{% static 'img/logo_flame_small_ai.png' %}" alt="HOT WATCH" class="rating-logo"><h3>HOT WATCH!</h3>
+        <div><img src="{% static 'img/logo_flame_small_ai.png' %}" alt="HOT WATCH" class="rating-logo"><h3>HOT WATCH!</h3></div>
         <h6>Watch the Full Replay</h6>
     {% elif ai_pipeline.verdict == "mid_temp" %}
-        <img src="{% static 'img/logo_mid_small_ai.png' %}" alt="MID TEMP" class="rating-logo"><h3>MID TEMP!</h3>
+        <div><img src="{% static 'img/logo_mid_small_ai.png' %}" alt="MID TEMP" class="rating-logo"><h3>MID TEMP!</h3></div>
         <h6>Watch the Highlights</h6>
     {% else %}
-        <img src="{% static 'img/logo_cold_small_ai.png' %}" alt="NOT WATCH" class="rating-logo"><h3>NOT WATCH!</h3>
+        <div><img src="{% static 'img/logo_cold_small_ai.png' %}" alt="NOT WATCH" class="rating-logo"><h3>NOT WATCH!</h3></div>
         <h6>Check Out the Results</h6>
     {% endif %}
 
@@ -32,6 +32,20 @@
         <p class="ai-blurb">{{ ai_pipeline.blurb }}</p>
     </div>
     {% endif %}
+
+    <form method="post" action="{% url 'core:ai_vote' event.id %}" class="mt-auto">
+        {% csrf_token %}
+        <div class="btn-group rounded-pill" role="group" aria-label="AI Like Dislike">
+            <button type="submit" name="like" class="btn btn-outline-secondary btn-like">
+                <i class="fas fa-thumbs-up"></i>
+                {% if ai_pipeline.likes > 0 %}{{ ai_pipeline.likes }}{% endif %}
+            </button>
+            <button type="submit" name="dislike" class="btn btn-outline-secondary btn-like">
+                <i class="fas fa-thumbs-down"></i>
+                {% if ai_pipeline.dislikes > 0 %}{{ ai_pipeline.dislikes }}{% endif %}
+            </button>
+        </div>
+    </form>
 {% else %}
     {% if event|is_past and not event|voting_closed %}
         <p>Rating generated soon</p>

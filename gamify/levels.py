@@ -14,18 +14,17 @@ _STAGE_COLORS = [
     (12, '#f6933f', '#000'),   # Contender
     (16, '#f37484', '#fff'),   # All-Star
     (19, '#ee35b9', '#fff'),   # Champion
-    (23, '#FFD700', '#000'),   # Legend
+    (23, '#ee35b9', '#000'),   # Legend
 ]
 
 
 # Gradient stops that the XP bar sweeps through (matches CSS in xp_strip).
 _XP_GRADIENT = [
     (0,   (0x24, 0xe4, 0xe7)),
-    (20,  (0x95, 0xd0, 0xbb)),
-    (40,  (0xf6, 0x93, 0x3f)),
-    (60,  (0xf3, 0x74, 0x84)),
-    (80,  (0xee, 0x35, 0xb9)),
-    (100, (0xFF, 0xD7, 0x00)),
+    (25,  (0x95, 0xd0, 0xbb)),
+    (50,  (0xf6, 0x93, 0x3f)),
+    (75,  (0xf3, 0x74, 0x84)),
+    (100,  (0xee, 0x35, 0xb9)),
 ]
 
 
