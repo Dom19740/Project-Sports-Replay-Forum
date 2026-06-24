@@ -758,6 +758,10 @@ a i:hover { color: var(--light-purple); }
 }
 
 /* ─── Leaderboard ───────────────────────────────────────────────────────────── */
+.leaderboard-table {
+    border-radius: 7px;
+    overflow: hidden;
+}
 .leaderboard-table th {
     font-size: 0.68rem;
     text-transform: uppercase;
