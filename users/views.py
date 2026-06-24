@@ -149,15 +149,21 @@ def profile_view(request):
         _sort=Case(When(slug='first-rating', then=0), default=1, output_field=IntegerField()),
     ).order_by('_sort', 'rarity_threshold', 'name')
 
-    badge_data = [
-        {
-            'badge': b,
-            'earned': b.id in earned_ids,
-            'rarity_pct': round(b.holder_count * 100 / total_users) if total_users else 0,
-            'rarity_color': _RARITY_COLOR.get(b.rarity_threshold, 'text-secondary'),
-        }
-        for b in all_badges
-    ]
+    HIDDEN_UNLESS_EARNED = {'beloved-tester'}
+
+    badge_data = sorted(
+        [
+            {
+                'badge': b,
+                'earned': b.id in earned_ids,
+                'rarity_pct': round(b.holder_count * 100 / total_users) if total_users else 0,
+                'rarity_color': _RARITY_COLOR.get(b.rarity_threshold, 'text-secondary'),
+            }
+            for b in all_badges
+            if b.id in earned_ids or b.slug not in HIDDEN_UNLESS_EARNED
+        ],
+        key=lambda x: 0 if x['earned'] else 1,
+    )
 
     context = {
         'user_form': UserUpdateForm(instance=user),

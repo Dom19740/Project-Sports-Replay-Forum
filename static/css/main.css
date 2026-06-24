@@ -685,17 +685,22 @@ a i:hover { color: var(--light-purple); }
     background: #0d0d0d;
     border: 1px solid #1e1e1e;
     border-radius: 10px;
-    padding: 10px 6px;
+    padding: 8px 4px 6px;
     text-align: center;
     width: 76px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     transition: border-color 0.15s;
 }
 .gamify-badge-card.earned { border-color: rgba(79,55,156,0.55); }
 .gamify-badge-card.locked { opacity: 0.35; }
 
-.gamify-badge-icon { font-size: 1.25rem; margin-bottom: 5px; display: block; }
-.gamify-badge-name { font-size: 0.58rem; font-weight: 600; margin-bottom: 2px; line-height: 1.2; }
-.gamify-badge-rarity { font-size: 0.52rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.gamify-badge-icon { font-size: 1.25rem; margin-bottom: 4px; display: block; flex-shrink: 0; }
+.gamify-badge-name { font-size: 0.58rem; font-weight: 600; line-height: 1.2; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; flex-shrink: 0; width: 100%; }
+.gamify-badge-rarity { font-size: 0.52rem; text-transform: uppercase; letter-spacing: 0.04em; margin-top: auto; }
 
 /* badge row scrollbar */
 .badges-scroll { overflow-x: auto; overflow-y: visible; scrollbar-width: thin; scrollbar-color: var(--dark-purple) transparent; }
