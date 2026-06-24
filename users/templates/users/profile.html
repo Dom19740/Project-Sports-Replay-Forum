@@ -79,12 +79,12 @@
         </span>
     </p>
 
-    <div class="d-flex flex-nowrap gap-2 overflow-auto pb-1">
+    <div class="d-flex flex-nowrap gap-2 badges-scroll pb-2">
         {% for entry in badge_data %}
         <div class="flex-shrink-0">
             <div class="gamify-badge-card {% if entry.earned %}earned{% else %}locked{% endif %}"
                  data-bs-toggle="tooltip"
-                 data-bs-trigger="hover focus click"
+                 data-bs-trigger="hover focus"
                  data-bs-placement="top"
                  data-bs-html="true"
                  data-bs-title="{{ entry.badge.description }}<br><span class='badge-tooltip-rarity'>{{ entry.rarity_pct }}% of users have this</span>">

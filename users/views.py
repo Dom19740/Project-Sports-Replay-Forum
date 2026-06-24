@@ -14,7 +14,7 @@ from django.contrib.auth import get_user_model, login
 from django.urls import reverse
 from django.core.paginator import Paginator
 from django.core.mail import BadHeaderError
-from django.db.models import Count
+from django.db.models import Case, Count, IntegerField, When
 from .tokens import account_activation_token
 from core.models import Event
 from core.views import sports
@@ -144,7 +144,10 @@ def profile_view(request):
 
     total_users = User.objects.filter(is_active=True).count()
     earned_ids = set(UserBadge.objects.filter(user=user).values_list('badge_id', flat=True))
-    all_badges = Badge.objects.annotate(holder_count=Count('holders')).order_by('rarity_threshold', 'name')
+    all_badges = Badge.objects.annotate(
+        holder_count=Count('holders'),
+        _sort=Case(When(slug='first-rating', then=0), default=1, output_field=IntegerField()),
+    ).order_by('_sort', 'rarity_threshold', 'name')
 
     badge_data = [
         {

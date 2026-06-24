@@ -696,6 +696,13 @@ a i:hover { color: var(--light-purple); }
 .gamify-badge-icon { font-size: 1.25rem; margin-bottom: 5px; display: block; }
 .gamify-badge-name { font-size: 0.58rem; font-weight: 600; margin-bottom: 2px; line-height: 1.2; }
 .gamify-badge-rarity { font-size: 0.52rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* badge row scrollbar */
+.badges-scroll { overflow-x: auto; overflow-y: visible; scrollbar-width: thin; scrollbar-color: var(--dark-purple) transparent; }
+.badges-scroll::-webkit-scrollbar { height: 3px; }
+.badges-scroll::-webkit-scrollbar-thumb { background: var(--dark-purple); border-radius: 2px; }
+.badges-scroll::-webkit-scrollbar-track { background: transparent; }
+
 /* badge tooltip */
 .tooltip-inner {
     background: #1e1e1e;

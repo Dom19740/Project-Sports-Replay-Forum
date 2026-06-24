@@ -97,6 +97,29 @@ def _contrarian(user, profile):
 
 
 # ---------------------------------------------------------------------------
+# Level-progress badge conditions
+# ---------------------------------------------------------------------------
+
+def _level_5(user, profile):
+    return profile.current_level >= 5
+
+def _level_9(user, profile):
+    return profile.current_level >= 9
+
+def _level_12(user, profile):
+    return profile.current_level >= 12
+
+def _level_16(user, profile):
+    return profile.current_level >= 16
+
+def _level_19(user, profile):
+    return profile.current_level >= 19
+
+def _level_23(user, profile):
+    return profile.current_level >= 23
+
+
+# ---------------------------------------------------------------------------
 # Registry — maps badge slug → condition function
 # ---------------------------------------------------------------------------
 
@@ -112,6 +135,13 @@ _CONDITIONS = {
     'commentator':               _commentator,
     'trusted-voice':             _trusted_voice,
     'contrarian':                _contrarian,
+    # Level-progress badges
+    'level-5':   _level_5,
+    'level-9':   _level_9,
+    'level-12':  _level_12,
+    'level-16':  _level_16,
+    'level-19':  _level_19,
+    'level-23':  _level_23,
 }
 
 

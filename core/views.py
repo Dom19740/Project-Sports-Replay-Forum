@@ -261,6 +261,7 @@ def vote(request, event_id):
             rating.save()
 
             if request.user.is_authenticated:
+                rating.voters.add(request.user)
                 xp_result = award_xp(request.user, 'event_rated', event)
                 new_badges = check_badges(request.user)
                 queue_notification(request, xp_result, new_badges)
