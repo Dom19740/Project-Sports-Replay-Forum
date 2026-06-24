@@ -15,13 +15,21 @@ class CompetitionAdmin(admin.ModelAdmin):
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('event_list', 'date_time', 'get_league', 'event_type', 'idEvent', 'video_id', 'is_finished')
+    list_display = ('event_list', 'date_time', 'get_league', 'event_type', 'idEvent', 'video_id', 'is_finished', 'get_ai_rating')
     list_filter = ('event_list__league', 'date_time', 'is_finished', 'event_type')
 
     def get_league(self, obj):
         return obj.event_list.league
     get_league.short_description = 'League'
     get_league.admin_order_field = 'event_list__league'
+
+    def get_ai_rating(self, obj):
+        try:
+            r = obj.ai_pipeline
+            return f"{r.stars}★ {r.verdict} [{r.status}]"
+        except Exception:
+            return '—'
+    get_ai_rating.short_description = 'AI Rating'
 
 
 @admin.register(Rating)
