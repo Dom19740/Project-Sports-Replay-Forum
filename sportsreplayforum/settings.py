@@ -74,11 +74,18 @@ INSTALLED_APPS = [
     'gamify.apps.GamifyConfig',
 
     # Extensions - installed with requirements.txt
-    'django_extensions', 
-    'crispy_forms',  
-    'crispy_bootstrap5',  
+    'django_extensions',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'rest_framework',
     'airatings.apps.AiratingsConfig',
+
+    # django-allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.discord',
 ]
 
 # AI provider settings (override in .env)
@@ -113,6 +120,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -261,7 +269,38 @@ EMAIL_SUBJECT_PREFIX = "Password Recovery"
 AUTHENTICATION_BACKENDS = [
     'users.authentication.EmailOrUsernameModelBackend',
     'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+# ── django-allauth ────────────────────────────────────────────────────────────
+
+ACCOUNT_ADAPTER = 'users.adapter.AccountAdapter'
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_EMAIL_AUTHENTICATION = True          # link by email across providers
+SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
+SOCIALACCOUNT_STORE_TOKENS = False
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': os.environ.get('GOOGLE_CLIENT_ID', ''),
+            'secret':    os.environ.get('GOOGLE_CLIENT_SECRET', ''),
+        },
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+    },
+    'discord': {
+        'APP': {
+            'client_id': os.environ.get('DISCORD_CLIENT_ID', ''),
+            'secret':    os.environ.get('DISCORD_CLIENT_SECRET', ''),
+        },
+        'SCOPE': ['identify', 'email'],
+    },
+}
 
 
 TEMPLATE_CONTEXT_PROCESSORS = [

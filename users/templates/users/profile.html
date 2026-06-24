@@ -2,7 +2,7 @@
 
 {% block title %}Profile | Should I Watch Sports{% endblock %}
 
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags socialaccount %}
 
 {% block xp_strip %}{% endblock %}
 
@@ -133,6 +133,13 @@
 
 <div class='main-container-style'>
     <p class="inside-header">Change Password</p>
+    {% get_social_accounts user as social_accounts %}
+    {% if not user.has_usable_password %}
+    <p class="text-muted small mb-2">
+        You signed in via a social account. Set a password to also log in with email.
+    </p>
+    <a href="{% url 'account_set_password' %}" class="btn btn-primary mb-3">Set Password</a>
+    {% else %}
     <div class="form-field">
         <form method="POST" action="{% url 'users:change_password' %}">
             {% csrf_token %}
@@ -140,6 +147,27 @@
             <button type="submit" class="btn btn-primary">Change Password</button>
         </form>
     </div>
+    {% endif %}
+</div>
+
+<div class='main-container-style'>
+    <p class="inside-header">Linked Social Accounts</p>
+    {% if social_accounts %}
+    <div class="mb-3">
+        {% for provider, accounts in social_accounts.items %}
+        {% for account in accounts %}
+        <div class="d-flex align-items-center gap-2 mb-1">
+            <i class="fa-solid fa-circle-check text-success"></i>
+            <span class="small">{{ account.get_provider_account }}</span>
+            <span class="badge bg-secondary">{{ account.provider|title }}</span>
+        </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-muted small mb-3">No social accounts linked yet.</p>
+    {% endif %}
+    <a href="{% url 'socialaccount_connections' %}" class="btn btn-primary btn-sm">Manage Linked Accounts</a>
 </div>
 
 <div class='main-container-style'>

@@ -18,6 +18,7 @@ sitemaps = {
 urlpatterns = [
     path('', include('home.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path('core/', include('core.urls')),
     path('users/', include('users.urls')),
     path('gamify/', include('gamify.urls')),

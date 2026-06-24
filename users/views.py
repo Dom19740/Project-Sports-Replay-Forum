@@ -24,13 +24,10 @@ from gamify.levels import level_info
 
 def registration_view(request):
 
-    next_url = request.GET.get('next')
-    form = CustomRegisterForm()
-
     if request.method == "POST":
-        form = CustomRegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
+        register_form = CustomRegisterForm(request.POST)
+        if register_form.is_valid():
+            user = register_form.save(commit=False)
             user.is_active = False
             user.save()
 
@@ -42,19 +39,29 @@ def registration_view(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
-            to_email = form.cleaned_data.get('email')
+            to_email = register_form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])
 
             try:
                 email.send()
-                
             except BadHeaderError:
                 messages.error(request, 'Invalid header found.')
             except Exception as e:
                 messages.error(request, f'An error occurred: your email is not valid. {e}')
-                return render(request, 'users/register.html', {'form': form})
-            return redirect('users:register_complete')
-    return render(request, 'users/register.html', {'form': form})
+            else:
+                return redirect('users:register_complete')
+
+        return render(request, 'users/login.html', {
+            'login_form': CustomLoginForm(),
+            'register_form': register_form,
+            'active_tab': 'register',
+        })
+
+    return render(request, 'users/login.html', {
+        'login_form': CustomLoginForm(),
+        'register_form': CustomRegisterForm(),
+        'active_tab': 'register',
+    })
 
 def registration_complete(request):
     return render(request, 'users/register_complete.html')
@@ -85,10 +92,10 @@ def login_view(request):
     next_url = request.GET.get('next')
 
     if request.method == "POST":
-        form = CustomLoginForm(request, data=request.POST)
-        if form.is_valid():
-            login_input = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
+        login_form = CustomLoginForm(request, data=request.POST)
+        if login_form.is_valid():
+            login_input = login_form.cleaned_data.get('username')
+            password = login_form.cleaned_data.get('password')
 
             user = authenticate(request, username=login_input, password=password)
 
@@ -105,12 +112,14 @@ def login_view(request):
                     return redirect('home')
             else:
                 messages.error(request, 'Invalid username/email or password.')
-
     else:
-        form = CustomLoginForm()
+        login_form = CustomLoginForm()
 
     return render(request, 'users/login.html', {
-        'form': form, 'next': next_url
+        'login_form': login_form,
+        'register_form': CustomRegisterForm(),
+        'next': next_url,
+        'active_tab': 'login',
     })
 
 

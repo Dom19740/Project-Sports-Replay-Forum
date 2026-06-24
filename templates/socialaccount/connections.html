@@ -1,0 +1,39 @@
+{% extends "base_1.html" %}
+{% load i18n socialaccount %}
+
+{% block title %}Linked Accounts | Should I Watch Sports{% endblock %}
+
+{% block main_container_top %}
+<h6>Linked Social Accounts</h6>
+
+{% if form.accounts %}
+<p class="text-muted small mb-3">These social accounts are connected to your profile.</p>
+<form method="POST" action="{% url 'socialaccount_connections' %}" class="form-group mb-3">
+    {% csrf_token %}
+    {% for base_account in form.accounts %}
+    {% with base_account.get_provider_account as provider_account %}
+    <div class="d-flex align-items-center justify-content-between mb-2 p-2" style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:6px;">
+        <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-secondary">{{ base_account.provider|title }}</span>
+            <span class="small">{{ provider_account }}</span>
+        </div>
+        <button type="submit" name="account" value="{{ base_account.id }}" class="btn btn-sm btn-danger">Disconnect</button>
+    </div>
+    {% endwith %}
+    {% endfor %}
+</form>
+{% else %}
+<p class="text-muted small">No social accounts connected.</p>
+{% endif %}
+
+<hr style="border-color:var(--card-border);">
+<p class="text-muted small mb-2">Connect another account:</p>
+<div class="d-flex flex-column gap-2" style="max-width:260px;">
+    {% get_providers as providers %}
+    {% for provider in providers %}
+    <a href="{% provider_login_url provider.id process='connect' %}" class="btn-social-connect">
+        {{ provider.name }}
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

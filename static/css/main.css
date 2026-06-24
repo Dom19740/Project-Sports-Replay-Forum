@@ -823,6 +823,95 @@ a i:hover { color: var(--light-purple); }
     font-size: 11px;
 }
 
+/* ─── Auth tabs ─────────────────────────────────────────────────────────────── */
+.auth-tabs {
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 0;
+}
+.auth-tabs .nav-link {
+    color: var(--muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.15s, border-color 0.15s;
+}
+.auth-tabs .nav-link:hover { color: #fff; }
+.auth-tabs .nav-link.active {
+    color: #fff;
+    border-bottom-color: var(--dark-purple);
+    background: none;
+}
+.auth-tab-content {
+    padding-top: 18px;
+}
+
+/* ─── Social login ──────────────────────────────────────────────────────────── */
+.social-login-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0 14px;
+    color: var(--muted);
+    font-size: 12px;
+}
+.social-login-divider::before,
+.social-login-divider::after {
+    content: '';
+    flex: 1;
+    border-top: 1px solid var(--card-border);
+}
+
+.social-login-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 260px;
+}
+
+.btn-social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid transparent;
+    transition: opacity 0.15s, border-color 0.15s;
+}
+.btn-social:hover { opacity: 0.88; color: #fff; }
+
+.btn-social-google  { background: #1e1e1e; border-color: #3a3a3a; }
+.btn-social-discord { background: #404eed; }
+
+.social-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.btn-social-connect {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    background: var(--dark-purple);
+    border: 1px solid transparent;
+    transition: background 0.15s;
+}
+.btn-social-connect:hover { background: var(--light-purple); color: #fff; }
+
 /* ─── Media queries ─────────────────────────────────────────────────────────── */
 @media (max-width: 1200px) {
     .text-wrapper { margin: 0; }

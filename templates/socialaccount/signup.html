@@ -1,0 +1,18 @@
+{% extends "base_1.html" %}
+{% load i18n crispy_forms_tags %}
+
+{% block title %}Complete Sign Up | Should I Watch Sports{% endblock %}
+
+{% block main_container_top %}
+<h6>Almost there!</h6>
+<p class="text-muted small mb-3">
+    Your {{ account.get_provider.name }} account is linked. Just choose a username to finish.
+</p>
+
+<form method="POST" action="{% url 'socialaccount_signup' %}" class="form-group">
+    {% csrf_token %}
+    {{ form|crispy }}
+    {{ redirect_field }}
+    <button type="submit" class="btn btn-primary">Create Account</button>
+</form>
+{% endblock %}
