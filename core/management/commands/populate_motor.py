@@ -81,7 +81,7 @@ class Command(BaseCommand):
 
                 date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
                 is_finished = (
-                    item.get('strStatus') is not None and 'Finished' in item.get('strStatus', '') or
+                    item.get('strStatus') is not None and ('Finished' in item.get('strStatus', '') or item.get('strStatus') == 'FT') or
                     item.get('strVideo') not in [None, '']
                 )
 
@@ -124,7 +124,7 @@ class Command(BaseCommand):
 
                     date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
                     is_finished = (
-                        item.get('strStatus') is not None and 'Finished' in item.get('strStatus', '') or
+                        item.get('strStatus') is not None and ('Finished' in item.get('strStatus', '') or item.get('strStatus') == 'FT') or
                         item.get('strVideo') not in [None, '']
                     )
 

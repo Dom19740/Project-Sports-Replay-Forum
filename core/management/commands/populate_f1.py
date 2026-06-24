@@ -70,8 +70,9 @@ class Command(BaseCommand):
                     competition.save()
 
                 date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
+                _status = item.get('strStatus', '')
                 is_finished = (
-                    'Finished' in item['strStatus'] or
+                    'Finished' in _status or _status == 'FT' or
                     item.get('strVideo') != ""
                 )
 
@@ -110,8 +111,9 @@ class Command(BaseCommand):
                             continue  # Skip if not qualifying, sprint, or sprint shootout
 
                         date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
+                        _status = item.get('strStatus', '')
                         is_finished = (
-                            'Finished' in item['strStatus'] or
+                            'Finished' in _status or _status == 'FT' or
                             item.get('strVideo') != ""
                         )
 

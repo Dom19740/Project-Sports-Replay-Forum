@@ -38,13 +38,18 @@ class Command(BaseCommand):
             data = response.json().get('events', [])
 
             # Define the date range
-            start_date = datetime.now() - timedelta(days=30)  # 1 month ago
-            end_date = datetime.now() + timedelta(days=30)  # 1 month from now
+            now = timezone.now()
+            start_date = now - timedelta(days=30)  # 1 month ago
+            end_date = now + timedelta(days=30)  # 1 month from now
 
-            filtered_data = [item for item in data if start_date <= parser.isoparse(item['strTimestamp']) <= end_date]
+            def _aware(ts):
+                dt = parser.isoparse(ts)
+                return timezone.make_aware(dt) if dt.tzinfo is None else dt
+
+            filtered_data = [item for item in data if start_date <= _aware(item['strTimestamp']) <= end_date]
 
             # Delete competitions that are over 4 months old
-            two_weeks_ago = datetime.now() - timedelta(weeks=2)
+            two_weeks_ago = now - timedelta(weeks=2)
             Event.objects.filter(date_time__lt=two_weeks_ago).delete()
             Competition.objects.filter(events__isnull=True).delete()
 
@@ -66,9 +71,8 @@ class Command(BaseCommand):
                 )
 
                 date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
-                is_finished = (
-                    item.get('strStatus', '') == 'Match Finished'
-                )
+                _status = item.get('strStatus', '')
+                is_finished = _status in {'FT', 'AET', 'PEN', 'AOT', 'FT_PEN', 'Finished', 'Match Finished'}
                 
                 # Create a match event for the competition
                 match_event, created = Event.objects.get_or_create(
