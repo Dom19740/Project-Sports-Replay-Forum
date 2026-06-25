@@ -2,6 +2,8 @@
 
 {% block title %}{{ event.event_list }} - {{ event.event_type|title }} | Should I Watch Sports{% endblock %}
 
+{% block meta_description %}<meta name="description" content="Is the {{ event.event_type|title }} at {{ event.event_list }} worth watching? Get a spoiler-free rating on Should I Watch Sports — no scores, no results, just HOT WATCH, MID TEMP, or NOT WATCH.">{% endblock %}
+
 {% block social_meta %}
     {% with og_url=request.scheme|add:'://'|add:request.get_host %}
     <meta property="og:title" content="{{ event.event_type|title }} — {{ event.event_list }} | SIWS">
