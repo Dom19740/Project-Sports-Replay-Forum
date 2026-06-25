@@ -112,6 +112,11 @@
         <i style="font-size: 24px" class="fa-brands fa-reddit social-icons"></i>
     </a>
 
+    <!-- X Share Button -->
+    <a href="https://x.com/intent/post?text={{ event.event_list }}%20{{ event.event_type|title }}%20Rating%20-%20Should%20I%20Watch%20Sports&url={{ request.build_absolute_uri|urlencode }}" target="_blank" title="Share on X">
+        <i style="font-size: 24px" class="fa-brands fa-x-twitter social-icons"></i>
+    </a>
+
     <!-- Bluesky Share Button -->
     <a href=" https://bsky.app/intent/compose?text={{ event.event_list }}%20{{ event.event_type|title }}%20Rating%20-%20Should%20I%20Watch%20Sports%20{{ request.build_absolute_uri|urlencode }}" target="_blank" title="Share on Bluesky">
         <i style="font-size: 24px" class="fa-brands fa-bluesky social-icons"></i>
