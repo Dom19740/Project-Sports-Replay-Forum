@@ -24,3 +24,7 @@ db.sqlite3
 staticfiles
 logs/
 debug.log
+og_cache/
+
+#DB Backup
+db_backup_2026-06-20.sql

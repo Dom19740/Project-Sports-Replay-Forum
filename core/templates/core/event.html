@@ -2,6 +2,20 @@
 
 {% block title %}{{ event.event_list }} - {{ event.event_type|title }} | Should I Watch Sports{% endblock %}
 
+{% block social_meta %}
+    {% with og_url=request.scheme|add:'://'|add:request.get_host %}
+    <meta property="og:title" content="{{ event.event_type|title }} — {{ event.event_list }} | SIWS">
+    <meta property="og:description" content="Worth the replay? Decide without spoilers.">
+    <meta property="og:image" content="{{ og_url }}{% url 'core:event_og' event.id %}?v={{ og_token }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="{{ og_url }}{% url 'core:event' event.id %}">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ og_url }}{% url 'core:event_og' event.id %}?v={{ og_token }}">
+    {% endwith %}
+{% endblock %}
+
 {% block header %}
 
     <a href="{% url 'core:competition_schedule' league=event.event_list.league %}" >{{ title }}</a> -

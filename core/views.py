@@ -2,10 +2,11 @@
 # This code is licensed for non-commercial use only. See LICENSE file for details.
 
 import io
+import os
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.urls import reverse
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.core.management import call_command
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -19,6 +20,7 @@ from gamify.notifications import queue_notification
 from users.forms import CreateCommentForm, CreateReplyForm
 from datetime import timedelta
 from pyexpat.errors import messages
+from .og_images import generate_og_card, resolve_verdict
 
 #COMMENT OUT SPORTS HERE IF YOU WANT TO REMOVE THEM FROM THE SITE
 sports = [
@@ -207,9 +209,28 @@ def event(request, event_id):
         'replyform': replyform,
         'has_voted': has_voted,
         'user_comment_votes': user_comment_votes,
+        'og_token': resolve_verdict(event)["token"],
     }
 
     return render(request, 'core/event.html', context)
+
+
+def event_og_image(request, event_id):
+    event = get_object_or_404(Event.objects.select_related('event_list'), id=event_id)
+    token = resolve_verdict(event)["token"]
+    cache_dir = getattr(settings, "OG_CACHE_DIR", settings.BASE_DIR / "og_cache")
+    os.makedirs(cache_dir, exist_ok=True)
+    path = os.path.join(cache_dir, f"event_{event_id}_{token}.png")
+    if not os.path.exists(path):
+        tmp = path + ".tmp"
+        with open(tmp, "wb") as f:
+            f.write(generate_og_card(event))
+        os.replace(tmp, path)
+    with open(path, "rb") as f:
+        data = f.read()
+    resp = HttpResponse(data, content_type="image/png")
+    resp["Cache-Control"] = "public, max-age=86400"
+    return resp
 
 
 def vote(request, event_id):
