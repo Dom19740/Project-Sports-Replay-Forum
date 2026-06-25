@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python manage.py populate_f1)",
+      "Bash(python manage.py createsuperuser)",
+      "Bash(python -c ' *)"
+    ]
+  }
+}
