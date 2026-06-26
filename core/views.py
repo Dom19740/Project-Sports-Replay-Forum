@@ -3,6 +3,7 @@
 
 import io
 import os
+import threading
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.urls import reverse
@@ -425,11 +426,23 @@ def search(request):
     })
 
 
-def run_populate(request, command, success_message):
+def run_populate(request, command, success_message, background=False):
     token = request.GET.get('token', '')
 
     if token != settings.API_PULL_TOKEN:
         return JsonResponse({'status': 'error', 'message': 'Invalid token'}, status=403)
+
+    if background:
+        def _run():
+            try:
+                call_command(command)
+            except Exception:
+                import logging
+                logging.getLogger(__name__).exception("Background command %s failed", command)
+
+        t = threading.Thread(target=_run, daemon=True)
+        t.start()
+        return JsonResponse({'status': 'accepted', 'message': f'{success_message} (running in background)'})
 
     try:
         buf = io.StringIO()
