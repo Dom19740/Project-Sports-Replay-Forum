@@ -193,6 +193,31 @@ def event(request, event_id):
 
     has_voted = request.COOKIES.get(f'voted_{event_id}', False)
 
+    _verdict_actions = {
+        "HOT WATCH": "watch a full replay",
+        "MID TEMP": "catch the highlights",
+        "NOT WATCH": "skip to the results",
+    }
+    if total_votes > 0:
+        avg = event.rating.average_stars
+        if avg >= 4:
+            share_verdict_label, share_verdict_action = "HOT WATCH", "watch a full replay"
+        elif avg >= 2:
+            share_verdict_label, share_verdict_action = "MID TEMP", "catch the highlights"
+        else:
+            share_verdict_label, share_verdict_action = "NOT WATCH", "skip to the results"
+    elif ai_pipeline:
+        share_verdict_label = ai_pipeline.verdict
+        share_verdict_action = _verdict_actions.get(ai_pipeline.verdict, "")
+    else:
+        share_verdict_label = None
+        share_verdict_action = None
+
+    if share_verdict_label:
+        share_text = f"{event.event_list}: {share_verdict_label} - {share_verdict_action}"
+    else:
+        share_text = None
+
     context = {
         'event': event,
         'RATINGS_TEXT': RATINGS_TEXT,
@@ -211,6 +236,9 @@ def event(request, event_id):
         'has_voted': has_voted,
         'user_comment_votes': user_comment_votes,
         'og_token': resolve_verdict(event)["token"],
+        'share_verdict_label': share_verdict_label,
+        'share_verdict_action': share_verdict_action,
+        'share_text': share_text,
     }
 
     return render(request, 'core/event.html', context)
