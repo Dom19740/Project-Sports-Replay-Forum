@@ -1,12 +1,12 @@
 {% extends 'base_4_split_right.html' %}
 
-{% block title %}{% if share_verdict_label %}{{ event.event_list }}: {{ share_verdict_label }} - {{ share_verdict_action }}{% else %}{{ event.event_list }} - {{ event.event_type|title }}{% endif %} | Should I Watch Sports{% endblock %}
+{% block title %}{% if share_verdict_label %}{{ share_event_label }}: {{ share_verdict_label }} - {{ share_verdict_action }}{% else %}{{ event.event_list }} - {{ event.event_type|title }}{% endif %} | Should I Watch Sports{% endblock %}
 
 {% block meta_description %}<meta name="description" content="Is the {{ event.event_type|title }} at {{ event.event_list }} worth watching? Get a spoiler-free rating on Should I Watch Sports — no scores, no results, just HOT WATCH, MID TEMP, or NOT WATCH.">{% endblock %}
 
 {% block social_meta %}
     {% with og_url=request.scheme|add:'://'|add:request.get_host %}
-    <meta property="og:title" content="{% if share_verdict_label %}{{ event.event_list }}: {{ share_verdict_label }} - {{ share_verdict_action }}{% else %}{{ event.event_type|title }} — {{ event.event_list }}{% endif %}">
+    <meta property="og:title" content="{% if share_verdict_label %}{{ share_event_label }}: {{ share_verdict_label }} - {{ share_verdict_action }}{% else %}{{ event.event_type|title }} — {{ event.event_list }}{% endif %}">
     <meta property="og:description" content="Worth the replay? Decide without spoilers.">
     <meta property="og:image" content="{{ og_url }}{% url 'core:event_og' event.id %}?v={{ og_token }}">
     <meta property="og:image:width" content="1200">

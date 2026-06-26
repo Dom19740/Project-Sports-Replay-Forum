@@ -213,8 +213,15 @@ def event(request, event_id):
         share_verdict_label = None
         share_verdict_action = None
 
+    _MOTORSPORT_LEAGUES = {"Formula 1", "MotoGP", "IndyCar Series", "NASCAR Cup Series"}
+    league = event.event_list.league
+    if league in _MOTORSPORT_LEAGUES:
+        share_event_label = f"{event.event_list} - {event.event_type}"
+    else:
+        share_event_label = event.event_type
+
     if share_verdict_label:
-        share_text = f"{event.event_list}: {share_verdict_label} - {share_verdict_action}"
+        share_text = f"{share_event_label}: {share_verdict_label} - {share_verdict_action}"
     else:
         share_text = None
 
@@ -236,6 +243,7 @@ def event(request, event_id):
         'has_voted': has_voted,
         'user_comment_votes': user_comment_votes,
         'og_token': resolve_verdict(event)["token"],
+        'share_event_label': share_event_label,
         'share_verdict_label': share_verdict_label,
         'share_verdict_action': share_verdict_action,
         'share_text': share_text,
