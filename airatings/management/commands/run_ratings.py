@@ -1,4 +1,5 @@
 import logging
+from datetime import timedelta
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 from core.models import Event
@@ -45,12 +46,14 @@ class Command(BaseCommand):
             candidates = Event.objects.select_related("event_list").filter(pk=event_id)
         else:
             now = timezone.now()
-            # Events that are in the past and don't have a published AIRating
+            window_start = now - timedelta(hours=12)
+            # Events within the last 12 hours that don't have a published AIRating
             published_event_ids = AIRating.objects.filter(
                 status=AIRating.STATUS_PUBLISHED
             ).values_list("event_id", flat=True)
 
             qs = Event.objects.select_related("event_list").filter(
+                date_time__gte=window_start,
                 date_time__lt=now,
             ).exclude(
                 id__in=published_event_ids,
@@ -71,7 +74,7 @@ class Command(BaseCommand):
         skipped   = 0
         errors    = 0
 
-        self.stdout.write(f"Checking {total} candidate event(s)...\n")
+        self.stdout.write(f"Checking {total} candidate event(s) from the last 12 hours...\n")
 
         UNSUPPORTED_LEAGUES = {"MotoGP"}
 
