@@ -99,6 +99,8 @@ class Command(BaseCommand):
                     # If the event already exists, update the fields
                     match_event.video_id = item['strVideo']
                     match_event.is_finished = is_finished
+                    if item.get('strThumb'):
+                        match_event.poster = item['strThumb']
                     match_event.save()
 
             self.stdout.write(self.style.SUCCESS(f"{item['strLeague']} populated successfully"))
