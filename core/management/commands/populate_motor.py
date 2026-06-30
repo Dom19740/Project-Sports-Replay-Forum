@@ -12,7 +12,7 @@ class Command(BaseCommand):
         
         #COMMENT OUT MOTORSPORTS HERE IF YOU WANT TO REMOVE THEM FROM THE SITE
         season_ids = {
-            'MotoGP': '4407',
+            #'MotoGP': '4407',
             #'IndyCar Series': '4373',
             #'NASCAR Cup Series': '4393',
         }

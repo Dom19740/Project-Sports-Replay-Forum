@@ -27,7 +27,7 @@ from .og_images import generate_og_card, resolve_verdict
 sports = [
     {'name': 'FIFA World Cup', 'title': 'FIFA World Cup', 'logo': 'logo_FIFA World Cup.png'},
     {'name': 'Formula 1', 'title': 'F1', 'logo': 'logo_f1.png'},
-    {'name': 'MotoGP', 'title': 'MotoGP', 'logo': 'logo_motogp.png'},
+    #{'name': 'MotoGP', 'title': 'MotoGP', 'logo': 'logo_motogp.png'},
     #{'name': 'IndyCar Series', 'title': 'IndyCar', 'logo': 'logo_indy.png'},
     #{'name': 'NASCAR Cup Series', 'title': 'NASCAR', 'logo': 'logo_nascar.png'},
     ##{'name': 'UEFA Champions League', 'title': 'Champions League', 'logo': 'logo_champions.png'},
