@@ -92,6 +92,8 @@ class Command(BaseCommand):
                     # If the event already exists, update the fields
                     race_event.video_id = item['strVideo']
                     race_event.is_finished = is_finished
+                    if item.get('strThumb'):
+                        race_event.poster = item['strThumb']
                     race_event.save()
 
         # Step 2: Create or update Events associated with each Competition (e.g., Qualifying, Sprint)
@@ -132,6 +134,8 @@ class Command(BaseCommand):
                             # If the event already exists, update the fields
                             event.video_id = item['strVideo']
                             event.is_finished = is_finished
+                            if item.get('strThumb'):
+                                event.poster = item['strThumb']
                             event.save()
 
         self.stdout.write(self.style.SUCCESS("F1 events populated and updated successfully"))

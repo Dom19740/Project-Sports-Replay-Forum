@@ -100,6 +100,8 @@ class Command(BaseCommand):
                 if not created:
                     race_event.video_id = item.get('strVideo', '')
                     race_event.is_finished = is_finished
+                    if item.get('strThumb'):
+                        race_event.poster = item['strThumb']
                     race_event.save()
 
             # Step 2: Create sub-events (Sprint Race, Qualifying) under each Competition
@@ -143,6 +145,8 @@ class Command(BaseCommand):
                     if not created:
                         event.video_id = item.get('strVideo', '')
                         event.is_finished = is_finished
+                        if item.get('strThumb'):
+                            event.poster = item['strThumb']
                         event.save()
 
             self.stdout.write(self.style.SUCCESS(f"{season_name} populated successfully"))
