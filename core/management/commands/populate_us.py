@@ -72,7 +72,7 @@ class Command(BaseCommand):
 
                 date_time = timezone.make_aware(parser.isoparse(item['strTimestamp']))
                 _status = item.get('strStatus', '')
-                is_finished = _status in {'FT', 'AET', 'PEN', 'AOT', 'FT_PEN', 'Finished', 'Match Finished'}
+                is_finished = _status in {'FT', 'AET', 'PEN', 'AP', 'AOT', 'FT_PEN', 'Finished', 'Match Finished'}
                 
                 # Create a match event for the competition
                 match_event, created = Event.objects.get_or_create(

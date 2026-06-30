@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 class Command(BaseCommand):
     help = (
-        "Find events that have finished (strStatus = FT/AET/PEN) and run the "
+        "Find events that have finished (strStatus = FT/AET/PEN/AP) and run the "
         "AI rating pipeline on each unrated one. Idempotent — safe to re-run."
     )
 

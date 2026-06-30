@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 # Finished-status detection
 # ---------------------------------------------------------------------------
 
-_FOOTBALL_FINISHED_STATUSES = {"FT", "AET", "PEN", "AOT", "FT_PEN", "Finished"}
+_FOOTBALL_FINISHED_STATUSES = {"FT", "AET", "PEN", "AP", "AOT", "FT_PEN", "Finished"}
 _FOOTBALL_LEAGUES = {"FIFA World Cup", "English Premier League"}
 _F1_LEAGUES = {"Formula 1"}
 
