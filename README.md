@@ -1,7 +1,7 @@
 
 # Project-Sports-Replay-Forum
 
-Welcome to **Project-Sports-Replay-Forum**, renamed as **Should I Watch Sports**, a web application designed to help users decide whether to watch recent sports events based on spoiler-free ratings. This platform offers a combination of AI-generated and user-generated ratings, along with easy access to highlights and results, making it easy for users to choose the best races to watch.
+Welcome to **Project-Sports-Replay-Forum**, renamed as **Should I Watch Sports**, a web application designed to help users decide whether to watch recent sports events based on spoiler-free sports event ratings. This platform offers a combination of AI-generated and user-generated ratings, along with easy access to highlights and results, making it easy for users to choose the best races to watch.
 
 ## Features
 
