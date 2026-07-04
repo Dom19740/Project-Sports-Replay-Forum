@@ -5,6 +5,27 @@ from dateutil import parser
 from datetime import timedelta
 import requests, os
 
+# How long each session type runs on the clock, used as a fallback when
+# TheSportsDB never flips strStatus/strVideo to a "finished" state.
+SESSION_DURATIONS = {
+    'Race': timedelta(hours=3),
+    'Sprint': timedelta(hours=1),
+    'Sprint Qualifying': timedelta(hours=1),
+    'Sprint Shootout': timedelta(hours=1),
+    'Qualifying': timedelta(hours=1),
+}
+# Extra grace period on top of the scheduled duration: races overrun (red
+# flags, restarts) and result/highlight data lags the chequered flag, so
+# marking "finished" too early would let run_ratings pick up an event before
+# there's anything for the AI pipeline to work with.
+FINISHED_BUFFER = timedelta(minutes=30)
+
+
+def is_finished_by_schedule(event_type, date_time):
+    duration = SESSION_DURATIONS.get(event_type, timedelta(hours=1))
+    return timezone.now() >= date_time + duration + FINISHED_BUFFER
+
+
 class Command(BaseCommand):
     help = 'Populate the database with Formula 1 competitions and events'
 
@@ -73,7 +94,8 @@ class Command(BaseCommand):
                 _status = item.get('strStatus', '')
                 is_finished = (
                     'Finished' in _status or _status == 'FT' or
-                    item.get('strVideo') != ""
+                    item.get('strVideo') != "" or
+                    is_finished_by_schedule('Race', date_time)
                 )
 
                 # Create or update the race event for the competition
@@ -103,12 +125,14 @@ class Command(BaseCommand):
                 for competition in Competition.objects.all():
                     # Check for qualifying, sprint, or sprint shootout events
                     if competition.name in item['strEvent']:
-                        if 'Qualifying' in item['strEvent']:
-                            event_type = 'Qualifying'
+                        if 'Sprint Qualifying' in item['strEvent']:
+                            event_type = 'Sprint Qualifying'
                         elif 'Sprint Shootout' in item['strEvent']:
                             event_type = 'Sprint Shootout'
                         elif 'Sprint' in item['strEvent']:
                             event_type = 'Sprint'
+                        elif 'Qualifying' in item['strEvent']:
+                            event_type = 'Qualifying'
                         else:
                             continue  # Skip if not qualifying, sprint, or sprint shootout
 
@@ -116,7 +140,8 @@ class Command(BaseCommand):
                         _status = item.get('strStatus', '')
                         is_finished = (
                             'Finished' in _status or _status == 'FT' or
-                            item.get('strVideo') != ""
+                            item.get('strVideo') != "" or
+                            is_finished_by_schedule(event_type, date_time)
                         )
 
                         # Create or update the event

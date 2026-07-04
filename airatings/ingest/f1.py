@@ -147,7 +147,7 @@ class F1DataSource(EventDataSource):
 
         if event.event_type == "Race":
             self._add_race_stats(stats, year, round_num)
-        elif event.event_type in ("Qualifying", "Sprint Shootout"):
+        elif event.event_type in ("Qualifying", "Sprint Shootout", "Sprint Qualifying"):
             self._add_qualifying_stats(stats, year, round_num)
         elif event.event_type in ("Sprint", "Sprint Race"):
             self._add_sprint_stats(stats, year, round_num)
