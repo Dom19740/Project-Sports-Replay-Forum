@@ -100,23 +100,23 @@ def _contrarian(user, profile):
 # Level-progress badge conditions
 # ---------------------------------------------------------------------------
 
-def _level_5(user, profile):
-    return profile.current_level >= 5
+def _level_3(user, profile):
+    return profile.current_level >= 3
 
-def _level_9(user, profile):
-    return profile.current_level >= 9
+def _level_6(user, profile):
+    return profile.current_level >= 6
 
-def _level_12(user, profile):
-    return profile.current_level >= 12
+def _level_10(user, profile):
+    return profile.current_level >= 10
 
-def _level_16(user, profile):
-    return profile.current_level >= 16
+def _level_14(user, profile):
+    return profile.current_level >= 14
 
-def _level_19(user, profile):
-    return profile.current_level >= 19
+def _level_18(user, profile):
+    return profile.current_level >= 18
 
-def _level_23(user, profile):
-    return profile.current_level >= 23
+def _level_22(user, profile):
+    return profile.current_level >= 22
 
 
 # ---------------------------------------------------------------------------
@@ -136,12 +136,12 @@ _CONDITIONS = {
     'trusted-voice':             _trusted_voice,
     'contrarian':                _contrarian,
     # Level-progress badges
-    'level-5':   _level_5,
-    'level-9':   _level_9,
-    'level-12':  _level_12,
-    'level-16':  _level_16,
-    'level-19':  _level_19,
-    'level-23':  _level_23,
+    'level-5':   _level_3,
+    'level-9':   _level_6,
+    'level-12':  _level_10,
+    'level-16':  _level_14,
+    'level-19':  _level_18,
+    'level-23':  _level_22,
 }
 
 

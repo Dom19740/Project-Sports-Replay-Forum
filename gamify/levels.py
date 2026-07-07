@@ -1,20 +1,32 @@
 MAX_LEVEL = 25
 
-# 7 titles spread evenly across MAX_LEVEL using integer bucketing.
+# 7 titles across MAX_LEVEL, sized to grow (2, 3, 4, ...) then plateau at 4
+# once the remaining levels can no longer sustain further growth.
 # Breakpoints (level where each title starts):
-#   Rookie 1, Fan 5, Regular 9, Contender 12,
-#   All-Star 16, Champion 19, Legend 23
+#   Rookie 1, Fan 3, Regular 6, Contender 10,
+#   All-Star 14, Champion 18, Legend 22
 TITLES = ['Rookie', 'Fan', 'Regular', 'Contender', 'All-Star', 'Champion', 'Legend']
+
+# (min_level, title) — last matching entry wins. Kept in sync with TITLES above.
+_TITLE_THRESHOLDS = [
+    (1,  'Rookie'),
+    (3,  'Fan'),
+    (6,  'Regular'),
+    (10, 'Contender'),
+    (14, 'All-Star'),
+    (18, 'Champion'),
+    (22, 'Legend'),
+]
 
 # (min_level, bg_color, text_color) — last matching entry wins.
 _STAGE_COLORS = [
     (1,  '#888888', '#fff'),   # Rookie
-    (5,  '#24e4e7', '#000'),   # Fan
-    (9,  '#95d0bb', '#000'),   # Regular
-    (12, '#f6933f', '#000'),   # Contender
-    (16, '#f37484', '#fff'),   # All-Star
-    (19, '#ee35b9', '#fff'),   # Champion
-    (23, '#ee35b9', '#000'),   # Legend
+    (3,  '#24e4e7', '#000'),   # Fan
+    (6,  '#95d0bb', '#000'),   # Regular
+    (10, '#f6933f', '#000'),   # Contender
+    (14, '#f37484', '#fff'),   # All-Star
+    (18, '#ee35b9', '#fff'),   # Champion
+    (22, '#ee35b9', '#000'),   # Legend
 ]
 
 
@@ -70,8 +82,11 @@ def compute_level(total_xp):
 
 def level_title(level):
     """Return the title string for a given level number."""
-    idx = min((level - 1) * len(TITLES) // MAX_LEVEL, len(TITLES) - 1)
-    return TITLES[idx]
+    title = _TITLE_THRESHOLDS[0][1]
+    for threshold, t in _TITLE_THRESHOLDS:
+        if level >= threshold:
+            title = t
+    return title
 
 
 def level_info(profile):
@@ -117,6 +132,8 @@ def level_info(profile):
         'xp_current': xp_current,
         'xp_next': xp_next,
         'xp_needed': xp_next - total_xp,
+        'earned_in_level': earned_in_level,
+        'level_span': span,
         'progress_pct': progress_pct,
         'bg_color': bg,
         'text_color': text,
