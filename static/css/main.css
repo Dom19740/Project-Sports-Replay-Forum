@@ -517,6 +517,12 @@ a i:hover { color: var(--light-purple); }
 }
 .comment-icon:hover { color: var(--one-star-ice); }
 
+.streak-flame-icon {
+    width: 0.95em;
+    height: 0.95em;
+    vertical-align: -0.1em;
+}
+
 /* ─── XP strip ──────────────────────────────────────────────────────────────── */
 .xp-strip {
     display: flex;
@@ -607,6 +613,14 @@ a i:hover { color: var(--light-purple); }
 .xp-strip-xp {
     font-size: 0.65rem;
     color: #999;
+}
+
+.xp-strip-total {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #777;
+    text-transform: uppercase;
 }
 
 .xp-strip-track {

@@ -37,6 +37,9 @@
                             {{ gamify_strip.total_xp }} XP &mdash; Max
                         {% endif %}
                     </span>
+                    {% if gamify_strip.xp_next %}
+                    <span class="xp-strip-total">TOTAL {{ gamify_strip.total_xp }} XP</span>
+                    {% endif %}
                 </div>
                 <div class="xp-strip-track">
                     <div class="xp-strip-fill" style="width:{{ gamify_strip.progress_pct }}%; --pct:{{ gamify_strip.progress_pct }};"></div>
@@ -48,12 +51,12 @@
         {# Streaks #}
         <div class="d-flex gap-4">
             <div>
-                <i class="fa-solid fa-fire text-warning"></i>
+                <svg class="streak-flame-icon text-warning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
                 <strong>{{ profile.current_streak }}</strong>
                 <span class="text-muted small">day streak</span>
             </div>
             <div>
-                <i class="fa-solid fa-fire text-secondary"></i>
+                <svg class="streak-flame-icon text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
                 <strong>{{ profile.longest_streak }}</strong>
                 <span class="text-muted small">longest streak</span>
             </div>

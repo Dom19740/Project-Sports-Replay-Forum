@@ -23,6 +23,9 @@
                     {{ gamify_strip.total_xp }} XP &mdash; Max
                 {% endif %}
             </span>
+            {% if gamify_strip.xp_next %}
+            <span class="xp-strip-total">TOTAL {{ gamify_strip.total_xp }} XP</span>
+            {% endif %}
         </div>
         <div class="xp-strip-track">
             <div class="xp-strip-fill" style="width:{{ gamify_strip.progress_pct }}%; --pct:{{ gamify_strip.progress_pct }};"></div>
