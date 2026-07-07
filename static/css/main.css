@@ -28,6 +28,7 @@ body {
     font-size: 14px;
     background-color: #000;
     color: #fff;
+    padding-top: 6px;
 }
 
 body.dark-mode {
@@ -582,7 +583,7 @@ a i:hover { color: var(--light-purple); }
 }
 
 .xp-strip-level-num {
-    font-size: 1.08rem;
+    font-size: 0.81rem;
     font-weight: 700;
     color: #fff;
     line-height: 1.15;
@@ -590,7 +591,7 @@ a i:hover { color: var(--light-purple); }
 }
 
 .xp-strip-level-title {
-    font-size: 0.87rem;
+    font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.07em;
     text-transform: uppercase;
@@ -611,7 +612,7 @@ a i:hover { color: var(--light-purple); }
 
 
 .xp-strip-xp {
-    font-size: 0.975rem;
+    font-size: 0.73rem;
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -619,10 +620,10 @@ a i:hover { color: var(--light-purple); }
 }
 
 .xp-strip-total {
-    font-size: 0.975rem;
+    font-size: 0.73rem;
     font-weight: 700;
     letter-spacing: 0.05em;
-    color: #777;
+    color: #999;
     text-transform: uppercase;
 }
 
@@ -656,11 +657,12 @@ a i:hover { color: var(--light-purple); }
 
 .gamify-lb-card {
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    min-width: 96px;
+    min-width: 160px;
     text-decoration: none;
     color: #aaa;
     transition: border-color 0.2s, color 0.2s, background 0.2s;
@@ -671,10 +673,15 @@ a i:hover { color: var(--light-purple); }
     transition: color 0.2s;
 }
 .gamify-lb-card span {
-    font-size: 0.65rem;
+    position: absolute;
+    top: 22px;
+    left: 24px;
+    white-space: nowrap;
+    font-size: 0.68rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
+    color: #fff;
 }
 .gamify-lb-card:hover {
     border-color: rgba(246,147,63,0.45);
@@ -839,7 +846,7 @@ a i:hover { color: var(--light-purple); }
     padding: 20px 0;
 }
 .bg-dark p {
-    color: #777 !important;
+    color: #999 !important;
     font-size: 11px;
 }
 
@@ -970,6 +977,32 @@ a i:hover { color: var(--light-purple); }
     footer img { height: 50px; }
     .play-button { font-size: 70px; }
     .comment p, .reply p { text-align: left; }
+
+    .xp-strip { padding: 10px 12px; gap: 8px; }
+    .xp-strip-level-circle { width: 28px; height: 28px; }
+    .xp-strip-level-circle i { font-size: 0.75rem !important; }
+    .xp-strip-level-num { font-size: 0.85rem; }
+    .xp-strip-level-title { font-size: 0.65rem; }
+    .xp-strip-xp, .xp-strip-total { font-size: 0.6rem; }
+
+    .gamify-progress-row { flex-direction: column; }
+    .gamify-lb-card {
+        position: relative;
+        flex-direction: row;
+        justify-content: flex-start;
+        min-width: 0;
+        width: 100%;
+        padding: 10px 24px;
+        gap: 10px;
+    }
+    .gamify-lb-card i {
+        font-size: 1.3rem !important;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .gamify-lb-card span { position: static; order: 1; }
 }
 
 @media (min-width: 769px) {
