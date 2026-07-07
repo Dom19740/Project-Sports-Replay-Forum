@@ -158,8 +158,6 @@ def event(request, event_id):
 
     title = next((sport['name'] for sport in sports if sport['name'] == event.event_list.league), 'Unknown League')
     poster = event.poster
-    ai_review = event.ai_review
-    ai_rating = event.ai_rating
     try:
         _pipeline = event.ai_pipeline
         ai_pipeline = _pipeline if _pipeline.status != AIRating.STATUS_FLAGGED else None
@@ -234,8 +232,6 @@ def event(request, event_id):
         'timedelta': timedelta,
         'total_votes': total_votes,
         'poster': poster,
-        'ai_review': ai_review,
-        'ai_rating': ai_rating,
         'ai_pipeline': ai_pipeline,
         'comments': comments,
         'commentform': commentform,

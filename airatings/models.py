@@ -18,7 +18,6 @@ class AIRating(models.Model):
         (STATUS_FLAGGED,   "Flagged — Manual Review Required"),
     ]
 
-    # related_name avoids colliding with Event.ai_rating (legacy CharField)
     event              = models.OneToOneField(Event, on_delete=models.CASCADE, related_name="ai_pipeline")
     status             = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_PENDING, db_index=True)
     stars              = models.IntegerField()
