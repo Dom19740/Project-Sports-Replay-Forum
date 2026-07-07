@@ -65,11 +65,28 @@ def level_colors(level):
     return bg, text
 
 
+#
+# Per-level XP cost, banded in fives and rounded to multiples of 5:
+#   levels 2-5:   flat 25
+#   levels 6-10:  30, 30, 35, 35, 40
+#   levels 11-15: 45, 45, 50, 50, 55
+#   levels 16-20: 60, 60, 65, 65, 70
+#   levels 21-25: 75, 75, 80, 80, 85
+# _CUMULATIVE_XP[n-1] is the running total to reach level n.
+_CUMULATIVE_XP = (
+    0, 25, 50, 75, 100,
+    130, 160, 195, 230, 270,
+    315, 360, 410, 460, 515,
+    575, 635, 700, 765, 835,
+    910, 985, 1065, 1145, 1230,
+)
+
+
 def xp_for_level(n):
     """Total cumulative XP required to reach level n. Level 1 costs 0 XP."""
     if n <= 1:
         return 0
-    return int(9 * (n ** 1.5))
+    return _CUMULATIVE_XP[min(n, MAX_LEVEL) - 1]
 
 
 def compute_level(total_xp):
