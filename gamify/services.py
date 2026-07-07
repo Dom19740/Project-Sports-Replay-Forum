@@ -91,16 +91,26 @@ def _update_streak(profile, today):
     `profile.last_active_date` is guaranteed to be before today here.
 
     - Consecutive day: increment current_streak.
-    - Gap of one or more days: reset current_streak to 0 first, then increment.
+    - Gap since last active day: the streak only breaks if an Event actually
+      happened on one of the skipped days — a quiet day with nothing to rate
+      or comment on doesn't cost the user their streak.
       (Streak-freeze logic would replace the reset here when implemented.)
     - Always update longest_streak and last_active_date.
     """
-    yesterday = today - timedelta(days=1)
-
-    if profile.last_active_date != yesterday:
-        # One or more days missed — streak is broken.
-        # TODO: check for an active streak freeze before resetting.
+    if profile.last_active_date is None:
         profile.current_streak = 0
+    else:
+        gap_start = profile.last_active_date + timedelta(days=1)
+        gap_end = today - timedelta(days=1)
+        if gap_start <= gap_end:
+            from core.models import Event  # local import avoids circular dependency
+            missed_active_day = Event.objects.filter(
+                date_time__date__gte=gap_start,
+                date_time__date__lte=gap_end,
+            ).exists()
+            if missed_active_day:
+                # TODO: check for an active streak freeze before resetting.
+                profile.current_streak = 0
 
     profile.current_streak += 1
 
