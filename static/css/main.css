@@ -657,31 +657,18 @@ a i:hover { color: var(--light-purple); }
 
 .gamify-lb-card {
     display: flex;
-    position: relative;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
     min-width: 160px;
     text-decoration: none;
     color: #aaa;
     transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 .gamify-lb-card i {
+    align-self: center;
+    margin: auto 0;
     font-size: 2.2rem !important; /* override the global a i { font-size: 100px } */
     color: var(--three-star-orange);
     transition: color 0.2s;
-}
-.gamify-lb-card span {
-    position: absolute;
-    top: 22px;
-    left: 24px;
-    white-space: nowrap;
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #fff;
 }
 .gamify-lb-card:hover {
     border-color: rgba(246,147,63,0.45);
@@ -989,6 +976,7 @@ a i:hover { color: var(--light-purple); }
     .gamify-lb-card {
         position: relative;
         flex-direction: row;
+        align-items: center;
         justify-content: flex-start;
         min-width: 0;
         width: 100%;
@@ -997,12 +985,13 @@ a i:hover { color: var(--light-purple); }
     }
     .gamify-lb-card i {
         font-size: 1.3rem !important;
+        margin: 0;
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
     }
-    .gamify-lb-card span { position: static; order: 1; }
+    .gamify-lb-card .inside-header { padding-bottom: 0; }
 }
 
 @media (min-width: 769px) {
