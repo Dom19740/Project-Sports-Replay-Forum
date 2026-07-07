@@ -495,9 +495,16 @@ def comment_sent(request, pk):
             comment.event = event
             comment.author = request.user
             comment.save()
-            xp_result = award_xp(request.user, 'comment_posted', comment)
-            new_badges = check_badges(request.user)
-            queue_notification(request, xp_result, new_badges)
+
+            already_earned = XPEvent.objects.filter(
+                user=request.user,
+                action_type='comment_posted',
+                related_event=event,
+            ).exists()
+            if not already_earned:
+                xp_result = award_xp(request.user, 'comment_posted', comment)
+                new_badges = check_badges(request.user)
+                queue_notification(request, xp_result, new_badges)
 
     return redirect('core:event', event_id=event.id)
 

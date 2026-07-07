@@ -639,23 +639,6 @@ a i:hover { color: var(--light-purple); }
     transition: width 0.4s ease;
 }
 
-.xp-strip-badge {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #1a1a1a;
-    border: 1px solid rgba(79,55,156,0.4);
-    color: var(--three-star-orange);
-}
-.xp-strip-badge i {
-    font-size: 1rem !important; /* override global a i { font-size: 100px } */
-    color: var(--three-star-orange) !important;
-}
-
 /* ─── Gamification ──────────────────────────────────────────────────────────── */
 
 .gamify-progress-row {
@@ -757,18 +740,38 @@ a i:hover { color: var(--light-purple); }
 .badge-tooltip-rarity { font-size: 0.68rem; color: #999; }
 
 /* ─── Toast ─────────────────────────────────────────────────────────────────── */
+.gamify-toast-container {
+    max-width: 92vw;
+}
 .gamify-toast {
     background: #1a1a1a;
     border: 1px solid var(--dark-purple);
     color: #fff;
-    min-width: 260px;
+    min-width: 300px;
     border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.55);
 }
 .gamify-toast-header {
     background: linear-gradient(90deg, var(--dark-purple), var(--light-purple));
     color: #fff;
     border-bottom: none;
+}
+.gamify-toast-body {
+    font-size: 0.95rem;
+}
+.gamify-toast-celebrate {
+    border-color: var(--three-star-orange);
+    box-shadow: 0 0 0 2px var(--three-star-orange), 0 10px 30px rgba(0,0,0,0.55);
+    animation: gamify-toast-pop 0.5s ease;
+}
+.gamify-toast-celebrate .gamify-toast-header {
+    background: linear-gradient(90deg, var(--three-star-orange), var(--dark-purple));
+}
+@keyframes gamify-toast-pop {
+    0%   { transform: scale(0.8); opacity: 0; }
+    60%  { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); }
 }
 
 /* ─── Leaderboard ───────────────────────────────────────────────────────────── */

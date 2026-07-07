@@ -21,7 +21,7 @@
         <div class="d-flex align-items-center gap-3 mb-3">
             <div class="xp-strip-level-info">
                 <div class="xp-strip-level-circle" style="border-color:{{ gamify_strip.edge_color }};">
-                    <i class="fa-solid fa-star" style="color:{{ gamify_strip.edge_color }};"></i>
+                    <i class="{% if gamify_strip.last_badge %}{{ gamify_strip.last_badge.icon }}{% else %}fa-solid fa-star{% endif %}" style="color:{{ gamify_strip.edge_color }};"></i>
                 </div>
                 <div>
                     <div class="xp-strip-level-num">Level {{ gamify_strip.level }}</div>

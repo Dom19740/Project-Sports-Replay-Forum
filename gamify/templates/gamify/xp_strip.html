@@ -5,7 +5,7 @@
     {# Level badge #}
     <div class="xp-strip-level-info">
         <div class="xp-strip-level-circle" style="border-color:{{ gamify_strip.edge_color }};">
-            <i class="fa-solid fa-star" style="color:{{ gamify_strip.edge_color }};"></i>
+            <i class="{% if gamify_strip.last_badge %}{{ gamify_strip.last_badge.icon }}{% else %}fa-solid fa-star{% endif %}" style="color:{{ gamify_strip.edge_color }};"></i>
         </div>
         <div>
             <div class="xp-strip-level-num">Level {{ gamify_strip.level }}</div>
@@ -31,13 +31,6 @@
             <div class="xp-strip-fill" style="width:{{ gamify_strip.progress_pct }}%; --pct:{{ gamify_strip.progress_pct }};"></div>
         </div>
     </div>
-
-    {# Last badge #}
-    {% if gamify_strip.last_badge %}
-    <div class="xp-strip-badge" title="{{ gamify_strip.last_badge.name }}">
-        <i class="{{ gamify_strip.last_badge.icon }}"></i>
-    </div>
-    {% endif %}
 
 </a>
 {% else %}
