@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from core.models import Competition, Event
+from core.management.commands.dedupe_events import dedupe_events
 from datetime import datetime, timedelta
 from dateutil import parser
 import requests, os
@@ -61,6 +62,10 @@ class Command(BaseCommand):
             Event.objects.filter(date_time__lt=two_weeks_ago).delete()
             Competition.objects.filter(events__isnull=True).delete()
 
+            # Resolve any duplicate events (e.g. from a postponement) before
+            # matching against idEvent below.
+            dedupe_events(stdout=self.stdout)
+
             # Step 1: Create Competitions for events by matchday
             for item in filtered_data:
                 date_obj = datetime.strptime(item['dateEvent'], "%Y-%m-%d")
@@ -82,13 +87,15 @@ class Command(BaseCommand):
                 _status = item.get('strStatus', '')
                 is_finished = _status in {'FT', 'AET', 'PEN', 'AP', 'AOT', 'FT_PEN', 'Finished', 'Match Finished'}
                 
-                # Create a match event for the competition
+                # Create a match event for the competition. Keyed on idEvent
+                # alone so a reschedule (date_time change) updates the
+                # existing row instead of creating a duplicate.
                 match_event, created = Event.objects.get_or_create(
-                    event_list = competition,
-                    event_type = item['strEvent'],
-                    date_time = date_time,
                     idEvent = item['idEvent'],
                     defaults={
+                        'event_list': competition,
+                        'event_type': item['strEvent'],
+                        'date_time': date_time,
                         'video_id': item['strVideo'],
                         'is_finished': is_finished,
                         'poster': item['strThumb'],
@@ -97,6 +104,9 @@ class Command(BaseCommand):
 
                 if not created:
                     # If the event already exists, update the fields
+                    match_event.event_list = competition
+                    match_event.event_type = item['strEvent']
+                    match_event.date_time = date_time
                     match_event.video_id = item['strVideo']
                     match_event.is_finished = is_finished
                     if item.get('strThumb'):

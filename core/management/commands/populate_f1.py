@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from core.models import Competition, Event
+from core.management.commands.dedupe_events import dedupe_events
 from dateutil import parser
 from datetime import timedelta
 import requests, os
@@ -57,6 +58,10 @@ class Command(BaseCommand):
         Event.objects.filter(date_time__lt=two_weeks_ago).delete()
         Competition.objects.filter(events__isnull=True).delete()
 
+        # Resolve any duplicate events (e.g. from a postponement) before
+        # matching against idEvent below.
+        dedupe_events(stdout=self.stdout)
+
         # Step 1: Create or update Competitions for events ending in "Prix"
         for item in data:
             if item.get('strEvent') and item['strEvent'].endswith("Prix"):
@@ -98,13 +103,15 @@ class Command(BaseCommand):
                     is_finished_by_schedule('Race', date_time)
                 )
 
-                # Create or update the race event for the competition
+                # Create or update the race event for the competition. Keyed
+                # on idEvent alone so a reschedule (date_time change) updates
+                # the existing row instead of creating a duplicate.
                 race_event, created = Event.objects.get_or_create(
-                    event_list=competition,
-                    event_type='Race',
-                    date_time=date_time,
                     idEvent=item['idEvent'],
                     defaults={
+                        'event_list': competition,
+                        'event_type': 'Race',
+                        'date_time': date_time,
                         'video_id': item['strVideo'],
                         'is_finished': is_finished,
                         'poster': item['strThumb'],
@@ -113,6 +120,9 @@ class Command(BaseCommand):
 
                 if not created:
                     # If the event already exists, update the fields
+                    race_event.event_list = competition
+                    race_event.event_type = 'Race'
+                    race_event.date_time = date_time
                     race_event.video_id = item['strVideo']
                     race_event.is_finished = is_finished
                     if item.get('strThumb'):
@@ -144,13 +154,15 @@ class Command(BaseCommand):
                             is_finished_by_schedule(event_type, date_time)
                         )
 
-                        # Create or update the event
+                        # Create or update the event. Keyed on idEvent alone
+                        # so a reschedule (date_time change) updates the
+                        # existing row instead of creating a duplicate.
                         event, created = Event.objects.get_or_create(
-                            event_list=competition,
-                            event_type=event_type,
-                            date_time=date_time,
                             idEvent=item['idEvent'],
                             defaults={
+                                'event_list': competition,
+                                'event_type': event_type,
+                                'date_time': date_time,
                                 'video_id': item['strVideo'],
                                 'is_finished': is_finished,
                                 'poster': item['strThumb'],
@@ -159,6 +171,9 @@ class Command(BaseCommand):
 
                         if not created:
                             # If the event already exists, update the fields
+                            event.event_list = competition
+                            event.event_type = event_type
+                            event.date_time = date_time
                             event.video_id = item['strVideo']
                             event.is_finished = is_finished
                             if item.get('strThumb'):
