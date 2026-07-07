@@ -268,9 +268,10 @@ def event_og_image(request, event_id):
 
 def vote(request, event_id):
     event = get_object_or_404(Event, id=event_id)
-    rating, created = Rating.objects.get_or_create(event=event)
 
     if request.method == 'POST':
+        rating, created = Rating.objects.get_or_create(event=event)
+
         if 'stars' in request.POST:
             current_vote = request.COOKIES.get(f'voted_{event_id}')
             if current_vote:
