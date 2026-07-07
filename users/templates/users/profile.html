@@ -30,16 +30,16 @@
             </div>
             <div class="xp-strip-bar-wrap">
                 <div class="xp-strip-label">
+                    {% if gamify_strip.xp_next %}
+                    <span class="xp-strip-total">TOTAL <span style="color:{{ gamify_strip.edge_color }};">{{ gamify_strip.total_xp }} XP</span></span>
+                    {% endif %}
                     <span class="xp-strip-xp">
                         {% if gamify_strip.xp_next %}
-                            PROGRESS {{ gamify_strip.earned_in_level }} / {{ gamify_strip.level_span }} XP
+                            PROGRESS <span style="color:{{ gamify_strip.edge_color }};">{{ gamify_strip.earned_in_level }} / {{ gamify_strip.level_span }} XP</span>
                         {% else %}
-                            {{ gamify_strip.total_xp }} XP &mdash; Max
+                            <span style="color:{{ gamify_strip.edge_color }};">{{ gamify_strip.total_xp }} XP</span> &mdash; Max
                         {% endif %}
                     </span>
-                    {% if gamify_strip.xp_next %}
-                    <span class="xp-strip-total">TOTAL {{ gamify_strip.total_xp }} XP</span>
-                    {% endif %}
                 </div>
                 <div class="xp-strip-track">
                     <div class="xp-strip-fill" style="width:{{ gamify_strip.progress_pct }}%; --pct:{{ gamify_strip.progress_pct }};"></div>
